@@ -1,0 +1,69 @@
+Time Zone,Time Zone
+Default Currency,Default Currency
+"One from PHP Extensions ""%s"" must be loaded","One from PHP Extensions ""%s"" must be loaded"
+Database connection error,Database connection error
+"PHP Extension ""%s"" must be loaded","PHP Extension ""%s"" must be loaded"
+"Url ""%s"" is invalid","Url ""%s"" is invalid"
+Locale,Locale
+"Url ""%s"" is not accessible","Url ""%s"" is not accessible"
+This Url is invalid,This Url is invalid
+"Path ""%s"" must be writable","Path ""%s"" must be writable"
+PHP Extension '%s' loaded,PHP Extension '%s' loaded
+Database Name,Database Name
+Installation Guide,Installation Guide
+Confirm Password,Confirm Password
+Secure host name,Secure host name
+Password Confirmation,Password Confirmation
+Go to Frontend,Go to Frontend
+Secure Protocol,Secure Protocol
+"For HTTPS connections, default port is 443.","For HTTPS connections, default port is 443."
+I agree to the above terms and conditions,I agree to the above terms and conditions
+First Name,First Name
+"Before you continue to your store, please make a note of your encryption key (Magento uses it to encrypt passwords, credit cards and more).","Before you continue to your store, please make a note of your encryption key (Magento uses it to encrypt passwords, credit cards and more)."
+Database Connection,Database Connection
+Secure Connection,Secure Connection
+Create Admin Account,Create Admin Account
+Email,Email
+Host name,Host name
+Go to Backend,Go to Backend
+Base Path,Base Path
+Login Information,Login Information
+Password,Password
+Localization,Localization
+Secure www base path,Secure www base path
+User Name,User Name
+Skip URL validation,Skip URL validation
+User Password,User Password
+Host,Host
+Welcome to Magento's Installation Wizard,Welcome to Magento's Installation Wizard
+WWW base path,WWW base path
+"For HTTP connections, the default port is 80.","For HTTP connections, the default port is 80."
+Secure Port,Secure Port
+Required Fields,Required Fields
+Configuration,Configuration
+You're All Set,You're All Set
+Having trouble installing Magento?,Having trouble installing Magento?
+Username,Username
+Installation,Installation
+Email Address,Email Address
+(Make sure you keep it in a safe place.),(Make sure you keep it in a safe place.)
+Connection,Connection
+Continue,Continue
+Locale settings,Locale settings
+Secure Base Path,Secure Base Path
+Configuration options,Configuration options
+Database user name,Database user name
+Check out our,Check out our
+Protocol,Protocol
+"Magento uses this key to encrypt passwords, credit cards and more. If this field is left empty the system will create an encription key for you and will display it on the next page.","Magento uses this key to encrypt passwords, credit cards and more. If this field is left empty the system will create an encription key for you and will display it on the next page."
+Database host,Database host
+Last Name,Last Name
+Secure Host,Secure Host
+Default store,Default store
+Get ready to experience Open-Source eCommerce Evolved.,Get ready to experience Open-Source eCommerce Evolved.
+Please set all required settings before clicking Continue,Please set all required settings before clicking Continue
+"Check this box only if you are unable to automatically validate Magento URL, for example if HTTP authentication is required.","Check this box only if you are unable to automatically validate Magento URL, for example if HTTP authentication is required."
+Database user password,Database user password
+Encryption Key,Encryption Key
+Port,Port
+Personal Information,Personal Information

@@ -1,0 +1,119 @@
+SKU,SKU
+Category,Category
+Please select static block ...,Please select static block ...
+Static block and products,Static block and products
+Go to Home Page,Go to Home Page
+Images,Images
+Small Image,Small Image
+Products only,Products only
+Meta Keywords,Meta Keywords
+Data integrity: No header row found for attribute,Data integrity: No header row found for attribute
+Page Title,Page Title
+Status,Status
+Description,Description
+Cannot retrieve current category object,Cannot retrieve current category object
+Tier Price,Tier Price
+Price,Price
+Meta Title,Meta Title
+Static block only,Static block only
+Visibility,Visibility
+Thumbnail,Thumbnail
+Filter model name must be declared,Filter model name must be declared
+Filter must be as object. Set correct filter please,Filter must be as object. Set correct filter please
+Base Image,Base Image
+Prices,Prices
+Grid,Grid
+Is Qty Decimal,Is Qty Decimal
+Manufacturer,Manufacturer
+Page Layout,Page Layout
+Best Value,Best Value
+Name,Name
+Invalid Attribute Requested,Invalid Attribute Requested
+Meta Description,Meta Description
+Short Description,Short Description
+Is Anchor,Is Anchor
+List,List
+Filters must be as array,Filters must be as array
+Meta Information,Meta Information
+No layout updates,No layout updates
+General,General
+Compare Products List,Compare Products List
+Invalid block: %s,Invalid block: %s
+CMS Block,CMS Block
+"Attribute source ""%s"" not found","Attribute source ""%s"" not found"
+All,All
+Qty,Qty
+Attribute model not defined,Attribute model not defined
+Weight,Weight
+Color,Color
+URL key,URL key
+Image,Image
+Choose option...,Choose option...
+Is Active,Is Active
+Cost,Cost
+Image Gallery,Image Gallery
+Display Mode,Display Mode
+"Attribute saver ""%s"" not found","Attribute saver ""%s"" not found"
+Home,Home
+Tax Class,Tax Class
+Minimal Price,Minimal Price
+Special Price:,Special Price:
+Add to Compare,Add to Compare
+Clear All Items,Clear All Items
+Availability: In stock. Ships within 24hours.,Availability: In stock. Ships within 24hours.
+Next,Next
+Quick Overview,Quick Overview
+Add to My Wishlist,Add to My Wishlist
+Add Items to Cart,Add Items to Cart
+Related Products,Related Products
+See all %s,See all %s
+Best Selling Products,Best Selling Products
+Product Attribute Specs,Product Attribute Specs
+Prev,Prev
+Choose an Option...,Choose an Option...
+View as,View as
+This bundle is out of stock.,This bundle is out of stock.
+Shopping Options,Shopping Options
+Compare Products,Compare Products
+Product Description,Product Description
+Remove This Item,Remove This Item
+Shop by,Shop by
+More Views,More Views
+There are no products matching the selection.,There are no products matching the selection.
+Remove Product,Remove Product
+Product Name,Product Name
+Availability: Out of stock.,Availability: Out of stock.
+Page:,Page:
+You have no items to compare.,You have no items to compare.
+Buy %s for %s each,Buy %s for <strong>%s each</strong>
+Compare Items,Compare Items
+Zoom In,Zoom In
+Add to Cart,Add to Cart
+No options of this product are available.,No options of this product are available.
+Zoom Out,Zoom Out
+Items %s to %s of %s total,Items <strong>%s</strong> to <strong>%s</strong> of <strong>%s</strong> total
+Regular Price:,Regular Price:
+Print This Page,Print This Page
+Old Price:,Old Price:
+Compare Products - %d Items,"Compare Products <span class=""count"">- %d Items</span>"
+Sort by,Sort by
+Availability: In stock. Ships within 24 hours.,Availability: In stock. Ships within 24 hours.
+Add to Wishlist,Add to Wishlist
+View Details,View Details
+Browse By,Browse By
+Out of Stock,Out of Stock
+Check items to add to the cart or select all.,"Check items to add to the cart or <a href=""#"" onclick=""selectAllRelated();return false;"">select all</a>."
+Show,Show
+per page,per page
+Close Window,Close Window
+Set Ascending Direction,Set Ascending Direction
+Cross-sell Products,Cross-sell Products
+Learn More,Learn More
+Category Navigation:,Category Navigation:
+Set Descending Direction,Set Descending Direction
+You may also be interested in the following product(s),You may also be interested in the following product(s)
+Additional Information,Additional Information
+Previous,Previous
+Currently Shopping by,Currently Shopping by
+OR,OR
+%s Item(s),%s Item(s)
