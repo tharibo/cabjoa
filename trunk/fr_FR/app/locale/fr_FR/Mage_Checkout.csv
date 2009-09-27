@@ -1,0 +1,154 @@
+Proceed to Checkout,Proceed to Checkout
+Checkout method,Checkout method
+Please select shipping methods for all addresses,Please select shipping methods for all addresses
+Shipping Methods,Shipping Methods
+Payment method is not defined,Payment method is not defined
+State/Province,State/Province
+Please specify the product option(s),Please specify the product option(s)
+Edit Shipping Address,Edit Shipping Address
+Order Success,Order Success
+Create Billing Address,Create Billing Address
+Checkout,Checkout
+Invalid data,Invalid data
+Edit Address,Edit Address
+Order Review,Order Review
+Billing Information,Billing Information
+Place Order,Place Order
+Change Billing Address,Change Billing Address
+Select Addresses,Select Addresses
+Shipping Method,Shipping Method
+Indefinite product type,Indefinite product type
+Cannot remove item,Cannot remove item
+Total for this address,Total for this address
+Product does not exist,Product does not exist
+Country,Country
+Clear,Clear
+Shipping Information,Shipping Information
+Create Shipping Address,Create Shipping Address
+Edit Billing Address,Edit Billing Address
+Some of the products you requested are not available in the desired quantity,Some of the products you requested are not available in the desired quantity
+Some of the products you requested are unavailable,Some of the products you requested are unavailable
+My Cart (%d item),My Cart (%d item)
+Cannot update shopping cart,Cannot update shopping cart
+Checkout with Multiple Addresses,Checkout with Multiple Addresses
+Ship to Multiple Addresses,Ship to Multiple Addresses
+My Cart,My Cart
+Review Order,Review Order
+The item(s) marked in red are not available in the desired quantity. Please update the quantity of the item(s).,The item(s) marked in red are not available in the desired quantity. Please update the quantity of the item(s).
+This product is out of stock,This product is out of stock
+Payment Information,Payment Information
+Requested quantity is not available,Requested quantity is not available
+Cannot move item to wishlist,Cannot move item to wishlist
+My Cart (%d items),My Cart (%d items)
+There is already a customer registered using this email address,There is already a customer registered using this email address
+Send to,Send to
+Remove Item,Remove Item
+"Based on your selection, you may be interested in the following items:","Based on your selection, you may be interested in the following items:"
+Thank you for your purchase!,Thank you for your purchase!
+&laquo; Back to Select Addresses,&laquo; Back to Select Addresses
+Submitting order information...,Submitting order information...
+Get a Quote,Get a Quote
+Are you sure you would like to remove this item from the shopping cart?,Are you sure you would like to remove this item from the shopping cart?
+Fax,Fax
+Loading next step...,Loading next step...
+Company,Company
+Apply Coupon,Apply Coupon
+Already registered?,Already registered?
+Subtotal,Subtotal
+Register,Register
+Continue to Billing Information,Continue to Billing Information
+Your order # is: %s,Your order # is: %s
+Select Shipping Method,Select Shipping Method
+Update Shopping Cart,Update Shopping Cart
+Select Address,Select Address
+Telephone,Telephone
+Shipping method has not been selected yet,Shipping method has not been selected yet
+You have no items in your shopping cart.,You have no items in your shopping cart.
+&laquo; Back to Shopping Cart,&laquo; Back to Shopping Cart
+Confirm Password,Confirm Password
+Estimate Shipping and Tax,Estimate Shipping and Tax
+Last added items,Last added items
+Log in below to take advantage of Express Checkout:,Log in below to take advantage of Express Checkout:
+Continue to Success,Continue to Success
+Billing Address,Billing Address
+Go to Cart,Go to Cart
+Select a shipping address from your address book or enter a new address.,"Select a shipping address from your address book or enter a <a href=""#"" onclick=""shipping.newAddress(true); return false;"">new address</a>."
+You will receive an order confirmation email with details of your order and a link to track its progress.,You will receive an order confirmation email with details of your order and a link to track its progress.
+Your Checkout Progress,Your Checkout Progress
+&laquo; Back to Billing Information,&laquo; Back to Billing Information
+&laquo; Back to Shipping Information,&laquo; Back to Shipping Information
+You may check out as a guest or register with us for future convenience:,You may check out as a guest or register with us for future convenience:
+Continue Shopping,Continue Shopping
+Zip/Postal Code,Zip/Postal Code
+Update Qty &amp; Addresses,Update Qty &amp; Addresses
+Product Name,Product Name
+Your order number is %s,Your order number is %s
+* Required Fields,* Required Fields
+Items,Items
+Continue to Shipping Information,Continue to Shipping Information
+Ship to this address,Ship to this address
+"Sorry, no quotes are available for this order at this time.","Sorry, no quotes are available for this order at this time."
+Please enter a valid zip code. For example 90602 or 90602-1234.,Please enter a valid zip code. For example 90602 or 90602-1234.
+Remove Product,Remove Product
+Last Name,Last Name
+Back,Back
+Change Payment Method,Change Payment Method
+Grand Total:,Grand Total:
+Shipping to,Shipping to
+Address %s of %s,"Address <span class=""shipment-count"">%s</span> of %s"
+We are processing your order and you will soon receive an email with details of the order. Once the order has shipped you will receive another email with a link to track its progress.,We are processing your order and you will soon receive an email with details of the order.<br/>Once the order has shipped you will receive another email with a link to track its progress.
+Change Shipping Method,Change Shipping Method
+Shopping Cart,Shopping Cart
+Forgot your password?,Forgot your password?
+Enter your destination to get a shipping estimate.,Enter your destination to get a shipping estimate.
+My Account,My Account
+Street Address,Street Address
+Shipping Address,Shipping Address
+Select a billing address from your address book or enter a new address.,"Select a billing address from your address book or enter a <a href=""#"" onclick=""billing.newAddress(true); return false;"">new address</a>."
+Continue to Overview,Continue to Overview
+"Please <a href=""%s"">continue shopping</a>.","Please <a href=""%s"">continue shopping</a>."
+Edit Your Cart,Edit Your Cart
+You have no items in your cart.,You have no items in your cart.
+Easy access to your order history and status,Easy access to your order history and status
+Register and save time!,Register and save time!
+Fast and easy check out,Fast and easy check out
+Use Billing Address,Use Billing Address
+Add to Wishlist,Add to Wishlist
+"My Cart - <a href=""%s"">%d item(s)</a>","My Cart <span class=""count"">- <a href=""%s"">%d item(s)</a></span>"
+Move to Wishlist,Move to Wishlist
+Default Shipping,Default Shipping
+Checkout as a Guest or Register,Checkout as a Guest or Register
+Qty,Qty
+Enter your coupon code if you have the one.,Enter your coupon code if you have the one.
+Done,Done
+Close,Close
+City,City
+Card Verification Number Visual Reference,Card Verification Number Visual Reference
+First Name,First Name
+Unit Price,Unit Price
+"Please select region, state or province","Please select region, state or province"
+Product,Product
+Payment Method,Payment Method
+Price,Price
+Street Address 2,Street Address 2
+Address,Address
+Password,Password
+Update Total,Update Total
+Change Shipping Address,Change Shipping Address
+Email Address,Email Address
+Edit,Edit
+Add to Cart,Add to Cart
+Edit Items,Edit Items
+Remove,Remove
+Continue,Continue
+Forgot an Item?,Forgot an Item?
+Shopping Cart is Empty,Shopping Cart is Empty
+Login,Login
+Add New Address,Add New Address
+Default Billing,Default Billing
+Enter a New Address,Enter a New Address
+Checkout as Guest,Checkout as Guest
+Discount Codes,Discount Codes
+Select State/Province...,Select State/Province...
+Continue to Review Your Order,Continue to Review Your Order
+Your order has been received,Your order has been received
