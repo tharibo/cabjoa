@@ -28,6 +28,71 @@
 <div class="page-head">
     <h3><?php echo Mage::helper('contacts')->__('Contact Us') ?></h3>
 </div>
+
+<!-- Personnalisation -->
+<style type="text/css">
+
+#left-col
+{
+	float: left;
+	/*width: 40%;*/
+}
+
+#text
+{
+	float: right;
+	width: 60%;
+}
+#text-left-col
+{
+	float: left;
+	text-align: left;
+	width: 48%;
+}
+#text-right-col
+{
+	float: right;
+	text-align: left;
+	width: 48%;
+}
+
+#form
+{
+	clear: both;
+	padding-top: 1em;
+}
+
+</style>
+
+<div id='content'>
+
+<div id='left-col'>
+	<img src='{{skin url='images/media/magasin.jpg'}}' alt='Photo de la boutique'/>
+</div>
+
+<div id='text'>
+	<span id='text-left-col'>
+Cabrera Joaillier offre un large éventail de collections de bijoux en argent, favorisant la créativité, l'original et la tendance.
+<br>
+Le tout sur Internet, dans une boutique en ligne personnalisée et conviviale.
+<br>
+Mais aussi dans le magasin "Cabrera Joaillier" situé à Cornebarrieu, près de Toulouse.
+	</span>
+	<span id='text-right-col'>
+M: contact@cabrera-joaillier.fr
+T: 06 56 77 89 78
+<small>de 9h00 à 18h00, du lundi au samedi.</small>
+<h5>dans le magasin :</h5>
+43 rue de Hal
+31700 Cornebarrieu
+du lundi au vendredi: de 9h00 à 18h00
+le samedi : de 9h00 à 14h00
+	</span>
+</div>
+
+</div>
+
+<div id='form'>
 <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
     <fieldset class="group-select">
         <h4 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h4>
@@ -64,6 +129,7 @@
         <button class="form-button" type="submit"><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></button>
     </div>
 </form>
+</div>
 <script type="text/javascript">
     var contactForm = new VarienForm('contactForm', true);
 </script>
