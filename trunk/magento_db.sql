@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 29 Septembre 2009 à 23:54
+-- Généré le : Mer 30 Septembre 2009 à 00:36
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -16672,7 +16672,28 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (355, 25, '2009-09-29 21:16:55'),
 (356, 25, '2009-09-29 21:21:43'),
 (357, 25, '2009-09-29 21:22:19'),
-(358, 25, '2009-09-29 21:22:22');
+(358, 25, '2009-09-29 21:22:22'),
+(359, 25, '2009-09-29 22:15:02'),
+(360, 25, '2009-09-29 22:15:03'),
+(361, 25, '2009-09-29 22:19:55'),
+(362, 25, '2009-09-29 22:19:57'),
+(363, 25, '2009-09-29 22:23:06'),
+(364, 25, '2009-09-29 22:23:07'),
+(365, 25, '2009-09-29 22:23:51'),
+(366, 25, '2009-09-29 22:25:31'),
+(367, 25, '2009-09-29 22:25:32'),
+(368, 25, '2009-09-29 22:26:55'),
+(369, 25, '2009-09-29 22:26:55'),
+(370, 25, '2009-09-29 22:27:09'),
+(371, 25, '2009-09-29 22:27:09'),
+(372, 25, '2009-09-29 22:28:44'),
+(373, 25, '2009-09-29 22:28:45'),
+(374, 25, '2009-09-29 22:29:31'),
+(375, 25, '2009-09-29 22:29:32'),
+(376, 25, '2009-09-29 22:30:28'),
+(377, 25, '2009-09-29 22:30:29'),
+(378, 25, '2009-09-29 22:31:09'),
+(379, 25, '2009-09-29 22:31:10');
 
 -- --------------------------------------------------------
 
@@ -16685,7 +16706,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=359 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=380 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17049,7 +17070,28 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (355, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
 (356, 'http://www.localhost.com/~tharibo/magento/index.php/customer-service?___store=default', 'http://www.localhost.com/~tharibo/magento/index.php/admin/cms_page/index/key/c1487c4171d31842ed96559b2e1cf707/'),
 (357, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'http://www.localhost.com/~tharibo/magento/index.php/customer-service?___store=default'),
-(358, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/');
+(358, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/'),
+(359, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(360, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(361, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(362, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(363, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(364, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(365, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', ''),
+(366, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(367, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(368, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(369, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(370, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(371, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(372, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(373, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(374, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(375, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(376, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(377, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(378, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(379, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/%7B%7Bskin%20url=', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact');
 
 -- --------------------------------------------------------
 
@@ -17096,7 +17138,7 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (22, '505a84f9d3fd7cc208fa79f9c002b11a', '2009-09-27 16:45:00', '2009-09-27 16:56:19', 343, 1),
 (23, '505a84f9d3fd7cc208fa79f9c002b11a', '2009-09-27 16:58:58', '2009-09-27 16:59:52', 345, 1),
 (24, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:22:08', '2009-09-29 20:22:26', 347, 1),
-(25, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:55:52', '2009-09-29 21:22:22', 358, 1);
+(25, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:55:52', '2009-09-29 22:31:10', 379, 1);
 
 -- --------------------------------------------------------
 
