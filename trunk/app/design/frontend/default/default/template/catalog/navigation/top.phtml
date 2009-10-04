@@ -35,10 +35,10 @@
     <div class="header-nav">
         <h4 class="no-display"><?php echo $this->__('Category Navigation:') ?></h4>
         <ul id="nav">
-        <li><a href="<?php echo $this->getUrl() ?>"><?php echo $this->__('ACTUALITES') ?></a></li>
+        <li><a href="<?php echo $this->getUrl() ?>"><?php echo $this->__('ACTUALIT&Eacute;S') ?></a></li>
         <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('menu')->toHtml(); ?>
 		<li onmouseover="toggleMenu(this,1)" onmouseout="toggleMenu(this,0)">
-            <a href="<?php echo $this->getUrl('') ?>"><?php echo $this->__('E-BOUTIQUE') ?></a>
+            <a href="<?php echo $this->getUrl('e-boutique') ?>"><?php echo $this->__('E-BOUTIQUE') ?></a>
 			<ul>
 				<?php foreach ($this->getStoreCategories() as $_category): ?>
 				    <?php echo $this->drawItem($_category) ?>

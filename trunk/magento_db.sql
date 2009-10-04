@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 04 Octobre 2009 à 14:47
+-- Généré le : Dim 04 Octobre 2009 à 18:24
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-03 11:34:17', 17, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-04 15:36:56', 19, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -10673,7 +10673,7 @@ INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation
 (3, 'Electronics Landing', 'electronics-landing', '<div class="left" style="width:284px; margin-right:25px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/cell-phones.html"}}"><img src="{{skin url=''images/media/head_electronics_cellphones.gif}}" alt="Cell Phones" style="display:block; border:0;"/></h3>\r\n<p><img src="{{skin url=''images/media/electronics_cellphones.jpg}}" alt="" usemap="#Map" border="0"/></p>\r\n</div>\r\n<div class="left" style="width:284px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/cameras/digital-cameras.html"}}"><img src="{{skin url=''images/media/head_electronics_digicamera.gif}}" alt="Digital Cameras" style="display:block; border:0;"/></a></h3>\r\n<p><img src="{{skin url=''images/media/electronics_digitalcameras.jpg}}" alt="" usemap="#Map2" border="0"/></p>\r\n</div>\r\n<div class="right" style="width:284px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/computers/laptops.html"}}"><img src="{{skin url=''images/media/head_electronics_laptops.gif}}" alt="Laptops" style="display:block; border:0;"/></a></h3>\r\n<p><img src="{{skin url=''images/media/electronics_laptops.jpg}}" alt="" usemap="#Map3" border="0"/></p>\r\n</div>\r\n<div class="clear"></div>\r\n\r\n<map name="Map">\r\n  <area shape="rect" coords="14,154,78,182" href="{{store direct_url="electronics/cell-phones.html?manufacturer=3"}}">\r\n  <area shape="rect" coords="12,177,80,209" href="{{store direct_url="electronics/cell-phones.html?manufacturer=20"}}">\r\n  <area shape="rect" coords="104,158,167,181" href="{{store direct_url="electronics/cell-phones.html?manufacturer=2"}}">\r\n  <area shape="rect" coords="103,181,179,208" href="{{store direct_url="electronics/cell-phones.html?manufacturer=101"}}">\r\n <area shape="rect" coords="16,203,273,432" href="{{store direct_url="electronics/cell-phones/blackberry-8100-pearl.html"}}">\r\n</map>\r\n\r\n<map name="Map2">\r\n  <area shape="rect" coords="14,152,75,179" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=33"}}">\r\n  <area shape="rect" coords="109,154,163,183" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=31"}}">\r\n  <area shape="rect" coords="14,177,73,208" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=32"}}">\r\n  <area shape="rect" coords="106,180,177,211" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=34"}}">\r\n</map>\r\n\r\n\r\n<map name="Map3">\r\n  <area shape="rect" coords="15,155,58,179" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=79"}}">\r\n  <area shape="rect" coords="114,152,159,180" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=76"}}">\r\n  <area shape="rect" coords="13,178,67,205" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=77"}}">\r\n  <area shape="rect" coords="114,180,178,205" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=74"}}">\r\n  <area shape="rect" coords="13,310,154,434" href="{{store direct_url="electronics/computers/laptops/acer-ferrari-3200-notebook-computer-pc.html"}}">\r\n  <area shape="rect" coords="167,310,279,440" href="{{store direct_url="electronics/computers/laptops/toshiba-satellite-a135-s4527-155-4-notebook-pc-intel-pentium-dual-core-processor-t2080-1-gb-ram-120-gb-hard-drive-supermulti-dvd-drive-vista-premium.html"}}">\r\n</map>', '2007-08-28 14:33:10', '2008-08-08 13:08:37', 1),
 (4, 'Cellphones Landing', 'cellphones-landing', '<a href="{{store direct_url="electronics/cell-phones/sony-ericsson-w810i.html"}}"><img src="{{skin url=''images/media/cell_phone_landing_banner1.jpg}}" alt=""/></a>', '2007-08-28 14:59:44', '2008-08-08 13:07:55', 1),
 (5, 'Footer Links', 'footer_links', '<!--\r\n<ul>\r\n<li><a href="{{store direct_url="about-magento-demo-store"}}">About Us</a></li>\r\n<li class="last"><a href="{{store direct_url="customer-service"}}">Customer Service</a></li>\r\n</ul>\r\n-->', '2007-08-30 14:01:52', '2009-09-20 13:13:33', 1),
-(6, 'Menu', 'menu', '<li><a href="{{store url=""}}magasin"><span>MAGASIN</span></a></li>\r\n<li><a href="{{store url=""}}creation"><span>CREATION</span></a></li>\r\n<li><a href="{{store url="contacts"}}contact"><span>CONTACT</span></a></li>', '2009-09-13 08:45:54', '2009-09-20 14:32:36', 1);
+(6, 'Menu', 'menu', '<li><a href="{{store url=""}}magasin"><span>MAGASIN</span></a></li>\r\n<li><a href="{{store url=""}}creation"><span>CR&Eacute;ATION</span></a></li>\r\n<li><a href="{{store url="contacts"}}contact"><span>CONTACT</span></a></li>', '2009-09-13 08:45:54', '2009-10-04 13:14:57', 1);
 
 -- --------------------------------------------------------
 
@@ -10722,7 +10722,7 @@ CREATE TABLE IF NOT EXISTS `cms_page` (
   `custom_theme_to` date default NULL,
   PRIMARY KEY  (`page_id`),
   KEY `identifier` (`identifier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `cms_page`
@@ -10737,7 +10737,8 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (6, 'Enable Cookies', 'one_column', '', '', 'enable-cookies', '<div class="std">\r\n    <ul class="messages">\r\n        <li class="notice-msg">\r\n            <ul>\r\n                <li>Please enable cookies in your web browser to continue.</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n    <div class="page-head">\r\n        <h3><a name="top"></a>What are Cookies?</h3>\r\n    </div>\r\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website. On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically whenever you visit our site so that we can personalize your experience and provide you with better service. We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes. If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase or take advantage of certain features of our website, such as storing items in your Shopping Cart or receiving personalized recommendations. As a result, we strongly encourage you to configure your web browser to accept cookies from our website.</p>\r\n    <h3>Enabling Cookies</h3>\r\n    <ul>\r\n        <li><a href="#ie7">Internet Explorer 7.x</a></li>\r\n        <li><a href="#ie6">Internet Explorer 6.x</a></li>\r\n        <li><a href="#firefox">Mozilla/Firefox</a></li>\r\n        <li><a href="#opera">Opera 7.x</a></li>\r\n    </ul>\r\n    <h4><a name="ie7"></a>Internet Explorer 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Start Internet Explorer</p>\r\n        </li>\r\n        <li>\r\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Privacy</strong> tab</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-2.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Advanced</strong> button</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-3.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>, put another check mark in the <strong>Always accept session cookies </strong>box</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-4.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-5.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-6.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Restart Internet Explore</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="ie6"></a>Internet Explorer 6.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\r\n            <p><img src="{{skin url="images/cookies/ie6-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> tab</p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>) under <strong>Settings</strong>. Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie6-2.gif"}}" alt="" /></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="firefox"></a>Mozilla/Firefox</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/firefox.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Expand the <strong>Cookies</strong> section</p>\r\n        </li>\r\n        <li>\r\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="opera"></a>Opera 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/opera.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong> should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n</div>\r\n', '2009-09-02 23:16:57', '2009-09-02 23:16:57', 1, 0, NULL, NULL, NULL, NULL),
 (7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''''}}">\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-09-27 14:22:20', 1, 0, '', '', NULL, NULL),
 (8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-10-03 12:27:41', 1, 0, '', '', NULL, NULL),
-(9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL);
+(9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL),
+(10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10765,6 +10766,7 @@ INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
 (7, 0),
 (8, 0),
 (9, 0),
+(10, 0),
 (2, 1),
 (2, 2),
 (2, 3);
@@ -16874,7 +16876,40 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (508, 26, '2009-10-03 12:36:30'),
 (509, 26, '2009-10-03 12:36:33'),
 (510, 26, '2009-10-03 12:36:35'),
-(511, 26, '2009-10-03 12:37:37');
+(511, 26, '2009-10-03 12:37:37'),
+(512, 27, '2009-10-04 13:12:04'),
+(513, 27, '2009-10-04 13:12:25'),
+(514, 27, '2009-10-04 13:15:05'),
+(515, 27, '2009-10-04 13:17:29'),
+(516, 27, '2009-10-04 13:17:41'),
+(517, 27, '2009-10-04 13:17:47'),
+(518, 27, '2009-10-04 13:19:43'),
+(519, 27, '2009-10-04 13:20:23'),
+(520, 27, '2009-10-04 13:20:40'),
+(521, 27, '2009-10-04 13:25:56'),
+(522, 27, '2009-10-04 13:27:18'),
+(523, 27, '2009-10-04 13:29:23'),
+(524, 27, '2009-10-04 13:56:00'),
+(525, 27, '2009-10-04 13:56:07'),
+(526, 27, '2009-10-04 13:56:34'),
+(527, 27, '2009-10-04 13:59:43'),
+(528, 27, '2009-10-04 14:00:38'),
+(529, 27, '2009-10-04 14:07:22'),
+(530, 27, '2009-10-04 14:13:29'),
+(531, 27, '2009-10-04 14:13:32'),
+(532, 27, '2009-10-04 14:13:47'),
+(533, 27, '2009-10-04 14:14:06'),
+(534, 27, '2009-10-04 14:17:36'),
+(535, 27, '2009-10-04 14:34:15'),
+(536, 27, '2009-10-04 14:34:18'),
+(537, 27, '2009-10-04 14:34:21'),
+(538, 27, '2009-10-04 14:34:22'),
+(539, 27, '2009-10-04 14:35:04'),
+(540, 27, '2009-10-04 14:35:09'),
+(541, 28, '2009-10-04 15:37:52'),
+(542, 28, '2009-10-04 15:38:29'),
+(543, 28, '2009-10-04 15:38:46'),
+(544, 28, '2009-10-04 15:38:52');
 
 -- --------------------------------------------------------
 
@@ -16887,7 +16922,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=512 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=545 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17405,7 +17440,40 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (508, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
 (509, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
 (510, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
-(511, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin');
+(511, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(512, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(513, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(514, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(515, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(516, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(517, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(518, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(519, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(520, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(521, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(522, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(523, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(524, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(525, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(526, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?p=2', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(527, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?p=2'),
+(528, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(529, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(530, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(531, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(532, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/product/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/'),
+(533, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/product/'),
+(534, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/product/'),
+(535, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/product/'),
+(536, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/product/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/'),
+(537, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/seo_sitemap/category/', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(538, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(539, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/&category_id=3', ''),
+(540, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique&category_id=3', ''),
+(541, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(542, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=position&dir=desc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(543, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=asc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=position&dir=desc'),
+(544, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=asc');
 
 -- --------------------------------------------------------
 
@@ -17421,7 +17489,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=29 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -17453,7 +17521,9 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (23, '505a84f9d3fd7cc208fa79f9c002b11a', '2009-09-27 16:58:58', '2009-09-27 16:59:52', 345, 1),
 (24, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:22:08', '2009-09-29 20:22:26', 347, 1),
 (25, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:55:52', '2009-09-29 22:31:10', 379, 1),
-(26, '89601b137b729d657df111edd9dbea30', '2009-10-03 09:12:48', '2009-10-03 12:37:37', 511, 1);
+(26, '89601b137b729d657df111edd9dbea30', '2009-10-03 09:12:48', '2009-10-03 12:37:37', 511, 1),
+(27, 'a89463e1dae408555d977e94588c89bf', '2009-10-04 13:12:00', '2009-10-04 14:35:09', 540, 1),
+(28, 'cde06f5d73361f4a60e042ab2d690a1f', '2009-10-04 15:37:50', '2009-10-04 15:38:52', 544, 1);
 
 -- --------------------------------------------------------
 
@@ -17502,7 +17572,9 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (23, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (24, '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (25, 'http://www.localhost.com/~tharibo/magento/index.php/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
-(26, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
+(26, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(27, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(28, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
 
 -- --------------------------------------------------------
 
