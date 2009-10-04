@@ -36,7 +36,7 @@
 #nav li.active a { color:#d96708; }
 #nav a { float:left; padding:5px 12px 6px 8px; color:#ffffff; font-weight:normal; font-size: 0.85em }
 #nav li.over a,
-#nav a:hover { color:#d96708; }
+#nav a:hover { color:#b9adbc; }
 
 /************ 1ST LEVEL ************/
 #nav ul li,
@@ -56,10 +56,10 @@
 #nav li.over > ul li.over > ul { left:100px; }
 #nav li.over ul ul { left:-10000px; }
 
-#nav ul li a { background:#ecf3f6; }
-#nav ul li a:hover { background:#d5e4eb; }
-#nav ul li a,
-#nav ul li a:hover { color:#2f2f2f !important; }
+#nav ul li a { background: white; }
+#nav ul li a:hover { background: #b9adbc; }
+#nav ul li a { color: #918793 !important; }
+#nav ul li a:hover { color: white !important; }
 #nav ul span, #nav ul li.last li span { padding:3px 15px 4px 15px;}
 
 /************ 3RD+ LEVEL ************/
