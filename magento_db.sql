@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 04 Octobre 2009 à 18:24
+-- Généré le : Lun 05 Octobre 2009 à 22:09
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-04 15:36:56', 19, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-05 19:33:51', 20, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -10722,7 +10722,7 @@ CREATE TABLE IF NOT EXISTS `cms_page` (
   `custom_theme_to` date default NULL,
   PRIMARY KEY  (`page_id`),
   KEY `identifier` (`identifier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `cms_page`
@@ -10738,7 +10738,8 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''''}}">\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-09-27 14:22:20', 1, 0, '', '', NULL, NULL),
 (8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-10-03 12:27:41', 1, 0, '', '', NULL, NULL),
 (9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL),
-(10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL);
+(10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL),
+(11, 'Création', 'one_column', '', '', 'creation', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#buttons\r\n{\r\n	clear: both;\r\n	float: left;\r\n	width: 500px;\r\n	text-align: left;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/creation.jpg''}}'' alt=''Devenez créateur de vos bijoux''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Devenez créateur de vos bijoux</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n<div id=''buttons''>\r\n	<a href=''{{store url=''e-boutique''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_e-boutique.png''}}'' alt="Plus de choix sur l''e-boutique"/>\r\n	</a>\r\n	<a href=''{{store url=''contacts''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_conseil.png''}}'' alt="Besoin d''un conseil ?"/>\r\n	</a>\r\n</div>\r\n\r\n\r\n</div>', '2009-10-05 19:35:02', '2009-10-05 19:50:58', 1, 0, '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10767,6 +10768,7 @@ INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
 (8, 0),
 (9, 0),
 (10, 0),
+(11, 0),
 (2, 1),
 (2, 2),
 (2, 3);
@@ -16909,7 +16911,20 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (541, 28, '2009-10-04 15:37:52'),
 (542, 28, '2009-10-04 15:38:29'),
 (543, 28, '2009-10-04 15:38:46'),
-(544, 28, '2009-10-04 15:38:52');
+(544, 28, '2009-10-04 15:38:52'),
+(545, 29, '2009-10-05 19:46:47'),
+(546, 29, '2009-10-05 19:50:21'),
+(547, 29, '2009-10-05 19:50:32'),
+(548, 29, '2009-10-05 19:50:36'),
+(549, 29, '2009-10-05 19:50:42'),
+(550, 29, '2009-10-05 19:51:07'),
+(551, 29, '2009-10-05 19:52:41'),
+(552, 29, '2009-10-05 19:52:51'),
+(553, 29, '2009-10-05 19:52:57'),
+(554, 29, '2009-10-05 19:53:06'),
+(555, 29, '2009-10-05 20:06:45'),
+(556, 29, '2009-10-05 20:06:54'),
+(557, 29, '2009-10-05 20:07:56');
 
 -- --------------------------------------------------------
 
@@ -16922,7 +16937,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=545 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=558 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17473,7 +17488,20 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (541, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
 (542, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=position&dir=desc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
 (543, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=asc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=position&dir=desc'),
-(544, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=asc');
+(544, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=asc'),
+(545, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc'),
+(546, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc'),
+(547, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/?___store=default', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(548, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc'),
+(549, 'http://www.localhost.com/~tharibo/magento/index.php/contact/?___store=default', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(550, 'http://www.localhost.com/~tharibo/magento/index.php/contact/?___store=default', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(551, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/contact/?___store=default'),
+(552, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(553, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(554, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(555, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(556, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(557, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation');
 
 -- --------------------------------------------------------
 
@@ -17489,7 +17517,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -17523,7 +17551,8 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (25, '4f0f7586e9703d58fc2a004edfd19711', '2009-09-29 20:55:52', '2009-09-29 22:31:10', 379, 1),
 (26, '89601b137b729d657df111edd9dbea30', '2009-10-03 09:12:48', '2009-10-03 12:37:37', 511, 1),
 (27, 'a89463e1dae408555d977e94588c89bf', '2009-10-04 13:12:00', '2009-10-04 14:35:09', 540, 1),
-(28, 'cde06f5d73361f4a60e042ab2d690a1f', '2009-10-04 15:37:50', '2009-10-04 15:38:52', 544, 1);
+(28, 'cde06f5d73361f4a60e042ab2d690a1f', '2009-10-04 15:37:50', '2009-10-04 15:38:52', 544, 1),
+(29, '5c56f08f36ee7f0bed698e4f146a4201', '2009-10-05 19:46:46', '2009-10-05 20:07:56', 557, 1);
 
 -- --------------------------------------------------------
 
@@ -17574,7 +17603,8 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (25, 'http://www.localhost.com/~tharibo/magento/index.php/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (26, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (27, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
-(28, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
+(28, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(29, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
 
 -- --------------------------------------------------------
 
