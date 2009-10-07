@@ -32,7 +32,7 @@
 .col2-set, .col3-set, .col4-set, .col5-set { clear:both; }
 
 /* Col2 */
-.col2-set .col-1, .col2-set .col-2 { width:48.5%; }
+.col2-set .col-1, .col2-set .col-2 { width:45%; }
 .col2-set .col-1 { float:left; }
 .col2-set .col-2 { float:right; }
 
@@ -472,7 +472,7 @@ div.mini-search
 
 
 /********************** Sidebars */
-.side-col .box { margin-bottom:1.3em; }
+.side-col .box { margin-bottom:1.3em; margin-top: 40px; }
 .side-col .content { padding:5px 10px; }
 .side-col .head { text-align:left; }
 .side-col h2, .side-col h3, .side-col h4, .side-col h5 { float:none; }
@@ -1055,6 +1055,7 @@ td.attributes-col dd ul li { margin-left:15px; }
 td.attributes-col h4.title { padding:0; margin:0; font-size:1em; color:#2f2f2f; width:100%; overflow:hidden; }
 td.attributes-col h4.title a { font-weight:bold; }
 
+#btn-checkout-img { padding-top: 30px; }
 .shopping-cart-totals {
     width:248px;
     float:right;
@@ -1062,6 +1063,7 @@ td.attributes-col h4.title a { font-weight:bold; }
     border:1px solid #BEBCB7;
     background:#DEE5E8;
     text-align:right;
+	color: #988c9b;
     }
 .shopping-cart-totals table { width:100%; margin:7px 0; }
 .shopping-cart-totals td { padding:0 15px; }
@@ -1092,7 +1094,7 @@ td.attributes-col h4.title a { font-weight:bold; }
 
 .shopping-cart-collaterals {
     float:left;
-    width:605px;
+    width:540px;
     padding:25px 0;
     }
 .shopping-cart-collaterals .box {
@@ -1115,7 +1117,7 @@ td.attributes-col h4.title a { font-weight:bold; }
 .shopping-cart-collaterals .shipping-estimate .input-text { width:214px; }
 .shopping-cart-collaterals .shipping-estimate select { width:220px; }
 .shopping-cart-collaterals .upsell {
-    width:42.5%;
+    width:47%;
     border:1px solid #cec3b6;
     padding:12px 15px;
     background:#fafaec;
@@ -1136,6 +1138,7 @@ tr.grand_total td, p.grand_total { padding-top:5px; padding-bottom:5px; }
 
 
 /* One-Page checkout */
+#checkoutSteps { margin-left: 5px; margin-top: 40px; }
 .one-page-checkout li.section { position:relative; }
 .one-page-checkout .group-select { margin-right:0; }
 .one-page-checkout .box { border:1px solid #bbb6a5; border-top:0; padding:15px 20px; background:#faf7ee; }
@@ -1152,10 +1155,10 @@ tr.grand_total td, p.grand_total { padding-top:5px; padding-bottom:5px; }
 .one-page-checkout .active .head { margin-bottom:0; border:1px solid #BBAFA0; background:#F9F3E3; padding-bottom:5px; cursor:default; }
 .one-page-checkout .alloq .head a { display:block; } /* Display Edit button in active selection */
 .one-page-checkout .group-select { margin-top:0; border:0; background:none; padding:0; }
-.one-page-checkout .allow h3 { color:#a4b3b9; }
-.one-page-checkout .active h3 { color:#F18200; }
+.one-page-checkout .allow h3 { color:#988c9b; }
+.one-page-checkout .active h3 { color:#988c9b; }
 .one-page-checkout .allow .step-count { background:#dbe6eb; }
-.one-page-checkout .active .step-count { color:#fff; border:1px solid #f19900; background:#F18200; }
+.one-page-checkout .active .step-count { color:#fff; border:1px solid #b66bce; background:#988c9b; }
 .one-page-checkout .active .box { display:block; border-color:#BBAFA0; background:#FBFAF6 url(../images/multi_address_box_bg.gif) 0 0 repeat-x; }
 .one-page-checkout dd .form-list ul { margin:5px 17px 15px 17px; }
 .one-page-checkout .checkmo-mailing-address { padding-left:20px; }
