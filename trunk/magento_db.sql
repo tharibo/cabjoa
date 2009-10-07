@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 05 Octobre 2009 à 22:09
+-- Généré le : Mer 07 Octobre 2009 à 08:30
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `adminnotification_inbox` (
   KEY `IDX_SEVERITY` (`severity`),
   KEY `IDX_IS_READ` (`is_read`),
   KEY `IDX_IS_REMOVE` (`is_remove`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `adminnotification_inbox`
@@ -71,8 +71,9 @@ INSERT INTO `adminnotification_inbox` (`notification_id`, `severity`, `date_adde
 (24, 3, '2009-07-02 01:21:44', 'Magento version 1.3.2.2 now available', 'Magento version 1.3.2.2 is now available for download and upgrade.\n\nThis release includes issue resolution for Magento version 1.3.x. To see a full list of changes please visit the release notes page http://www.magentocommerce.com/download/release_notes.', 'http://www.magentocommerce.com/blog/comments/magento-version-1322-now-available/', 0, 1),
 (25, 3, '2009-07-23 06:48:54', 'Magento version 1.3.2.3 now available', 'Magento version 1.3.2.3 is now available for download and upgrade.\n\nThis release includes issue resolution for Magento version 1.3.x. We recommend to upgrade to this version if PayPal payment modules are in use. To see a full list of changes please visit the release notes page http://www.magentocommerce.com/download/release_notes.', 'http://www.magentocommerce.com/blog/comments/magento-version-1323-now-available/', 0, 1),
 (26, 4, '2009-08-28 18:26:28', 'PayPal is updating Payflow Pro and Website Payments Pro (Payflow Edition) UK.', 'If you are using Payflow Pro and/or Website Payments Pro (Payflow Edition) UK.  payment methods, you will need to update the URL‘s in your Magento Administrator Panel in order to process transactions after September 1, 2009. Full details are available here: http://www.magentocommerce.com/wiki/paypal_payflow_changes', 'http://www.magentocommerce.com/wiki/paypal_payflow_changes', 0, 1),
-(27, 2, '2009-09-23 20:16:49', 'Magento Version 1.3.2.4 Security Update', 'Magento Version 1.3.2.4 is now available. This version includes a security updates for Magento 1.3.x that solves possible XSS vulnerability issue on customer registration page and is available through SVN, Download Page and through the Magento Connect Manager.', 'http://www.magentocommerce.com/blog/comments/magento-version-1324-security-update/', 0, 0),
-(28, 4, '2009-09-25 14:57:54', 'Magento Preview Version 1.4.0.0-alpha2 is now available', 'We are happy to announce the availability of Magento Preview Version 1.4.0.0-alpha2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.', 'http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-alpha2-now-available/', 0, 1);
+(27, 2, '2009-09-23 20:16:49', 'Magento Version 1.3.2.4 Security Update', 'Magento Version 1.3.2.4 is now available. This version includes a security updates for Magento 1.3.x that solves possible XSS vulnerability issue on customer registration page and is available through SVN, Download Page and through the Magento Connect Manager.', 'http://www.magentocommerce.com/blog/comments/magento-version-1324-security-update/', 0, 1),
+(28, 4, '2009-09-25 14:57:54', 'Magento Preview Version 1.4.0.0-alpha2 is now available', 'We are happy to announce the availability of Magento Preview Version 1.4.0.0-alpha2 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.', 'http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-alpha2-now-available/', 0, 1),
+(29, 4, '2009-10-07 00:55:40', 'Magento Preview Version 1.4.0.0-alpha3 is now available', 'We are happy to announce the availability of Magento Preview Version 1.4.0.0-alpha3 for download.\nAs this is a preview version it is NOT recommended in any way to be used in a production environment.', 'http://www.magentocommerce.com/blog/comments/magento-preview-version-1400-alpha3-now-available/', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -174,8 +175,8 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
-(1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-05 19:33:51', 20, 0, 1, 'a:1:{s:11:"configState";a:35:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"0";s:13:"design_header";s:1:"0";s:13:"design_footer";s:1:"1";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"0";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"0";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";}}');
+(1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:36:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";}}'),
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-07 05:43:13', 21, 0, 1, 'a:1:{s:11:"configState";a:36:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";}}');
 
 -- --------------------------------------------------------
 
@@ -10787,7 +10788,7 @@ CREATE TABLE IF NOT EXISTS `core_config_data` (
   `value` text NOT NULL,
   PRIMARY KEY  (`config_id`),
   UNIQUE KEY `config_scope` (`scope`,`scope_id`,`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=175 ;
 
 --
 -- Contenu de la table `core_config_data`
@@ -10834,7 +10835,7 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (38, 'websites', 1, 'dev/debug/template_hints_blocks', '1'),
 (39, 'default', 0, 'general/country/default', 'FR'),
 (40, 'default', 0, 'general/country/allow', 'AF,ZA,AL,DZ,DE,AD,AO,AI,AQ,AG,AN,SA,AR,AM,AW,AU,AT,AZ,BS,BH,BD,BB,BE,BZ,BM,BT,BO,BA,BW,BN,BR,BG,BF,BI,BY,BJ,KH,CM,CA,CV,CL,CN,CY,CO,KM,CG,KP,KR,CR,HR,CU,CI,DK,DJ,DM,SV,ES,EE,FJ,FI,FR,GA,GM,GH,GI,GD,GL,GR,GP,GU,GT,GN,GQ,GW,GY,GF,GE,GS,HT,HN,HK,HU,IN,ID,IQ,IR,IE,IS,IL,IT,JM,JP,JO,KZ,KE,KG,KI,KW,LA,LS,LV,LB,LY,LR,LI,LT,LU,MO,MK,MG,MY,MW,MV,ML,MT,MA,MQ,MU,MR,YT,MX,MD,MC,MN,MS,MZ,MM,NA,NR,NI,NE,NG,NU,NO,NC,NZ,NP,OM,UG,UZ,PK,PW,PA,PG,PY,NL,PH,PN,PL,PF,PR,PT,PE,QA,RO,GB,RU,RW,CF,DO,CZ,RE,EH,KN,SM,PM,VC,SH,LC,WS,AS,ST,SC,SL,SG,SK,SI,SO,SD,LK,CH,SR,SE,SJ,SZ,SY,SN,TJ,TZ,TW,TD,TF,IO,TH,TG,TK,TO,TT,TN,TM,TR,TV,UA,UY,VU,VE,VN,WF,YE,ZM,ZW,EG,AE,EC,ER,VA,FM,US,ET,BV,CX,NF,KY,CK,FO,HM,FK,MP,MH,UM,SB,TC,VG,VI,CC'),
-(41, 'default', 0, 'general/locale/firstday', '0'),
+(41, 'default', 0, 'general/locale/firstday', '1'),
 (42, 'default', 0, 'general/locale/weekend', '0,6'),
 (43, 'default', 0, 'design/package/name', 'default'),
 (44, 'default', 0, 'design/package/ua_regexp', 'a:0:{}'),
@@ -10847,11 +10848,11 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (51, 'default', 0, 'design/theme/layout_ua_regexp', 'a:0:{}'),
 (52, 'default', 0, 'design/theme/default', ''),
 (53, 'default', 0, 'design/theme/default_ua_regexp', 'a:0:{}'),
-(54, 'default', 0, 'design/head/default_title', 'Magento Commerce'),
+(54, 'default', 0, 'design/head/default_title', 'Cabrera Joaillier'),
 (55, 'default', 0, 'design/head/title_prefix', ''),
 (56, 'default', 0, 'design/head/title_suffix', ''),
-(57, 'default', 0, 'design/head/default_description', 'Default Description'),
-(58, 'default', 0, 'design/head/default_keywords', 'Magento, Varien, E-commerce'),
+(57, 'default', 0, 'design/head/default_description', 'Vente bijoux'),
+(58, 'default', 0, 'design/head/default_keywords', 'Joaillier, Bijoutier, Vente, bijoux, pierres'),
 (59, 'default', 0, 'design/head/default_robots', 'INDEX,FOLLOW'),
 (60, 'default', 0, 'design/head/includes', ''),
 (61, 'default', 0, 'design/head/demonotice', '0'),
@@ -10866,14 +10867,14 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (70, 'default', 0, 'design/watermark/small_image_position', 'stretch'),
 (71, 'default', 0, 'design/watermark/thumbnail_size', ''),
 (72, 'default', 0, 'design/watermark/thumbnail_position', 'stretch'),
-(73, 'default', 0, 'catalog/review/allow_guest', '1'),
+(73, 'default', 0, 'catalog/review/allow_guest', '0'),
 (74, 'default', 0, 'catalog/frontend/list_mode', 'grid-list'),
 (75, 'default', 0, 'catalog/frontend/grid_per_page_values', '9,15,30'),
 (76, 'default', 0, 'catalog/frontend/grid_per_page', '9'),
 (77, 'default', 0, 'catalog/frontend/list_per_page_values', '5,10,15,20,25'),
 (78, 'default', 0, 'catalog/frontend/list_per_page', '10'),
 (79, 'default', 0, 'catalog/frontend/default_sort_by', 'position'),
-(80, 'default', 0, 'catalog/sitemap/tree_mode', '0'),
+(80, 'default', 0, 'catalog/sitemap/tree_mode', '1'),
 (81, 'default', 0, 'catalog/sitemap/lines_perpage', '30'),
 (82, 'default', 0, 'catalog/productalert/allow_price', '0'),
 (83, 'default', 0, 'catalog/productalert/email_price_template', 'catalog_productalert_email_price_template'),
@@ -10914,7 +10915,60 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (118, 'default', 0, 'catalog/custom_options/use_calendar', '0'),
 (119, 'default', 0, 'catalog/custom_options/date_fields_order', 'm,d,y'),
 (120, 'default', 0, 'catalog/custom_options/time_format', '12h'),
-(121, 'default', 0, 'catalog/custom_options/year_range', ',');
+(121, 'default', 0, 'catalog/custom_options/year_range', ','),
+(122, 'default', 0, 'advanced/modules_disable_output/Mage_Admin', '0'),
+(123, 'default', 0, 'advanced/modules_disable_output/Mage_AdminNotification', '0'),
+(124, 'default', 0, 'advanced/modules_disable_output/Mage_AmazonPayments', '0'),
+(125, 'default', 0, 'advanced/modules_disable_output/Mage_Api', '0'),
+(126, 'default', 0, 'advanced/modules_disable_output/Mage_Backup', '0'),
+(127, 'default', 0, 'advanced/modules_disable_output/Mage_Bundle', '0'),
+(128, 'default', 0, 'advanced/modules_disable_output/Mage_Catalog', '0'),
+(129, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogIndex', '0'),
+(130, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogInventory', '0'),
+(131, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogRule', '0'),
+(132, 'default', 0, 'advanced/modules_disable_output/Mage_CatalogSearch', '0'),
+(133, 'default', 0, 'advanced/modules_disable_output/Mage_Checkout', '0'),
+(134, 'default', 0, 'advanced/modules_disable_output/Mage_Cms', '0'),
+(135, 'default', 0, 'advanced/modules_disable_output/Mage_Compiler', '0'),
+(136, 'default', 0, 'advanced/modules_disable_output/Mage_Contacts', '0'),
+(137, 'default', 0, 'advanced/modules_disable_output/Mage_Core', '0'),
+(138, 'default', 0, 'advanced/modules_disable_output/Mage_Cron', '0'),
+(139, 'default', 0, 'advanced/modules_disable_output/Mage_Customer', '0'),
+(140, 'default', 0, 'advanced/modules_disable_output/Mage_Dataflow', '0'),
+(141, 'default', 0, 'advanced/modules_disable_output/Mage_Directory', '0'),
+(142, 'default', 0, 'advanced/modules_disable_output/Mage_Downloadable', '0'),
+(143, 'default', 0, 'advanced/modules_disable_output/Mage_Eav', '0'),
+(144, 'default', 0, 'advanced/modules_disable_output/Mage_GiftMessage', '0'),
+(145, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleAnalytics', '0'),
+(146, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleBase', '0'),
+(147, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleCheckout', '0'),
+(148, 'default', 0, 'advanced/modules_disable_output/Mage_GoogleOptimizer', '0'),
+(149, 'default', 0, 'advanced/modules_disable_output/Mage_Install', '0'),
+(150, 'default', 0, 'advanced/modules_disable_output/Mage_Log', '0'),
+(151, 'default', 0, 'advanced/modules_disable_output/Mage_Media', '0'),
+(152, 'default', 0, 'advanced/modules_disable_output/Mage_Newsletter', '0'),
+(153, 'default', 0, 'advanced/modules_disable_output/Mage_Page', '0'),
+(154, 'default', 0, 'advanced/modules_disable_output/Mage_Paygate', '0'),
+(155, 'default', 0, 'advanced/modules_disable_output/Mage_Payment', '0'),
+(156, 'default', 0, 'advanced/modules_disable_output/Mage_Paypal', '0'),
+(157, 'default', 0, 'advanced/modules_disable_output/Mage_PaypalUk', '0'),
+(158, 'default', 0, 'advanced/modules_disable_output/Mage_Poll', '0'),
+(159, 'default', 0, 'advanced/modules_disable_output/Mage_ProductAlert', '0'),
+(160, 'default', 0, 'advanced/modules_disable_output/Mage_Rating', '1'),
+(161, 'default', 0, 'advanced/modules_disable_output/Mage_Reports', '0'),
+(162, 'default', 0, 'advanced/modules_disable_output/Mage_Review', '1'),
+(163, 'default', 0, 'advanced/modules_disable_output/Mage_Rss', '0'),
+(164, 'default', 0, 'advanced/modules_disable_output/Mage_Rule', '0'),
+(165, 'default', 0, 'advanced/modules_disable_output/Mage_Sales', '0'),
+(166, 'default', 0, 'advanced/modules_disable_output/Mage_SalesRule', '0'),
+(167, 'default', 0, 'advanced/modules_disable_output/Mage_Sendfriend', '0'),
+(168, 'default', 0, 'advanced/modules_disable_output/Mage_Shipping', '0'),
+(169, 'default', 0, 'advanced/modules_disable_output/Mage_Sitemap', '0'),
+(170, 'default', 0, 'advanced/modules_disable_output/Mage_Tag', '0'),
+(171, 'default', 0, 'advanced/modules_disable_output/Mage_Tax', '0'),
+(172, 'default', 0, 'advanced/modules_disable_output/Mage_Usa', '0'),
+(173, 'default', 0, 'advanced/modules_disable_output/Mage_Weee', '0'),
+(174, 'default', 0, 'advanced/modules_disable_output/Mage_Wishlist', '0');
 
 -- --------------------------------------------------------
 
@@ -16924,7 +16978,45 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (554, 29, '2009-10-05 19:53:06'),
 (555, 29, '2009-10-05 20:06:45'),
 (556, 29, '2009-10-05 20:06:54'),
-(557, 29, '2009-10-05 20:07:56');
+(557, 29, '2009-10-05 20:07:56'),
+(558, 30, '2009-10-07 05:27:36'),
+(559, 30, '2009-10-07 05:35:11'),
+(560, 30, '2009-10-07 05:35:48'),
+(561, 30, '2009-10-07 05:35:57'),
+(562, 30, '2009-10-07 05:36:28'),
+(563, 30, '2009-10-07 05:36:35'),
+(564, 30, '2009-10-07 05:36:38'),
+(565, 30, '2009-10-07 05:37:34'),
+(566, 30, '2009-10-07 05:37:46'),
+(567, 30, '2009-10-07 05:38:05'),
+(568, 30, '2009-10-07 05:42:46'),
+(569, 30, '2009-10-07 05:45:56'),
+(570, 30, '2009-10-07 06:05:36'),
+(571, 30, '2009-10-07 06:05:45'),
+(572, 30, '2009-10-07 06:05:49'),
+(573, 30, '2009-10-07 06:05:51'),
+(574, 30, '2009-10-07 06:05:55'),
+(575, 30, '2009-10-07 06:05:59'),
+(576, 30, '2009-10-07 06:06:51'),
+(577, 30, '2009-10-07 06:07:06'),
+(578, 30, '2009-10-07 06:11:07'),
+(579, 30, '2009-10-07 06:11:16'),
+(580, 30, '2009-10-07 06:11:23'),
+(581, 30, '2009-10-07 06:12:40'),
+(582, 30, '2009-10-07 06:12:46'),
+(583, 30, '2009-10-07 06:12:58'),
+(584, 30, '2009-10-07 06:19:34'),
+(585, 30, '2009-10-07 06:19:54'),
+(586, 30, '2009-10-07 06:23:31'),
+(587, 30, '2009-10-07 06:24:04'),
+(588, 30, '2009-10-07 06:24:52'),
+(589, 30, '2009-10-07 06:25:29'),
+(590, 30, '2009-10-07 06:27:25'),
+(591, 30, '2009-10-07 06:28:03'),
+(592, 30, '2009-10-07 06:28:14'),
+(593, 30, '2009-10-07 06:28:21'),
+(594, 30, '2009-10-07 06:28:40'),
+(595, 30, '2009-10-07 06:29:12');
 
 -- --------------------------------------------------------
 
@@ -16937,7 +17029,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=558 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=596 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17501,7 +17593,45 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (554, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
 (555, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
 (556, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
-(557, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation');
+(557, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(558, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(559, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=list', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(560, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=list'),
+(561, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(562, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(563, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(564, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(565, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(566, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(567, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=grid', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(568, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=grid', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(569, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=grid', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(570, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?mode=grid'),
+(571, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(572, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(573, 'http://www.localhost.com/~tharibo/magento/index.php/creation', 'http://www.localhost.com/~tharibo/magento/index.php/magasin'),
+(574, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://www.localhost.com/~tharibo/magento/index.php/creation'),
+(575, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(576, 'http://www.localhost.com/~tharibo/magento/index.php/catalogsearch/term/popular/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(577, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(578, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(579, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(580, 'http://www.localhost.com/~tharibo/magento/index.php/review/product/list/id/17/category/13/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/'),
+(581, 'http://www.localhost.com/~tharibo/magento/index.php/review/product/list/id/17/category/13/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/'),
+(582, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/review/product/list/id/17/category/13/'),
+(583, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(584, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(585, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(586, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(587, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(588, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(589, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(590, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(591, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/17/s/blackberry-8100-pearl/'),
+(592, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
+(593, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(594, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(595, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2');
 
 -- --------------------------------------------------------
 
@@ -17517,7 +17647,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=30 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -17552,7 +17682,8 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (26, '89601b137b729d657df111edd9dbea30', '2009-10-03 09:12:48', '2009-10-03 12:37:37', 511, 1),
 (27, 'a89463e1dae408555d977e94588c89bf', '2009-10-04 13:12:00', '2009-10-04 14:35:09', 540, 1),
 (28, 'cde06f5d73361f4a60e042ab2d690a1f', '2009-10-04 15:37:50', '2009-10-04 15:38:52', 544, 1),
-(29, '5c56f08f36ee7f0bed698e4f146a4201', '2009-10-05 19:46:46', '2009-10-05 20:07:56', 557, 1);
+(29, '5c56f08f36ee7f0bed698e4f146a4201', '2009-10-05 19:46:46', '2009-10-05 20:07:56', 557, 1),
+(30, '4555eb087c7bc80db9ff79dc2aae41f8', '2009-10-07 05:27:29', '2009-10-07 06:29:12', 595, 1);
 
 -- --------------------------------------------------------
 
@@ -17604,7 +17735,8 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (26, 'http://www.localhost.com/~tharibo/magento/index.php/magasin', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (27, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (28, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
-(29, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
+(29, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(30, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
 
 -- --------------------------------------------------------
 
@@ -18994,7 +19126,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
   KEY `IDX_OBJECT` (`object_id`),
   KEY `IDX_SUBTYPE` (`subtype`),
   KEY `FK_REPORT_EVENT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Contenu de la table `report_event`
@@ -19010,7 +19142,16 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 (7, '2009-10-03 12:12:13', 1, 16, 26, 1, 1),
 (8, '2009-10-03 12:13:36', 1, 17, 26, 1, 1),
 (9, '2009-10-03 12:15:13', 1, 41, 26, 1, 1),
-(10, '2009-10-03 12:18:06', 1, 25, 26, 1, 1);
+(10, '2009-10-03 12:18:06', 1, 25, 26, 1, 1),
+(11, '2009-10-07 06:11:14', 1, 17, 30, 1, 1),
+(12, '2009-10-07 06:12:58', 1, 17, 30, 1, 1),
+(13, '2009-10-07 06:19:34', 1, 17, 30, 1, 1),
+(14, '2009-10-07 06:19:54', 1, 17, 30, 1, 1),
+(15, '2009-10-07 06:23:31', 1, 17, 30, 1, 1),
+(16, '2009-10-07 06:24:04', 1, 17, 30, 1, 1),
+(17, '2009-10-07 06:24:52', 1, 17, 30, 1, 1),
+(18, '2009-10-07 06:25:29', 1, 17, 30, 1, 1),
+(19, '2009-10-07 06:27:25', 1, 17, 30, 1, 1);
 
 -- --------------------------------------------------------
 

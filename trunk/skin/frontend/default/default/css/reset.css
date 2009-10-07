@@ -28,8 +28,8 @@
 
 body { background:#141414 /*url(../images/body_bg.gif)*/ 50% 0 repeat-y; color:#ffffff; font:12px/1.55em arial, helvetica, sans-serif; text-align:center; }
 
-a { color:#ffffff; text-decoration:underline; }
-a:hover { color:#b9adbc; text-decoration:underline; }
+a { color:#988c9b; text-decoration:underline; }
+a:hover { color:#b66bce; text-decoration:underline; }
 a img { border:0;}
 :focus { outline:0; }
 
