@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 07 Octobre 2009 à 08:30
+-- Généré le : Mer 07 Octobre 2009 à 22:44
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -175,8 +175,8 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
-(1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:36:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-07 05:43:13', 21, 0, 1, 'a:1:{s:11:"configState";a:36:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";}}');
+(1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:50:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";}}'),
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-07 20:21:08', 23, 0, 1, 'a:1:{s:11:"configState";a:50:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"0";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -509,7 +509,7 @@ CREATE TABLE IF NOT EXISTS `cataloginventory_stock_item` (
 INSERT INTO `cataloginventory_stock_item` (`item_id`, `product_id`, `stock_id`, `qty`, `min_qty`, `use_config_min_qty`, `is_qty_decimal`, `backorders`, `use_config_backorders`, `min_sale_qty`, `use_config_min_sale_qty`, `max_sale_qty`, `use_config_max_sale_qty`, `is_in_stock`, `low_stock_date`, `notify_stock_qty`, `use_config_notify_stock_qty`, `manage_stock`, `use_config_manage_stock`, `stock_status_changed_automatically`) VALUES
 (1, 16, 1, '996.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (2, 17, 1, '797.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(3, 18, 1, '989.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(3, 18, 1, '988.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
 (4, 19, 1, '328.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (5, 20, 1, '361.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (6, 25, 1, '143.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
@@ -652,7 +652,7 @@ CREATE TABLE IF NOT EXISTS `cataloginventory_stock_status` (
 INSERT INTO `cataloginventory_stock_status` (`product_id`, `website_id`, `stock_id`, `qty`, `stock_status`) VALUES
 (16, 1, 1, '996.0000', 1),
 (17, 1, 1, '797.0000', 1),
-(18, 1, 1, '989.0000', 1),
+(18, 1, 1, '988.0000', 1),
 (19, 1, 1, '328.0000', 1),
 (20, 1, 1, '361.0000', 1),
 (25, 1, 1, '143.0000', 1),
@@ -10788,7 +10788,7 @@ CREATE TABLE IF NOT EXISTS `core_config_data` (
   `value` text NOT NULL,
   PRIMARY KEY  (`config_id`),
   UNIQUE KEY `config_scope` (`scope`,`scope_id`,`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=175 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=325 ;
 
 --
 -- Contenu de la table `core_config_data`
@@ -10968,7 +10968,157 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (171, 'default', 0, 'advanced/modules_disable_output/Mage_Tax', '0'),
 (172, 'default', 0, 'advanced/modules_disable_output/Mage_Usa', '0'),
 (173, 'default', 0, 'advanced/modules_disable_output/Mage_Weee', '0'),
-(174, 'default', 0, 'advanced/modules_disable_output/Mage_Wishlist', '0');
+(174, 'default', 0, 'advanced/modules_disable_output/Mage_Wishlist', '0'),
+(175, 'default', 0, 'payment/ccsave/active', '1'),
+(176, 'default', 0, 'payment/ccsave/title', 'Credit Card (saved)'),
+(177, 'default', 0, 'payment/ccsave/order_status', 'pending'),
+(178, 'default', 0, 'payment/ccsave/cctypes', 'AE,VI,MC,DI'),
+(179, 'default', 0, 'payment/ccsave/useccv', '0'),
+(180, 'default', 0, 'payment/ccsave/allowspecific', '0'),
+(181, 'default', 0, 'payment/ccsave/min_order_total', ''),
+(182, 'default', 0, 'payment/ccsave/max_order_total', ''),
+(183, 'default', 0, 'payment/ccsave/sort_order', ''),
+(184, 'default', 0, 'payment/free/title', 'No Payment Information Required'),
+(185, 'default', 0, 'payment/free/active', '1'),
+(186, 'default', 0, 'payment/free/order_status', 'pending'),
+(187, 'default', 0, 'payment/free/payment_action', ''),
+(188, 'default', 0, 'payment/free/allowspecific', '0'),
+(189, 'default', 0, 'payment/free/sort_order', '1'),
+(190, 'default', 0, 'payment/checkmo/active', '1'),
+(191, 'default', 0, 'payment/checkmo/title', 'Check / Money order'),
+(192, 'default', 0, 'payment/checkmo/order_status', 'pending'),
+(193, 'default', 0, 'payment/checkmo/allowspecific', '0'),
+(194, 'default', 0, 'payment/checkmo/payable_to', ''),
+(195, 'default', 0, 'payment/checkmo/mailing_address', ''),
+(196, 'default', 0, 'payment/checkmo/min_order_total', ''),
+(197, 'default', 0, 'payment/checkmo/max_order_total', ''),
+(198, 'default', 0, 'payment/checkmo/sort_order', ''),
+(199, 'default', 0, 'payment/purchaseorder/active', '0'),
+(200, 'default', 0, 'payment/purchaseorder/title', 'Purchase Order'),
+(201, 'default', 0, 'payment/purchaseorder/order_status', 'pending'),
+(202, 'default', 0, 'payment/purchaseorder/allowspecific', '0'),
+(203, 'default', 0, 'payment/purchaseorder/min_order_total', ''),
+(204, 'default', 0, 'payment/purchaseorder/max_order_total', ''),
+(205, 'default', 0, 'payment/purchaseorder/sort_order', ''),
+(206, 'default', 0, 'payment/authorizenet/active', '0'),
+(207, 'default', 0, 'payment/authorizenet/title', 'Credit Card (Authorize.net)'),
+(208, 'default', 0, 'payment/authorizenet/login', ''),
+(209, 'default', 0, 'payment/authorizenet/payment_action', 'authorize'),
+(210, 'default', 0, 'payment/authorizenet/trans_key', ''),
+(211, 'default', 0, 'payment/authorizenet/order_status', ''),
+(212, 'default', 0, 'payment/authorizenet/test', '1'),
+(213, 'default', 0, 'payment/authorizenet/cgi_url', 'https://secure.authorize.net/gateway/transact.dll'),
+(214, 'default', 0, 'payment/authorizenet/debug', '0'),
+(215, 'default', 0, 'payment/authorizenet/email_customer', '0'),
+(216, 'default', 0, 'payment/authorizenet/merchant_email', ''),
+(217, 'default', 0, 'payment/authorizenet/cctypes', 'AE,VI,MC,DI'),
+(218, 'default', 0, 'payment/authorizenet/useccv', '0'),
+(219, 'default', 0, 'payment/authorizenet/allowspecific', '0'),
+(220, 'default', 0, 'payment/authorizenet/min_order_total', ''),
+(221, 'default', 0, 'payment/authorizenet/max_order_total', ''),
+(222, 'default', 0, 'payment/authorizenet/sort_order', ''),
+(223, 'default', 0, 'payment/verisign/active', '0'),
+(224, 'default', 0, 'payment/verisign/title', 'Credit Card (Payflow Pro)'),
+(225, 'default', 0, 'payment/verisign/url', 'https://pilot-payflowpro.verisign.com/transaction'),
+(226, 'default', 0, 'payment/verisign/verbosity', 'MEDIUM'),
+(227, 'default', 0, 'payment/verisign/payment_action', 'authorize'),
+(228, 'default', 0, 'payment/verisign/tender', 'C'),
+(229, 'default', 0, 'payment/verisign/fraud_order_status', 'holded'),
+(230, 'default', 0, 'payment/verisign/order_status', ''),
+(231, 'default', 0, 'payment/verisign/partner', ''),
+(232, 'default', 0, 'payment/verisign/vendor', ''),
+(233, 'default', 0, 'payment/verisign/user', ''),
+(234, 'default', 0, 'payment/verisign/pwd', ''),
+(235, 'default', 0, 'payment/verisign/debug', '0'),
+(236, 'default', 0, 'payment/verisign/cctypes', 'AE,VI,MC,DI'),
+(237, 'default', 0, 'payment/verisign/useccv', '0'),
+(238, 'default', 0, 'payment/verisign/use_proxy', '0'),
+(239, 'default', 0, 'payment/verisign/proxy_host', ''),
+(240, 'default', 0, 'payment/verisign/proxy_port', ''),
+(241, 'default', 0, 'payment/verisign/allowspecific', '0'),
+(242, 'default', 0, 'payment/verisign/min_order_total', ''),
+(243, 'default', 0, 'payment/verisign/max_order_total', ''),
+(244, 'default', 0, 'payment/verisign/sort_order', ''),
+(245, 'default', 0, 'payment/paypal_express/active', '0'),
+(246, 'default', 0, 'payment/paypal_express/title', 'Paypal Express'),
+(247, 'default', 0, 'payment/paypal_express/payment_action', 'Authorization'),
+(248, 'default', 0, 'payment/paypal_express/order_status', ''),
+(249, 'default', 0, 'payment/paypal_express/allowspecific', '0'),
+(250, 'default', 0, 'payment/paypal_express/sort_order', ''),
+(251, 'default', 0, 'payment/paypal_direct/active', '0'),
+(252, 'default', 0, 'payment/paypal_direct/title', 'Paypal Direct'),
+(253, 'default', 0, 'payment/paypal_direct/order_status', ''),
+(254, 'default', 0, 'payment/paypal_direct/payment_action', 'Authorization'),
+(255, 'default', 0, 'payment/paypal_direct/cctypes', 'AE,VI,MC,DI'),
+(256, 'default', 0, 'payment/paypal_direct/allowspecific', '0'),
+(257, 'default', 0, 'payment/paypal_direct/sort_order', ''),
+(258, 'default', 0, 'payment/paypal_standard/active', '0'),
+(259, 'default', 0, 'payment/paypal_standard/title', 'Paypal Standard'),
+(260, 'default', 0, 'payment/paypal_standard/payment_action', 'AUTHORIZATION'),
+(261, 'default', 0, 'payment/paypal_standard/types', 'IPN'),
+(262, 'default', 0, 'payment/paypal_standard/order_status', ''),
+(263, 'default', 0, 'payment/paypal_standard/transaction_type', 'O'),
+(264, 'default', 0, 'payment/paypal_standard/allowspecific', '0'),
+(265, 'default', 0, 'payment/paypal_standard/sort_order', ''),
+(266, 'default', 0, 'payment/paypaluk_express/active', '0'),
+(267, 'default', 0, 'payment/paypaluk_express/title', 'PaypalUk Express'),
+(268, 'default', 0, 'payment/paypaluk_express/payment_action', 'authorize'),
+(269, 'default', 0, 'payment/paypaluk_express/order_status', ''),
+(270, 'default', 0, 'payment/paypaluk_express/allowspecific', '0'),
+(271, 'default', 0, 'payment/paypaluk_express/sort_order', ''),
+(272, 'default', 0, 'payment/paypaluk_direct/active', '0'),
+(273, 'default', 0, 'payment/paypaluk_direct/title', 'PaypalUk Direct'),
+(274, 'default', 0, 'payment/paypaluk_direct/order_status', ''),
+(275, 'default', 0, 'payment/paypaluk_direct/payment_action', 'authorize'),
+(276, 'default', 0, 'payment/paypaluk_direct/cctypes', 'AE,VI,MC,DI'),
+(277, 'default', 0, 'payment/paypaluk_direct/allowspecific', '0'),
+(278, 'default', 0, 'payment/paypaluk_direct/sort_order', ''),
+(279, 'default', 0, 'payment/cybermut_payment/active', '1'),
+(280, 'default', 0, 'payment/cybermut_payment/title', 'CyberMUT-P@iement'),
+(281, 'default', 0, 'payment/cybermut_payment/tpe_no', ''),
+(282, 'default', 0, 'payment/cybermut_payment/site_code', ''),
+(283, 'default', 0, 'payment/cybermut_payment/bank', 'mutuel'),
+(284, 'default', 0, 'payment/cybermut_payment/description', ''),
+(285, 'default', 0, 'payment/cybermut_payment/language', 'FR'),
+(286, 'default', 0, 'payment/cybermut_payment/test_mode', '1'),
+(287, 'default', 0, 'payment/cybermut_payment/debug_flag', '0'),
+(288, 'default', 0, 'payment/cybermut_payment/order_status', ''),
+(289, 'default', 0, 'payment/cybermut_payment/order_status_payment_accepted', ''),
+(290, 'default', 0, 'payment/cybermut_payment/order_status_payment_refused', ''),
+(291, 'default', 0, 'payment/cybermut_payment/allowspecific', '0'),
+(292, 'default', 0, 'payment/cybermut_payment/sort_order', ''),
+(293, 'default', 0, 'payment/amazonpayments_cba/title', 'Checkout by Amazon'),
+(294, 'default', 0, 'payment/amazonpayments_cba/active', '0'),
+(295, 'default', 0, 'payment/amazonpayments_cba/sandbox_flag', '1'),
+(296, 'default', 0, 'payment/amazonpayments_cba/debug_flag', '0'),
+(297, 'default', 0, 'payment/amazonpayments_cba/merchant_id', ''),
+(298, 'default', 0, 'payment/amazonpayments_cba/merchant_name', ''),
+(299, 'default', 0, 'payment/amazonpayments_cba/accesskey_id', ''),
+(300, 'default', 0, 'payment/amazonpayments_cba/secretkey_id', ''),
+(301, 'default', 0, 'payment/amazonpayments_cba/merchant_tocken', ''),
+(302, 'default', 0, 'payment/amazonpayments_cba/merchant_login', ''),
+(303, 'default', 0, 'payment/amazonpayments_cba/merchant_pass', ''),
+(304, 'default', 0, 'payment/amazonpayments_cba/order_status', 'pending'),
+(305, 'default', 0, 'payment/amazonpayments_cba/standard_rate', 'a:1:{s:6:"method";s:4:"None";}'),
+(306, 'default', 0, 'payment/amazonpayments_cba/expedited_rate', 'a:1:{s:6:"method";s:4:"None";}'),
+(307, 'default', 0, 'payment/amazonpayments_cba/oneday_rate', 'a:1:{s:6:"method";s:4:"None";}'),
+(308, 'default', 0, 'payment/amazonpayments_cba/twoday_rate', 'a:1:{s:6:"method";s:4:"None";}'),
+(309, 'default', 0, 'payment/amazonpayments_asp/title', 'Amazon Simple Pay'),
+(310, 'default', 0, 'payment/amazonpayments_asp/active', '0'),
+(311, 'default', 0, 'payment/amazonpayments_asp/is_sandbox', '1'),
+(312, 'default', 0, 'payment/amazonpayments_asp/pay_process_immediate', '1'),
+(313, 'default', 0, 'payment/amazonpayments_asp/access_key', ''),
+(314, 'default', 0, 'payment/amazonpayments_asp/secret_key', ''),
+(315, 'default', 0, 'payment/amazonpayments_asp/pay_immediate_return', '1'),
+(316, 'default', 0, 'payment/amazonpayments_asp/pay_description', 'MAGENTO ASP PAYMENT'),
+(317, 'default', 0, 'payment/amazonpayments_asp/refund_description', 'MAGENTO ASP REFUND'),
+(318, 'default', 0, 'payment/amazonpayments_asp/cancel_description', 'MAGENTO ASP CANCEL'),
+(319, 'default', 0, 'payment/amazonpayments_asp/report_email', ''),
+(320, 'default', 0, 'payment/amazonpayments_asp/email_sender_identity', 'general'),
+(321, 'default', 0, 'payment/amazonpayments_asp/email_template_notofication_error', 'payment_amazonpayments_asp_email_template_notofication_error'),
+(322, 'default', 0, 'payment/amazonpayments_asp/report_error_to_email', '0'),
+(323, 'default', 0, 'payment/amazonpayments_asp/error_log', '0'),
+(324, 'default', 0, 'payment/amazonpayments_asp/debug_log', '0');
 
 -- --------------------------------------------------------
 
@@ -11097,7 +11247,7 @@ INSERT INTO `core_resource` (`code`, `version`) VALUES
 ('core_setup', '0.8.13'),
 ('cron_setup', '0.7.1'),
 ('customer_setup', '0.8.11'),
-('cybermut_setup', '0.1.0'),
+('cybermut_setup', '0.9.1'),
 ('cybersource_setup', '0.7.0'),
 ('dataflow_setup', '0.7.4'),
 ('directory_setup', '0.8.5'),
@@ -16006,12 +16156,14 @@ CREATE TABLE IF NOT EXISTS `eav_entity_store` (
   PRIMARY KEY  (`entity_store_id`),
   KEY `FK_eav_entity_store_entity_type` (`entity_type_id`),
   KEY `FK_eav_entity_store_store` (`store_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `eav_entity_store`
 --
 
+INSERT INTO `eav_entity_store` (`entity_store_id`, `entity_type_id`, `store_id`, `increment_prefix`, `increment_last_id`) VALUES
+(1, 4, 1, '1', '100000001');
 
 -- --------------------------------------------------------
 
@@ -16359,6 +16511,8 @@ CREATE TABLE IF NOT EXISTS `log_quote` (
 -- Contenu de la table `log_quote`
 --
 
+INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) VALUES
+(1, 31, '2009-10-07 20:25:36', NULL);
 
 -- --------------------------------------------------------
 
@@ -17016,7 +17170,31 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (592, 30, '2009-10-07 06:28:14'),
 (593, 30, '2009-10-07 06:28:21'),
 (594, 30, '2009-10-07 06:28:40'),
-(595, 30, '2009-10-07 06:29:12');
+(595, 30, '2009-10-07 06:29:12'),
+(596, 30, '2009-10-07 06:32:41'),
+(597, 31, '2009-10-07 20:24:46'),
+(598, 31, '2009-10-07 20:24:57'),
+(599, 31, '2009-10-07 20:25:01'),
+(600, 31, '2009-10-07 20:25:05'),
+(601, 31, '2009-10-07 20:25:16'),
+(602, 31, '2009-10-07 20:25:36'),
+(603, 31, '2009-10-07 20:25:39'),
+(604, 31, '2009-10-07 20:26:11'),
+(605, 31, '2009-10-07 20:26:12'),
+(606, 31, '2009-10-07 20:26:25'),
+(607, 31, '2009-10-07 20:26:26'),
+(608, 31, '2009-10-07 20:26:33'),
+(609, 31, '2009-10-07 20:27:05'),
+(610, 31, '2009-10-07 20:27:53'),
+(611, 31, '2009-10-07 20:27:54'),
+(612, 31, '2009-10-07 20:27:59'),
+(613, 31, '2009-10-07 20:27:59'),
+(614, 31, '2009-10-07 20:28:26'),
+(615, 31, '2009-10-07 20:28:26'),
+(616, 31, '2009-10-07 20:28:35'),
+(617, 31, '2009-10-07 20:28:36'),
+(618, 31, '2009-10-07 20:29:03'),
+(619, 31, '2009-10-07 20:29:11');
 
 -- --------------------------------------------------------
 
@@ -17029,7 +17207,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=596 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=620 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17631,7 +17809,31 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (592, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/'),
 (593, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
 (594, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
-(595, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2');
+(595, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2'),
+(596, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/'),
+(597, 'http://www.localhost.com/~tharibo/magento/index.php/', 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/'),
+(598, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(599, 'http://www.localhost.com/~tharibo/magento/index.php/electronics/cell-phones/sony-ericsson-w810i.html', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/'),
+(600, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/', 'http://www.localhost.com/~tharibo/magento/index.php/'),
+(601, 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/18/s/sony-ericsson-w810i/category/8/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/'),
+(602, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,/product/18/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/18/s/sony-ericsson-w810i/category/8/'),
+(603, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/', 'http://www.localhost.com/~tharibo/magento/index.php/catalog/product/view/id/18/s/sony-ericsson-w810i/category/8/'),
+(604, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/estimatePost/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/'),
+(605, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/'),
+(606, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/estimateUpdatePost/?do=Mettre+%C3%A0+jour+le+total', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/'),
+(607, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/'),
+(608, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/'),
+(609, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(610, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(611, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(612, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(613, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(614, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(615, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(616, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/saveOrder/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(617, 'http://www.localhost.com/~tharibo/magento/index.php/cybermut/payment/redirect/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(618, 'http://www.localhost.com/~tharibo/magento/index.php/cybermut/payment/redirect/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/'),
+(619, 'http://www.localhost.com/~tharibo/magento/index.php/checkout/onepage/', 'http://www.localhost.com/~tharibo/magento/index.php/checkout/cart/');
 
 -- --------------------------------------------------------
 
@@ -17647,7 +17849,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=31 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=32 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -17683,7 +17885,8 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (27, 'a89463e1dae408555d977e94588c89bf', '2009-10-04 13:12:00', '2009-10-04 14:35:09', 540, 1),
 (28, 'cde06f5d73361f4a60e042ab2d690a1f', '2009-10-04 15:37:50', '2009-10-04 15:38:52', 544, 1),
 (29, '5c56f08f36ee7f0bed698e4f146a4201', '2009-10-05 19:46:46', '2009-10-05 20:07:56', 557, 1),
-(30, '4555eb087c7bc80db9ff79dc2aae41f8', '2009-10-07 05:27:29', '2009-10-07 06:29:12', 595, 1);
+(30, '4555eb087c7bc80db9ff79dc2aae41f8', '2009-10-07 05:27:29', '2009-10-07 06:32:41', 596, 1),
+(31, 'b0848d8c30332bf01fc4027739f1f4cd', '2009-10-07 20:24:44', '2009-10-07 20:29:11', 619, 1);
 
 -- --------------------------------------------------------
 
@@ -17736,7 +17939,8 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (27, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (28, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (29, 'http://www.localhost.com/~tharibo/magento/index.php/e-boutique?order=name&dir=desc', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
-(30, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
+(30, 'http://www.localhost.com/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(31, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433);
 
 -- --------------------------------------------------------
 
@@ -19126,7 +19330,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
   KEY `IDX_OBJECT` (`object_id`),
   KEY `IDX_SUBTYPE` (`subtype`),
   KEY `FK_REPORT_EVENT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Contenu de la table `report_event`
@@ -19151,7 +19355,9 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 (16, '2009-10-07 06:24:04', 1, 17, 30, 1, 1),
 (17, '2009-10-07 06:24:52', 1, 17, 30, 1, 1),
 (18, '2009-10-07 06:25:29', 1, 17, 30, 1, 1),
-(19, '2009-10-07 06:27:25', 1, 17, 30, 1, 1);
+(19, '2009-10-07 06:27:25', 1, 17, 30, 1, 1),
+(20, '2009-10-07 20:25:14', 1, 18, 31, 1, 1),
+(21, '2009-10-07 20:25:36', 4, 18, 31, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -20001,12 +20207,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_order_item` (
   `locked_do_ship` int(10) unsigned default NULL,
   PRIMARY KEY  (`item_id`),
   KEY `IDX_ORDER` (`order_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_flat_order_item`
 --
 
+INSERT INTO `sales_flat_order_item` (`item_id`, `order_id`, `parent_item_id`, `quote_item_id`, `created_at`, `updated_at`, `product_id`, `product_type`, `product_options`, `weight`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `qty_backordered`, `qty_canceled`, `qty_invoiced`, `qty_ordered`, `qty_refunded`, `qty_shipped`, `cost`, `price`, `base_price`, `original_price`, `base_original_price`, `tax_percent`, `tax_amount`, `base_tax_amount`, `tax_invoiced`, `base_tax_invoiced`, `discount_percent`, `discount_amount`, `base_discount_amount`, `discount_invoiced`, `base_discount_invoiced`, `amount_refunded`, `base_amount_refunded`, `row_total`, `base_row_total`, `row_invoiced`, `base_row_invoiced`, `row_weight`, `gift_message_id`, `gift_message_available`, `base_tax_before_discount`, `tax_before_discount`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`, `ext_order_item_id`, `locked_do_invoice`, `locked_do_ship`) VALUES
+(1, 1, NULL, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 18, 'simple', 'a:1:{s:15:"info_buyRequest";a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}}', '13.6000', 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '0.0000', '0.0000', '13.6000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -20067,12 +20275,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
   PRIMARY KEY  (`entity_id`),
   KEY `FK_SALES_QUOTE_STORE` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`,`store_id`,`is_active`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_flat_quote`
 --
 
+INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_at`, `converted_at`, `is_active`, `is_virtual`, `is_multi_shipping`, `items_count`, `items_qty`, `orig_order_id`, `store_to_base_rate`, `store_to_quote_rate`, `base_to_global_rate`, `base_to_quote_rate`, `global_currency_code`, `base_currency_code`, `store_currency_code`, `quote_currency_code`, `grand_total`, `base_grand_total`, `checkout_method`, `customer_id`, `customer_tax_class_id`, `customer_group_id`, `customer_email`, `customer_prefix`, `customer_firstname`, `customer_middlename`, `customer_lastname`, `customer_suffix`, `customer_dob`, `customer_note`, `customer_note_notify`, `customer_is_guest`, `customer_taxvat`, `remote_ip`, `applied_rule_ids`, `reserved_order_id`, `password_hash`, `coupon_code`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `gift_message_id`, `is_changed`, `trigger_recollect`, `ext_shipping_info`) VALUES
+(1, 1, '2009-10-07 20:25:35', '2009-10-07 20:29:11', '0000-00-00 00:00:00', 0, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '404.9900', '404.9900', 'guest', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, '399.9900', '399.9900', '399.9900', '399.9900', NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -20129,12 +20339,15 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
   `gift_message_id` varchar(255) default NULL,
   PRIMARY KEY  (`address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `sales_flat_quote_address`
 --
 
+INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, `updated_at`, `customer_id`, `save_in_address_book`, `customer_address_id`, `address_type`, `email`, `prefix`, `firstname`, `middlename`, `lastname`, `suffix`, `company`, `street`, `city`, `region`, `region_id`, `postcode`, `country_id`, `telephone`, `fax`, `same_as_billing`, `free_shipping`, `collect_shipping_rates`, `shipping_method`, `shipping_description`, `weight`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `tax_amount`, `base_tax_amount`, `shipping_amount`, `base_shipping_amount`, `shipping_tax_amount`, `base_shipping_tax_amount`, `discount_amount`, `base_discount_amount`, `grand_total`, `base_grand_total`, `customer_notes`, `applied_taxes`, `gift_message_id`) VALUES
+(3, 1, '2009-10-07 20:25:37', '2009-10-07 20:29:11', NULL, 1, NULL, 'billing', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(4, 1, '2009-10-07 20:25:37', '2009-10-07 20:29:11', NULL, 1, NULL, 'shipping', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', '13.6000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '5.0000', '5.0000', '0.0000', '0.0000', '0.0000', '0.0000', '404.9900', '404.9900', NULL, 'a:0:{}', NULL);
 
 -- --------------------------------------------------------
 
@@ -20228,12 +20441,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
   KEY `FK_SALES_QUOTE_ITEM_SALES_QUOTE` (`quote_id`),
   KEY `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` (`parent_item_id`),
   KEY `FK_SALES_QUOTE_ITEM_CATALOG_PRODUCT_ENTITY` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item`
 --
 
+INSERT INTO `sales_flat_quote_item` (`item_id`, `quote_id`, `created_at`, `updated_at`, `product_id`, `parent_item_id`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `weight`, `qty`, `price`, `base_price`, `custom_price`, `discount_percent`, `discount_amount`, `base_discount_amount`, `tax_percent`, `tax_amount`, `base_tax_amount`, `row_total`, `base_row_total`, `row_total_with_discount`, `row_weight`, `product_type`, `base_tax_before_discount`, `tax_before_discount`, `original_custom_price`, `gift_message_id`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`) VALUES
+(1, 1, '2009-10-07 20:25:36', '2009-10-07 20:29:11', 18, NULL, 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, '13.6000', '1.0000', '399.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '13.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
 
 -- --------------------------------------------------------
 
@@ -20249,12 +20464,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
   `value` text NOT NULL,
   PRIMARY KEY  (`option_id`),
   KEY `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item_option`
 --
 
+INSERT INTO `sales_flat_quote_item_option` (`option_id`, `item_id`, `product_id`, `code`, `value`) VALUES
+(1, 1, 18, 'info_buyRequest', 'a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}');
 
 -- --------------------------------------------------------
 
@@ -20287,12 +20504,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_payment` (
   `ideal_issuer_list` varchar(255) default NULL,
   PRIMARY KEY  (`payment_id`),
   KEY `FK_SALES_QUOTE_PAYMENT_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_flat_quote_payment`
 --
 
+INSERT INTO `sales_flat_quote_payment` (`payment_id`, `quote_id`, `created_at`, `updated_at`, `method`, `cc_type`, `cc_number_enc`, `cc_last4`, `cc_cid_enc`, `cc_owner`, `cc_exp_month`, `cc_exp_year`, `cc_ss_owner`, `cc_ss_start_month`, `cc_ss_start_year`, `cybersource_token`, `paypal_correlation_id`, `paypal_payer_id`, `paypal_payer_status`, `po_number`, `ideal_issuer_id`, `ideal_issuer_list`) VALUES
+(1, 1, '2009-10-07 20:26:33', '2009-10-07 20:29:11', 'cybermut_payment', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -20314,12 +20533,14 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_shipping_rate` (
   `method_title` varchar(255) default NULL,
   PRIMARY KEY  (`rate_id`),
   KEY `FK_SALES_QUOTE_SHIPPING_RATE_ADDRESS` (`address_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `sales_flat_quote_shipping_rate`
 --
 
+INSERT INTO `sales_flat_quote_shipping_rate` (`rate_id`, `address_id`, `created_at`, `updated_at`, `carrier`, `carrier_title`, `code`, `method`, `method_description`, `price`, `method_title`) VALUES
+(3, 4, '2009-10-07 20:27:53', '2009-10-07 20:29:11', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed');
 
 -- --------------------------------------------------------
 
@@ -20395,12 +20616,14 @@ CREATE TABLE IF NOT EXISTS `sales_order` (
   KEY `FK_sales_order_store` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`),
   KEY `IDX_INCREMENT_ID` (`increment_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `sales_order`
 --
 
+INSERT INTO `sales_order` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`, `customer_id`, `tax_amount`, `shipping_amount`, `discount_amount`, `subtotal`, `grand_total`, `total_paid`, `total_refunded`, `total_qty_ordered`, `total_canceled`, `total_invoiced`, `total_online_refunded`, `total_offline_refunded`, `base_tax_amount`, `base_shipping_amount`, `base_discount_amount`, `base_subtotal`, `base_grand_total`, `base_total_paid`, `base_total_refunded`, `base_total_qty_ordered`, `base_total_canceled`, `base_total_invoiced`, `base_total_online_refunded`, `base_total_offline_refunded`, `subtotal_refunded`, `subtotal_canceled`, `discount_refunded`, `discount_canceled`, `discount_invoiced`, `tax_refunded`, `tax_canceled`, `shipping_refunded`, `shipping_canceled`, `base_subtotal_refunded`, `base_subtotal_canceled`, `base_discount_refunded`, `base_discount_canceled`, `base_discount_invoiced`, `base_tax_refunded`, `base_tax_canceled`, `base_shipping_refunded`, `base_shipping_canceled`, `subtotal_invoiced`, `tax_invoiced`, `shipping_invoiced`, `base_subtotal_invoiced`, `base_tax_invoiced`, `base_shipping_invoiced`, `shipping_tax_amount`, `base_shipping_tax_amount`, `shipping_tax_refunded`, `base_shipping_tax_refunded`) VALUES
+(1, 4, 0, '100000001', 0, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1, NULL, '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -20443,12 +20666,18 @@ CREATE TABLE IF NOT EXISTS `sales_order_decimal` (
   KEY `FK_sales_order_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_decimal_attribute` (`attribute_id`),
   KEY `FK_sales_order_decimal` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_order_decimal`
 --
 
+INSERT INTO `sales_order_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 4, 376, 1, '1.0000'),
+(2, 4, 377, 1, '1.0000'),
+(3, 4, 889, 1, '1.0000'),
+(4, 4, 890, 1, '1.0000'),
+(5, 4, 196, 1, '13.6000');
 
 -- --------------------------------------------------------
 
@@ -20470,12 +20699,19 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity` (
   KEY `FK_sales_order_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_store` (`store_id`),
   KEY `IDX_SALES_ORDER_ENTITY_PARENT` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `sales_order_entity`
 --
 
+INSERT INTO `sales_order_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`) VALUES
+(1, 6, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
+(2, 6, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
+(3, 8, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
+(4, 17, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
+(5, 17, 0, '', 1, NULL, '2009-10-07 20:28:36', '2009-10-07 20:29:02', 1),
+(6, 17, 0, '', 1, NULL, '2009-10-07 20:29:02', '2009-10-07 20:29:02', 1);
 
 -- --------------------------------------------------------
 
@@ -20518,12 +20754,17 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_decimal` (
   KEY `FK_sales_order_entity_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_decimal_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_decimal` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `sales_order_entity_decimal`
 --
 
+INSERT INTO `sales_order_entity_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 8, 597, 3, '404.9900'),
+(2, 8, 758, 3, '404.9900'),
+(3, 8, 602, 3, '5.0000'),
+(4, 8, 763, 3, '5.0000');
 
 -- --------------------------------------------------------
 
@@ -20542,12 +20783,18 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_int` (
   KEY `FK_sales_order_entity_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_int_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_int` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_order_entity_int`
 --
 
+INSERT INTO `sales_order_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 6, 218, 1, 213),
+(2, 6, 218, 2, 213),
+(3, 17, 410, 4, 0),
+(4, 17, 410, 5, 0),
+(5, 17, 410, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -20566,12 +20813,15 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_text` (
   KEY `FK_sales_order_entity_text_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_text_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_text` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `sales_order_entity_text`
 --
 
+INSERT INTO `sales_order_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 17, 560, 5, 'Le client a été redirigé vers Cybermut'),
+(2, 17, 560, 6, 'Le client a été redirigé vers Cybermut');
 
 -- --------------------------------------------------------
 
@@ -20590,12 +20840,48 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_varchar` (
   KEY `FK_sales_order_entity_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_varchar_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_varchar` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Contenu de la table `sales_order_entity_varchar`
 --
 
+INSERT INTO `sales_order_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 6, 233, 1, 'billing'),
+(2, 6, 224, 1, 'test cybermut'),
+(3, 6, 225, 1, 'testouille'),
+(4, 6, 226, 1, ''),
+(5, 6, 222, 1, '3 rue Philippe Féral'),
+(6, 6, 227, 1, 'Toulouse'),
+(7, 6, 228, 1, 'Haute-Garonne'),
+(8, 6, 229, 1, '31000'),
+(9, 6, 219, 1, 'FR'),
+(10, 6, 230, 1, '0679868165'),
+(11, 6, 231, 1, 'no'),
+(12, 6, 233, 2, 'shipping'),
+(13, 6, 224, 2, 'test cybermut'),
+(14, 6, 225, 2, 'testouille'),
+(15, 6, 226, 2, ''),
+(16, 6, 222, 2, '3 rue Philippe Féral'),
+(17, 6, 227, 2, 'Toulouse'),
+(18, 6, 228, 2, 'Haute-Garonne'),
+(19, 6, 229, 2, '31000'),
+(20, 6, 219, 2, 'FR'),
+(21, 6, 230, 2, '0679868165'),
+(22, 6, 231, 2, 'no'),
+(23, 8, 257, 3, 'cybermut_payment'),
+(24, 8, 258, 3, ''),
+(25, 8, 259, 3, ''),
+(26, 8, 260, 3, ''),
+(27, 8, 261, 3, ''),
+(28, 8, 262, 3, ''),
+(29, 8, 253, 3, '0'),
+(30, 8, 254, 3, '0'),
+(31, 8, 696, 3, '0'),
+(32, 8, 697, 3, '0'),
+(33, 17, 559, 4, 'pending'),
+(34, 17, 559, 5, 'pending'),
+(35, 17, 559, 6, 'pending');
 
 -- --------------------------------------------------------
 
@@ -20614,12 +20900,20 @@ CREATE TABLE IF NOT EXISTS `sales_order_int` (
   KEY `FK_sales_order_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_int_attribute` (`attribute_id`),
   KEY `FK_sales_order_int` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `sales_order_int`
 --
 
+INSERT INTO `sales_order_int` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 4, 204, 1, 1),
+(2, 4, 547, 1, 0),
+(3, 4, 550, 1, 0),
+(4, 4, 693, 1, 1),
+(5, 4, 378, 1, 0),
+(6, 4, 216, 1, 2),
+(7, 4, 217, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -20690,12 +20984,25 @@ CREATE TABLE IF NOT EXISTS `sales_order_varchar` (
   KEY `FK_sales_order_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_varchar_attribute` (`attribute_id`),
   KEY `FK_sales_order_varchar` (`entity_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `sales_order_varchar`
 --
 
+INSERT INTO `sales_order_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
+(1, 4, 210, 1, '127.0.0.1'),
+(2, 4, 548, 1, 'tharibo@gmail.com'),
+(3, 4, 888, 1, 'EUR'),
+(4, 4, 373, 1, 'EUR'),
+(5, 4, 374, 1, 'EUR'),
+(6, 4, 375, 1, 'EUR'),
+(7, 4, 491, 1, ''),
+(8, 4, 214, 1, 'flatrate_flatrate'),
+(9, 4, 208, 1, 'Flat Rate - Fixed'),
+(10, 4, 553, 1, 'new'),
+(11, 4, 215, 1, 'pending'),
+(12, 4, 725, 1, 'Main Website\nMain Store\nEnglish');
 
 -- --------------------------------------------------------
 
