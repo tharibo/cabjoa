@@ -364,8 +364,8 @@ table.view-by td {
 .col-main { float:left; }
 .col-right { float:right; }
 .col-1-layout .col-main { float:none; margin:0; }
-.col-2-right-layout .col-main { float:left; width:570px;  }
-.col-2-left-layout .col-main { float:right; width:570px; }
+.col-2-right-layout .col-main { float:left; width:590px;  }
+.col-2-left-layout .col-main { float:right; width:590px; }
 .col-3-layout .col-main { width:400; margin-left:17px; }
 
 /* Style */
@@ -889,8 +889,8 @@ table.recently-list td { width:20%; }
 
 /********************** Product Detail */
 /* Product Images */
-.product-img-box { float:left; width:267px; }
-.product-img-box .product-image-zoom { position:relative; overflow:hidden; width:265px; height:265px; z-index:9; }
+.product-img-box { float:left; width:235px; }
+.product-img-box .product-image-zoom { position:relative; overflow:hidden; width:235px; height:235px; z-index:9; }
 .product-img-box .product-image-zoom img { position:absolute; left:0; top:0; cursor:move; }
 .image-zoom { position:relative; z-index:9; height:18px; margin:0 auto 13px auto; background:url(../images/slider_bg.gif) no-repeat 50% 50%; padding:0 28px 0 28px; cursor:pointer; }
 .image-zoom #track { position:relative; height:18px; }
@@ -926,8 +926,8 @@ table.recently-list td { width:20%; }
 
 .product-info-box .ratings { margin-bottom:1em; }
 .product-essential, .product-collateral { padding:25px; }
-.product-essential { padding:25px; background:url(../images/product_essential_bg.gif) no-repeat 100% 0 #fff; }
-.product-essential .product-shop { width:330px; }
+.product-essential { padding:2px; background:url(../images/product_essential_bg.gif) no-repeat 100% 0 #fff; }
+.product-essential .product-shop { width:300px; }
 .product-essential .product-shop .ratings { margin-bottom:10px; }
 
 .product-pricing { margin:10px 0; padding:10px; background-color:#f4f7f7; border:1px solid #dadddd; }
