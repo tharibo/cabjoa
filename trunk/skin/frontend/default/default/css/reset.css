@@ -26,7 +26,7 @@
 
 * { margin:0; padding:0; }
 
-body { background:#141414 /*url(../images/body_bg.gif)*/ 50% 0 repeat-y; color:#ffffff; font:12px/1.55em arial, helvetica, sans-serif; text-align:center; }
+body { background:#202020 /*url(../images/body_bg.gif)*/ 50% 0 repeat-y; color:#ffffff; font:12px/1.55em arial, helvetica, sans-serif; text-align:center; }
 
 a { color:#988c9b; text-decoration:underline; }
 a:hover { color:#b66bce; text-decoration:underline; }
@@ -34,7 +34,7 @@ a img { border:0;}
 :focus { outline:0; }
 
 /* Heading */
-h1, h2, h3, h4, h5, h6, .head { margin-bottom:.4em; line-height:1.3em; color:#b9adbc/*d96708*/; }
+h1, h2, h3, h4, h5, h6, .head { margin-bottom:.4em; line-height:1.3em; color:#bd88bd/*d96708*/; }
 h1 { font-size:2em; line-height:1.17; }
 h2 { font-size:1.5em; }
 h3 { font-size:1.35em; }

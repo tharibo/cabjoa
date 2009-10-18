@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 07 Octobre 2009 à 23:45
+-- Généré le : Dim 18 Octobre 2009 à 20:23
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-07 20:21:08', 23, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-18 09:09:31', 24, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -2962,7 +2962,7 @@ CREATE TABLE IF NOT EXISTS `catalogsearch_query` (
   PRIMARY KEY  (`query_id`),
   KEY `FK_CATALOGSEARCH_QUERY_STORE` (`store_id`),
   KEY `IDX_SEARCH_QUERY` (`query_text`,`store_id`,`popularity`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
 
 --
 -- Contenu de la table `catalogsearch_query`
@@ -3012,7 +3012,8 @@ INSERT INTO `catalogsearch_query` (`query_id`, `query_text`, `num_results`, `pop
 (41, 'htc', 0, 1, '', '', 3, 1, 1, 1, '2009-09-07 20:51:10'),
 (42, 'touch', 0, 1, '', '', 3, 1, 1, 1, '2009-09-07 20:51:24'),
 (43, '!lkj!lkj', 0, 3, '', '', 3, 1, 1, 1, '2009-09-26 14:14:48'),
-(44, 'htc', 0, 1, '', '', 1, 1, 1, 1, '2009-09-29 21:08:00');
+(44, 'htc', 0, 1, '', '', 1, 1, 1, 1, '2009-09-29 21:08:00'),
+(45, 'magasin', 0, 1, '', '', 1, 1, 1, 1, '2009-10-18 08:35:50');
 
 -- --------------------------------------------------------
 
@@ -10736,7 +10737,7 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (4, 'Customer Service', 'three_columns', '', '', 'customer-service', '<div class="page-head">\r\n<h3>Customer Service</h3>\r\n</div>\r\n<ul class="disc" style="margin-bottom:15px;">\r\n<li><a href="#answer1">Shipping & Delivery</a></li>\r\n<li><a href="#answer2">Privacy & Security</a></li>\r\n<li><a href="#answer3">Returns & Replacements</a></li>\r\n<li><a href="#answer4">Ordering</a></li>\r\n<li><a href="#answer5">Payment, Pricing & Promotions</a></li>\r\n<li><a href="#answer6">Viewing Orders</a></li>\r\n<li><a href="#answer7">Updating Account Information</a></li>\r\n</ul>\r\n<dl>\r\n<dt id="answer1">Shipping & Delivery</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer2">Privacy & Security</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer3">Returns & Replacements</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer4">Ordering</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer5">Payment, Pricing & Promotions</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer6">Viewing Orders</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer7">Updating Account Information</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n</dl>', '2007-08-30 14:02:20', '2007-08-30 14:03:37', 1, 0, NULL, NULL, NULL, NULL),
 (5, 'Home page', 'one_column', '', '', 'home.old1', '<!-- this homepage can be used for modern theme  -->\r\n{{block type="core/template" template="sample/home.phtml"}}', '2008-04-16 14:51:52', '2009-09-06 13:58:07', 0, 0, '<!--<reference name="content">\r\n<block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="cms_page"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_viewed" name="home.reports.product.viewed" alias="product_viewed" template="reports/home_product_viewed.phtml" after="product_new"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_compared" name="home.reports.product.compared" template="reports/home_product_compared.phtml" after="product_viewed"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n</reference><reference name="right">\r\n<action method="unsetChild"><alias>right.reports.product.viewed</alias></action>\r\n<action method="unsetChild"><alias>right.reports.product.compared</alias></action>\r\n</reference>-->', '', NULL, NULL),
 (6, 'Enable Cookies', 'one_column', '', '', 'enable-cookies', '<div class="std">\r\n    <ul class="messages">\r\n        <li class="notice-msg">\r\n            <ul>\r\n                <li>Please enable cookies in your web browser to continue.</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n    <div class="page-head">\r\n        <h3><a name="top"></a>What are Cookies?</h3>\r\n    </div>\r\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website. On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically whenever you visit our site so that we can personalize your experience and provide you with better service. We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes. If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase or take advantage of certain features of our website, such as storing items in your Shopping Cart or receiving personalized recommendations. As a result, we strongly encourage you to configure your web browser to accept cookies from our website.</p>\r\n    <h3>Enabling Cookies</h3>\r\n    <ul>\r\n        <li><a href="#ie7">Internet Explorer 7.x</a></li>\r\n        <li><a href="#ie6">Internet Explorer 6.x</a></li>\r\n        <li><a href="#firefox">Mozilla/Firefox</a></li>\r\n        <li><a href="#opera">Opera 7.x</a></li>\r\n    </ul>\r\n    <h4><a name="ie7"></a>Internet Explorer 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Start Internet Explorer</p>\r\n        </li>\r\n        <li>\r\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Privacy</strong> tab</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-2.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Advanced</strong> button</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-3.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>, put another check mark in the <strong>Always accept session cookies </strong>box</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-4.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-5.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-6.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Restart Internet Explore</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="ie6"></a>Internet Explorer 6.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\r\n            <p><img src="{{skin url="images/cookies/ie6-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> tab</p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>) under <strong>Settings</strong>. Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie6-2.gif"}}" alt="" /></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="firefox"></a>Mozilla/Firefox</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/firefox.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Expand the <strong>Cookies</strong> section</p>\r\n        </li>\r\n        <li>\r\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="opera"></a>Opera 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/opera.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong> should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n</div>\r\n', '2009-09-02 23:16:57', '2009-09-02 23:16:57', 1, 0, NULL, NULL, NULL, NULL),
-(7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''''}}">\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-09-27 14:22:20', 1, 0, '', '', NULL, NULL),
+(7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''e-boutique''}}">\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-10-18 09:10:48', 1, 0, '', '', NULL, NULL),
 (8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-10-03 12:27:41', 1, 0, '', '', NULL, NULL),
 (9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL),
 (10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL),
@@ -16521,7 +16522,9 @@ CREATE TABLE IF NOT EXISTS `log_quote` (
 INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) VALUES
 (1, 31, '2009-10-07 20:25:36', NULL),
 (2, 34, '2009-10-07 21:18:30', NULL),
-(3, 32, '2009-10-07 21:21:41', NULL);
+(3, 32, '2009-10-07 21:21:41', NULL),
+(4, 36, '2009-10-18 09:48:23', NULL),
+(5, 39, '2009-10-18 16:42:12', NULL);
 
 -- --------------------------------------------------------
 
@@ -17262,7 +17265,180 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (675, 32, '2009-10-07 21:39:30'),
 (676, 32, '2009-10-07 21:40:12'),
 (677, 32, '2009-10-07 21:43:39'),
-(678, 32, '2009-10-07 21:44:16');
+(678, 32, '2009-10-07 21:44:16'),
+(679, 35, '2009-10-18 08:18:57'),
+(680, 35, '2009-10-18 08:19:26'),
+(681, 36, '2009-10-18 08:19:47'),
+(682, 35, '2009-10-18 08:19:56'),
+(683, 35, '2009-10-18 08:20:08'),
+(684, 35, '2009-10-18 08:29:38'),
+(685, 35, '2009-10-18 08:29:40'),
+(686, 35, '2009-10-18 08:29:44'),
+(687, 35, '2009-10-18 08:29:48'),
+(688, 35, '2009-10-18 08:29:51'),
+(689, 35, '2009-10-18 08:32:14'),
+(690, 35, '2009-10-18 08:32:22'),
+(691, 35, '2009-10-18 08:32:26'),
+(692, 35, '2009-10-18 08:32:29'),
+(693, 35, '2009-10-18 08:32:32'),
+(694, 35, '2009-10-18 08:32:36'),
+(695, 35, '2009-10-18 08:33:50'),
+(696, 35, '2009-10-18 08:33:55'),
+(697, 35, '2009-10-18 08:34:02'),
+(698, 35, '2009-10-18 08:34:12'),
+(699, 35, '2009-10-18 08:34:43'),
+(700, 35, '2009-10-18 08:34:55'),
+(701, 35, '2009-10-18 08:35:00'),
+(702, 36, '2009-10-18 08:35:00'),
+(703, 35, '2009-10-18 08:35:08'),
+(704, 35, '2009-10-18 08:35:09'),
+(705, 36, '2009-10-18 08:35:09'),
+(706, 35, '2009-10-18 08:35:14'),
+(707, 35, '2009-10-18 08:35:23'),
+(708, 35, '2009-10-18 08:35:25'),
+(709, 35, '2009-10-18 08:35:26'),
+(710, 36, '2009-10-18 08:35:35'),
+(711, 36, '2009-10-18 08:35:47'),
+(712, 35, '2009-10-18 08:35:49'),
+(713, 35, '2009-10-18 08:35:50'),
+(714, 35, '2009-10-18 08:35:56'),
+(715, 35, '2009-10-18 08:36:02'),
+(716, 35, '2009-10-18 08:36:09'),
+(717, 35, '2009-10-18 08:36:15'),
+(718, 35, '2009-10-18 08:36:21'),
+(719, 35, '2009-10-18 08:36:25'),
+(720, 35, '2009-10-18 08:36:28'),
+(721, 35, '2009-10-18 08:36:32'),
+(722, 35, '2009-10-18 08:36:33'),
+(723, 35, '2009-10-18 08:41:31'),
+(724, 35, '2009-10-18 08:41:35'),
+(725, 35, '2009-10-18 08:41:36'),
+(726, 35, '2009-10-18 08:42:18'),
+(727, 35, '2009-10-18 08:42:19'),
+(728, 35, '2009-10-18 08:43:09'),
+(729, 35, '2009-10-18 08:43:24'),
+(730, 35, '2009-10-18 08:43:29'),
+(731, 35, '2009-10-18 08:44:17'),
+(732, 35, '2009-10-18 08:44:34'),
+(733, 35, '2009-10-18 08:44:57'),
+(734, 35, '2009-10-18 08:44:58'),
+(735, 35, '2009-10-18 08:44:58'),
+(736, 35, '2009-10-18 08:45:49'),
+(737, 35, '2009-10-18 08:46:38'),
+(738, 35, '2009-10-18 08:46:59'),
+(739, 35, '2009-10-18 08:47:34'),
+(740, 35, '2009-10-18 08:47:45'),
+(741, 35, '2009-10-18 08:48:43'),
+(742, 35, '2009-10-18 08:49:14'),
+(743, 37, '2009-10-18 09:09:45'),
+(744, 36, '2009-10-18 09:09:53'),
+(745, 35, '2009-10-18 09:10:45'),
+(746, 36, '2009-10-18 09:10:54'),
+(747, 36, '2009-10-18 09:10:58'),
+(748, 35, '2009-10-18 09:10:59'),
+(749, 36, '2009-10-18 09:11:01'),
+(750, 35, '2009-10-18 09:11:10'),
+(751, 35, '2009-10-18 09:11:21'),
+(752, 35, '2009-10-18 09:11:27'),
+(753, 36, '2009-10-18 09:13:17'),
+(754, 36, '2009-10-18 09:21:51'),
+(755, 36, '2009-10-18 09:48:23'),
+(756, 36, '2009-10-18 09:48:26'),
+(757, 36, '2009-10-18 09:48:37'),
+(758, 36, '2009-10-18 09:49:34'),
+(759, 36, '2009-10-18 09:49:35'),
+(760, 36, '2009-10-18 09:51:04'),
+(761, 36, '2009-10-18 09:52:00'),
+(762, 36, '2009-10-18 09:53:24'),
+(763, 36, '2009-10-18 09:55:16'),
+(764, 36, '2009-10-18 09:59:16'),
+(765, 36, '2009-10-18 10:03:01'),
+(766, 36, '2009-10-18 10:04:01'),
+(767, 36, '2009-10-18 10:13:10'),
+(768, 36, '2009-10-18 10:34:05'),
+(769, 36, '2009-10-18 10:37:10'),
+(770, 36, '2009-10-18 10:39:32'),
+(771, 36, '2009-10-18 10:40:03'),
+(772, 36, '2009-10-18 10:41:31'),
+(773, 36, '2009-10-18 10:41:39'),
+(774, 36, '2009-10-18 10:41:43'),
+(775, 36, '2009-10-18 10:41:46'),
+(776, 36, '2009-10-18 10:41:53'),
+(777, 36, '2009-10-18 10:41:56'),
+(778, 36, '2009-10-18 10:41:58'),
+(779, 36, '2009-10-18 10:42:13'),
+(780, 36, '2009-10-18 10:42:16'),
+(781, 36, '2009-10-18 10:43:11'),
+(782, 36, '2009-10-18 10:43:21'),
+(783, 36, '2009-10-18 10:43:33'),
+(784, 36, '2009-10-18 10:43:36'),
+(785, 36, '2009-10-18 10:43:49'),
+(786, 36, '2009-10-18 10:44:08'),
+(787, 36, '2009-10-18 10:44:13'),
+(788, 36, '2009-10-18 10:44:20'),
+(789, 36, '2009-10-18 10:44:38'),
+(790, 36, '2009-10-18 10:45:03'),
+(791, 36, '2009-10-18 10:45:10'),
+(792, 36, '2009-10-18 10:45:17'),
+(793, 36, '2009-10-18 10:45:25'),
+(794, 36, '2009-10-18 10:45:30'),
+(795, 36, '2009-10-18 10:45:33'),
+(796, 36, '2009-10-18 10:46:31'),
+(797, 36, '2009-10-18 10:46:45'),
+(798, 36, '2009-10-18 10:47:23'),
+(799, 36, '2009-10-18 10:47:55'),
+(800, 36, '2009-10-18 10:47:59'),
+(801, 36, '2009-10-18 10:49:22'),
+(802, 36, '2009-10-18 10:49:29'),
+(803, 36, '2009-10-18 10:49:50'),
+(804, 36, '2009-10-18 10:49:54'),
+(805, 36, '2009-10-18 10:49:58'),
+(806, 36, '2009-10-18 10:50:06'),
+(807, 36, '2009-10-18 10:50:43'),
+(808, 36, '2009-10-18 10:52:02'),
+(809, 36, '2009-10-18 10:52:09'),
+(810, 36, '2009-10-18 10:52:18'),
+(811, 36, '2009-10-18 10:52:30'),
+(812, 36, '2009-10-18 10:52:37'),
+(813, 36, '2009-10-18 10:53:13'),
+(814, 36, '2009-10-18 10:53:19'),
+(815, 36, '2009-10-18 10:54:10'),
+(816, 38, '2009-10-18 16:16:04'),
+(817, 38, '2009-10-18 16:16:11'),
+(818, 38, '2009-10-18 16:16:21'),
+(819, 38, '2009-10-18 16:16:29'),
+(820, 38, '2009-10-18 16:16:43'),
+(821, 38, '2009-10-18 16:16:57'),
+(822, 39, '2009-10-18 16:17:08'),
+(823, 38, '2009-10-18 16:17:10'),
+(824, 38, '2009-10-18 16:17:29'),
+(825, 38, '2009-10-18 16:17:41'),
+(826, 38, '2009-10-18 16:17:58'),
+(827, 38, '2009-10-18 16:18:08'),
+(828, 38, '2009-10-18 16:18:17'),
+(829, 38, '2009-10-18 16:20:19'),
+(830, 38, '2009-10-18 16:20:25'),
+(831, 38, '2009-10-18 16:20:32'),
+(832, 38, '2009-10-18 16:20:38'),
+(833, 38, '2009-10-18 16:21:37'),
+(834, 38, '2009-10-18 16:21:41'),
+(835, 38, '2009-10-18 16:24:41'),
+(836, 38, '2009-10-18 16:24:43'),
+(837, 38, '2009-10-18 16:24:47'),
+(838, 38, '2009-10-18 16:25:03'),
+(839, 38, '2009-10-18 16:25:08'),
+(840, 38, '2009-10-18 16:25:11'),
+(841, 38, '2009-10-18 16:31:49'),
+(842, 39, '2009-10-18 16:42:12'),
+(843, 39, '2009-10-18 16:42:14'),
+(844, 39, '2009-10-18 16:43:19'),
+(845, 39, '2009-10-18 16:43:20'),
+(846, 39, '2009-10-18 16:43:23'),
+(847, 39, '2009-10-18 16:58:14'),
+(848, 39, '2009-10-18 16:58:56'),
+(849, 39, '2009-10-18 17:02:54'),
+(850, 39, '2009-10-18 17:05:52'),
+(851, 40, '2009-10-18 18:11:04');
 
 -- --------------------------------------------------------
 
@@ -17275,7 +17451,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=679 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=852 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -17960,7 +18136,181 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (675, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/42/s/barcelona-bamboo-platform-bed/category/10/'),
 (676, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/42/s/barcelona-bamboo-platform-bed/category/10/'),
 (677, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/42/s/barcelona-bamboo-platform-bed/category/10/'),
-(678, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/42/s/barcelona-bamboo-platform-bed/category/10/');
+(678, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/42/s/barcelona-bamboo-platform-bed/category/10/'),
+(679, 'http://192.168.1.23/~tharibo/magento/index.php', ''),
+(680, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php'),
+(681, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(682, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(683, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(684, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(685, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(686, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(687, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(688, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(689, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(690, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(691, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/?___store=default', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(692, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/?___store=default'),
+(693, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=default', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(694, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=default'),
+(695, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(696, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(697, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(698, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(699, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(700, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(701, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(702, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(703, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(704, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(705, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(706, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(707, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(708, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/bedroom/id/23/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(709, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(710, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(711, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(712, 'http://192.168.1.23/~tharibo/magento/index.php/catalogsearch/ajax/suggest/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(713, 'http://192.168.1.23/~tharibo/magento/index.php/catalogsearch/result/?q=magasin&x=0&y=0', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(714, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/catalogsearch/result/?q=magasin&x=0&y=0'),
+(715, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(716, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(717, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(718, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/');
+INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
+(719, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(720, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(721, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(722, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(723, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(724, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(725, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(726, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(727, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(728, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(729, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(730, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(731, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(732, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(733, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(734, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(735, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(736, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(737, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(738, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/103/s/steven-by-steve-madden-pryme-pump/category/18/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/?p=2'),
+(739, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/gallery/id/103/image/188/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/103/s/steven-by-steve-madden-pryme-pump/category/18/'),
+(740, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/gallery/image/187/id/103/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/gallery/id/103/image/188/'),
+(741, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/103/s/steven-by-steve-madden-pryme-pump/category/18/'),
+(742, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/41/s/akio-dresser/category/10/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(743, 'http://www.localhost.com/~tharibo/magento/index.php/', ''),
+(744, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(745, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/product/view/id/41/s/akio-dresser/category/10/'),
+(746, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(747, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/?___store=default', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(748, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(749, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(750, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(751, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(752, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(753, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(754, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(755, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9lLWJvdXRpcXVl/product/17/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(756, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(757, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(758, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/delete/id/4/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9lLWJvdXRpcXVl/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(759, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(760, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(761, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(762, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(763, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(764, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(765, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(766, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(767, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(768, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(769, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(770, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(771, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(772, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(773, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique'),
+(774, 'http://192.168.1.23/~tharibo/magento/index.php/electronics/cameras/digital-cameras.html?manufacturer=33', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(775, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique'),
+(776, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/electronics/id/13/'),
+(777, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(778, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(779, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(780, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(781, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(782, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(783, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(784, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(785, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(786, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(787, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(788, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(789, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(790, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(791, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(792, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(793, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(794, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(795, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/furniture/id/10/'),
+(796, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(797, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(798, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(799, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(800, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(801, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(802, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(803, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(804, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(805, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(806, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(807, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(808, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(809, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(810, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(811, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(812, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(813, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(814, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(815, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(816, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(817, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(818, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(819, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(820, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(821, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(822, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/'),
+(823, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(824, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(825, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(826, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(827, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(828, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(829, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(830, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(831, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(832, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(833, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(834, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(835, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(836, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(837, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(838, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/cameras/id/12/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(839, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/cameras/id/12/'),
+(840, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(841, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(842, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9lLWJvdXRpcXVl/product/17/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(843, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(844, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/delete/id/5/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jaGVja291dC9jYXJ0L2luZGV4Lw,,/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(845, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/index/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(846, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/index/'),
+(847, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(848, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(849, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(850, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(851, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2');
 
 -- --------------------------------------------------------
 
@@ -17976,7 +18326,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=41 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -18016,7 +18366,13 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (31, 'b0848d8c30332bf01fc4027739f1f4cd', '2009-10-07 20:24:44', '2009-10-07 21:09:17', 635, 1),
 (32, 'bc0205ac643db0943e06b8285caadfc0', '2009-10-07 21:10:09', '2009-10-07 21:44:16', 678, 1),
 (33, '88f3835a84979627366b20633f8a431b', '2009-10-07 21:14:36', '2009-10-07 21:16:35', 656, 1),
-(34, 'a20573f3fe4c0d63a38349dc73cf9333', '2009-10-07 21:16:56', '2009-10-07 21:18:51', 668, 1);
+(34, 'a20573f3fe4c0d63a38349dc73cf9333', '2009-10-07 21:16:56', '2009-10-07 21:18:51', 668, 1),
+(35, 'c14909d0251ceb519105551616a08986', '2009-10-18 08:18:54', '2009-10-18 09:11:27', 752, 1),
+(36, 'f76eb23b3f0b4145d5cdfc2c3cb587e6', '2009-10-18 08:19:45', '2009-10-18 10:54:10', 815, 1),
+(37, 'd7946b49703d2c7d2b2cfadf559c4e0f', '2009-10-18 09:09:44', '2009-10-18 09:09:45', 743, 1),
+(38, 'f656b676e1b55d2217ab66bb311e184f', '2009-10-18 16:16:04', '2009-10-18 16:31:49', 841, 1),
+(39, 'd353229c9851e496a42916161c871d91', '2009-10-18 16:17:08', '2009-10-18 17:05:52', 850, 1),
+(40, '937757b79ccb41201df2e4d9da59a0c6', '2009-10-18 18:11:04', '2009-10-18 18:11:04', 851, 1);
 
 -- --------------------------------------------------------
 
@@ -18073,7 +18429,13 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (31, 'http://www.localhost.com/~tharibo/magento/index.php/customer/account/login/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (32, '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497),
 (33, '', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; fr; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731434),
-(34, '', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; fr-fr) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Safari/530.17', '', 'fr-fr', -1062731497, -1062731434);
+(34, '', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; fr-fr) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Safari/530.17', '', 'fr-fr', -1062731497, -1062731434),
+(35, '', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; fr; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731499),
+(36, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497),
+(37, '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
+(38, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; fr; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731499),
+(39, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497),
+(40, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497);
 
 -- --------------------------------------------------------
 
@@ -19463,7 +19825,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
   KEY `IDX_OBJECT` (`object_id`),
   KEY `IDX_SUBTYPE` (`subtype`),
   KEY `FK_REPORT_EVENT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Contenu de la table `report_event`
@@ -19494,7 +19856,11 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 (22, '2009-10-07 21:18:23', 1, 17, 34, 1, 1),
 (23, '2009-10-07 21:18:30', 4, 17, 34, 1, 1),
 (24, '2009-10-07 21:21:36', 1, 42, 32, 1, 1),
-(25, '2009-10-07 21:21:41', 4, 42, 32, 1, 1);
+(25, '2009-10-07 21:21:41', 4, 42, 32, 1, 1),
+(26, '2009-10-18 08:46:48', 1, 103, 35, 1, 1),
+(27, '2009-10-18 08:49:10', 1, 41, 35, 1, 1),
+(28, '2009-10-18 09:48:23', 4, 17, 36, 1, 1),
+(29, '2009-10-18 16:42:12', 4, 17, 39, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -20412,7 +20778,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
   PRIMARY KEY  (`entity_id`),
   KEY `FK_SALES_QUOTE_STORE` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`,`store_id`,`is_active`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_flat_quote`
@@ -20421,7 +20787,9 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
 INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_at`, `converted_at`, `is_active`, `is_virtual`, `is_multi_shipping`, `items_count`, `items_qty`, `orig_order_id`, `store_to_base_rate`, `store_to_quote_rate`, `base_to_global_rate`, `base_to_quote_rate`, `global_currency_code`, `base_currency_code`, `store_currency_code`, `quote_currency_code`, `grand_total`, `base_grand_total`, `checkout_method`, `customer_id`, `customer_tax_class_id`, `customer_group_id`, `customer_email`, `customer_prefix`, `customer_firstname`, `customer_middlename`, `customer_lastname`, `customer_suffix`, `customer_dob`, `customer_note`, `customer_note_notify`, `customer_is_guest`, `customer_taxvat`, `remote_ip`, `applied_rule_ids`, `reserved_order_id`, `password_hash`, `coupon_code`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `gift_message_id`, `is_changed`, `trigger_recollect`, `ext_shipping_info`) VALUES
 (1, 1, '2009-10-07 20:25:35', '2009-10-07 21:09:16', '0000-00-00 00:00:00', 0, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '404.9900', '404.9900', '', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, '399.9900', '399.9900', '399.9900', '399.9900', NULL, 1, 0, NULL),
 (2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 0, NULL);
+(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 0, NULL),
+(4, 1, '2009-10-18 09:48:22', '2009-10-18 09:49:34', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
+(5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -20478,7 +20846,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
   `gift_message_id` varchar(255) default NULL,
   PRIMARY KEY  (`address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Contenu de la table `sales_flat_quote_address`
@@ -20490,7 +20858,11 @@ INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, 
 (7, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
 (8, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', NULL, 'a:0:{}', NULL),
 (11, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
-(12, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '150.0000', '2299.0000', '2299.0000', '2299.0000', '2299.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', NULL, 'a:0:{}', NULL);
+(12, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '150.0000', '2299.0000', '2299.0000', '2299.0000', '2299.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', NULL, 'a:0:{}', NULL),
+(15, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(16, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(19, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(20, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL);
 
 -- --------------------------------------------------------
 
@@ -20584,7 +20956,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
   KEY `FK_SALES_QUOTE_ITEM_SALES_QUOTE` (`quote_id`),
   KEY `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` (`parent_item_id`),
   KEY `FK_SALES_QUOTE_ITEM_CATALOG_PRODUCT_ENTITY` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item`
@@ -20609,7 +20981,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
   `value` text NOT NULL,
   PRIMARY KEY  (`option_id`),
   KEY `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item_option`
