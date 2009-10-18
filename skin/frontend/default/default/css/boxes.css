@@ -83,8 +83,8 @@ input.checkbox { margin-right:3px; }
     width:auto;
     border:0;
     padding:1px 8px;
-    background:#B9ADBC;
-    color:#fff;
+    background:#bd88bd;
+    color:#333;
     border:1px solid #918793;
     font:bold 12px arial, sans-serif !important;
     cursor:pointer;
@@ -318,7 +318,7 @@ table.view-by td.sort-by { text-align:right; padding-right:44px; }
 table.view-by select { width:85px; }
 table.pager, table.view-by {
     width:100%;
-    background:url(../images/pager_bg.gif) repeat-x 0 100% #fff;
+    background:url(../images/degrade.png) repeat-x 0 100% #fff;
     font-size:.95em;
     }
 table.pager td {
@@ -364,7 +364,7 @@ table.view-by td {
 .col-main { float:left; }
 .col-right { float:right; }
 .col-1-layout .col-main { float:none; margin:0; }
-.col-2-right-layout .col-main { float:left; width:590px;  }
+.col-2-right-layout .col-main { float:left; width:590px; background-color: #434343;  }
 .col-2-left-layout .col-main { float:right; width:590px; }
 .col-3-layout .col-main { width:400; margin-left:17px; }
 
@@ -376,12 +376,12 @@ table.view-by td {
 .middle-container {  }
 .middle
 { /*background:url(../images/main_bg.gif) no-repeat #fffffe;  padding:25px 25px 80px 25px;*/ 
-	background-color: #e9e4ed;
-	color: #988c9b;
+	background-color: #333;
+	color: white;
 }
 .col-1-layout
 {
-	background-color: #141414;
+	background-color: #333
 	color: white;
 }
 
@@ -409,7 +409,7 @@ h1#logo {
 	float: right;
     text-align:right;
     /*padding:0 10px;*/
-    color:#988c9b;
+    color:#999;
 	line-height: 1em;
 	margin-top: 5px;
 	margin-bottom: -40px;
@@ -442,7 +442,7 @@ h1#logo {
 	padding-right: 5px;
 }
 .shop-access a, .shop-access a:hover { color:#b66bce; font-size:.95em; }
-.shop-access a { color:#988c9b; }
+.shop-access a { color:#999; }
 .shop-access li.last { padding-right:0; background:none; }
 .language-switcher { float:right; margin-top:5px; margin-left:60px; }
 .language-switcher label { color:#A7C6DD; padding-right:5px; }
@@ -506,12 +506,19 @@ div.mini-search
 
 
 /* Base Mini */
-.base-mini { border:1px solid #c4c1bc; background:#fff; line-height:1.3em;  font-size:.95em;  }
-.base-mini .head { margin:0 1px; border-bottom:1px solid #ddd; background:url(../images/base_mini_head_bg.gif) repeat-x #fff; padding:2px 8px; }
-.base-mini .head h4 { min-height:16px; color:#e26703; background-repeat:no-repeat; background-position:0 0; padding:1px 0 1px 21px; text-transform:uppercase; }
+.base-mini { /*border:1px solid #c4c1bc;*/ background:#fff; line-height:1.3em;  font-size:.95em;  }
+.base-mini .head
+{
+	margin:0 1px;
+	border-bottom:1px solid #ddd;
+	/*background:url(../images/base_mini_head_bg.gif) repeat-x #fff;*/
+	background-color: #e9e4ed;
+	padding:2px 8px;
+}
+.base-mini .head h4 { min-height:16px; color: #510154; background-repeat:no-repeat; background-position:0 0; padding:1px 0 1px 21px; text-transform:uppercase; }
 .base-mini .head h4 .count { text-transform:none; color:#2f2f2f; white-space:nowrap; font-weight:normal; font-size:.95em; }
 .base-mini h5 { font-size:1em; }
-.base-mini .content, .base-mini ol { background:#f8f7f5; }
+.base-mini .content, .base-mini ol { background:#434343; color: white; }
 .base-mini ol li { padding:7px 4px 7px 8px; }
 .base-mini ol li.odd { background:#f4f3f3; }
 .base-mini ol li.even { background:#fafafa; }
@@ -632,7 +639,7 @@ div.mini-search
 
 /* Regular price */
 .regular-price { color:#c76200; }
-.regular-price .price { font-weight:bold; font-size:13px; color:#510154; }
+.regular-price .price { font-weight:bold; font-size:13px; color:#999; }
 
 /* Old price */
 .old-price { margin:0; }
@@ -702,9 +709,9 @@ a.minimal-price-link .price { font-weight:normal; color:#1e7ec8; }
 /********************** Catalog Listing */
 .catalog-listing { line-height:1.35em; }
 .catalog-listing h5 { margin-bottom:.4em; font-size:1.05em; }
-.catalog-listing h5 a, .catalog-listing h5 a:hover { color:#510154; text-decoration:underline; }
+.catalog-listing h5 a, .catalog-listing h5 a:hover { color: white; text-decoration:underline; }
 .catalog-listing .add-to { margin:.7em 0; color:#555; line-height:1.3em; font-size:.95em; font-weight:bold; }
-.catalog-listing .add-to a { text-decoration:underline; color: #988c9b; }
+.catalog-listing .add-to a { text-decoration:underline; color: #999; }
 .catalog-listing .add-to a:hover { text-decoration:underline; color: #b66bce; }
 .catalog-listing .ratings { margin-bottom:.6em; }
 
@@ -870,18 +877,19 @@ table.recently-list td { width:20%; }
 .listing-type-grid .actions { margin:10px 0; text-align:center; }*/
 
 /* Grid Type */
-.listing-type-grid { background:url(../images/bkg_products-grid3.gif) 0 0 repeat; }
-.listing-type-grid .grid-row { border-bottom:1px solid #d9dde3; }
+.listing-type-grid { /*background:url(../images/bkg_products-grid3.gif) 0 0 repeat;*/ }
+.listing-type-grid .grid-row { /*border-bottom:1px solid #d9dde3;*/ }
 .listing-type-grid li.item { float:left; width:138px; padding:12px 10px; line-height:1.6em; overflow:hidden; }
 .listing-type-grid .last { border-bottom:0; }
 .listing-type-grid .product-image { text-align:center; }
+.listing-type-grid .product-image img { border: #999 solid 6px; }
 .listing-type-grid .rating-box { float:left; margin-left:0; margin-right:5px; }
 .listing-type-grid .actions { margin:10px 0; text-align:center; }
 /* Rewrites for different layouts */
 .col-1-layout .listing-type-grid { background-image:url(../images/bkg_products-grid1.gif); }
 .col-1-layout .listing-type-grid li.item { width:280px; }
 .col-2-left-layout .listing-type-grid,
-.col-2-right-layout .listing-type-grid { background-image:url(../images/bkg_products-grid2.gif); }
+.col-2-right-layout .listing-type-grid { /*background-image:url(../images/bkg_products-grid2.gif);*/ }
 .col-2-left-layout .listing-type-grid li.item,
 .col-2-right-layout .listing-type-grid li.item { width:208px; }
 
@@ -1595,7 +1603,7 @@ table.print .price-incl-tax .price { display:inline; }
 .auto-width { width:auto; }
 
 /* Link highlights */
-.link-cart { color:#918793 !important; font-weight:bold !important; }
+.link-cart { color: #999 !important; font-weight:bold !important; }
 .link-cart:hover{ color: #b66bce !important;}
 .link-remove { color:#646464 !important; }
 .link-print { background:url(../images/icon_printer.gif) no-repeat 0 2px; padding-left:23px; }
