@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 18 Octobre 2009 à 20:23
+-- Généré le : Lun 19 Octobre 2009 à 23:54
 -- Version du serveur: 5.0.75
 -- Version de PHP: 5.2.6-3ubuntu4.2
 
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-18 09:09:31', 24, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-10-19 20:59:38', 25, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -10738,10 +10738,10 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (5, 'Home page', 'one_column', '', '', 'home.old1', '<!-- this homepage can be used for modern theme  -->\r\n{{block type="core/template" template="sample/home.phtml"}}', '2008-04-16 14:51:52', '2009-09-06 13:58:07', 0, 0, '<!--<reference name="content">\r\n<block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="cms_page"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_viewed" name="home.reports.product.viewed" alias="product_viewed" template="reports/home_product_viewed.phtml" after="product_new"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_compared" name="home.reports.product.compared" template="reports/home_product_compared.phtml" after="product_viewed"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n</reference><reference name="right">\r\n<action method="unsetChild"><alias>right.reports.product.viewed</alias></action>\r\n<action method="unsetChild"><alias>right.reports.product.compared</alias></action>\r\n</reference>-->', '', NULL, NULL),
 (6, 'Enable Cookies', 'one_column', '', '', 'enable-cookies', '<div class="std">\r\n    <ul class="messages">\r\n        <li class="notice-msg">\r\n            <ul>\r\n                <li>Please enable cookies in your web browser to continue.</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n    <div class="page-head">\r\n        <h3><a name="top"></a>What are Cookies?</h3>\r\n    </div>\r\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website. On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically whenever you visit our site so that we can personalize your experience and provide you with better service. We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes. If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase or take advantage of certain features of our website, such as storing items in your Shopping Cart or receiving personalized recommendations. As a result, we strongly encourage you to configure your web browser to accept cookies from our website.</p>\r\n    <h3>Enabling Cookies</h3>\r\n    <ul>\r\n        <li><a href="#ie7">Internet Explorer 7.x</a></li>\r\n        <li><a href="#ie6">Internet Explorer 6.x</a></li>\r\n        <li><a href="#firefox">Mozilla/Firefox</a></li>\r\n        <li><a href="#opera">Opera 7.x</a></li>\r\n    </ul>\r\n    <h4><a name="ie7"></a>Internet Explorer 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Start Internet Explorer</p>\r\n        </li>\r\n        <li>\r\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Privacy</strong> tab</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-2.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Advanced</strong> button</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-3.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>, put another check mark in the <strong>Always accept session cookies </strong>box</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-4.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-5.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-6.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Restart Internet Explore</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="ie6"></a>Internet Explorer 6.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\r\n            <p><img src="{{skin url="images/cookies/ie6-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> tab</p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>) under <strong>Settings</strong>. Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie6-2.gif"}}" alt="" /></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="firefox"></a>Mozilla/Firefox</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/firefox.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Expand the <strong>Cookies</strong> section</p>\r\n        </li>\r\n        <li>\r\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="opera"></a>Opera 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/opera.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong> should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n</div>\r\n', '2009-09-02 23:16:57', '2009-09-02 23:16:57', 1, 0, NULL, NULL, NULL, NULL),
 (7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''e-boutique''}}">\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-10-18 09:10:48', 1, 0, '', '', NULL, NULL),
-(8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-10-03 12:27:41', 1, 0, '', '', NULL, NULL),
+(8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	text-align: left;\r\n	margin-right: 5px;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-10-19 21:03:49', 1, 0, '', '', NULL, NULL),
 (9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL),
 (10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL),
-(11, 'Création', 'one_column', '', '', 'creation', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#buttons\r\n{\r\n	clear: both;\r\n	float: left;\r\n	width: 500px;\r\n	text-align: left;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/creation.jpg''}}'' alt=''Devenez créateur de vos bijoux''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Devenez créateur de vos bijoux</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n<div id=''buttons''>\r\n	<a href=''{{store url=''e-boutique''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_e-boutique.png''}}'' alt="Plus de choix sur l''e-boutique"/>\r\n	</a>\r\n	<a href=''{{store url=''contacts''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_conseil.png''}}'' alt="Besoin d''un conseil ?"/>\r\n	</a>\r\n</div>\r\n\r\n\r\n</div>', '2009-10-05 19:35:02', '2009-10-05 19:50:58', 1, 0, '', '', NULL, NULL);
+(11, 'Création', 'one_column', '', '', 'creation', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	text-align: left;\r\n	margin-right: 5px;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#buttons\r\n{\r\n	clear: both;\r\n	float: left;\r\n	width: 500px;\r\n	text-align: left;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/creation.jpg''}}'' alt=''Devenez créateur de vos bijoux''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Devenez créateur de vos bijoux</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n<div id=''buttons''>\r\n	<a href=''{{store url=''e-boutique''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_e-boutique.png''}}'' alt="Plus de choix sur l''e-boutique"/>\r\n	</a>\r\n	<a href=''{{store url=''contacts''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_conseil.png''}}'' alt="Besoin d''un conseil ?"/>\r\n	</a>\r\n</div>\r\n\r\n\r\n</div>', '2009-10-05 19:35:02', '2009-10-19 21:04:11', 1, 0, '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -16524,7 +16524,8 @@ INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) V
 (2, 34, '2009-10-07 21:18:30', NULL),
 (3, 32, '2009-10-07 21:21:41', NULL),
 (4, 36, '2009-10-18 09:48:23', NULL),
-(5, 39, '2009-10-18 16:42:12', NULL);
+(5, 39, '2009-10-18 16:42:12', NULL),
+(6, 41, '2009-10-19 21:44:10', NULL);
 
 -- --------------------------------------------------------
 
@@ -17438,7 +17439,51 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (848, 39, '2009-10-18 16:58:56'),
 (849, 39, '2009-10-18 17:02:54'),
 (850, 39, '2009-10-18 17:05:52'),
-(851, 40, '2009-10-18 18:11:04');
+(851, 40, '2009-10-18 18:11:04'),
+(852, 41, '2009-10-19 21:01:36'),
+(853, 41, '2009-10-19 21:01:43'),
+(854, 41, '2009-10-19 21:02:20'),
+(855, 41, '2009-10-19 21:02:27'),
+(856, 41, '2009-10-19 21:04:25'),
+(857, 41, '2009-10-19 21:06:30'),
+(858, 41, '2009-10-19 21:06:50'),
+(859, 41, '2009-10-19 21:08:23'),
+(860, 41, '2009-10-19 21:09:20'),
+(861, 41, '2009-10-19 21:09:43'),
+(862, 41, '2009-10-19 21:09:51'),
+(863, 41, '2009-10-19 21:17:06'),
+(864, 41, '2009-10-19 21:17:14'),
+(865, 41, '2009-10-19 21:17:20'),
+(866, 41, '2009-10-19 21:17:32'),
+(867, 41, '2009-10-19 21:17:39'),
+(868, 41, '2009-10-19 21:17:43'),
+(869, 41, '2009-10-19 21:17:46'),
+(870, 41, '2009-10-19 21:17:49'),
+(871, 41, '2009-10-19 21:17:51'),
+(872, 41, '2009-10-19 21:17:55'),
+(873, 41, '2009-10-19 21:18:02'),
+(874, 41, '2009-10-19 21:18:10'),
+(875, 41, '2009-10-19 21:44:10'),
+(876, 41, '2009-10-19 21:44:12'),
+(877, 41, '2009-10-19 21:48:24'),
+(878, 41, '2009-10-19 21:48:33'),
+(879, 41, '2009-10-19 21:49:54'),
+(880, 41, '2009-10-19 21:50:27'),
+(881, 41, '2009-10-19 21:50:42'),
+(882, 41, '2009-10-19 21:50:43'),
+(883, 41, '2009-10-19 21:50:46'),
+(884, 41, '2009-10-19 21:50:47'),
+(885, 41, '2009-10-19 21:50:58'),
+(886, 41, '2009-10-19 21:50:58'),
+(887, 41, '2009-10-19 21:52:22'),
+(888, 41, '2009-10-19 21:52:25'),
+(889, 41, '2009-10-19 21:52:27'),
+(890, 41, '2009-10-19 21:52:28'),
+(891, 41, '2009-10-19 21:52:31'),
+(892, 41, '2009-10-19 21:52:31'),
+(893, 41, '2009-10-19 21:52:33'),
+(894, 41, '2009-10-19 21:52:33'),
+(895, 41, '2009-10-19 21:52:41');
 
 -- --------------------------------------------------------
 
@@ -17451,7 +17496,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL default '',
   `referer` varchar(255) default NULL,
   PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=852 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=896 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -18310,7 +18355,51 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (848, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
 (849, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
 (850, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
-(851, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2');
+(851, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2'),
+(852, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2'),
+(853, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(854, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(855, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(856, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(857, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(858, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(859, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(860, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(861, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=3', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(862, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=4', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=3'),
+(863, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=4', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=3'),
+(864, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=4'),
+(865, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(866, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(867, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(868, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(869, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(870, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(871, 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(872, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(873, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(874, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'http://192.168.1.23/~tharibo/magento/index.php/contacts/?___store=defaultcontact'),
+(875, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9lLWJvdXRpcXVl/product/17/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(876, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(877, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/'),
+(878, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(879, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(880, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(881, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(882, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(883, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(884, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(885, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(886, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(887, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(888, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(889, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(890, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(891, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(892, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(893, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(894, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(895, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/');
 
 -- --------------------------------------------------------
 
@@ -18326,7 +18415,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL default '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=41 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=42 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -18372,7 +18461,8 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (37, 'd7946b49703d2c7d2b2cfadf559c4e0f', '2009-10-18 09:09:44', '2009-10-18 09:09:45', 743, 1),
 (38, 'f656b676e1b55d2217ab66bb311e184f', '2009-10-18 16:16:04', '2009-10-18 16:31:49', 841, 1),
 (39, 'd353229c9851e496a42916161c871d91', '2009-10-18 16:17:08', '2009-10-18 17:05:52', 850, 1),
-(40, '937757b79ccb41201df2e4d9da59a0c6', '2009-10-18 18:11:04', '2009-10-18 18:11:04', 851, 1);
+(40, '937757b79ccb41201df2e4d9da59a0c6', '2009-10-18 18:11:04', '2009-10-18 18:11:04', 851, 1),
+(41, 'fd726cdb0e2985a011730b3ba4e691eb', '2009-10-19 21:01:36', '2009-10-19 21:52:41', 895, 1);
 
 -- --------------------------------------------------------
 
@@ -18435,7 +18525,8 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (37, '', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', 2130706433, 2130706433),
 (38, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique/', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; fr; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731499),
 (39, 'http://192.168.1.23/~tharibo/magento/index.php/customer/account/login/', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497),
-(40, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497);
+(40, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497),
+(41, 'http://192.168.1.23/~tharibo/magento/index.php/e-boutique?p=2', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'en-us,en;q=0.5', -1062731497, -1062731497);
 
 -- --------------------------------------------------------
 
@@ -19825,7 +19916,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
   KEY `IDX_OBJECT` (`object_id`),
   KEY `IDX_SUBTYPE` (`subtype`),
   KEY `FK_REPORT_EVENT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `report_event`
@@ -19860,7 +19951,8 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 (26, '2009-10-18 08:46:48', 1, 103, 35, 1, 1),
 (27, '2009-10-18 08:49:10', 1, 41, 35, 1, 1),
 (28, '2009-10-18 09:48:23', 4, 17, 36, 1, 1),
-(29, '2009-10-18 16:42:12', 4, 17, 39, 1, 1);
+(29, '2009-10-18 16:42:12', 4, 17, 39, 1, 1),
+(30, '2009-10-19 21:44:10', 4, 17, 41, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -20778,7 +20870,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
   PRIMARY KEY  (`entity_id`),
   KEY `FK_SALES_QUOTE_STORE` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`,`store_id`,`is_active`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `sales_flat_quote`
@@ -20789,7 +20881,8 @@ INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_
 (2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
 (3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 0, NULL),
 (4, 1, '2009-10-18 09:48:22', '2009-10-18 09:49:34', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
-(5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL);
+(5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
+(6, 1, '2009-10-19 21:44:10', '2009-10-19 21:52:41', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '354.9900', '354.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -20846,7 +20939,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
   `gift_message_id` varchar(255) default NULL,
   PRIMARY KEY  (`address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Contenu de la table `sales_flat_quote_address`
@@ -20862,7 +20955,9 @@ INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, 
 (15, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
 (16, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
 (19, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
-(20, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL);
+(20, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(23, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'billing', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(24, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'shipping', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '5.0000', '5.0000', '0.0000', '0.0000', '0.0000', '0.0000', '354.9900', '354.9900', NULL, 'a:0:{}', NULL);
 
 -- --------------------------------------------------------
 
@@ -20956,7 +21051,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
   KEY `FK_SALES_QUOTE_ITEM_SALES_QUOTE` (`quote_id`),
   KEY `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` (`parent_item_id`),
   KEY `FK_SALES_QUOTE_ITEM_CATALOG_PRODUCT_ENTITY` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item`
@@ -20965,7 +21060,8 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
 INSERT INTO `sales_flat_quote_item` (`item_id`, `quote_id`, `created_at`, `updated_at`, `product_id`, `parent_item_id`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `weight`, `qty`, `price`, `base_price`, `custom_price`, `discount_percent`, `discount_amount`, `base_discount_amount`, `tax_percent`, `tax_amount`, `base_tax_amount`, `row_total`, `base_row_total`, `row_total_with_discount`, `row_weight`, `product_type`, `base_tax_before_discount`, `tax_before_discount`, `original_custom_price`, `gift_message_id`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`) VALUES
 (1, 1, '2009-10-07 20:25:36', '2009-10-07 21:09:16', 18, NULL, 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, '13.6000', '1.0000', '399.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '13.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
 (2, 2, '2009-10-07 21:18:30', '2009-10-07 21:18:51', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
-(3, 3, '2009-10-07 21:21:41', '2009-10-07 21:44:15', 42, NULL, 0, 'bar1234', 'Barcelona Bamboo Platform Bed', NULL, '', NULL, 0, 0, 0, '150.0000', '1.0000', '2299.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', '2299.0000', '150.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
+(3, 3, '2009-10-07 21:21:41', '2009-10-07 21:44:15', 42, NULL, 0, 'bar1234', 'Barcelona Bamboo Platform Bed', NULL, '', NULL, 0, 0, 0, '150.0000', '1.0000', '2299.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', '2299.0000', '150.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(6, 6, '2009-10-19 21:44:10', '2009-10-19 21:52:41', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
 
 -- --------------------------------------------------------
 
@@ -20981,7 +21077,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
   `value` text NOT NULL,
   PRIMARY KEY  (`option_id`),
   KEY `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item_option`
@@ -20990,7 +21086,8 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
 INSERT INTO `sales_flat_quote_item_option` (`option_id`, `item_id`, `product_id`, `code`, `value`) VALUES
 (1, 1, 18, 'info_buyRequest', 'a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}'),
 (2, 2, 17, 'info_buyRequest', 'a:4:{s:4:"uenc";s:148:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC8xNy9zL2JsYWNrYmVycnktODEwMC1wZWFybC9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"17";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}'),
-(3, 3, 42, 'info_buyRequest', 'a:4:{s:4:"uenc";s:160:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80Mi9zL2JhcmNlbG9uYS1iYW1ib28tcGxhdGZvcm0tYmVkL2NhdGVnb3J5LzEwLw,,";s:7:"product";s:2:"42";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}');
+(3, 3, 42, 'info_buyRequest', 'a:4:{s:4:"uenc";s:160:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL3Byb2R1Y3Qvdmlldy9pZC80Mi9zL2JhcmNlbG9uYS1iYW1ib28tcGxhdGZvcm0tYmVkL2NhdGVnb3J5LzEwLw,,";s:7:"product";s:2:"42";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}'),
+(6, 6, 17, 'info_buyRequest', 'a:3:{s:4:"uenc";s:76:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9lLWJvdXRpcXVl";s:7:"product";s:2:"17";s:3:"qty";i:1;}');
 
 -- --------------------------------------------------------
 
@@ -21023,7 +21120,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_payment` (
   `ideal_issuer_list` varchar(255) default NULL,
   PRIMARY KEY  (`payment_id`),
   KEY `FK_SALES_QUOTE_PAYMENT_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `sales_flat_quote_payment`
@@ -21031,7 +21128,8 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_payment` (
 
 INSERT INTO `sales_flat_quote_payment` (`payment_id`, `quote_id`, `created_at`, `updated_at`, `method`, `cc_type`, `cc_number_enc`, `cc_last4`, `cc_cid_enc`, `cc_owner`, `cc_exp_month`, `cc_exp_year`, `cc_ss_owner`, `cc_ss_start_month`, `cc_ss_start_year`, `cybersource_token`, `paypal_correlation_id`, `paypal_payer_id`, `paypal_payer_status`, `po_number`, `ideal_issuer_id`, `ideal_issuer_list`) VALUES
 (1, 1, '2009-10-07 20:26:33', '2009-10-07 21:09:16', 'cybermut_payment', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
-(2, 2, '2009-10-07 21:18:51', '2009-10-07 21:18:51', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL);
+(2, 2, '2009-10-07 21:18:51', '2009-10-07 21:18:51', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
+(3, 6, '2009-10-19 21:48:32', '2009-10-19 21:52:33', 'checkmo', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -21053,14 +21151,15 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_shipping_rate` (
   `method_title` varchar(255) default NULL,
   PRIMARY KEY  (`rate_id`),
   KEY `FK_SALES_QUOTE_SHIPPING_RATE_ADDRESS` (`address_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `sales_flat_quote_shipping_rate`
 --
 
 INSERT INTO `sales_flat_quote_shipping_rate` (`rate_id`, `address_id`, `created_at`, `updated_at`, `carrier`, `carrier_title`, `code`, `method`, `method_description`, `price`, `method_title`) VALUES
-(4, 4, '2009-10-07 21:01:56', '2009-10-07 21:09:17', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed');
+(4, 4, '2009-10-07 21:01:56', '2009-10-07 21:09:17', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed'),
+(7, 24, '2009-10-19 21:52:41', '2009-10-19 21:52:41', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed');
 
 -- --------------------------------------------------------
 

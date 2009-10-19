@@ -26,7 +26,6 @@
 ?>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 <div class="page-head">
-    <h3><?php echo Mage::helper('contacts')->__('Contact Us') ?></h3>
 </div>
 
 <!-- Personnalisation -->
@@ -41,6 +40,8 @@
 #text
 {
 	float: right;
+	text-align: left;
+	margin-right: 5px;
 	width: 60%;
 }
 #text-left-col
@@ -60,7 +61,7 @@
 	float: left;
 	width: 500px;
 	text-align: left;
-	padding-top: 181px;
+	padding-top: 144px;
 	padding-left: 3px;
 }
 #form
@@ -78,6 +79,7 @@
 </div>
 
 <div id='text'>
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
 	<span id='text-left-col'>
 Cabrera Joaillier offre un large éventail de collections de bijoux en argent, favorisant la créativité, l'original et la tendance.
 <br>

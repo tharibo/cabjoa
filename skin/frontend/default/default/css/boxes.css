@@ -370,7 +370,7 @@ table.view-by td {
 
 /* Style */
 .header { position:relative; }
-.header-top-container { border-bottom:medium solid #141414; }
+.header-top-container { /*border-bottom:medium solid #141414;*/ }
 .header-top { /*padding:10px;*/ }
 .header-nav-container { float:center; /*background:url(../images/nav_bg.jpg) repeat-y 50% 0 #0a263d;*/ }
 .middle-container {  }
