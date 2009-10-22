@@ -262,10 +262,10 @@ td.label        { font-weight:bold; }
 .data-table th a,
 .data-table th a:hover { color:#fff; }
 .data-table td { padding:3px 8px; }
-.data-table thead tr th { background:url(../images/data_table_th_bg.gif) repeat-x 0 100% #d9e5ee; }
+.data-table thead tr th { background:url(../images/data_table_th_bg.gif) repeat-x 0 100% #e8dee6; }
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
 .data-table tfoot tr.first { background:url(../images/base_mini_actions_bg.gif) 0 0 repeat-x; }
-.data-table tfoot tr { background-color:#DEE5E8 !important; }
+.data-table tfoot tr { background-color: #e8dee6 !important; }
 .data-table tfoot td { padding-top:1px; padding-bottom:1px; border-bottom:0; border-right:1px solid #d9dde3; }
 .data-table tbody td { border-bottom:1px solid #d9dde3; border-right:1px solid #d9dde3; }
 /* Bundle Products */
@@ -481,7 +481,7 @@ div.mini-search
 .side-col .actions {
     padding:4px 0;
     font-size:.95em;
-    text-align:right;
+    text-align: center;
     }
 .side-col .actions a, .side-col .actions a:hover { text-decoration:underline; }
 .widget-btn { float:right; font-size:11px; margin:0 3px 1px 5px; }
