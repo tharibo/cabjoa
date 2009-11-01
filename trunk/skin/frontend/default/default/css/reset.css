@@ -57,7 +57,7 @@ q:before, q:after{content:'';}
 form { display:inline;}
 fieldset { border:none; }
 legend {display:none;}
-label { color:#666; /*font-size:.95em;*/  font-weight:bold; }
+label { color:#bd88bd; /*font-size:.95em;*/  font-weight:bold; }
 input, select, button { vertical-align:middle; }
 
 /* Lists */
