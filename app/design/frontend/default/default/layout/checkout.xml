@@ -68,7 +68,7 @@ Default layout, loads most of the pages
                 <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/item/default.phtml</template></action>
 
                 <block type="core/text_list" name="checkout.cart.top_methods" as="top_methods">
-                    <block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/>
+                    <!--block type="checkout/onepage_link" name="checkout.cart.methods.onepage" template="checkout/onepage/link.phtml"/-->
                 </block>
 
                 <block type="core/text_list" name="checkout.cart.methods" as="methods">
