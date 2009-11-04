@@ -120,7 +120,7 @@
 ## you can put here your magento root folder
 ## path relative to web root
 
-    #RewriteBase /magento/
+    #RewriteBase ~tharibo/magento/
 
 ############################################
 ## workaround for HTTP authorization

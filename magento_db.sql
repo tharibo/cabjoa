@@ -1,43 +1,49 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.3deb1ubuntu1.2
+-- version 3.2.2.1deb1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Nov 02, 2009 at 10:36 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.4-2ubuntu5.7
+-- Serveur: localhost
+-- Généré le : Mar 03 Novembre 2009 à 01:10
+-- Version du serveur: 5.1.37
+-- Version de PHP: 5.2.10-2ubuntu6
 
 SET FOREIGN_KEY_CHECKS=0;
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Database: `magento_db`
+-- Base de données: `magento_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adminnotification_inbox`
+-- Structure de la table `adminnotification_inbox`
 --
 
+DROP TABLE IF EXISTS `adminnotification_inbox`;
 CREATE TABLE IF NOT EXISTS `adminnotification_inbox` (
-  `notification_id` int(10) unsigned NOT NULL auto_increment,
-  `severity` tinyint(3) unsigned NOT NULL default '0',
+  `notification_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `severity` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text,
   `url` varchar(255) NOT NULL,
-  `is_read` tinyint(1) unsigned NOT NULL default '0',
-  `is_remove` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`notification_id`),
+  `is_read` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_remove` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`notification_id`),
   KEY `IDX_SEVERITY` (`severity`),
   KEY `IDX_IS_READ` (`is_read`),
   KEY `IDX_IS_REMOVE` (`is_remove`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
--- Dumping data for table `adminnotification_inbox`
+-- Contenu de la table `adminnotification_inbox`
 --
 
 INSERT INTO `adminnotification_inbox` (`notification_id`, `severity`, `date_added`, `title`, `description`, `url`, `is_read`, `is_remove`) VALUES
@@ -74,42 +80,44 @@ INSERT INTO `adminnotification_inbox` (`notification_id`, `severity`, `date_adde
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_assert`
+-- Structure de la table `admin_assert`
 --
 
+DROP TABLE IF EXISTS `admin_assert`;
 CREATE TABLE IF NOT EXISTS `admin_assert` (
-  `assert_id` int(10) unsigned NOT NULL auto_increment,
-  `assert_type` varchar(20) NOT NULL default '',
+  `assert_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assert_type` varchar(20) NOT NULL DEFAULT '',
   `assert_data` text,
-  PRIMARY KEY  (`assert_id`)
+  PRIMARY KEY (`assert_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ACL Asserts' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `admin_assert`
+-- Contenu de la table `admin_assert`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_role`
+-- Structure de la table `admin_role`
 --
 
+DROP TABLE IF EXISTS `admin_role`;
 CREATE TABLE IF NOT EXISTS `admin_role` (
-  `role_id` int(10) unsigned NOT NULL auto_increment,
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `tree_level` tinyint(3) unsigned NOT NULL default '0',
-  `sort_order` tinyint(3) unsigned NOT NULL default '0',
-  `role_type` char(1) NOT NULL default '0',
-  `user_id` int(11) unsigned NOT NULL default '0',
-  `role_name` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`role_id`),
+  `role_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `tree_level` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `sort_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `role_type` char(1) NOT NULL DEFAULT '0',
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `role_name` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`role_id`),
   KEY `parent_id` (`parent_id`,`sort_order`),
   KEY `tree_level` (`tree_level`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='ACL Roles' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `admin_role`
+-- Contenu de la table `admin_role`
 --
 
 INSERT INTO `admin_role` (`role_id`, `parent_id`, `tree_level`, `sort_order`, `role_type`, `user_id`, `role_name`) VALUES
@@ -120,24 +128,25 @@ INSERT INTO `admin_role` (`role_id`, `parent_id`, `tree_level`, `sort_order`, `r
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_rule`
+-- Structure de la table `admin_rule`
 --
 
+DROP TABLE IF EXISTS `admin_rule`;
 CREATE TABLE IF NOT EXISTS `admin_rule` (
-  `rule_id` int(10) unsigned NOT NULL auto_increment,
-  `role_id` int(10) unsigned NOT NULL default '0',
-  `resource_id` varchar(255) NOT NULL default '',
-  `privileges` varchar(20) NOT NULL default '',
-  `assert_id` int(10) unsigned NOT NULL default '0',
-  `role_type` char(1) default NULL,
-  `permission` varchar(10) default NULL,
-  PRIMARY KEY  (`rule_id`),
+  `rule_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `resource_id` varchar(255) NOT NULL DEFAULT '',
+  `privileges` varchar(20) NOT NULL DEFAULT '',
+  `assert_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `role_type` char(1) DEFAULT NULL,
+  `permission` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`rule_id`),
   KEY `resource` (`resource_id`,`role_id`),
   KEY `role_id` (`role_id`,`resource_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='ACL Rules' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `admin_rule`
+-- Contenu de la table `admin_rule`
 --
 
 INSERT INTO `admin_rule` (`rule_id`, `role_id`, `resource_id`, `privileges`, `assert_id`, `role_type`, `permission`) VALUES
@@ -146,202 +155,211 @@ INSERT INTO `admin_rule` (`rule_id`, `role_id`, `resource_id`, `privileges`, `as
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin_user`
+-- Structure de la table `admin_user`
 --
 
+DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE IF NOT EXISTS `admin_user` (
-  `user_id` mediumint(9) unsigned NOT NULL auto_increment,
-  `firstname` varchar(32) NOT NULL default '',
-  `lastname` varchar(32) NOT NULL default '',
-  `email` varchar(128) NOT NULL default '',
-  `username` varchar(40) NOT NULL default '',
-  `password` varchar(40) NOT NULL default '',
-  `created` datetime NOT NULL default '0000-00-00 00:00:00',
-  `modified` datetime default NULL,
-  `logdate` datetime default NULL,
-  `lognum` smallint(5) unsigned NOT NULL default '0',
-  `reload_acl_flag` tinyint(1) NOT NULL default '0',
-  `is_active` tinyint(1) NOT NULL default '1',
+  `user_id` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(32) NOT NULL DEFAULT '',
+  `lastname` varchar(32) NOT NULL DEFAULT '',
+  `email` varchar(128) NOT NULL DEFAULT '',
+  `username` varchar(40) NOT NULL DEFAULT '',
+  `password` varchar(40) NOT NULL DEFAULT '',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` datetime DEFAULT NULL,
+  `logdate` datetime DEFAULT NULL,
+  `lognum` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `reload_acl_flag` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `extra` text,
-  PRIMARY KEY  (`user_id`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `admin_user`
+-- Contenu de la table `admin_user`
 --
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-11-02 21:34:24', 37, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-11-02 22:24:53', 38, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `amazonpayments_api_debug`
+-- Structure de la table `amazonpayments_api_debug`
 --
 
+DROP TABLE IF EXISTS `amazonpayments_api_debug`;
 CREATE TABLE IF NOT EXISTS `amazonpayments_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `transaction_id` varchar(255) NOT NULL default '',
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `transaction_id` varchar(255) NOT NULL DEFAULT '',
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `amazonpayments_api_debug`
+-- Contenu de la table `amazonpayments_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_assert`
+-- Structure de la table `api_assert`
 --
 
+DROP TABLE IF EXISTS `api_assert`;
 CREATE TABLE IF NOT EXISTS `api_assert` (
-  `assert_id` int(10) unsigned NOT NULL auto_increment,
-  `assert_type` varchar(20) NOT NULL default '',
+  `assert_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `assert_type` varchar(20) NOT NULL DEFAULT '',
   `assert_data` text,
-  PRIMARY KEY  (`assert_id`)
+  PRIMARY KEY (`assert_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api ACL Asserts' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `api_assert`
+-- Contenu de la table `api_assert`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_role`
+-- Structure de la table `api_role`
 --
 
+DROP TABLE IF EXISTS `api_role`;
 CREATE TABLE IF NOT EXISTS `api_role` (
-  `role_id` int(10) unsigned NOT NULL auto_increment,
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `tree_level` tinyint(3) unsigned NOT NULL default '0',
-  `sort_order` tinyint(3) unsigned NOT NULL default '0',
-  `role_type` char(1) NOT NULL default '0',
-  `user_id` int(11) unsigned NOT NULL default '0',
-  `role_name` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`role_id`),
+  `role_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `tree_level` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `sort_order` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `role_type` char(1) NOT NULL DEFAULT '0',
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `role_name` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`role_id`),
   KEY `parent_id` (`parent_id`,`sort_order`),
   KEY `tree_level` (`tree_level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api ACL Roles' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `api_role`
+-- Contenu de la table `api_role`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_rule`
+-- Structure de la table `api_rule`
 --
 
+DROP TABLE IF EXISTS `api_rule`;
 CREATE TABLE IF NOT EXISTS `api_rule` (
-  `rule_id` int(10) unsigned NOT NULL auto_increment,
-  `role_id` int(10) unsigned NOT NULL default '0',
-  `resource_id` varchar(255) NOT NULL default '',
-  `privileges` varchar(20) NOT NULL default '',
-  `assert_id` int(10) unsigned NOT NULL default '0',
-  `role_type` char(1) default NULL,
-  `permission` varchar(10) default NULL,
-  PRIMARY KEY  (`rule_id`),
+  `rule_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `role_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `resource_id` varchar(255) NOT NULL DEFAULT '',
+  `privileges` varchar(20) NOT NULL DEFAULT '',
+  `assert_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `role_type` char(1) DEFAULT NULL,
+  `permission` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`rule_id`),
   KEY `resource` (`resource_id`,`role_id`),
   KEY `role_id` (`role_id`,`resource_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api ACL Rules' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `api_rule`
+-- Contenu de la table `api_rule`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_session`
+-- Structure de la table `api_session`
 --
 
+DROP TABLE IF EXISTS `api_session`;
 CREATE TABLE IF NOT EXISTS `api_session` (
   `user_id` mediumint(9) unsigned NOT NULL,
-  `logdate` datetime NOT NULL default '0000-00-00 00:00:00',
-  `sessid` varchar(40) NOT NULL default '',
+  `logdate` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `sessid` varchar(40) NOT NULL DEFAULT '',
   KEY `API_SESSION_USER` (`user_id`),
   KEY `API_SESSION_SESSID` (`sessid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api Sessions';
 
 --
--- Dumping data for table `api_session`
+-- Contenu de la table `api_session`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_user`
+-- Structure de la table `api_user`
 --
 
+DROP TABLE IF EXISTS `api_user`;
 CREATE TABLE IF NOT EXISTS `api_user` (
-  `user_id` mediumint(9) unsigned NOT NULL auto_increment,
-  `firstname` varchar(32) NOT NULL default '',
-  `lastname` varchar(32) NOT NULL default '',
-  `email` varchar(128) NOT NULL default '',
-  `username` varchar(40) NOT NULL default '',
-  `api_key` varchar(40) NOT NULL default '',
-  `created` datetime NOT NULL default '0000-00-00 00:00:00',
-  `modified` datetime default NULL,
-  `lognum` smallint(5) unsigned NOT NULL default '0',
-  `reload_acl_flag` tinyint(1) NOT NULL default '0',
-  `is_active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`user_id`)
+  `user_id` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(32) NOT NULL DEFAULT '',
+  `lastname` varchar(32) NOT NULL DEFAULT '',
+  `email` varchar(128) NOT NULL DEFAULT '',
+  `username` varchar(40) NOT NULL DEFAULT '',
+  `api_key` varchar(40) NOT NULL DEFAULT '',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` datetime DEFAULT NULL,
+  `lognum` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `reload_acl_flag` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Api Users' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `api_user`
+-- Contenu de la table `api_user`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_aggregation`
+-- Structure de la table `catalogindex_aggregation`
 --
 
+DROP TABLE IF EXISTS `catalogindex_aggregation`;
 CREATE TABLE IF NOT EXISTS `catalogindex_aggregation` (
-  `aggregation_id` int(10) unsigned NOT NULL auto_increment,
+  `aggregation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `store_id` smallint(5) unsigned NOT NULL,
   `created_at` datetime NOT NULL,
-  `key` varchar(255) default NULL,
+  `key` varchar(255) DEFAULT NULL,
   `data` mediumtext,
-  PRIMARY KEY  (`aggregation_id`),
+  PRIMARY KEY (`aggregation_id`),
   UNIQUE KEY `IDX_STORE_KEY` (`store_id`,`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalogindex_aggregation`
+-- Contenu de la table `catalogindex_aggregation`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_aggregation_tag`
+-- Structure de la table `catalogindex_aggregation_tag`
 --
 
+DROP TABLE IF EXISTS `catalogindex_aggregation_tag`;
 CREATE TABLE IF NOT EXISTS `catalogindex_aggregation_tag` (
-  `tag_id` int(10) unsigned NOT NULL auto_increment,
+  `tag_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `tag_code` varchar(255) NOT NULL,
-  PRIMARY KEY  (`tag_id`),
+  PRIMARY KEY (`tag_id`),
   UNIQUE KEY `IDX_CODE` (`tag_code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `catalogindex_aggregation_tag`
+-- Contenu de la table `catalogindex_aggregation_tag`
 --
 
 INSERT INTO `catalogindex_aggregation_tag` (`tag_id`, `tag_code`) VALUES
@@ -355,9 +373,10 @@ INSERT INTO `catalogindex_aggregation_tag` (`tag_id`, `tag_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_aggregation_to_tag`
+-- Structure de la table `catalogindex_aggregation_to_tag`
 --
 
+DROP TABLE IF EXISTS `catalogindex_aggregation_to_tag`;
 CREATE TABLE IF NOT EXISTS `catalogindex_aggregation_to_tag` (
   `aggregation_id` int(10) unsigned NOT NULL,
   `tag_id` int(10) unsigned NOT NULL,
@@ -366,22 +385,23 @@ CREATE TABLE IF NOT EXISTS `catalogindex_aggregation_to_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogindex_aggregation_to_tag`
+-- Contenu de la table `catalogindex_aggregation_to_tag`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_eav`
+-- Structure de la table `catalogindex_eav`
 --
 
+DROP TABLE IF EXISTS `catalogindex_eav`;
 CREATE TABLE IF NOT EXISTS `catalogindex_eav` (
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`store_id`,`entity_id`,`attribute_id`,`value`),
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`store_id`,`entity_id`,`attribute_id`,`value`),
   KEY `IDX_VALUE` (`value`),
   KEY `FK_CATALOGINDEX_EAV_ENTITY` (`entity_id`),
   KEY `FK_CATALOGINDEX_EAV_ATTRIBUTE` (`attribute_id`),
@@ -389,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `catalogindex_eav` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogindex_eav`
+-- Contenu de la table `catalogindex_eav`
 --
 
 INSERT INTO `catalogindex_eav` (`store_id`, `entity_id`, `attribute_id`, `value`) VALUES
@@ -403,18 +423,19 @@ INSERT INTO `catalogindex_eav` (`store_id`, `entity_id`, `attribute_id`, `value`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_minimal_price`
+-- Structure de la table `catalogindex_minimal_price`
 --
 
+DROP TABLE IF EXISTS `catalogindex_minimal_price`;
 CREATE TABLE IF NOT EXISTS `catalogindex_minimal_price` (
-  `index_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `customer_group_id` smallint(3) unsigned NOT NULL default '0',
-  `qty` decimal(12,4) unsigned NOT NULL default '0.0000',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  `tax_class_id` smallint(6) NOT NULL default '0',
-  `website_id` smallint(5) unsigned default NULL,
-  PRIMARY KEY  (`index_id`),
+  `index_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `customer_group_id` smallint(3) unsigned NOT NULL DEFAULT '0',
+  `qty` decimal(12,4) unsigned NOT NULL DEFAULT '0.0000',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `tax_class_id` smallint(6) NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`index_id`),
   KEY `IDX_VALUE` (`value`),
   KEY `IDX_QTY` (`qty`),
   KEY `FK_CATALOGINDEX_MINIMAL_PRICE_ENTITY` (`entity_id`),
@@ -424,24 +445,25 @@ CREATE TABLE IF NOT EXISTS `catalogindex_minimal_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalogindex_minimal_price`
+-- Contenu de la table `catalogindex_minimal_price`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogindex_price`
+-- Structure de la table `catalogindex_price`
 --
 
+DROP TABLE IF EXISTS `catalogindex_price`;
 CREATE TABLE IF NOT EXISTS `catalogindex_price` (
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `customer_group_id` smallint(3) unsigned NOT NULL default '0',
-  `qty` decimal(12,4) unsigned NOT NULL default '0.0000',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  `tax_class_id` smallint(6) NOT NULL default '0',
-  `website_id` smallint(5) unsigned default NULL,
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `customer_group_id` smallint(3) unsigned NOT NULL DEFAULT '0',
+  `qty` decimal(12,4) unsigned NOT NULL DEFAULT '0.0000',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `tax_class_id` smallint(6) NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned DEFAULT NULL,
   KEY `IDX_VALUE` (`value`),
   KEY `IDX_QTY` (`qty`),
   KEY `FK_CATALOGINDEX_PRICE_ENTITY` (`entity_id`),
@@ -453,30 +475,31 @@ CREATE TABLE IF NOT EXISTS `catalogindex_price` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogindex_price`
+-- Contenu de la table `catalogindex_price`
 --
 
 INSERT INTO `catalogindex_price` (`entity_id`, `attribute_id`, `customer_group_id`, `qty`, `value`, `tax_class_id`, `website_id`) VALUES
-(166, 99, 0, 0.0000, 750.0000, 2, 1),
-(166, 99, 1, 0.0000, 750.0000, 2, 1),
-(166, 99, 2, 0.0000, 750.0000, 2, 1),
-(166, 99, 3, 0.0000, 750.0000, 2, 1),
-(166, 99, 4, 0.0000, 750.0000, 2, 1);
+(166, 99, 0, '0.0000', '750.0000', 2, 1),
+(166, 99, 1, '0.0000', '750.0000', 2, 1),
+(166, 99, 2, '0.0000', '750.0000', 2, 1),
+(166, 99, 3, '0.0000', '750.0000', 2, 1),
+(166, 99, 4, '0.0000', '750.0000', 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cataloginventory_stock`
+-- Structure de la table `cataloginventory_stock`
 --
 
+DROP TABLE IF EXISTS `cataloginventory_stock`;
 CREATE TABLE IF NOT EXISTS `cataloginventory_stock` (
-  `stock_id` smallint(4) unsigned NOT NULL auto_increment,
-  `stock_name` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`stock_id`)
+  `stock_id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
+  `stock_name` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`stock_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog inventory Stocks list' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `cataloginventory_stock`
+-- Contenu de la table `cataloginventory_stock`
 --
 
 INSERT INTO `cataloginventory_stock` (`stock_id`, `stock_name`) VALUES
@@ -485,377 +508,382 @@ INSERT INTO `cataloginventory_stock` (`stock_id`, `stock_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cataloginventory_stock_item`
+-- Structure de la table `cataloginventory_stock_item`
 --
 
+DROP TABLE IF EXISTS `cataloginventory_stock_item`;
 CREATE TABLE IF NOT EXISTS `cataloginventory_stock_item` (
-  `item_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `stock_id` smallint(4) unsigned NOT NULL default '0',
-  `qty` decimal(12,4) NOT NULL default '0.0000',
-  `min_qty` decimal(12,4) NOT NULL default '0.0000',
-  `use_config_min_qty` tinyint(1) unsigned NOT NULL default '1',
-  `is_qty_decimal` tinyint(1) unsigned NOT NULL default '0',
-  `backorders` tinyint(3) unsigned NOT NULL default '0',
-  `use_config_backorders` tinyint(1) unsigned NOT NULL default '1',
-  `min_sale_qty` decimal(12,4) NOT NULL default '1.0000',
-  `use_config_min_sale_qty` tinyint(1) unsigned NOT NULL default '1',
-  `max_sale_qty` decimal(12,4) NOT NULL default '0.0000',
-  `use_config_max_sale_qty` tinyint(1) unsigned NOT NULL default '1',
-  `is_in_stock` tinyint(1) unsigned NOT NULL default '0',
-  `low_stock_date` datetime default NULL,
-  `notify_stock_qty` decimal(12,4) default NULL,
-  `use_config_notify_stock_qty` tinyint(1) unsigned NOT NULL default '1',
-  `manage_stock` tinyint(1) unsigned NOT NULL default '0',
-  `use_config_manage_stock` tinyint(1) unsigned NOT NULL default '1',
-  `stock_status_changed_automatically` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`item_id`),
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `stock_id` smallint(4) unsigned NOT NULL DEFAULT '0',
+  `qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `min_qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `use_config_min_qty` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `is_qty_decimal` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `backorders` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `use_config_backorders` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `min_sale_qty` decimal(12,4) NOT NULL DEFAULT '1.0000',
+  `use_config_min_sale_qty` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `max_sale_qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `use_config_max_sale_qty` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `is_in_stock` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `low_stock_date` datetime DEFAULT NULL,
+  `notify_stock_qty` decimal(12,4) DEFAULT NULL,
+  `use_config_notify_stock_qty` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `manage_stock` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `use_config_manage_stock` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `stock_status_changed_automatically` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`item_id`),
   UNIQUE KEY `IDX_STOCK_PRODUCT` (`product_id`,`stock_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_ITEM_PRODUCT` (`product_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_ITEM_STOCK` (`stock_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Invetory Stock Item Data' AUTO_INCREMENT=121 ;
 
 --
--- Dumping data for table `cataloginventory_stock_item`
+-- Contenu de la table `cataloginventory_stock_item`
 --
 
 INSERT INTO `cataloginventory_stock_item` (`item_id`, `product_id`, `stock_id`, `qty`, `min_qty`, `use_config_min_qty`, `is_qty_decimal`, `backorders`, `use_config_backorders`, `min_sale_qty`, `use_config_min_sale_qty`, `max_sale_qty`, `use_config_max_sale_qty`, `is_in_stock`, `low_stock_date`, `notify_stock_qty`, `use_config_notify_stock_qty`, `manage_stock`, `use_config_manage_stock`, `stock_status_changed_automatically`) VALUES
-(1, 16, 1, 996.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(2, 17, 1, 797.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(3, 18, 1, 988.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, NULL, NULL, 1, 0, 1, 0),
-(4, 19, 1, 328.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(5, 20, 1, 361.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(6, 25, 1, 143.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(7, 26, 1, 11.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(8, 27, 1, 595.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(9, 28, 1, 681.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(10, 29, 1, 16.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(11, 30, 1, 719.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(12, 31, 1, 441.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(13, 32, 1, 805.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(14, 33, 1, 386.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(15, 34, 1, 718.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(16, 35, 1, 580.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(17, 36, 1, 79.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 0, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(18, 37, 1, 722.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(19, 38, 1, 99.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(20, 39, 1, 234.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(21, 41, 1, 339.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(22, 42, 1, 994.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(23, 44, 1, 452.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(24, 45, 1, 120.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(25, 46, 1, 932.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(26, 47, 1, 673.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(27, 48, 1, 872.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(28, 49, 1, 456.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(29, 51, 1, 706.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(30, 52, 1, 724.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(31, 53, 1, 956.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(32, 54, 1, 960.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(33, 74, 1, 999.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(34, 75, 1, 617.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(35, 79, 1, 797.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(36, 80, 1, 856.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(37, 81, 1, 660.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(38, 82, 1, 321.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(39, 83, 1, 986.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(40, 84, 1, 859.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(41, 85, 1, 31.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(42, 86, 1, 303.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(43, 87, 1, 621.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(44, 88, 1, 191.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(45, 89, 1, 948.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(46, 90, 1, 533.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(47, 91, 1, 293.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(48, 92, 1, 563.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(49, 93, 1, 767.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(50, 94, 1, 480.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(51, 95, 1, 95.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(52, 96, 1, 202.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(53, 97, 1, 326.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(54, 98, 1, 114.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(55, 99, 1, 618.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(56, 100, 1, 820.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(57, 101, 1, 966.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(58, 102, 1, 898.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(59, 103, 1, 961.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(60, 104, 1, 641.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(61, 105, 1, 537.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(62, 106, 1, 808.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(63, 107, 1, 718.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(64, 108, 1, 384.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(65, 109, 1, 379.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(66, 110, 1, 312.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(67, 111, 1, 979.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(68, 112, 1, 264.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(69, 113, 1, 336.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(70, 114, 1, 374.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(71, 115, 1, 343.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(72, 117, 1, 998.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(73, 118, 1, 749.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(74, 119, 1, 466.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(75, 120, 1, 896.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(76, 121, 1, 812.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(77, 122, 1, 469.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(78, 123, 1, 555.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(79, 124, 1, 241.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(80, 125, 1, 422.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(81, 126, 1, 832.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(82, 127, 1, 113.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(83, 128, 1, 463.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(84, 129, 1, 45.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(85, 130, 1, 687.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(86, 131, 1, 105.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(87, 132, 1, 162.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(88, 133, 1, 398.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(89, 134, 1, 377.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(90, 135, 1, 998.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(91, 137, 1, 427.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 100.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(92, 138, 1, 703.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(93, 139, 1, 743.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(94, 140, 1, 769.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(95, 141, 1, 853.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(96, 142, 1, 678.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(97, 143, 1, 133.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(98, 144, 1, 879.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(99, 145, 1, 539.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(100, 146, 1, 543.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(101, 147, 1, 385.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(102, 148, 1, 303.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(103, 149, 1, 74.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(104, 150, 1, 17.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(105, 151, 1, 846.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(106, 152, 1, 504.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(107, 153, 1, 549.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(108, 154, 1, 313.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(109, 155, 1, 363.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(110, 156, 1, 453.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(111, 157, 1, 563.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(112, 158, 1, 156.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(113, 159, 1, 275.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(114, 160, 1, 618.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(115, 161, 1, 209.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(116, 162, 1, 760.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(117, 163, 1, 426.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(118, 164, 1, 968.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(119, 165, 1, 79.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(120, 166, 1, 849.0000, 0.0000, 1, 0, 0, 1, 1.0000, 1, 0.0000, 1, 1, NULL, NULL, 1, 0, 1, 0);
+(1, 16, 1, '996.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(2, 17, 1, '797.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(3, 18, 1, '988.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
+(4, 19, 1, '328.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(5, 20, 1, '361.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(6, 25, 1, '143.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(7, 26, 1, '11.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(8, 27, 1, '595.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(9, 28, 1, '681.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(10, 29, 1, '16.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(11, 30, 1, '719.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(12, 31, 1, '441.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(13, 32, 1, '805.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(14, 33, 1, '386.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(15, 34, 1, '718.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(16, 35, 1, '580.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(17, 36, 1, '79.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 0, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(18, 37, 1, '722.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(19, 38, 1, '99.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(20, 39, 1, '234.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(21, 41, 1, '339.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(22, 42, 1, '994.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(23, 44, 1, '452.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(24, 45, 1, '120.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(25, 46, 1, '932.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(26, 47, 1, '673.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(27, 48, 1, '872.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(28, 49, 1, '456.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(29, 51, 1, '706.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(30, 52, 1, '724.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(31, 53, 1, '956.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(32, 54, 1, '960.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(33, 74, 1, '999.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(34, 75, 1, '617.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(35, 79, 1, '797.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(36, 80, 1, '856.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(37, 81, 1, '660.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(38, 82, 1, '321.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(39, 83, 1, '986.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(40, 84, 1, '859.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(41, 85, 1, '31.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(42, 86, 1, '303.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(43, 87, 1, '621.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(44, 88, 1, '191.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(45, 89, 1, '948.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(46, 90, 1, '533.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(47, 91, 1, '293.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(48, 92, 1, '563.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(49, 93, 1, '767.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(50, 94, 1, '480.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(51, 95, 1, '95.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(52, 96, 1, '202.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(53, 97, 1, '326.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(54, 98, 1, '114.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(55, 99, 1, '618.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(56, 100, 1, '820.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(57, 101, 1, '966.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(58, 102, 1, '898.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(59, 103, 1, '961.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(60, 104, 1, '641.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(61, 105, 1, '537.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(62, 106, 1, '808.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(63, 107, 1, '718.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(64, 108, 1, '384.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(65, 109, 1, '379.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(66, 110, 1, '312.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(67, 111, 1, '979.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(68, 112, 1, '264.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(69, 113, 1, '336.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(70, 114, 1, '374.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(71, 115, 1, '343.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(72, 117, 1, '998.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(73, 118, 1, '749.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(74, 119, 1, '466.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(75, 120, 1, '896.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(76, 121, 1, '812.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(77, 122, 1, '469.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(78, 123, 1, '555.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(79, 124, 1, '241.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(80, 125, 1, '422.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(81, 126, 1, '832.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(82, 127, 1, '113.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(83, 128, 1, '463.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(84, 129, 1, '45.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(85, 130, 1, '687.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(86, 131, 1, '105.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(87, 132, 1, '162.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(88, 133, 1, '398.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(89, 134, 1, '377.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(90, 135, 1, '998.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(91, 137, 1, '427.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(92, 138, 1, '703.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(93, 139, 1, '743.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(94, 140, 1, '769.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(95, 141, 1, '853.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(96, 142, 1, '678.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(97, 143, 1, '133.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(98, 144, 1, '879.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(99, 145, 1, '539.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(100, 146, 1, '543.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(101, 147, 1, '385.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(102, 148, 1, '303.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(103, 149, 1, '74.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(104, 150, 1, '17.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(105, 151, 1, '846.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(106, 152, 1, '504.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(107, 153, 1, '549.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(108, 154, 1, '313.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(109, 155, 1, '363.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(110, 156, 1, '453.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(111, 157, 1, '563.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(112, 158, 1, '156.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(113, 159, 1, '275.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(114, 160, 1, '618.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(115, 161, 1, '209.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(116, 162, 1, '760.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(117, 163, 1, '426.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(118, 164, 1, '968.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(119, 165, 1, '79.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(120, 166, 1, '849.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cataloginventory_stock_status`
+-- Structure de la table `cataloginventory_stock_status`
 --
 
+DROP TABLE IF EXISTS `cataloginventory_stock_status`;
 CREATE TABLE IF NOT EXISTS `cataloginventory_stock_status` (
   `product_id` int(10) unsigned NOT NULL,
   `website_id` smallint(5) unsigned NOT NULL,
   `stock_id` smallint(4) unsigned NOT NULL,
-  `qty` decimal(12,4) NOT NULL default '0.0000',
+  `qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
   `stock_status` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY  (`product_id`,`website_id`,`stock_id`),
+  PRIMARY KEY (`product_id`,`website_id`,`stock_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_STATUS_STOCK` (`stock_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_STATUS_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `cataloginventory_stock_status`
+-- Contenu de la table `cataloginventory_stock_status`
 --
 
 INSERT INTO `cataloginventory_stock_status` (`product_id`, `website_id`, `stock_id`, `qty`, `stock_status`) VALUES
-(16, 1, 1, 996.0000, 1),
-(17, 1, 1, 797.0000, 1),
-(18, 1, 1, 988.0000, 1),
-(19, 1, 1, 328.0000, 1),
-(20, 1, 1, 361.0000, 1),
-(25, 1, 1, 143.0000, 1),
-(26, 1, 1, 11.0000, 1),
-(27, 1, 1, 595.0000, 1),
-(28, 1, 1, 681.0000, 1),
-(29, 1, 1, 16.0000, 1),
-(30, 1, 1, 719.0000, 1),
-(31, 1, 1, 441.0000, 1),
-(32, 1, 1, 805.0000, 1),
-(33, 1, 1, 386.0000, 1),
-(34, 1, 1, 718.0000, 1),
-(35, 1, 1, 580.0000, 1),
-(36, 1, 1, 79.0000, 0),
-(37, 1, 1, 722.0000, 1),
-(38, 1, 1, 99.0000, 1),
-(39, 1, 1, 234.0000, 1),
-(41, 1, 1, 339.0000, 1),
-(42, 1, 1, 994.0000, 1),
-(44, 1, 1, 452.0000, 1),
-(45, 1, 1, 120.0000, 1),
-(46, 1, 1, 932.0000, 1),
-(47, 1, 1, 673.0000, 1),
-(48, 1, 1, 872.0000, 1),
-(49, 1, 1, 456.0000, 1),
-(51, 1, 1, 706.0000, 1),
-(52, 1, 1, 724.0000, 1),
-(53, 1, 1, 956.0000, 1),
-(54, 1, 1, 960.0000, 1),
-(74, 1, 1, 999.0000, 1),
-(75, 1, 1, 617.0000, 1),
-(79, 1, 1, 797.0000, 1),
-(80, 1, 1, 856.0000, 1),
-(81, 1, 1, 660.0000, 1),
-(82, 1, 1, 321.0000, 1),
-(83, 1, 1, 986.0000, 1),
-(84, 1, 1, 859.0000, 1),
-(85, 1, 1, 31.0000, 1),
-(86, 1, 1, 303.0000, 1),
-(87, 1, 1, 621.0000, 1),
-(88, 1, 1, 191.0000, 1),
-(89, 1, 1, 948.0000, 1),
-(90, 1, 1, 533.0000, 1),
-(91, 1, 1, 293.0000, 1),
-(92, 1, 1, 563.0000, 1),
-(93, 1, 1, 767.0000, 1),
-(94, 1, 1, 480.0000, 1),
-(95, 1, 1, 95.0000, 1),
-(96, 1, 1, 202.0000, 1),
-(97, 1, 1, 326.0000, 1),
-(98, 1, 1, 114.0000, 1),
-(99, 1, 1, 618.0000, 1),
-(100, 1, 1, 820.0000, 1),
-(101, 1, 1, 966.0000, 1),
-(102, 1, 1, 898.0000, 1),
-(103, 1, 1, 961.0000, 1),
-(104, 1, 1, 641.0000, 1),
-(105, 1, 1, 537.0000, 1),
-(106, 1, 1, 808.0000, 1),
-(107, 1, 1, 718.0000, 1),
-(108, 1, 1, 384.0000, 1),
-(109, 1, 1, 379.0000, 1),
-(110, 1, 1, 312.0000, 1),
-(111, 1, 1, 979.0000, 1),
-(112, 1, 1, 264.0000, 1),
-(113, 1, 1, 336.0000, 1),
-(114, 1, 1, 374.0000, 1),
-(115, 1, 1, 343.0000, 1),
-(117, 1, 1, 998.0000, 1),
-(118, 1, 1, 749.0000, 1),
-(119, 1, 1, 466.0000, 1),
-(120, 1, 1, 896.0000, 1),
-(121, 1, 1, 812.0000, 1),
-(122, 1, 1, 469.0000, 1),
-(123, 1, 1, 555.0000, 1),
-(124, 1, 1, 241.0000, 1),
-(125, 1, 1, 422.0000, 1),
-(126, 1, 1, 832.0000, 1),
-(127, 1, 1, 113.0000, 1),
-(128, 1, 1, 463.0000, 1),
-(129, 1, 1, 45.0000, 1),
-(130, 1, 1, 687.0000, 1),
-(131, 1, 1, 105.0000, 1),
-(132, 1, 1, 162.0000, 1),
-(133, 1, 1, 398.0000, 1),
-(134, 1, 1, 377.0000, 1),
-(135, 1, 1, 998.0000, 1),
-(137, 1, 1, 427.0000, 1),
-(138, 1, 1, 703.0000, 1),
-(139, 1, 1, 743.0000, 1),
-(140, 1, 1, 769.0000, 1),
-(141, 1, 1, 853.0000, 1),
-(142, 1, 1, 678.0000, 1),
-(143, 1, 1, 133.0000, 1),
-(144, 1, 1, 879.0000, 1),
-(145, 1, 1, 539.0000, 1),
-(146, 1, 1, 543.0000, 1),
-(147, 1, 1, 385.0000, 1),
-(148, 1, 1, 303.0000, 1),
-(149, 1, 1, 74.0000, 1),
-(150, 1, 1, 17.0000, 1),
-(151, 1, 1, 846.0000, 1),
-(152, 1, 1, 504.0000, 1),
-(153, 1, 1, 549.0000, 1),
-(154, 1, 1, 313.0000, 1),
-(155, 1, 1, 363.0000, 1),
-(156, 1, 1, 453.0000, 1),
-(157, 1, 1, 563.0000, 1),
-(158, 1, 1, 156.0000, 1),
-(159, 1, 1, 275.0000, 1),
-(160, 1, 1, 618.0000, 1),
-(161, 1, 1, 209.0000, 1),
-(162, 1, 1, 760.0000, 1),
-(163, 1, 1, 426.0000, 1),
-(164, 1, 1, 968.0000, 1),
-(165, 1, 1, 79.0000, 1),
-(166, 1, 1, 849.0000, 1);
+(16, 1, 1, '996.0000', 1),
+(17, 1, 1, '797.0000', 1),
+(18, 1, 1, '988.0000', 1),
+(19, 1, 1, '328.0000', 1),
+(20, 1, 1, '361.0000', 1),
+(25, 1, 1, '143.0000', 1),
+(26, 1, 1, '11.0000', 1),
+(27, 1, 1, '595.0000', 1),
+(28, 1, 1, '681.0000', 1),
+(29, 1, 1, '16.0000', 1),
+(30, 1, 1, '719.0000', 1),
+(31, 1, 1, '441.0000', 1),
+(32, 1, 1, '805.0000', 1),
+(33, 1, 1, '386.0000', 1),
+(34, 1, 1, '718.0000', 1),
+(35, 1, 1, '580.0000', 1),
+(36, 1, 1, '79.0000', 0),
+(37, 1, 1, '722.0000', 1),
+(38, 1, 1, '99.0000', 1),
+(39, 1, 1, '234.0000', 1),
+(41, 1, 1, '339.0000', 1),
+(42, 1, 1, '994.0000', 1),
+(44, 1, 1, '452.0000', 1),
+(45, 1, 1, '120.0000', 1),
+(46, 1, 1, '932.0000', 1),
+(47, 1, 1, '673.0000', 1),
+(48, 1, 1, '872.0000', 1),
+(49, 1, 1, '456.0000', 1),
+(51, 1, 1, '706.0000', 1),
+(52, 1, 1, '724.0000', 1),
+(53, 1, 1, '956.0000', 1),
+(54, 1, 1, '960.0000', 1),
+(74, 1, 1, '999.0000', 1),
+(75, 1, 1, '617.0000', 1),
+(79, 1, 1, '797.0000', 1),
+(80, 1, 1, '856.0000', 1),
+(81, 1, 1, '660.0000', 1),
+(82, 1, 1, '321.0000', 1),
+(83, 1, 1, '986.0000', 1),
+(84, 1, 1, '859.0000', 1),
+(85, 1, 1, '31.0000', 1),
+(86, 1, 1, '303.0000', 1),
+(87, 1, 1, '621.0000', 1),
+(88, 1, 1, '191.0000', 1),
+(89, 1, 1, '948.0000', 1),
+(90, 1, 1, '533.0000', 1),
+(91, 1, 1, '293.0000', 1),
+(92, 1, 1, '563.0000', 1),
+(93, 1, 1, '767.0000', 1),
+(94, 1, 1, '480.0000', 1),
+(95, 1, 1, '95.0000', 1),
+(96, 1, 1, '202.0000', 1),
+(97, 1, 1, '326.0000', 1),
+(98, 1, 1, '114.0000', 1),
+(99, 1, 1, '618.0000', 1),
+(100, 1, 1, '820.0000', 1),
+(101, 1, 1, '966.0000', 1),
+(102, 1, 1, '898.0000', 1),
+(103, 1, 1, '961.0000', 1),
+(104, 1, 1, '641.0000', 1),
+(105, 1, 1, '537.0000', 1),
+(106, 1, 1, '808.0000', 1),
+(107, 1, 1, '718.0000', 1),
+(108, 1, 1, '384.0000', 1),
+(109, 1, 1, '379.0000', 1),
+(110, 1, 1, '312.0000', 1),
+(111, 1, 1, '979.0000', 1),
+(112, 1, 1, '264.0000', 1),
+(113, 1, 1, '336.0000', 1),
+(114, 1, 1, '374.0000', 1),
+(115, 1, 1, '343.0000', 1),
+(117, 1, 1, '998.0000', 1),
+(118, 1, 1, '749.0000', 1),
+(119, 1, 1, '466.0000', 1),
+(120, 1, 1, '896.0000', 1),
+(121, 1, 1, '812.0000', 1),
+(122, 1, 1, '469.0000', 1),
+(123, 1, 1, '555.0000', 1),
+(124, 1, 1, '241.0000', 1),
+(125, 1, 1, '422.0000', 1),
+(126, 1, 1, '832.0000', 1),
+(127, 1, 1, '113.0000', 1),
+(128, 1, 1, '463.0000', 1),
+(129, 1, 1, '45.0000', 1),
+(130, 1, 1, '687.0000', 1),
+(131, 1, 1, '105.0000', 1),
+(132, 1, 1, '162.0000', 1),
+(133, 1, 1, '398.0000', 1),
+(134, 1, 1, '377.0000', 1),
+(135, 1, 1, '998.0000', 1),
+(137, 1, 1, '427.0000', 1),
+(138, 1, 1, '703.0000', 1),
+(139, 1, 1, '743.0000', 1),
+(140, 1, 1, '769.0000', 1),
+(141, 1, 1, '853.0000', 1),
+(142, 1, 1, '678.0000', 1),
+(143, 1, 1, '133.0000', 1),
+(144, 1, 1, '879.0000', 1),
+(145, 1, 1, '539.0000', 1),
+(146, 1, 1, '543.0000', 1),
+(147, 1, 1, '385.0000', 1),
+(148, 1, 1, '303.0000', 1),
+(149, 1, 1, '74.0000', 1),
+(150, 1, 1, '17.0000', 1),
+(151, 1, 1, '846.0000', 1),
+(152, 1, 1, '504.0000', 1),
+(153, 1, 1, '549.0000', 1),
+(154, 1, 1, '313.0000', 1),
+(155, 1, 1, '363.0000', 1),
+(156, 1, 1, '453.0000', 1),
+(157, 1, 1, '563.0000', 1),
+(158, 1, 1, '156.0000', 1),
+(159, 1, 1, '275.0000', 1),
+(160, 1, 1, '618.0000', 1),
+(161, 1, 1, '209.0000', 1),
+(162, 1, 1, '760.0000', 1),
+(163, 1, 1, '426.0000', 1),
+(164, 1, 1, '968.0000', 1),
+(165, 1, 1, '79.0000', 1),
+(166, 1, 1, '849.0000', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogrule`
+-- Structure de la table `catalogrule`
 --
 
+DROP TABLE IF EXISTS `catalogrule`;
 CREATE TABLE IF NOT EXISTS `catalogrule` (
-  `rule_id` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `rule_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `from_date` date default NULL,
-  `to_date` date default NULL,
-  `customer_group_ids` varchar(255) NOT NULL default '',
-  `is_active` tinyint(1) NOT NULL default '0',
+  `from_date` date DEFAULT NULL,
+  `to_date` date DEFAULT NULL,
+  `customer_group_ids` varchar(255) NOT NULL DEFAULT '',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
   `conditions_serialized` mediumtext NOT NULL,
   `actions_serialized` mediumtext NOT NULL,
-  `stop_rules_processing` tinyint(1) NOT NULL default '1',
-  `sort_order` int(10) unsigned NOT NULL default '0',
+  `stop_rules_processing` tinyint(1) NOT NULL DEFAULT '1',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
   `simple_action` varchar(32) NOT NULL,
   `discount_amount` decimal(12,4) NOT NULL,
   `website_ids` text,
-  PRIMARY KEY  (`rule_id`),
+  PRIMARY KEY (`rule_id`),
   KEY `sort_order` (`is_active`,`sort_order`,`to_date`,`from_date`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `catalogrule`
+-- Contenu de la table `catalogrule`
 --
 
 INSERT INTO `catalogrule` (`rule_id`, `name`, `description`, `from_date`, `to_date`, `customer_group_ids`, `is_active`, `conditions_serialized`, `actions_serialized`, `stop_rules_processing`, `sort_order`, `simple_action`, `discount_amount`, `website_ids`) VALUES
-(1, 'Sony Sale', '20% discount on all Sony products.', '2008-08-25', '2009-01-31', '0,1,2,3', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:2:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:12:"manufacturer";s:8:"operator";s:2:"==";s:5:"value";s:0:"";s:18:"is_value_processed";b:0;}i:1;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:5:"price";s:8:"operator";s:2:"<=";s:5:"value";d:100;s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', 0.0000, '1'),
-(3, 'CODEDEMOSTORE', '10% off all Toshiba laptops', '2008-08-06', '2009-08-23', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:12:"manufacturer";s:8:"operator";s:2:"==";s:5:"value";s:0:"";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', 0.0000, '1'),
-(4, 'Anashria 20 percent Off', '', '2008-08-27', '2009-08-28', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:3:"ana";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', 0.0000, '1'),
-(5, '20 percent off selected Furniture', '', '2008-08-24', '2009-09-28', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"any";s:10:"conditions";a:3:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:6:"384822";s:18:"is_value_processed";b:0;}i:1;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:6:"349838";s:18:"is_value_processed";b:0;}i:2;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:4:"1112";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', 0.0000, '1'),
-(6, '20 percent off T shirts', '', '2008-08-28', '2009-10-30', '0,1,2', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:16:"attribute_set_id";s:8:"operator";s:2:"==";s:5:"value";s:2:"41";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', 0.0000, '1'),
-(7, 'Christmas Rule', '', '2008-12-21', '2009-01-24', '0,1,2,3,4', 0, 'a:6:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', 10.0000, '1');
+(1, 'Sony Sale', '20% discount on all Sony products.', '2008-08-25', '2009-01-31', '0,1,2,3', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:2:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:12:"manufacturer";s:8:"operator";s:2:"==";s:5:"value";s:0:"";s:18:"is_value_processed";b:0;}i:1;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:5:"price";s:8:"operator";s:2:"<=";s:5:"value";d:100;s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', '0.0000', '1'),
+(3, 'CODEDEMOSTORE', '10% off all Toshiba laptops', '2008-08-06', '2009-08-23', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:12:"manufacturer";s:8:"operator";s:2:"==";s:5:"value";s:0:"";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', '0.0000', '1'),
+(4, 'Anashria 20 percent Off', '', '2008-08-27', '2009-08-28', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:3:"ana";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', '0.0000', '1'),
+(5, '20 percent off selected Furniture', '', '2008-08-24', '2009-09-28', '0,1,2,4', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"any";s:10:"conditions";a:3:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:6:"384822";s:18:"is_value_processed";b:0;}i:1;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:6:"349838";s:18:"is_value_processed";b:0;}i:2;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:3:"sku";s:8:"operator";s:2:"==";s:5:"value";s:4:"1112";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 1, 0, 'by_percent', '0.0000', '1'),
+(6, '20 percent off T shirts', '', '2008-08-28', '2009-10-30', '0,1,2', 1, 'a:7:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:34:"catalogrule/rule_condition_product";s:9:"attribute";s:16:"attribute_set_id";s:8:"operator";s:2:"==";s:5:"value";s:2:"41";s:18:"is_value_processed";b:0;}}}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', '0.0000', '1'),
+(7, 'Christmas Rule', '', '2008-12-21', '2009-01-24', '0,1,2,3,4', 0, 'a:6:{s:4:"type";s:34:"catalogrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";}', 'a:4:{s:4:"type";s:34:"catalogrule/rule_action_collection";s:9:"attribute";N;s:8:"operator";s:1:"=";s:5:"value";N;}', 0, 0, 'by_percent', '10.0000', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogrule_affected_product`
+-- Structure de la table `catalogrule_affected_product`
 --
 
+DROP TABLE IF EXISTS `catalogrule_affected_product`;
 CREATE TABLE IF NOT EXISTS `catalogrule_affected_product` (
   `product_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`product_id`)
+  PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogrule_affected_product`
+-- Contenu de la table `catalogrule_affected_product`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogrule_product`
+-- Structure de la table `catalogrule_product`
 --
 
+DROP TABLE IF EXISTS `catalogrule_product`;
 CREATE TABLE IF NOT EXISTS `catalogrule_product` (
-  `rule_product_id` int(10) unsigned NOT NULL auto_increment,
-  `rule_id` int(10) unsigned NOT NULL default '0',
-  `from_time` int(10) unsigned NOT NULL default '0',
-  `to_time` int(10) unsigned NOT NULL default '0',
-  `customer_group_id` smallint(5) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `action_operator` enum('to_fixed','to_percent','by_fixed','by_percent') NOT NULL default 'to_fixed',
-  `action_amount` decimal(12,4) NOT NULL default '0.0000',
-  `action_stop` tinyint(1) NOT NULL default '0',
-  `sort_order` int(10) unsigned NOT NULL default '0',
+  `rule_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rule_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `from_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `to_time` int(10) unsigned NOT NULL DEFAULT '0',
+  `customer_group_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `action_operator` enum('to_fixed','to_percent','by_fixed','by_percent') NOT NULL DEFAULT 'to_fixed',
+  `action_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `action_stop` tinyint(1) NOT NULL DEFAULT '0',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
   `website_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`rule_product_id`),
+  PRIMARY KEY (`rule_product_id`),
   UNIQUE KEY `sort_order` (`rule_id`,`from_time`,`to_time`,`website_id`,`customer_group_id`,`product_id`,`sort_order`),
   KEY `FK_catalogrule_product_rule` (`rule_id`),
   KEY `FK_catalogrule_product_customergroup` (`customer_group_id`),
@@ -864,734 +892,736 @@ CREATE TABLE IF NOT EXISTS `catalogrule_product` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=708 ;
 
 --
--- Dumping data for table `catalogrule_product`
+-- Contenu de la table `catalogrule_product`
 --
 
 INSERT INTO `catalogrule_product` (`rule_product_id`, `rule_id`, `from_time`, `to_time`, `customer_group_id`, `product_id`, `action_operator`, `action_amount`, `action_stop`, `sort_order`, `website_id`) VALUES
-(1, 1, 1219622400, 1233446399, 0, 29, 'by_percent', 0.0000, 1, 0, 1),
-(2, 1, 1219622400, 1233446399, 1, 29, 'by_percent', 0.0000, 1, 0, 1),
-(3, 1, 1219622400, 1233446399, 2, 29, 'by_percent', 0.0000, 1, 0, 1),
-(4, 1, 1219622400, 1233446399, 3, 29, 'by_percent', 0.0000, 1, 0, 1),
-(5, 1, 1219622400, 1233446399, 0, 31, 'by_percent', 0.0000, 1, 0, 1),
-(6, 1, 1219622400, 1233446399, 1, 31, 'by_percent', 0.0000, 1, 0, 1),
-(7, 1, 1219622400, 1233446399, 2, 31, 'by_percent', 0.0000, 1, 0, 1),
-(8, 1, 1219622400, 1233446399, 3, 31, 'by_percent', 0.0000, 1, 0, 1),
-(9, 1, 1219622400, 1233446399, 0, 32, 'by_percent', 0.0000, 1, 0, 1),
-(10, 1, 1219622400, 1233446399, 1, 32, 'by_percent', 0.0000, 1, 0, 1),
-(11, 1, 1219622400, 1233446399, 2, 32, 'by_percent', 0.0000, 1, 0, 1),
-(12, 1, 1219622400, 1233446399, 3, 32, 'by_percent', 0.0000, 1, 0, 1),
-(13, 1, 1219622400, 1233446399, 0, 35, 'by_percent', 0.0000, 1, 0, 1),
-(14, 1, 1219622400, 1233446399, 1, 35, 'by_percent', 0.0000, 1, 0, 1),
-(15, 1, 1219622400, 1233446399, 2, 35, 'by_percent', 0.0000, 1, 0, 1),
-(16, 1, 1219622400, 1233446399, 3, 35, 'by_percent', 0.0000, 1, 0, 1),
-(17, 1, 1219622400, 1233446399, 0, 36, 'by_percent', 0.0000, 1, 0, 1),
-(18, 1, 1219622400, 1233446399, 1, 36, 'by_percent', 0.0000, 1, 0, 1),
-(19, 1, 1219622400, 1233446399, 2, 36, 'by_percent', 0.0000, 1, 0, 1),
-(20, 1, 1219622400, 1233446399, 3, 36, 'by_percent', 0.0000, 1, 0, 1),
-(21, 1, 1219622400, 1233446399, 0, 37, 'by_percent', 0.0000, 1, 0, 1),
-(22, 1, 1219622400, 1233446399, 1, 37, 'by_percent', 0.0000, 1, 0, 1),
-(23, 1, 1219622400, 1233446399, 2, 37, 'by_percent', 0.0000, 1, 0, 1),
-(24, 1, 1219622400, 1233446399, 3, 37, 'by_percent', 0.0000, 1, 0, 1),
-(25, 1, 1219622400, 1233446399, 0, 38, 'by_percent', 0.0000, 1, 0, 1),
-(26, 1, 1219622400, 1233446399, 1, 38, 'by_percent', 0.0000, 1, 0, 1),
-(27, 1, 1219622400, 1233446399, 2, 38, 'by_percent', 0.0000, 1, 0, 1),
-(28, 1, 1219622400, 1233446399, 3, 38, 'by_percent', 0.0000, 1, 0, 1),
-(29, 1, 1219622400, 1233446399, 0, 39, 'by_percent', 0.0000, 1, 0, 1),
-(30, 1, 1219622400, 1233446399, 1, 39, 'by_percent', 0.0000, 1, 0, 1),
-(31, 1, 1219622400, 1233446399, 2, 39, 'by_percent', 0.0000, 1, 0, 1),
-(32, 1, 1219622400, 1233446399, 3, 39, 'by_percent', 0.0000, 1, 0, 1),
-(33, 1, 1219622400, 1233446399, 0, 45, 'by_percent', 0.0000, 1, 0, 1),
-(34, 1, 1219622400, 1233446399, 1, 45, 'by_percent', 0.0000, 1, 0, 1),
-(35, 1, 1219622400, 1233446399, 2, 45, 'by_percent', 0.0000, 1, 0, 1),
-(36, 1, 1219622400, 1233446399, 3, 45, 'by_percent', 0.0000, 1, 0, 1),
-(37, 1, 1219622400, 1233446399, 0, 49, 'by_percent', 0.0000, 1, 0, 1),
-(38, 1, 1219622400, 1233446399, 1, 49, 'by_percent', 0.0000, 1, 0, 1),
-(39, 1, 1219622400, 1233446399, 2, 49, 'by_percent', 0.0000, 1, 0, 1),
-(40, 1, 1219622400, 1233446399, 3, 49, 'by_percent', 0.0000, 1, 0, 1),
-(41, 1, 1219622400, 1233446399, 0, 74, 'by_percent', 0.0000, 1, 0, 1),
-(42, 1, 1219622400, 1233446399, 1, 74, 'by_percent', 0.0000, 1, 0, 1),
-(43, 1, 1219622400, 1233446399, 2, 74, 'by_percent', 0.0000, 1, 0, 1),
-(44, 1, 1219622400, 1233446399, 3, 74, 'by_percent', 0.0000, 1, 0, 1),
-(45, 1, 1219622400, 1233446399, 0, 75, 'by_percent', 0.0000, 1, 0, 1),
-(46, 1, 1219622400, 1233446399, 1, 75, 'by_percent', 0.0000, 1, 0, 1),
-(47, 1, 1219622400, 1233446399, 2, 75, 'by_percent', 0.0000, 1, 0, 1),
-(48, 1, 1219622400, 1233446399, 3, 75, 'by_percent', 0.0000, 1, 0, 1),
-(49, 1, 1219622400, 1233446399, 0, 79, 'by_percent', 0.0000, 1, 0, 1),
-(50, 1, 1219622400, 1233446399, 1, 79, 'by_percent', 0.0000, 1, 0, 1),
-(51, 1, 1219622400, 1233446399, 2, 79, 'by_percent', 0.0000, 1, 0, 1),
-(52, 1, 1219622400, 1233446399, 3, 79, 'by_percent', 0.0000, 1, 0, 1),
-(53, 1, 1219622400, 1233446399, 0, 80, 'by_percent', 0.0000, 1, 0, 1),
-(54, 1, 1219622400, 1233446399, 1, 80, 'by_percent', 0.0000, 1, 0, 1),
-(55, 1, 1219622400, 1233446399, 2, 80, 'by_percent', 0.0000, 1, 0, 1),
-(56, 1, 1219622400, 1233446399, 3, 80, 'by_percent', 0.0000, 1, 0, 1),
-(57, 1, 1219622400, 1233446399, 0, 81, 'by_percent', 0.0000, 1, 0, 1),
-(58, 1, 1219622400, 1233446399, 1, 81, 'by_percent', 0.0000, 1, 0, 1),
-(59, 1, 1219622400, 1233446399, 2, 81, 'by_percent', 0.0000, 1, 0, 1),
-(60, 1, 1219622400, 1233446399, 3, 81, 'by_percent', 0.0000, 1, 0, 1),
-(61, 1, 1219622400, 1233446399, 0, 82, 'by_percent', 0.0000, 1, 0, 1),
-(62, 1, 1219622400, 1233446399, 1, 82, 'by_percent', 0.0000, 1, 0, 1),
-(63, 1, 1219622400, 1233446399, 2, 82, 'by_percent', 0.0000, 1, 0, 1),
-(64, 1, 1219622400, 1233446399, 3, 82, 'by_percent', 0.0000, 1, 0, 1),
-(65, 1, 1219622400, 1233446399, 0, 83, 'by_percent', 0.0000, 1, 0, 1),
-(66, 1, 1219622400, 1233446399, 1, 83, 'by_percent', 0.0000, 1, 0, 1),
-(67, 1, 1219622400, 1233446399, 2, 83, 'by_percent', 0.0000, 1, 0, 1),
-(68, 1, 1219622400, 1233446399, 3, 83, 'by_percent', 0.0000, 1, 0, 1),
-(69, 1, 1219622400, 1233446399, 0, 84, 'by_percent', 0.0000, 1, 0, 1),
-(70, 1, 1219622400, 1233446399, 1, 84, 'by_percent', 0.0000, 1, 0, 1),
-(71, 1, 1219622400, 1233446399, 2, 84, 'by_percent', 0.0000, 1, 0, 1),
-(72, 1, 1219622400, 1233446399, 3, 84, 'by_percent', 0.0000, 1, 0, 1),
-(73, 1, 1219622400, 1233446399, 0, 85, 'by_percent', 0.0000, 1, 0, 1),
-(74, 1, 1219622400, 1233446399, 1, 85, 'by_percent', 0.0000, 1, 0, 1),
-(75, 1, 1219622400, 1233446399, 2, 85, 'by_percent', 0.0000, 1, 0, 1),
-(76, 1, 1219622400, 1233446399, 3, 85, 'by_percent', 0.0000, 1, 0, 1),
-(77, 1, 1219622400, 1233446399, 0, 86, 'by_percent', 0.0000, 1, 0, 1),
-(78, 1, 1219622400, 1233446399, 1, 86, 'by_percent', 0.0000, 1, 0, 1),
-(79, 1, 1219622400, 1233446399, 2, 86, 'by_percent', 0.0000, 1, 0, 1),
-(80, 1, 1219622400, 1233446399, 3, 86, 'by_percent', 0.0000, 1, 0, 1),
-(81, 1, 1219622400, 1233446399, 0, 87, 'by_percent', 0.0000, 1, 0, 1),
-(82, 1, 1219622400, 1233446399, 1, 87, 'by_percent', 0.0000, 1, 0, 1),
-(83, 1, 1219622400, 1233446399, 2, 87, 'by_percent', 0.0000, 1, 0, 1),
-(84, 1, 1219622400, 1233446399, 3, 87, 'by_percent', 0.0000, 1, 0, 1),
-(85, 1, 1219622400, 1233446399, 0, 88, 'by_percent', 0.0000, 1, 0, 1),
-(86, 1, 1219622400, 1233446399, 1, 88, 'by_percent', 0.0000, 1, 0, 1),
-(87, 1, 1219622400, 1233446399, 2, 88, 'by_percent', 0.0000, 1, 0, 1),
-(88, 1, 1219622400, 1233446399, 3, 88, 'by_percent', 0.0000, 1, 0, 1),
-(89, 1, 1219622400, 1233446399, 0, 89, 'by_percent', 0.0000, 1, 0, 1),
-(90, 1, 1219622400, 1233446399, 1, 89, 'by_percent', 0.0000, 1, 0, 1),
-(91, 1, 1219622400, 1233446399, 2, 89, 'by_percent', 0.0000, 1, 0, 1),
-(92, 1, 1219622400, 1233446399, 3, 89, 'by_percent', 0.0000, 1, 0, 1),
-(93, 1, 1219622400, 1233446399, 0, 90, 'by_percent', 0.0000, 1, 0, 1),
-(94, 1, 1219622400, 1233446399, 1, 90, 'by_percent', 0.0000, 1, 0, 1),
-(95, 1, 1219622400, 1233446399, 2, 90, 'by_percent', 0.0000, 1, 0, 1),
-(96, 1, 1219622400, 1233446399, 3, 90, 'by_percent', 0.0000, 1, 0, 1),
-(97, 1, 1219622400, 1233446399, 0, 91, 'by_percent', 0.0000, 1, 0, 1),
-(98, 1, 1219622400, 1233446399, 1, 91, 'by_percent', 0.0000, 1, 0, 1),
-(99, 1, 1219622400, 1233446399, 2, 91, 'by_percent', 0.0000, 1, 0, 1),
-(100, 1, 1219622400, 1233446399, 3, 91, 'by_percent', 0.0000, 1, 0, 1),
-(101, 1, 1219622400, 1233446399, 0, 92, 'by_percent', 0.0000, 1, 0, 1),
-(102, 1, 1219622400, 1233446399, 1, 92, 'by_percent', 0.0000, 1, 0, 1),
-(103, 1, 1219622400, 1233446399, 2, 92, 'by_percent', 0.0000, 1, 0, 1),
-(104, 1, 1219622400, 1233446399, 3, 92, 'by_percent', 0.0000, 1, 0, 1),
-(105, 1, 1219622400, 1233446399, 0, 103, 'by_percent', 0.0000, 1, 0, 1),
-(106, 1, 1219622400, 1233446399, 1, 103, 'by_percent', 0.0000, 1, 0, 1),
-(107, 1, 1219622400, 1233446399, 2, 103, 'by_percent', 0.0000, 1, 0, 1),
-(108, 1, 1219622400, 1233446399, 3, 103, 'by_percent', 0.0000, 1, 0, 1),
-(109, 1, 1219622400, 1233446399, 0, 104, 'by_percent', 0.0000, 1, 0, 1),
-(110, 1, 1219622400, 1233446399, 1, 104, 'by_percent', 0.0000, 1, 0, 1),
-(111, 1, 1219622400, 1233446399, 2, 104, 'by_percent', 0.0000, 1, 0, 1),
-(112, 1, 1219622400, 1233446399, 3, 104, 'by_percent', 0.0000, 1, 0, 1),
-(113, 1, 1219622400, 1233446399, 0, 105, 'by_percent', 0.0000, 1, 0, 1),
-(114, 1, 1219622400, 1233446399, 1, 105, 'by_percent', 0.0000, 1, 0, 1),
-(115, 1, 1219622400, 1233446399, 2, 105, 'by_percent', 0.0000, 1, 0, 1),
-(116, 1, 1219622400, 1233446399, 3, 105, 'by_percent', 0.0000, 1, 0, 1),
-(117, 1, 1219622400, 1233446399, 0, 106, 'by_percent', 0.0000, 1, 0, 1),
-(118, 1, 1219622400, 1233446399, 1, 106, 'by_percent', 0.0000, 1, 0, 1),
-(119, 1, 1219622400, 1233446399, 2, 106, 'by_percent', 0.0000, 1, 0, 1),
-(120, 1, 1219622400, 1233446399, 3, 106, 'by_percent', 0.0000, 1, 0, 1),
-(121, 1, 1219622400, 1233446399, 0, 107, 'by_percent', 0.0000, 1, 0, 1),
-(122, 1, 1219622400, 1233446399, 1, 107, 'by_percent', 0.0000, 1, 0, 1),
-(123, 1, 1219622400, 1233446399, 2, 107, 'by_percent', 0.0000, 1, 0, 1),
-(124, 1, 1219622400, 1233446399, 3, 107, 'by_percent', 0.0000, 1, 0, 1),
-(125, 1, 1219622400, 1233446399, 0, 108, 'by_percent', 0.0000, 1, 0, 1),
-(126, 1, 1219622400, 1233446399, 1, 108, 'by_percent', 0.0000, 1, 0, 1),
-(127, 1, 1219622400, 1233446399, 2, 108, 'by_percent', 0.0000, 1, 0, 1),
-(128, 1, 1219622400, 1233446399, 3, 108, 'by_percent', 0.0000, 1, 0, 1),
-(129, 1, 1219622400, 1233446399, 0, 109, 'by_percent', 0.0000, 1, 0, 1),
-(130, 1, 1219622400, 1233446399, 1, 109, 'by_percent', 0.0000, 1, 0, 1),
-(131, 1, 1219622400, 1233446399, 2, 109, 'by_percent', 0.0000, 1, 0, 1),
-(132, 1, 1219622400, 1233446399, 3, 109, 'by_percent', 0.0000, 1, 0, 1),
-(133, 1, 1219622400, 1233446399, 0, 110, 'by_percent', 0.0000, 1, 0, 1),
-(134, 1, 1219622400, 1233446399, 1, 110, 'by_percent', 0.0000, 1, 0, 1),
-(135, 1, 1219622400, 1233446399, 2, 110, 'by_percent', 0.0000, 1, 0, 1),
-(136, 1, 1219622400, 1233446399, 3, 110, 'by_percent', 0.0000, 1, 0, 1),
-(137, 1, 1219622400, 1233446399, 0, 111, 'by_percent', 0.0000, 1, 0, 1),
-(138, 1, 1219622400, 1233446399, 1, 111, 'by_percent', 0.0000, 1, 0, 1),
-(139, 1, 1219622400, 1233446399, 2, 111, 'by_percent', 0.0000, 1, 0, 1),
-(140, 1, 1219622400, 1233446399, 3, 111, 'by_percent', 0.0000, 1, 0, 1),
-(141, 1, 1219622400, 1233446399, 0, 117, 'by_percent', 0.0000, 1, 0, 1),
-(142, 1, 1219622400, 1233446399, 1, 117, 'by_percent', 0.0000, 1, 0, 1),
-(143, 1, 1219622400, 1233446399, 2, 117, 'by_percent', 0.0000, 1, 0, 1),
-(144, 1, 1219622400, 1233446399, 3, 117, 'by_percent', 0.0000, 1, 0, 1),
-(145, 1, 1219622400, 1233446399, 0, 118, 'by_percent', 0.0000, 1, 0, 1),
-(146, 1, 1219622400, 1233446399, 1, 118, 'by_percent', 0.0000, 1, 0, 1),
-(147, 1, 1219622400, 1233446399, 2, 118, 'by_percent', 0.0000, 1, 0, 1),
-(148, 1, 1219622400, 1233446399, 3, 118, 'by_percent', 0.0000, 1, 0, 1),
-(149, 1, 1219622400, 1233446399, 0, 119, 'by_percent', 0.0000, 1, 0, 1),
-(150, 1, 1219622400, 1233446399, 1, 119, 'by_percent', 0.0000, 1, 0, 1),
-(151, 1, 1219622400, 1233446399, 2, 119, 'by_percent', 0.0000, 1, 0, 1),
-(152, 1, 1219622400, 1233446399, 3, 119, 'by_percent', 0.0000, 1, 0, 1),
-(153, 1, 1219622400, 1233446399, 0, 120, 'by_percent', 0.0000, 1, 0, 1),
-(154, 1, 1219622400, 1233446399, 1, 120, 'by_percent', 0.0000, 1, 0, 1),
-(155, 1, 1219622400, 1233446399, 2, 120, 'by_percent', 0.0000, 1, 0, 1),
-(156, 1, 1219622400, 1233446399, 3, 120, 'by_percent', 0.0000, 1, 0, 1),
-(157, 1, 1219622400, 1233446399, 0, 121, 'by_percent', 0.0000, 1, 0, 1),
-(158, 1, 1219622400, 1233446399, 1, 121, 'by_percent', 0.0000, 1, 0, 1),
-(159, 1, 1219622400, 1233446399, 2, 121, 'by_percent', 0.0000, 1, 0, 1),
-(160, 1, 1219622400, 1233446399, 3, 121, 'by_percent', 0.0000, 1, 0, 1),
-(161, 1, 1219622400, 1233446399, 0, 122, 'by_percent', 0.0000, 1, 0, 1),
-(162, 1, 1219622400, 1233446399, 1, 122, 'by_percent', 0.0000, 1, 0, 1),
-(163, 1, 1219622400, 1233446399, 2, 122, 'by_percent', 0.0000, 1, 0, 1),
-(164, 1, 1219622400, 1233446399, 3, 122, 'by_percent', 0.0000, 1, 0, 1),
-(165, 1, 1219622400, 1233446399, 0, 123, 'by_percent', 0.0000, 1, 0, 1),
-(166, 1, 1219622400, 1233446399, 1, 123, 'by_percent', 0.0000, 1, 0, 1),
-(167, 1, 1219622400, 1233446399, 2, 123, 'by_percent', 0.0000, 1, 0, 1),
-(168, 1, 1219622400, 1233446399, 3, 123, 'by_percent', 0.0000, 1, 0, 1),
-(169, 1, 1219622400, 1233446399, 0, 124, 'by_percent', 0.0000, 1, 0, 1),
-(170, 1, 1219622400, 1233446399, 1, 124, 'by_percent', 0.0000, 1, 0, 1),
-(171, 1, 1219622400, 1233446399, 2, 124, 'by_percent', 0.0000, 1, 0, 1),
-(172, 1, 1219622400, 1233446399, 3, 124, 'by_percent', 0.0000, 1, 0, 1),
-(173, 1, 1219622400, 1233446399, 0, 125, 'by_percent', 0.0000, 1, 0, 1),
-(174, 1, 1219622400, 1233446399, 1, 125, 'by_percent', 0.0000, 1, 0, 1),
-(175, 1, 1219622400, 1233446399, 2, 125, 'by_percent', 0.0000, 1, 0, 1),
-(176, 1, 1219622400, 1233446399, 3, 125, 'by_percent', 0.0000, 1, 0, 1),
-(177, 1, 1219622400, 1233446399, 0, 126, 'by_percent', 0.0000, 1, 0, 1),
-(178, 1, 1219622400, 1233446399, 1, 126, 'by_percent', 0.0000, 1, 0, 1),
-(179, 1, 1219622400, 1233446399, 2, 126, 'by_percent', 0.0000, 1, 0, 1),
-(180, 1, 1219622400, 1233446399, 3, 126, 'by_percent', 0.0000, 1, 0, 1),
-(181, 1, 1219622400, 1233446399, 0, 127, 'by_percent', 0.0000, 1, 0, 1),
-(182, 1, 1219622400, 1233446399, 1, 127, 'by_percent', 0.0000, 1, 0, 1),
-(183, 1, 1219622400, 1233446399, 2, 127, 'by_percent', 0.0000, 1, 0, 1),
-(184, 1, 1219622400, 1233446399, 3, 127, 'by_percent', 0.0000, 1, 0, 1),
-(185, 1, 1219622400, 1233446399, 0, 128, 'by_percent', 0.0000, 1, 0, 1),
-(186, 1, 1219622400, 1233446399, 1, 128, 'by_percent', 0.0000, 1, 0, 1),
-(187, 1, 1219622400, 1233446399, 2, 128, 'by_percent', 0.0000, 1, 0, 1),
-(188, 1, 1219622400, 1233446399, 3, 128, 'by_percent', 0.0000, 1, 0, 1),
-(189, 1, 1219622400, 1233446399, 0, 129, 'by_percent', 0.0000, 1, 0, 1),
-(190, 1, 1219622400, 1233446399, 1, 129, 'by_percent', 0.0000, 1, 0, 1),
-(191, 1, 1219622400, 1233446399, 2, 129, 'by_percent', 0.0000, 1, 0, 1),
-(192, 1, 1219622400, 1233446399, 3, 129, 'by_percent', 0.0000, 1, 0, 1),
-(193, 1, 1219622400, 1233446399, 0, 130, 'by_percent', 0.0000, 1, 0, 1),
-(194, 1, 1219622400, 1233446399, 1, 130, 'by_percent', 0.0000, 1, 0, 1),
-(195, 1, 1219622400, 1233446399, 2, 130, 'by_percent', 0.0000, 1, 0, 1),
-(196, 1, 1219622400, 1233446399, 3, 130, 'by_percent', 0.0000, 1, 0, 1),
-(197, 1, 1219622400, 1233446399, 0, 131, 'by_percent', 0.0000, 1, 0, 1),
-(198, 1, 1219622400, 1233446399, 1, 131, 'by_percent', 0.0000, 1, 0, 1),
-(199, 1, 1219622400, 1233446399, 2, 131, 'by_percent', 0.0000, 1, 0, 1),
-(200, 1, 1219622400, 1233446399, 3, 131, 'by_percent', 0.0000, 1, 0, 1),
-(201, 1, 1219622400, 1233446399, 0, 132, 'by_percent', 0.0000, 1, 0, 1),
-(202, 1, 1219622400, 1233446399, 1, 132, 'by_percent', 0.0000, 1, 0, 1),
-(203, 1, 1219622400, 1233446399, 2, 132, 'by_percent', 0.0000, 1, 0, 1),
-(204, 1, 1219622400, 1233446399, 3, 132, 'by_percent', 0.0000, 1, 0, 1),
-(205, 1, 1219622400, 1233446399, 0, 133, 'by_percent', 0.0000, 1, 0, 1),
-(206, 1, 1219622400, 1233446399, 1, 133, 'by_percent', 0.0000, 1, 0, 1),
-(207, 1, 1219622400, 1233446399, 2, 133, 'by_percent', 0.0000, 1, 0, 1),
-(208, 1, 1219622400, 1233446399, 3, 133, 'by_percent', 0.0000, 1, 0, 1),
-(209, 1, 1219622400, 1233446399, 0, 134, 'by_percent', 0.0000, 1, 0, 1),
-(210, 1, 1219622400, 1233446399, 1, 134, 'by_percent', 0.0000, 1, 0, 1),
-(211, 1, 1219622400, 1233446399, 2, 134, 'by_percent', 0.0000, 1, 0, 1),
-(212, 1, 1219622400, 1233446399, 3, 134, 'by_percent', 0.0000, 1, 0, 1),
-(213, 1, 1219622400, 1233446399, 0, 135, 'by_percent', 0.0000, 1, 0, 1),
-(214, 1, 1219622400, 1233446399, 1, 135, 'by_percent', 0.0000, 1, 0, 1),
-(215, 1, 1219622400, 1233446399, 2, 135, 'by_percent', 0.0000, 1, 0, 1),
-(216, 1, 1219622400, 1233446399, 3, 135, 'by_percent', 0.0000, 1, 0, 1),
-(217, 1, 1219622400, 1233446399, 0, 137, 'by_percent', 0.0000, 1, 0, 1),
-(218, 1, 1219622400, 1233446399, 1, 137, 'by_percent', 0.0000, 1, 0, 1),
-(219, 1, 1219622400, 1233446399, 2, 137, 'by_percent', 0.0000, 1, 0, 1),
-(220, 1, 1219622400, 1233446399, 3, 137, 'by_percent', 0.0000, 1, 0, 1),
-(221, 1, 1219622400, 1233446399, 0, 158, 'by_percent', 0.0000, 1, 0, 1),
-(222, 1, 1219622400, 1233446399, 1, 158, 'by_percent', 0.0000, 1, 0, 1),
-(223, 1, 1219622400, 1233446399, 2, 158, 'by_percent', 0.0000, 1, 0, 1),
-(224, 1, 1219622400, 1233446399, 3, 158, 'by_percent', 0.0000, 1, 0, 1),
-(225, 1, 1219622400, 1233446399, 0, 163, 'by_percent', 0.0000, 1, 0, 1),
-(226, 1, 1219622400, 1233446399, 1, 163, 'by_percent', 0.0000, 1, 0, 1),
-(227, 1, 1219622400, 1233446399, 2, 163, 'by_percent', 0.0000, 1, 0, 1),
-(228, 1, 1219622400, 1233446399, 3, 163, 'by_percent', 0.0000, 1, 0, 1),
-(229, 1, 1219622400, 1233446399, 0, 165, 'by_percent', 0.0000, 1, 0, 1),
-(230, 1, 1219622400, 1233446399, 1, 165, 'by_percent', 0.0000, 1, 0, 1),
-(231, 1, 1219622400, 1233446399, 2, 165, 'by_percent', 0.0000, 1, 0, 1),
-(232, 1, 1219622400, 1233446399, 3, 165, 'by_percent', 0.0000, 1, 0, 1),
-(233, 3, 1217980800, 1251071999, 0, 16, 'by_percent', 0.0000, 0, 0, 1),
-(234, 3, 1217980800, 1251071999, 1, 16, 'by_percent', 0.0000, 0, 0, 1),
-(235, 3, 1217980800, 1251071999, 2, 16, 'by_percent', 0.0000, 0, 0, 1),
-(236, 3, 1217980800, 1251071999, 4, 16, 'by_percent', 0.0000, 0, 0, 1),
-(237, 3, 1217980800, 1251071999, 0, 17, 'by_percent', 0.0000, 0, 0, 1),
-(238, 3, 1217980800, 1251071999, 1, 17, 'by_percent', 0.0000, 0, 0, 1),
-(239, 3, 1217980800, 1251071999, 2, 17, 'by_percent', 0.0000, 0, 0, 1),
-(240, 3, 1217980800, 1251071999, 4, 17, 'by_percent', 0.0000, 0, 0, 1),
-(241, 3, 1217980800, 1251071999, 0, 18, 'by_percent', 0.0000, 0, 0, 1),
-(242, 3, 1217980800, 1251071999, 1, 18, 'by_percent', 0.0000, 0, 0, 1),
-(243, 3, 1217980800, 1251071999, 2, 18, 'by_percent', 0.0000, 0, 0, 1),
-(244, 3, 1217980800, 1251071999, 4, 18, 'by_percent', 0.0000, 0, 0, 1),
-(245, 3, 1217980800, 1251071999, 0, 19, 'by_percent', 0.0000, 0, 0, 1),
-(246, 3, 1217980800, 1251071999, 1, 19, 'by_percent', 0.0000, 0, 0, 1),
-(247, 3, 1217980800, 1251071999, 2, 19, 'by_percent', 0.0000, 0, 0, 1),
-(248, 3, 1217980800, 1251071999, 4, 19, 'by_percent', 0.0000, 0, 0, 1),
-(249, 3, 1217980800, 1251071999, 0, 20, 'by_percent', 0.0000, 0, 0, 1),
-(250, 3, 1217980800, 1251071999, 1, 20, 'by_percent', 0.0000, 0, 0, 1),
-(251, 3, 1217980800, 1251071999, 2, 20, 'by_percent', 0.0000, 0, 0, 1),
-(252, 3, 1217980800, 1251071999, 4, 20, 'by_percent', 0.0000, 0, 0, 1),
-(253, 3, 1217980800, 1251071999, 0, 25, 'by_percent', 0.0000, 0, 0, 1),
-(254, 3, 1217980800, 1251071999, 1, 25, 'by_percent', 0.0000, 0, 0, 1),
-(255, 3, 1217980800, 1251071999, 2, 25, 'by_percent', 0.0000, 0, 0, 1),
-(256, 3, 1217980800, 1251071999, 4, 25, 'by_percent', 0.0000, 0, 0, 1),
-(257, 3, 1217980800, 1251071999, 0, 26, 'by_percent', 0.0000, 0, 0, 1),
-(258, 3, 1217980800, 1251071999, 1, 26, 'by_percent', 0.0000, 0, 0, 1),
-(259, 3, 1217980800, 1251071999, 2, 26, 'by_percent', 0.0000, 0, 0, 1),
-(260, 3, 1217980800, 1251071999, 4, 26, 'by_percent', 0.0000, 0, 0, 1),
-(261, 3, 1217980800, 1251071999, 0, 27, 'by_percent', 0.0000, 0, 0, 1),
-(262, 3, 1217980800, 1251071999, 1, 27, 'by_percent', 0.0000, 0, 0, 1),
-(263, 3, 1217980800, 1251071999, 2, 27, 'by_percent', 0.0000, 0, 0, 1),
-(264, 3, 1217980800, 1251071999, 4, 27, 'by_percent', 0.0000, 0, 0, 1),
-(265, 3, 1217980800, 1251071999, 0, 28, 'by_percent', 0.0000, 0, 0, 1),
-(266, 3, 1217980800, 1251071999, 1, 28, 'by_percent', 0.0000, 0, 0, 1),
-(267, 3, 1217980800, 1251071999, 2, 28, 'by_percent', 0.0000, 0, 0, 1),
-(268, 3, 1217980800, 1251071999, 4, 28, 'by_percent', 0.0000, 0, 0, 1),
-(269, 3, 1217980800, 1251071999, 0, 29, 'by_percent', 0.0000, 0, 0, 1),
-(270, 3, 1217980800, 1251071999, 1, 29, 'by_percent', 0.0000, 0, 0, 1),
-(271, 3, 1217980800, 1251071999, 2, 29, 'by_percent', 0.0000, 0, 0, 1),
-(272, 3, 1217980800, 1251071999, 4, 29, 'by_percent', 0.0000, 0, 0, 1),
-(273, 3, 1217980800, 1251071999, 0, 30, 'by_percent', 0.0000, 0, 0, 1),
-(274, 3, 1217980800, 1251071999, 1, 30, 'by_percent', 0.0000, 0, 0, 1),
-(275, 3, 1217980800, 1251071999, 2, 30, 'by_percent', 0.0000, 0, 0, 1),
-(276, 3, 1217980800, 1251071999, 4, 30, 'by_percent', 0.0000, 0, 0, 1),
-(277, 3, 1217980800, 1251071999, 0, 31, 'by_percent', 0.0000, 0, 0, 1),
-(278, 3, 1217980800, 1251071999, 1, 31, 'by_percent', 0.0000, 0, 0, 1),
-(279, 3, 1217980800, 1251071999, 2, 31, 'by_percent', 0.0000, 0, 0, 1),
-(280, 3, 1217980800, 1251071999, 4, 31, 'by_percent', 0.0000, 0, 0, 1),
-(281, 3, 1217980800, 1251071999, 0, 32, 'by_percent', 0.0000, 0, 0, 1),
-(282, 3, 1217980800, 1251071999, 1, 32, 'by_percent', 0.0000, 0, 0, 1),
-(283, 3, 1217980800, 1251071999, 2, 32, 'by_percent', 0.0000, 0, 0, 1),
-(284, 3, 1217980800, 1251071999, 4, 32, 'by_percent', 0.0000, 0, 0, 1),
-(285, 3, 1217980800, 1251071999, 0, 33, 'by_percent', 0.0000, 0, 0, 1),
-(286, 3, 1217980800, 1251071999, 1, 33, 'by_percent', 0.0000, 0, 0, 1),
-(287, 3, 1217980800, 1251071999, 2, 33, 'by_percent', 0.0000, 0, 0, 1),
-(288, 3, 1217980800, 1251071999, 4, 33, 'by_percent', 0.0000, 0, 0, 1),
-(289, 3, 1217980800, 1251071999, 0, 34, 'by_percent', 0.0000, 0, 0, 1),
-(290, 3, 1217980800, 1251071999, 1, 34, 'by_percent', 0.0000, 0, 0, 1),
-(291, 3, 1217980800, 1251071999, 2, 34, 'by_percent', 0.0000, 0, 0, 1),
-(292, 3, 1217980800, 1251071999, 4, 34, 'by_percent', 0.0000, 0, 0, 1),
-(293, 3, 1217980800, 1251071999, 0, 35, 'by_percent', 0.0000, 0, 0, 1),
-(294, 3, 1217980800, 1251071999, 1, 35, 'by_percent', 0.0000, 0, 0, 1),
-(295, 3, 1217980800, 1251071999, 2, 35, 'by_percent', 0.0000, 0, 0, 1),
-(296, 3, 1217980800, 1251071999, 4, 35, 'by_percent', 0.0000, 0, 0, 1),
-(297, 3, 1217980800, 1251071999, 0, 36, 'by_percent', 0.0000, 0, 0, 1),
-(298, 3, 1217980800, 1251071999, 1, 36, 'by_percent', 0.0000, 0, 0, 1),
-(299, 3, 1217980800, 1251071999, 2, 36, 'by_percent', 0.0000, 0, 0, 1),
-(300, 3, 1217980800, 1251071999, 4, 36, 'by_percent', 0.0000, 0, 0, 1),
-(301, 3, 1217980800, 1251071999, 0, 37, 'by_percent', 0.0000, 0, 0, 1),
-(302, 3, 1217980800, 1251071999, 1, 37, 'by_percent', 0.0000, 0, 0, 1),
-(303, 3, 1217980800, 1251071999, 2, 37, 'by_percent', 0.0000, 0, 0, 1),
-(304, 3, 1217980800, 1251071999, 4, 37, 'by_percent', 0.0000, 0, 0, 1),
-(305, 3, 1217980800, 1251071999, 0, 38, 'by_percent', 0.0000, 0, 0, 1),
-(306, 3, 1217980800, 1251071999, 1, 38, 'by_percent', 0.0000, 0, 0, 1),
-(307, 3, 1217980800, 1251071999, 2, 38, 'by_percent', 0.0000, 0, 0, 1),
-(308, 3, 1217980800, 1251071999, 4, 38, 'by_percent', 0.0000, 0, 0, 1),
-(309, 3, 1217980800, 1251071999, 0, 39, 'by_percent', 0.0000, 0, 0, 1),
-(310, 3, 1217980800, 1251071999, 1, 39, 'by_percent', 0.0000, 0, 0, 1),
-(311, 3, 1217980800, 1251071999, 2, 39, 'by_percent', 0.0000, 0, 0, 1),
-(312, 3, 1217980800, 1251071999, 4, 39, 'by_percent', 0.0000, 0, 0, 1),
-(313, 3, 1217980800, 1251071999, 0, 41, 'by_percent', 0.0000, 0, 0, 1),
-(314, 3, 1217980800, 1251071999, 1, 41, 'by_percent', 0.0000, 0, 0, 1),
-(315, 3, 1217980800, 1251071999, 2, 41, 'by_percent', 0.0000, 0, 0, 1),
-(316, 3, 1217980800, 1251071999, 4, 41, 'by_percent', 0.0000, 0, 0, 1),
-(317, 3, 1217980800, 1251071999, 0, 42, 'by_percent', 0.0000, 0, 0, 1),
-(318, 3, 1217980800, 1251071999, 1, 42, 'by_percent', 0.0000, 0, 0, 1),
-(319, 3, 1217980800, 1251071999, 2, 42, 'by_percent', 0.0000, 0, 0, 1),
-(320, 3, 1217980800, 1251071999, 4, 42, 'by_percent', 0.0000, 0, 0, 1),
-(321, 3, 1217980800, 1251071999, 0, 44, 'by_percent', 0.0000, 0, 0, 1),
-(322, 3, 1217980800, 1251071999, 1, 44, 'by_percent', 0.0000, 0, 0, 1),
-(323, 3, 1217980800, 1251071999, 2, 44, 'by_percent', 0.0000, 0, 0, 1),
-(324, 3, 1217980800, 1251071999, 4, 44, 'by_percent', 0.0000, 0, 0, 1),
-(325, 3, 1217980800, 1251071999, 0, 45, 'by_percent', 0.0000, 0, 0, 1),
-(326, 3, 1217980800, 1251071999, 1, 45, 'by_percent', 0.0000, 0, 0, 1),
-(327, 3, 1217980800, 1251071999, 2, 45, 'by_percent', 0.0000, 0, 0, 1),
-(328, 3, 1217980800, 1251071999, 4, 45, 'by_percent', 0.0000, 0, 0, 1),
-(329, 3, 1217980800, 1251071999, 0, 46, 'by_percent', 0.0000, 0, 0, 1),
-(330, 3, 1217980800, 1251071999, 1, 46, 'by_percent', 0.0000, 0, 0, 1),
-(331, 3, 1217980800, 1251071999, 2, 46, 'by_percent', 0.0000, 0, 0, 1),
-(332, 3, 1217980800, 1251071999, 4, 46, 'by_percent', 0.0000, 0, 0, 1),
-(333, 3, 1217980800, 1251071999, 0, 47, 'by_percent', 0.0000, 0, 0, 1),
-(334, 3, 1217980800, 1251071999, 1, 47, 'by_percent', 0.0000, 0, 0, 1),
-(335, 3, 1217980800, 1251071999, 2, 47, 'by_percent', 0.0000, 0, 0, 1),
-(336, 3, 1217980800, 1251071999, 4, 47, 'by_percent', 0.0000, 0, 0, 1),
-(337, 3, 1217980800, 1251071999, 0, 48, 'by_percent', 0.0000, 0, 0, 1),
-(338, 3, 1217980800, 1251071999, 1, 48, 'by_percent', 0.0000, 0, 0, 1),
-(339, 3, 1217980800, 1251071999, 2, 48, 'by_percent', 0.0000, 0, 0, 1),
-(340, 3, 1217980800, 1251071999, 4, 48, 'by_percent', 0.0000, 0, 0, 1),
-(341, 3, 1217980800, 1251071999, 0, 49, 'by_percent', 0.0000, 0, 0, 1),
-(342, 3, 1217980800, 1251071999, 1, 49, 'by_percent', 0.0000, 0, 0, 1),
-(343, 3, 1217980800, 1251071999, 2, 49, 'by_percent', 0.0000, 0, 0, 1),
-(344, 3, 1217980800, 1251071999, 4, 49, 'by_percent', 0.0000, 0, 0, 1),
-(345, 3, 1217980800, 1251071999, 0, 51, 'by_percent', 0.0000, 0, 0, 1),
-(346, 3, 1217980800, 1251071999, 1, 51, 'by_percent', 0.0000, 0, 0, 1),
-(347, 3, 1217980800, 1251071999, 2, 51, 'by_percent', 0.0000, 0, 0, 1),
-(348, 3, 1217980800, 1251071999, 4, 51, 'by_percent', 0.0000, 0, 0, 1),
-(349, 3, 1217980800, 1251071999, 0, 52, 'by_percent', 0.0000, 0, 0, 1),
-(350, 3, 1217980800, 1251071999, 1, 52, 'by_percent', 0.0000, 0, 0, 1),
-(351, 3, 1217980800, 1251071999, 2, 52, 'by_percent', 0.0000, 0, 0, 1),
-(352, 3, 1217980800, 1251071999, 4, 52, 'by_percent', 0.0000, 0, 0, 1),
-(353, 3, 1217980800, 1251071999, 0, 53, 'by_percent', 0.0000, 0, 0, 1),
-(354, 3, 1217980800, 1251071999, 1, 53, 'by_percent', 0.0000, 0, 0, 1),
-(355, 3, 1217980800, 1251071999, 2, 53, 'by_percent', 0.0000, 0, 0, 1),
-(356, 3, 1217980800, 1251071999, 4, 53, 'by_percent', 0.0000, 0, 0, 1),
-(357, 3, 1217980800, 1251071999, 0, 54, 'by_percent', 0.0000, 0, 0, 1),
-(358, 3, 1217980800, 1251071999, 1, 54, 'by_percent', 0.0000, 0, 0, 1),
-(359, 3, 1217980800, 1251071999, 2, 54, 'by_percent', 0.0000, 0, 0, 1),
-(360, 3, 1217980800, 1251071999, 4, 54, 'by_percent', 0.0000, 0, 0, 1),
-(361, 3, 1217980800, 1251071999, 0, 74, 'by_percent', 0.0000, 0, 0, 1),
-(362, 3, 1217980800, 1251071999, 1, 74, 'by_percent', 0.0000, 0, 0, 1),
-(363, 3, 1217980800, 1251071999, 2, 74, 'by_percent', 0.0000, 0, 0, 1),
-(364, 3, 1217980800, 1251071999, 4, 74, 'by_percent', 0.0000, 0, 0, 1),
-(365, 3, 1217980800, 1251071999, 0, 75, 'by_percent', 0.0000, 0, 0, 1),
-(366, 3, 1217980800, 1251071999, 1, 75, 'by_percent', 0.0000, 0, 0, 1),
-(367, 3, 1217980800, 1251071999, 2, 75, 'by_percent', 0.0000, 0, 0, 1),
-(368, 3, 1217980800, 1251071999, 4, 75, 'by_percent', 0.0000, 0, 0, 1),
-(369, 3, 1217980800, 1251071999, 0, 79, 'by_percent', 0.0000, 0, 0, 1),
-(370, 3, 1217980800, 1251071999, 1, 79, 'by_percent', 0.0000, 0, 0, 1),
-(371, 3, 1217980800, 1251071999, 2, 79, 'by_percent', 0.0000, 0, 0, 1),
-(372, 3, 1217980800, 1251071999, 4, 79, 'by_percent', 0.0000, 0, 0, 1),
-(373, 3, 1217980800, 1251071999, 0, 80, 'by_percent', 0.0000, 0, 0, 1),
-(374, 3, 1217980800, 1251071999, 1, 80, 'by_percent', 0.0000, 0, 0, 1),
-(375, 3, 1217980800, 1251071999, 2, 80, 'by_percent', 0.0000, 0, 0, 1),
-(376, 3, 1217980800, 1251071999, 4, 80, 'by_percent', 0.0000, 0, 0, 1),
-(377, 3, 1217980800, 1251071999, 0, 81, 'by_percent', 0.0000, 0, 0, 1),
-(378, 3, 1217980800, 1251071999, 1, 81, 'by_percent', 0.0000, 0, 0, 1),
-(379, 3, 1217980800, 1251071999, 2, 81, 'by_percent', 0.0000, 0, 0, 1),
-(380, 3, 1217980800, 1251071999, 4, 81, 'by_percent', 0.0000, 0, 0, 1),
-(381, 3, 1217980800, 1251071999, 0, 82, 'by_percent', 0.0000, 0, 0, 1),
-(382, 3, 1217980800, 1251071999, 1, 82, 'by_percent', 0.0000, 0, 0, 1),
-(383, 3, 1217980800, 1251071999, 2, 82, 'by_percent', 0.0000, 0, 0, 1),
-(384, 3, 1217980800, 1251071999, 4, 82, 'by_percent', 0.0000, 0, 0, 1),
-(385, 3, 1217980800, 1251071999, 0, 83, 'by_percent', 0.0000, 0, 0, 1),
-(386, 3, 1217980800, 1251071999, 1, 83, 'by_percent', 0.0000, 0, 0, 1),
-(387, 3, 1217980800, 1251071999, 2, 83, 'by_percent', 0.0000, 0, 0, 1),
-(388, 3, 1217980800, 1251071999, 4, 83, 'by_percent', 0.0000, 0, 0, 1),
-(389, 3, 1217980800, 1251071999, 0, 84, 'by_percent', 0.0000, 0, 0, 1),
-(390, 3, 1217980800, 1251071999, 1, 84, 'by_percent', 0.0000, 0, 0, 1),
-(391, 3, 1217980800, 1251071999, 2, 84, 'by_percent', 0.0000, 0, 0, 1),
-(392, 3, 1217980800, 1251071999, 4, 84, 'by_percent', 0.0000, 0, 0, 1),
-(393, 3, 1217980800, 1251071999, 0, 85, 'by_percent', 0.0000, 0, 0, 1),
-(394, 3, 1217980800, 1251071999, 1, 85, 'by_percent', 0.0000, 0, 0, 1),
-(395, 3, 1217980800, 1251071999, 2, 85, 'by_percent', 0.0000, 0, 0, 1),
-(396, 3, 1217980800, 1251071999, 4, 85, 'by_percent', 0.0000, 0, 0, 1),
-(397, 3, 1217980800, 1251071999, 0, 86, 'by_percent', 0.0000, 0, 0, 1),
-(398, 3, 1217980800, 1251071999, 1, 86, 'by_percent', 0.0000, 0, 0, 1),
-(399, 3, 1217980800, 1251071999, 2, 86, 'by_percent', 0.0000, 0, 0, 1),
-(400, 3, 1217980800, 1251071999, 4, 86, 'by_percent', 0.0000, 0, 0, 1),
-(401, 3, 1217980800, 1251071999, 0, 87, 'by_percent', 0.0000, 0, 0, 1),
-(402, 3, 1217980800, 1251071999, 1, 87, 'by_percent', 0.0000, 0, 0, 1),
-(403, 3, 1217980800, 1251071999, 2, 87, 'by_percent', 0.0000, 0, 0, 1),
-(404, 3, 1217980800, 1251071999, 4, 87, 'by_percent', 0.0000, 0, 0, 1),
-(405, 3, 1217980800, 1251071999, 0, 88, 'by_percent', 0.0000, 0, 0, 1),
-(406, 3, 1217980800, 1251071999, 1, 88, 'by_percent', 0.0000, 0, 0, 1),
-(407, 3, 1217980800, 1251071999, 2, 88, 'by_percent', 0.0000, 0, 0, 1),
-(408, 3, 1217980800, 1251071999, 4, 88, 'by_percent', 0.0000, 0, 0, 1),
-(409, 3, 1217980800, 1251071999, 0, 89, 'by_percent', 0.0000, 0, 0, 1),
-(410, 3, 1217980800, 1251071999, 1, 89, 'by_percent', 0.0000, 0, 0, 1),
-(411, 3, 1217980800, 1251071999, 2, 89, 'by_percent', 0.0000, 0, 0, 1),
-(412, 3, 1217980800, 1251071999, 4, 89, 'by_percent', 0.0000, 0, 0, 1),
-(413, 3, 1217980800, 1251071999, 0, 90, 'by_percent', 0.0000, 0, 0, 1),
-(414, 3, 1217980800, 1251071999, 1, 90, 'by_percent', 0.0000, 0, 0, 1),
-(415, 3, 1217980800, 1251071999, 2, 90, 'by_percent', 0.0000, 0, 0, 1),
-(416, 3, 1217980800, 1251071999, 4, 90, 'by_percent', 0.0000, 0, 0, 1),
-(417, 3, 1217980800, 1251071999, 0, 91, 'by_percent', 0.0000, 0, 0, 1),
-(418, 3, 1217980800, 1251071999, 1, 91, 'by_percent', 0.0000, 0, 0, 1),
-(419, 3, 1217980800, 1251071999, 2, 91, 'by_percent', 0.0000, 0, 0, 1),
-(420, 3, 1217980800, 1251071999, 4, 91, 'by_percent', 0.0000, 0, 0, 1),
-(421, 3, 1217980800, 1251071999, 0, 92, 'by_percent', 0.0000, 0, 0, 1),
-(422, 3, 1217980800, 1251071999, 1, 92, 'by_percent', 0.0000, 0, 0, 1),
-(423, 3, 1217980800, 1251071999, 2, 92, 'by_percent', 0.0000, 0, 0, 1),
-(424, 3, 1217980800, 1251071999, 4, 92, 'by_percent', 0.0000, 0, 0, 1),
-(425, 3, 1217980800, 1251071999, 0, 93, 'by_percent', 0.0000, 0, 0, 1),
-(426, 3, 1217980800, 1251071999, 1, 93, 'by_percent', 0.0000, 0, 0, 1),
-(427, 3, 1217980800, 1251071999, 2, 93, 'by_percent', 0.0000, 0, 0, 1),
-(428, 3, 1217980800, 1251071999, 4, 93, 'by_percent', 0.0000, 0, 0, 1),
-(429, 3, 1217980800, 1251071999, 0, 94, 'by_percent', 0.0000, 0, 0, 1),
-(430, 3, 1217980800, 1251071999, 1, 94, 'by_percent', 0.0000, 0, 0, 1),
-(431, 3, 1217980800, 1251071999, 2, 94, 'by_percent', 0.0000, 0, 0, 1),
-(432, 3, 1217980800, 1251071999, 4, 94, 'by_percent', 0.0000, 0, 0, 1),
-(433, 3, 1217980800, 1251071999, 0, 95, 'by_percent', 0.0000, 0, 0, 1),
-(434, 3, 1217980800, 1251071999, 1, 95, 'by_percent', 0.0000, 0, 0, 1),
-(435, 3, 1217980800, 1251071999, 2, 95, 'by_percent', 0.0000, 0, 0, 1),
-(436, 3, 1217980800, 1251071999, 4, 95, 'by_percent', 0.0000, 0, 0, 1),
-(437, 3, 1217980800, 1251071999, 0, 96, 'by_percent', 0.0000, 0, 0, 1),
-(438, 3, 1217980800, 1251071999, 1, 96, 'by_percent', 0.0000, 0, 0, 1),
-(439, 3, 1217980800, 1251071999, 2, 96, 'by_percent', 0.0000, 0, 0, 1),
-(440, 3, 1217980800, 1251071999, 4, 96, 'by_percent', 0.0000, 0, 0, 1),
-(441, 3, 1217980800, 1251071999, 0, 97, 'by_percent', 0.0000, 0, 0, 1),
-(442, 3, 1217980800, 1251071999, 1, 97, 'by_percent', 0.0000, 0, 0, 1),
-(443, 3, 1217980800, 1251071999, 2, 97, 'by_percent', 0.0000, 0, 0, 1),
-(444, 3, 1217980800, 1251071999, 4, 97, 'by_percent', 0.0000, 0, 0, 1),
-(445, 3, 1217980800, 1251071999, 0, 98, 'by_percent', 0.0000, 0, 0, 1),
-(446, 3, 1217980800, 1251071999, 1, 98, 'by_percent', 0.0000, 0, 0, 1),
-(447, 3, 1217980800, 1251071999, 2, 98, 'by_percent', 0.0000, 0, 0, 1),
-(448, 3, 1217980800, 1251071999, 4, 98, 'by_percent', 0.0000, 0, 0, 1),
-(449, 3, 1217980800, 1251071999, 0, 99, 'by_percent', 0.0000, 0, 0, 1),
-(450, 3, 1217980800, 1251071999, 1, 99, 'by_percent', 0.0000, 0, 0, 1),
-(451, 3, 1217980800, 1251071999, 2, 99, 'by_percent', 0.0000, 0, 0, 1),
-(452, 3, 1217980800, 1251071999, 4, 99, 'by_percent', 0.0000, 0, 0, 1),
-(453, 3, 1217980800, 1251071999, 0, 100, 'by_percent', 0.0000, 0, 0, 1),
-(454, 3, 1217980800, 1251071999, 1, 100, 'by_percent', 0.0000, 0, 0, 1),
-(455, 3, 1217980800, 1251071999, 2, 100, 'by_percent', 0.0000, 0, 0, 1),
-(456, 3, 1217980800, 1251071999, 4, 100, 'by_percent', 0.0000, 0, 0, 1),
-(457, 3, 1217980800, 1251071999, 0, 101, 'by_percent', 0.0000, 0, 0, 1),
-(458, 3, 1217980800, 1251071999, 1, 101, 'by_percent', 0.0000, 0, 0, 1),
-(459, 3, 1217980800, 1251071999, 2, 101, 'by_percent', 0.0000, 0, 0, 1),
-(460, 3, 1217980800, 1251071999, 4, 101, 'by_percent', 0.0000, 0, 0, 1),
-(461, 3, 1217980800, 1251071999, 0, 102, 'by_percent', 0.0000, 0, 0, 1),
-(462, 3, 1217980800, 1251071999, 1, 102, 'by_percent', 0.0000, 0, 0, 1),
-(463, 3, 1217980800, 1251071999, 2, 102, 'by_percent', 0.0000, 0, 0, 1),
-(464, 3, 1217980800, 1251071999, 4, 102, 'by_percent', 0.0000, 0, 0, 1),
-(465, 3, 1217980800, 1251071999, 0, 103, 'by_percent', 0.0000, 0, 0, 1),
-(466, 3, 1217980800, 1251071999, 1, 103, 'by_percent', 0.0000, 0, 0, 1),
-(467, 3, 1217980800, 1251071999, 2, 103, 'by_percent', 0.0000, 0, 0, 1),
-(468, 3, 1217980800, 1251071999, 4, 103, 'by_percent', 0.0000, 0, 0, 1),
-(469, 3, 1217980800, 1251071999, 0, 104, 'by_percent', 0.0000, 0, 0, 1),
-(470, 3, 1217980800, 1251071999, 1, 104, 'by_percent', 0.0000, 0, 0, 1),
-(471, 3, 1217980800, 1251071999, 2, 104, 'by_percent', 0.0000, 0, 0, 1),
-(472, 3, 1217980800, 1251071999, 4, 104, 'by_percent', 0.0000, 0, 0, 1),
-(473, 3, 1217980800, 1251071999, 0, 105, 'by_percent', 0.0000, 0, 0, 1),
-(474, 3, 1217980800, 1251071999, 1, 105, 'by_percent', 0.0000, 0, 0, 1),
-(475, 3, 1217980800, 1251071999, 2, 105, 'by_percent', 0.0000, 0, 0, 1),
-(476, 3, 1217980800, 1251071999, 4, 105, 'by_percent', 0.0000, 0, 0, 1),
-(477, 3, 1217980800, 1251071999, 0, 106, 'by_percent', 0.0000, 0, 0, 1),
-(478, 3, 1217980800, 1251071999, 1, 106, 'by_percent', 0.0000, 0, 0, 1),
-(479, 3, 1217980800, 1251071999, 2, 106, 'by_percent', 0.0000, 0, 0, 1),
-(480, 3, 1217980800, 1251071999, 4, 106, 'by_percent', 0.0000, 0, 0, 1),
-(481, 3, 1217980800, 1251071999, 0, 107, 'by_percent', 0.0000, 0, 0, 1),
-(482, 3, 1217980800, 1251071999, 1, 107, 'by_percent', 0.0000, 0, 0, 1),
-(483, 3, 1217980800, 1251071999, 2, 107, 'by_percent', 0.0000, 0, 0, 1),
-(484, 3, 1217980800, 1251071999, 4, 107, 'by_percent', 0.0000, 0, 0, 1),
-(485, 3, 1217980800, 1251071999, 0, 108, 'by_percent', 0.0000, 0, 0, 1),
-(486, 3, 1217980800, 1251071999, 1, 108, 'by_percent', 0.0000, 0, 0, 1),
-(487, 3, 1217980800, 1251071999, 2, 108, 'by_percent', 0.0000, 0, 0, 1),
-(488, 3, 1217980800, 1251071999, 4, 108, 'by_percent', 0.0000, 0, 0, 1),
-(489, 3, 1217980800, 1251071999, 0, 109, 'by_percent', 0.0000, 0, 0, 1),
-(490, 3, 1217980800, 1251071999, 1, 109, 'by_percent', 0.0000, 0, 0, 1),
-(491, 3, 1217980800, 1251071999, 2, 109, 'by_percent', 0.0000, 0, 0, 1),
-(492, 3, 1217980800, 1251071999, 4, 109, 'by_percent', 0.0000, 0, 0, 1),
-(493, 3, 1217980800, 1251071999, 0, 110, 'by_percent', 0.0000, 0, 0, 1),
-(494, 3, 1217980800, 1251071999, 1, 110, 'by_percent', 0.0000, 0, 0, 1),
-(495, 3, 1217980800, 1251071999, 2, 110, 'by_percent', 0.0000, 0, 0, 1),
-(496, 3, 1217980800, 1251071999, 4, 110, 'by_percent', 0.0000, 0, 0, 1),
-(497, 3, 1217980800, 1251071999, 0, 111, 'by_percent', 0.0000, 0, 0, 1),
-(498, 3, 1217980800, 1251071999, 1, 111, 'by_percent', 0.0000, 0, 0, 1),
-(499, 3, 1217980800, 1251071999, 2, 111, 'by_percent', 0.0000, 0, 0, 1),
-(500, 3, 1217980800, 1251071999, 4, 111, 'by_percent', 0.0000, 0, 0, 1),
-(501, 3, 1217980800, 1251071999, 0, 112, 'by_percent', 0.0000, 0, 0, 1),
-(502, 3, 1217980800, 1251071999, 1, 112, 'by_percent', 0.0000, 0, 0, 1),
-(503, 3, 1217980800, 1251071999, 2, 112, 'by_percent', 0.0000, 0, 0, 1),
-(504, 3, 1217980800, 1251071999, 4, 112, 'by_percent', 0.0000, 0, 0, 1),
-(505, 3, 1217980800, 1251071999, 0, 113, 'by_percent', 0.0000, 0, 0, 1),
-(506, 3, 1217980800, 1251071999, 1, 113, 'by_percent', 0.0000, 0, 0, 1),
-(507, 3, 1217980800, 1251071999, 2, 113, 'by_percent', 0.0000, 0, 0, 1),
-(508, 3, 1217980800, 1251071999, 4, 113, 'by_percent', 0.0000, 0, 0, 1),
-(509, 3, 1217980800, 1251071999, 0, 114, 'by_percent', 0.0000, 0, 0, 1),
-(510, 3, 1217980800, 1251071999, 1, 114, 'by_percent', 0.0000, 0, 0, 1),
-(511, 3, 1217980800, 1251071999, 2, 114, 'by_percent', 0.0000, 0, 0, 1),
-(512, 3, 1217980800, 1251071999, 4, 114, 'by_percent', 0.0000, 0, 0, 1),
-(513, 3, 1217980800, 1251071999, 0, 115, 'by_percent', 0.0000, 0, 0, 1),
-(514, 3, 1217980800, 1251071999, 1, 115, 'by_percent', 0.0000, 0, 0, 1),
-(515, 3, 1217980800, 1251071999, 2, 115, 'by_percent', 0.0000, 0, 0, 1),
-(516, 3, 1217980800, 1251071999, 4, 115, 'by_percent', 0.0000, 0, 0, 1),
-(517, 3, 1217980800, 1251071999, 0, 117, 'by_percent', 0.0000, 0, 0, 1),
-(518, 3, 1217980800, 1251071999, 1, 117, 'by_percent', 0.0000, 0, 0, 1),
-(519, 3, 1217980800, 1251071999, 2, 117, 'by_percent', 0.0000, 0, 0, 1),
-(520, 3, 1217980800, 1251071999, 4, 117, 'by_percent', 0.0000, 0, 0, 1),
-(521, 3, 1217980800, 1251071999, 0, 118, 'by_percent', 0.0000, 0, 0, 1),
-(522, 3, 1217980800, 1251071999, 1, 118, 'by_percent', 0.0000, 0, 0, 1),
-(523, 3, 1217980800, 1251071999, 2, 118, 'by_percent', 0.0000, 0, 0, 1),
-(524, 3, 1217980800, 1251071999, 4, 118, 'by_percent', 0.0000, 0, 0, 1),
-(525, 3, 1217980800, 1251071999, 0, 119, 'by_percent', 0.0000, 0, 0, 1),
-(526, 3, 1217980800, 1251071999, 1, 119, 'by_percent', 0.0000, 0, 0, 1),
-(527, 3, 1217980800, 1251071999, 2, 119, 'by_percent', 0.0000, 0, 0, 1),
-(528, 3, 1217980800, 1251071999, 4, 119, 'by_percent', 0.0000, 0, 0, 1),
-(529, 3, 1217980800, 1251071999, 0, 120, 'by_percent', 0.0000, 0, 0, 1),
-(530, 3, 1217980800, 1251071999, 1, 120, 'by_percent', 0.0000, 0, 0, 1),
-(531, 3, 1217980800, 1251071999, 2, 120, 'by_percent', 0.0000, 0, 0, 1),
-(532, 3, 1217980800, 1251071999, 4, 120, 'by_percent', 0.0000, 0, 0, 1),
-(533, 3, 1217980800, 1251071999, 0, 121, 'by_percent', 0.0000, 0, 0, 1),
-(534, 3, 1217980800, 1251071999, 1, 121, 'by_percent', 0.0000, 0, 0, 1),
-(535, 3, 1217980800, 1251071999, 2, 121, 'by_percent', 0.0000, 0, 0, 1),
-(536, 3, 1217980800, 1251071999, 4, 121, 'by_percent', 0.0000, 0, 0, 1),
-(537, 3, 1217980800, 1251071999, 0, 122, 'by_percent', 0.0000, 0, 0, 1),
-(538, 3, 1217980800, 1251071999, 1, 122, 'by_percent', 0.0000, 0, 0, 1),
-(539, 3, 1217980800, 1251071999, 2, 122, 'by_percent', 0.0000, 0, 0, 1),
-(540, 3, 1217980800, 1251071999, 4, 122, 'by_percent', 0.0000, 0, 0, 1),
-(541, 3, 1217980800, 1251071999, 0, 123, 'by_percent', 0.0000, 0, 0, 1),
-(542, 3, 1217980800, 1251071999, 1, 123, 'by_percent', 0.0000, 0, 0, 1),
-(543, 3, 1217980800, 1251071999, 2, 123, 'by_percent', 0.0000, 0, 0, 1),
-(544, 3, 1217980800, 1251071999, 4, 123, 'by_percent', 0.0000, 0, 0, 1),
-(545, 3, 1217980800, 1251071999, 0, 124, 'by_percent', 0.0000, 0, 0, 1),
-(546, 3, 1217980800, 1251071999, 1, 124, 'by_percent', 0.0000, 0, 0, 1),
-(547, 3, 1217980800, 1251071999, 2, 124, 'by_percent', 0.0000, 0, 0, 1),
-(548, 3, 1217980800, 1251071999, 4, 124, 'by_percent', 0.0000, 0, 0, 1),
-(549, 3, 1217980800, 1251071999, 0, 125, 'by_percent', 0.0000, 0, 0, 1),
-(550, 3, 1217980800, 1251071999, 1, 125, 'by_percent', 0.0000, 0, 0, 1),
-(551, 3, 1217980800, 1251071999, 2, 125, 'by_percent', 0.0000, 0, 0, 1),
-(552, 3, 1217980800, 1251071999, 4, 125, 'by_percent', 0.0000, 0, 0, 1),
-(553, 3, 1217980800, 1251071999, 0, 126, 'by_percent', 0.0000, 0, 0, 1),
-(554, 3, 1217980800, 1251071999, 1, 126, 'by_percent', 0.0000, 0, 0, 1),
-(555, 3, 1217980800, 1251071999, 2, 126, 'by_percent', 0.0000, 0, 0, 1),
-(556, 3, 1217980800, 1251071999, 4, 126, 'by_percent', 0.0000, 0, 0, 1),
-(557, 3, 1217980800, 1251071999, 0, 127, 'by_percent', 0.0000, 0, 0, 1),
-(558, 3, 1217980800, 1251071999, 1, 127, 'by_percent', 0.0000, 0, 0, 1),
-(559, 3, 1217980800, 1251071999, 2, 127, 'by_percent', 0.0000, 0, 0, 1),
-(560, 3, 1217980800, 1251071999, 4, 127, 'by_percent', 0.0000, 0, 0, 1),
-(561, 3, 1217980800, 1251071999, 0, 128, 'by_percent', 0.0000, 0, 0, 1),
-(562, 3, 1217980800, 1251071999, 1, 128, 'by_percent', 0.0000, 0, 0, 1),
-(563, 3, 1217980800, 1251071999, 2, 128, 'by_percent', 0.0000, 0, 0, 1),
-(564, 3, 1217980800, 1251071999, 4, 128, 'by_percent', 0.0000, 0, 0, 1),
-(565, 3, 1217980800, 1251071999, 0, 129, 'by_percent', 0.0000, 0, 0, 1),
-(566, 3, 1217980800, 1251071999, 1, 129, 'by_percent', 0.0000, 0, 0, 1),
-(567, 3, 1217980800, 1251071999, 2, 129, 'by_percent', 0.0000, 0, 0, 1),
-(568, 3, 1217980800, 1251071999, 4, 129, 'by_percent', 0.0000, 0, 0, 1),
-(569, 3, 1217980800, 1251071999, 0, 130, 'by_percent', 0.0000, 0, 0, 1),
-(570, 3, 1217980800, 1251071999, 1, 130, 'by_percent', 0.0000, 0, 0, 1),
-(571, 3, 1217980800, 1251071999, 2, 130, 'by_percent', 0.0000, 0, 0, 1),
-(572, 3, 1217980800, 1251071999, 4, 130, 'by_percent', 0.0000, 0, 0, 1),
-(573, 3, 1217980800, 1251071999, 0, 131, 'by_percent', 0.0000, 0, 0, 1),
-(574, 3, 1217980800, 1251071999, 1, 131, 'by_percent', 0.0000, 0, 0, 1),
-(575, 3, 1217980800, 1251071999, 2, 131, 'by_percent', 0.0000, 0, 0, 1),
-(576, 3, 1217980800, 1251071999, 4, 131, 'by_percent', 0.0000, 0, 0, 1),
-(577, 3, 1217980800, 1251071999, 0, 132, 'by_percent', 0.0000, 0, 0, 1),
-(578, 3, 1217980800, 1251071999, 1, 132, 'by_percent', 0.0000, 0, 0, 1),
-(579, 3, 1217980800, 1251071999, 2, 132, 'by_percent', 0.0000, 0, 0, 1),
-(580, 3, 1217980800, 1251071999, 4, 132, 'by_percent', 0.0000, 0, 0, 1),
-(581, 3, 1217980800, 1251071999, 0, 133, 'by_percent', 0.0000, 0, 0, 1),
-(582, 3, 1217980800, 1251071999, 1, 133, 'by_percent', 0.0000, 0, 0, 1),
-(583, 3, 1217980800, 1251071999, 2, 133, 'by_percent', 0.0000, 0, 0, 1),
-(584, 3, 1217980800, 1251071999, 4, 133, 'by_percent', 0.0000, 0, 0, 1),
-(585, 3, 1217980800, 1251071999, 0, 134, 'by_percent', 0.0000, 0, 0, 1),
-(586, 3, 1217980800, 1251071999, 1, 134, 'by_percent', 0.0000, 0, 0, 1),
-(587, 3, 1217980800, 1251071999, 2, 134, 'by_percent', 0.0000, 0, 0, 1),
-(588, 3, 1217980800, 1251071999, 4, 134, 'by_percent', 0.0000, 0, 0, 1),
-(589, 3, 1217980800, 1251071999, 0, 135, 'by_percent', 0.0000, 0, 0, 1),
-(590, 3, 1217980800, 1251071999, 1, 135, 'by_percent', 0.0000, 0, 0, 1),
-(591, 3, 1217980800, 1251071999, 2, 135, 'by_percent', 0.0000, 0, 0, 1),
-(592, 3, 1217980800, 1251071999, 4, 135, 'by_percent', 0.0000, 0, 0, 1),
-(593, 3, 1217980800, 1251071999, 0, 137, 'by_percent', 0.0000, 0, 0, 1),
-(594, 3, 1217980800, 1251071999, 1, 137, 'by_percent', 0.0000, 0, 0, 1),
-(595, 3, 1217980800, 1251071999, 2, 137, 'by_percent', 0.0000, 0, 0, 1),
-(596, 3, 1217980800, 1251071999, 4, 137, 'by_percent', 0.0000, 0, 0, 1),
-(597, 3, 1217980800, 1251071999, 0, 138, 'by_percent', 0.0000, 0, 0, 1),
-(598, 3, 1217980800, 1251071999, 1, 138, 'by_percent', 0.0000, 0, 0, 1),
-(599, 3, 1217980800, 1251071999, 2, 138, 'by_percent', 0.0000, 0, 0, 1),
-(600, 3, 1217980800, 1251071999, 4, 138, 'by_percent', 0.0000, 0, 0, 1),
-(601, 3, 1217980800, 1251071999, 0, 139, 'by_percent', 0.0000, 0, 0, 1),
-(602, 3, 1217980800, 1251071999, 1, 139, 'by_percent', 0.0000, 0, 0, 1),
-(603, 3, 1217980800, 1251071999, 2, 139, 'by_percent', 0.0000, 0, 0, 1),
-(604, 3, 1217980800, 1251071999, 4, 139, 'by_percent', 0.0000, 0, 0, 1),
-(605, 3, 1217980800, 1251071999, 0, 142, 'by_percent', 0.0000, 0, 0, 1),
-(606, 3, 1217980800, 1251071999, 1, 142, 'by_percent', 0.0000, 0, 0, 1),
-(607, 3, 1217980800, 1251071999, 2, 142, 'by_percent', 0.0000, 0, 0, 1),
-(608, 3, 1217980800, 1251071999, 4, 142, 'by_percent', 0.0000, 0, 0, 1),
-(609, 3, 1217980800, 1251071999, 0, 144, 'by_percent', 0.0000, 0, 0, 1),
-(610, 3, 1217980800, 1251071999, 1, 144, 'by_percent', 0.0000, 0, 0, 1),
-(611, 3, 1217980800, 1251071999, 2, 144, 'by_percent', 0.0000, 0, 0, 1),
-(612, 3, 1217980800, 1251071999, 4, 144, 'by_percent', 0.0000, 0, 0, 1),
-(613, 3, 1217980800, 1251071999, 0, 146, 'by_percent', 0.0000, 0, 0, 1),
-(614, 3, 1217980800, 1251071999, 1, 146, 'by_percent', 0.0000, 0, 0, 1),
-(615, 3, 1217980800, 1251071999, 2, 146, 'by_percent', 0.0000, 0, 0, 1),
-(616, 3, 1217980800, 1251071999, 4, 146, 'by_percent', 0.0000, 0, 0, 1),
-(617, 3, 1217980800, 1251071999, 0, 158, 'by_percent', 0.0000, 0, 0, 1),
-(618, 3, 1217980800, 1251071999, 1, 158, 'by_percent', 0.0000, 0, 0, 1),
-(619, 3, 1217980800, 1251071999, 2, 158, 'by_percent', 0.0000, 0, 0, 1),
-(620, 3, 1217980800, 1251071999, 4, 158, 'by_percent', 0.0000, 0, 0, 1),
-(621, 3, 1217980800, 1251071999, 0, 163, 'by_percent', 0.0000, 0, 0, 1),
-(622, 3, 1217980800, 1251071999, 1, 163, 'by_percent', 0.0000, 0, 0, 1),
-(623, 3, 1217980800, 1251071999, 2, 163, 'by_percent', 0.0000, 0, 0, 1),
-(624, 3, 1217980800, 1251071999, 4, 163, 'by_percent', 0.0000, 0, 0, 1),
-(625, 3, 1217980800, 1251071999, 0, 164, 'by_percent', 0.0000, 0, 0, 1),
-(626, 3, 1217980800, 1251071999, 1, 164, 'by_percent', 0.0000, 0, 0, 1),
-(627, 3, 1217980800, 1251071999, 2, 164, 'by_percent', 0.0000, 0, 0, 1),
-(628, 3, 1217980800, 1251071999, 4, 164, 'by_percent', 0.0000, 0, 0, 1),
-(629, 3, 1217980800, 1251071999, 0, 165, 'by_percent', 0.0000, 0, 0, 1),
-(630, 3, 1217980800, 1251071999, 1, 165, 'by_percent', 0.0000, 0, 0, 1),
-(631, 3, 1217980800, 1251071999, 2, 165, 'by_percent', 0.0000, 0, 0, 1),
-(632, 3, 1217980800, 1251071999, 4, 165, 'by_percent', 0.0000, 0, 0, 1),
-(633, 4, 1219795200, 1251503999, 0, 135, 'by_percent', 0.0000, 1, 0, 1),
-(634, 4, 1219795200, 1251503999, 1, 135, 'by_percent', 0.0000, 1, 0, 1),
-(635, 4, 1219795200, 1251503999, 2, 135, 'by_percent', 0.0000, 1, 0, 1),
-(636, 4, 1219795200, 1251503999, 4, 135, 'by_percent', 0.0000, 1, 0, 1),
-(637, 5, 1219536000, 1254182399, 0, 41, 'by_percent', 0.0000, 1, 0, 1),
-(638, 5, 1219536000, 1254182399, 1, 41, 'by_percent', 0.0000, 1, 0, 1),
-(639, 5, 1219536000, 1254182399, 2, 41, 'by_percent', 0.0000, 1, 0, 1),
-(640, 5, 1219536000, 1254182399, 4, 41, 'by_percent', 0.0000, 1, 0, 1),
-(641, 5, 1219536000, 1254182399, 0, 52, 'by_percent', 0.0000, 1, 0, 1),
-(642, 5, 1219536000, 1254182399, 1, 52, 'by_percent', 0.0000, 1, 0, 1),
-(643, 5, 1219536000, 1254182399, 2, 52, 'by_percent', 0.0000, 1, 0, 1),
-(644, 5, 1219536000, 1254182399, 4, 52, 'by_percent', 0.0000, 1, 0, 1),
-(645, 6, 1219881600, 1256947199, 0, 35, 'by_percent', 0.0000, 0, 0, 1),
-(646, 6, 1219881600, 1256947199, 1, 35, 'by_percent', 0.0000, 0, 0, 1),
-(647, 6, 1219881600, 1256947199, 2, 35, 'by_percent', 0.0000, 0, 0, 1),
-(648, 6, 1219881600, 1256947199, 0, 36, 'by_percent', 0.0000, 0, 0, 1),
-(649, 6, 1219881600, 1256947199, 1, 36, 'by_percent', 0.0000, 0, 0, 1),
-(650, 6, 1219881600, 1256947199, 2, 36, 'by_percent', 0.0000, 0, 0, 1),
-(651, 6, 1219881600, 1256947199, 0, 37, 'by_percent', 0.0000, 0, 0, 1),
-(652, 6, 1219881600, 1256947199, 1, 37, 'by_percent', 0.0000, 0, 0, 1),
-(653, 6, 1219881600, 1256947199, 2, 37, 'by_percent', 0.0000, 0, 0, 1),
-(654, 6, 1219881600, 1256947199, 0, 38, 'by_percent', 0.0000, 0, 0, 1),
-(655, 6, 1219881600, 1256947199, 1, 38, 'by_percent', 0.0000, 0, 0, 1),
-(656, 6, 1219881600, 1256947199, 2, 38, 'by_percent', 0.0000, 0, 0, 1),
-(657, 6, 1219881600, 1256947199, 0, 39, 'by_percent', 0.0000, 0, 0, 1),
-(658, 6, 1219881600, 1256947199, 1, 39, 'by_percent', 0.0000, 0, 0, 1),
-(659, 6, 1219881600, 1256947199, 2, 39, 'by_percent', 0.0000, 0, 0, 1),
-(660, 6, 1219881600, 1256947199, 0, 117, 'by_percent', 0.0000, 0, 0, 1),
-(661, 6, 1219881600, 1256947199, 1, 117, 'by_percent', 0.0000, 0, 0, 1),
-(662, 6, 1219881600, 1256947199, 2, 117, 'by_percent', 0.0000, 0, 0, 1),
-(663, 6, 1219881600, 1256947199, 0, 118, 'by_percent', 0.0000, 0, 0, 1),
-(664, 6, 1219881600, 1256947199, 1, 118, 'by_percent', 0.0000, 0, 0, 1),
-(665, 6, 1219881600, 1256947199, 2, 118, 'by_percent', 0.0000, 0, 0, 1),
-(666, 6, 1219881600, 1256947199, 0, 119, 'by_percent', 0.0000, 0, 0, 1),
-(667, 6, 1219881600, 1256947199, 1, 119, 'by_percent', 0.0000, 0, 0, 1),
-(668, 6, 1219881600, 1256947199, 2, 119, 'by_percent', 0.0000, 0, 0, 1),
-(669, 6, 1219881600, 1256947199, 0, 120, 'by_percent', 0.0000, 0, 0, 1),
-(670, 6, 1219881600, 1256947199, 1, 120, 'by_percent', 0.0000, 0, 0, 1),
-(671, 6, 1219881600, 1256947199, 2, 120, 'by_percent', 0.0000, 0, 0, 1),
-(672, 6, 1219881600, 1256947199, 0, 121, 'by_percent', 0.0000, 0, 0, 1),
-(673, 6, 1219881600, 1256947199, 1, 121, 'by_percent', 0.0000, 0, 0, 1),
-(674, 6, 1219881600, 1256947199, 2, 121, 'by_percent', 0.0000, 0, 0, 1),
-(675, 6, 1219881600, 1256947199, 0, 122, 'by_percent', 0.0000, 0, 0, 1),
-(676, 6, 1219881600, 1256947199, 1, 122, 'by_percent', 0.0000, 0, 0, 1),
-(677, 6, 1219881600, 1256947199, 2, 122, 'by_percent', 0.0000, 0, 0, 1),
-(678, 6, 1219881600, 1256947199, 0, 123, 'by_percent', 0.0000, 0, 0, 1),
-(679, 6, 1219881600, 1256947199, 1, 123, 'by_percent', 0.0000, 0, 0, 1),
-(680, 6, 1219881600, 1256947199, 2, 123, 'by_percent', 0.0000, 0, 0, 1),
-(681, 6, 1219881600, 1256947199, 0, 124, 'by_percent', 0.0000, 0, 0, 1),
-(682, 6, 1219881600, 1256947199, 1, 124, 'by_percent', 0.0000, 0, 0, 1),
-(683, 6, 1219881600, 1256947199, 2, 124, 'by_percent', 0.0000, 0, 0, 1),
-(684, 6, 1219881600, 1256947199, 0, 125, 'by_percent', 0.0000, 0, 0, 1),
-(685, 6, 1219881600, 1256947199, 1, 125, 'by_percent', 0.0000, 0, 0, 1),
-(686, 6, 1219881600, 1256947199, 2, 125, 'by_percent', 0.0000, 0, 0, 1),
-(687, 6, 1219881600, 1256947199, 0, 126, 'by_percent', 0.0000, 0, 0, 1),
-(688, 6, 1219881600, 1256947199, 1, 126, 'by_percent', 0.0000, 0, 0, 1),
-(689, 6, 1219881600, 1256947199, 2, 126, 'by_percent', 0.0000, 0, 0, 1),
-(690, 6, 1219881600, 1256947199, 0, 127, 'by_percent', 0.0000, 0, 0, 1),
-(691, 6, 1219881600, 1256947199, 1, 127, 'by_percent', 0.0000, 0, 0, 1),
-(692, 6, 1219881600, 1256947199, 2, 127, 'by_percent', 0.0000, 0, 0, 1),
-(693, 6, 1219881600, 1256947199, 0, 128, 'by_percent', 0.0000, 0, 0, 1),
-(694, 6, 1219881600, 1256947199, 1, 128, 'by_percent', 0.0000, 0, 0, 1),
-(695, 6, 1219881600, 1256947199, 2, 128, 'by_percent', 0.0000, 0, 0, 1),
-(696, 6, 1219881600, 1256947199, 0, 129, 'by_percent', 0.0000, 0, 0, 1),
-(697, 6, 1219881600, 1256947199, 1, 129, 'by_percent', 0.0000, 0, 0, 1),
-(698, 6, 1219881600, 1256947199, 2, 129, 'by_percent', 0.0000, 0, 0, 1),
-(699, 6, 1219881600, 1256947199, 0, 130, 'by_percent', 0.0000, 0, 0, 1),
-(700, 6, 1219881600, 1256947199, 1, 130, 'by_percent', 0.0000, 0, 0, 1),
-(701, 6, 1219881600, 1256947199, 2, 130, 'by_percent', 0.0000, 0, 0, 1),
-(702, 6, 1219881600, 1256947199, 0, 131, 'by_percent', 0.0000, 0, 0, 1),
-(703, 6, 1219881600, 1256947199, 1, 131, 'by_percent', 0.0000, 0, 0, 1),
-(704, 6, 1219881600, 1256947199, 2, 131, 'by_percent', 0.0000, 0, 0, 1),
-(705, 6, 1219881600, 1256947199, 0, 137, 'by_percent', 0.0000, 0, 0, 1),
-(706, 6, 1219881600, 1256947199, 1, 137, 'by_percent', 0.0000, 0, 0, 1),
-(707, 6, 1219881600, 1256947199, 2, 137, 'by_percent', 0.0000, 0, 0, 1);
+(1, 1, 1219622400, 1233446399, 0, 29, 'by_percent', '0.0000', 1, 0, 1),
+(2, 1, 1219622400, 1233446399, 1, 29, 'by_percent', '0.0000', 1, 0, 1),
+(3, 1, 1219622400, 1233446399, 2, 29, 'by_percent', '0.0000', 1, 0, 1),
+(4, 1, 1219622400, 1233446399, 3, 29, 'by_percent', '0.0000', 1, 0, 1),
+(5, 1, 1219622400, 1233446399, 0, 31, 'by_percent', '0.0000', 1, 0, 1),
+(6, 1, 1219622400, 1233446399, 1, 31, 'by_percent', '0.0000', 1, 0, 1),
+(7, 1, 1219622400, 1233446399, 2, 31, 'by_percent', '0.0000', 1, 0, 1),
+(8, 1, 1219622400, 1233446399, 3, 31, 'by_percent', '0.0000', 1, 0, 1),
+(9, 1, 1219622400, 1233446399, 0, 32, 'by_percent', '0.0000', 1, 0, 1),
+(10, 1, 1219622400, 1233446399, 1, 32, 'by_percent', '0.0000', 1, 0, 1),
+(11, 1, 1219622400, 1233446399, 2, 32, 'by_percent', '0.0000', 1, 0, 1),
+(12, 1, 1219622400, 1233446399, 3, 32, 'by_percent', '0.0000', 1, 0, 1),
+(13, 1, 1219622400, 1233446399, 0, 35, 'by_percent', '0.0000', 1, 0, 1),
+(14, 1, 1219622400, 1233446399, 1, 35, 'by_percent', '0.0000', 1, 0, 1),
+(15, 1, 1219622400, 1233446399, 2, 35, 'by_percent', '0.0000', 1, 0, 1),
+(16, 1, 1219622400, 1233446399, 3, 35, 'by_percent', '0.0000', 1, 0, 1),
+(17, 1, 1219622400, 1233446399, 0, 36, 'by_percent', '0.0000', 1, 0, 1),
+(18, 1, 1219622400, 1233446399, 1, 36, 'by_percent', '0.0000', 1, 0, 1),
+(19, 1, 1219622400, 1233446399, 2, 36, 'by_percent', '0.0000', 1, 0, 1),
+(20, 1, 1219622400, 1233446399, 3, 36, 'by_percent', '0.0000', 1, 0, 1),
+(21, 1, 1219622400, 1233446399, 0, 37, 'by_percent', '0.0000', 1, 0, 1),
+(22, 1, 1219622400, 1233446399, 1, 37, 'by_percent', '0.0000', 1, 0, 1),
+(23, 1, 1219622400, 1233446399, 2, 37, 'by_percent', '0.0000', 1, 0, 1),
+(24, 1, 1219622400, 1233446399, 3, 37, 'by_percent', '0.0000', 1, 0, 1),
+(25, 1, 1219622400, 1233446399, 0, 38, 'by_percent', '0.0000', 1, 0, 1),
+(26, 1, 1219622400, 1233446399, 1, 38, 'by_percent', '0.0000', 1, 0, 1),
+(27, 1, 1219622400, 1233446399, 2, 38, 'by_percent', '0.0000', 1, 0, 1),
+(28, 1, 1219622400, 1233446399, 3, 38, 'by_percent', '0.0000', 1, 0, 1),
+(29, 1, 1219622400, 1233446399, 0, 39, 'by_percent', '0.0000', 1, 0, 1),
+(30, 1, 1219622400, 1233446399, 1, 39, 'by_percent', '0.0000', 1, 0, 1),
+(31, 1, 1219622400, 1233446399, 2, 39, 'by_percent', '0.0000', 1, 0, 1),
+(32, 1, 1219622400, 1233446399, 3, 39, 'by_percent', '0.0000', 1, 0, 1),
+(33, 1, 1219622400, 1233446399, 0, 45, 'by_percent', '0.0000', 1, 0, 1),
+(34, 1, 1219622400, 1233446399, 1, 45, 'by_percent', '0.0000', 1, 0, 1),
+(35, 1, 1219622400, 1233446399, 2, 45, 'by_percent', '0.0000', 1, 0, 1),
+(36, 1, 1219622400, 1233446399, 3, 45, 'by_percent', '0.0000', 1, 0, 1),
+(37, 1, 1219622400, 1233446399, 0, 49, 'by_percent', '0.0000', 1, 0, 1),
+(38, 1, 1219622400, 1233446399, 1, 49, 'by_percent', '0.0000', 1, 0, 1),
+(39, 1, 1219622400, 1233446399, 2, 49, 'by_percent', '0.0000', 1, 0, 1),
+(40, 1, 1219622400, 1233446399, 3, 49, 'by_percent', '0.0000', 1, 0, 1),
+(41, 1, 1219622400, 1233446399, 0, 74, 'by_percent', '0.0000', 1, 0, 1),
+(42, 1, 1219622400, 1233446399, 1, 74, 'by_percent', '0.0000', 1, 0, 1),
+(43, 1, 1219622400, 1233446399, 2, 74, 'by_percent', '0.0000', 1, 0, 1),
+(44, 1, 1219622400, 1233446399, 3, 74, 'by_percent', '0.0000', 1, 0, 1),
+(45, 1, 1219622400, 1233446399, 0, 75, 'by_percent', '0.0000', 1, 0, 1),
+(46, 1, 1219622400, 1233446399, 1, 75, 'by_percent', '0.0000', 1, 0, 1),
+(47, 1, 1219622400, 1233446399, 2, 75, 'by_percent', '0.0000', 1, 0, 1),
+(48, 1, 1219622400, 1233446399, 3, 75, 'by_percent', '0.0000', 1, 0, 1),
+(49, 1, 1219622400, 1233446399, 0, 79, 'by_percent', '0.0000', 1, 0, 1),
+(50, 1, 1219622400, 1233446399, 1, 79, 'by_percent', '0.0000', 1, 0, 1),
+(51, 1, 1219622400, 1233446399, 2, 79, 'by_percent', '0.0000', 1, 0, 1),
+(52, 1, 1219622400, 1233446399, 3, 79, 'by_percent', '0.0000', 1, 0, 1),
+(53, 1, 1219622400, 1233446399, 0, 80, 'by_percent', '0.0000', 1, 0, 1),
+(54, 1, 1219622400, 1233446399, 1, 80, 'by_percent', '0.0000', 1, 0, 1),
+(55, 1, 1219622400, 1233446399, 2, 80, 'by_percent', '0.0000', 1, 0, 1),
+(56, 1, 1219622400, 1233446399, 3, 80, 'by_percent', '0.0000', 1, 0, 1),
+(57, 1, 1219622400, 1233446399, 0, 81, 'by_percent', '0.0000', 1, 0, 1),
+(58, 1, 1219622400, 1233446399, 1, 81, 'by_percent', '0.0000', 1, 0, 1),
+(59, 1, 1219622400, 1233446399, 2, 81, 'by_percent', '0.0000', 1, 0, 1),
+(60, 1, 1219622400, 1233446399, 3, 81, 'by_percent', '0.0000', 1, 0, 1),
+(61, 1, 1219622400, 1233446399, 0, 82, 'by_percent', '0.0000', 1, 0, 1),
+(62, 1, 1219622400, 1233446399, 1, 82, 'by_percent', '0.0000', 1, 0, 1),
+(63, 1, 1219622400, 1233446399, 2, 82, 'by_percent', '0.0000', 1, 0, 1),
+(64, 1, 1219622400, 1233446399, 3, 82, 'by_percent', '0.0000', 1, 0, 1),
+(65, 1, 1219622400, 1233446399, 0, 83, 'by_percent', '0.0000', 1, 0, 1),
+(66, 1, 1219622400, 1233446399, 1, 83, 'by_percent', '0.0000', 1, 0, 1),
+(67, 1, 1219622400, 1233446399, 2, 83, 'by_percent', '0.0000', 1, 0, 1),
+(68, 1, 1219622400, 1233446399, 3, 83, 'by_percent', '0.0000', 1, 0, 1),
+(69, 1, 1219622400, 1233446399, 0, 84, 'by_percent', '0.0000', 1, 0, 1),
+(70, 1, 1219622400, 1233446399, 1, 84, 'by_percent', '0.0000', 1, 0, 1),
+(71, 1, 1219622400, 1233446399, 2, 84, 'by_percent', '0.0000', 1, 0, 1),
+(72, 1, 1219622400, 1233446399, 3, 84, 'by_percent', '0.0000', 1, 0, 1),
+(73, 1, 1219622400, 1233446399, 0, 85, 'by_percent', '0.0000', 1, 0, 1),
+(74, 1, 1219622400, 1233446399, 1, 85, 'by_percent', '0.0000', 1, 0, 1),
+(75, 1, 1219622400, 1233446399, 2, 85, 'by_percent', '0.0000', 1, 0, 1),
+(76, 1, 1219622400, 1233446399, 3, 85, 'by_percent', '0.0000', 1, 0, 1),
+(77, 1, 1219622400, 1233446399, 0, 86, 'by_percent', '0.0000', 1, 0, 1),
+(78, 1, 1219622400, 1233446399, 1, 86, 'by_percent', '0.0000', 1, 0, 1),
+(79, 1, 1219622400, 1233446399, 2, 86, 'by_percent', '0.0000', 1, 0, 1),
+(80, 1, 1219622400, 1233446399, 3, 86, 'by_percent', '0.0000', 1, 0, 1),
+(81, 1, 1219622400, 1233446399, 0, 87, 'by_percent', '0.0000', 1, 0, 1),
+(82, 1, 1219622400, 1233446399, 1, 87, 'by_percent', '0.0000', 1, 0, 1),
+(83, 1, 1219622400, 1233446399, 2, 87, 'by_percent', '0.0000', 1, 0, 1),
+(84, 1, 1219622400, 1233446399, 3, 87, 'by_percent', '0.0000', 1, 0, 1),
+(85, 1, 1219622400, 1233446399, 0, 88, 'by_percent', '0.0000', 1, 0, 1),
+(86, 1, 1219622400, 1233446399, 1, 88, 'by_percent', '0.0000', 1, 0, 1),
+(87, 1, 1219622400, 1233446399, 2, 88, 'by_percent', '0.0000', 1, 0, 1),
+(88, 1, 1219622400, 1233446399, 3, 88, 'by_percent', '0.0000', 1, 0, 1),
+(89, 1, 1219622400, 1233446399, 0, 89, 'by_percent', '0.0000', 1, 0, 1),
+(90, 1, 1219622400, 1233446399, 1, 89, 'by_percent', '0.0000', 1, 0, 1),
+(91, 1, 1219622400, 1233446399, 2, 89, 'by_percent', '0.0000', 1, 0, 1),
+(92, 1, 1219622400, 1233446399, 3, 89, 'by_percent', '0.0000', 1, 0, 1),
+(93, 1, 1219622400, 1233446399, 0, 90, 'by_percent', '0.0000', 1, 0, 1),
+(94, 1, 1219622400, 1233446399, 1, 90, 'by_percent', '0.0000', 1, 0, 1),
+(95, 1, 1219622400, 1233446399, 2, 90, 'by_percent', '0.0000', 1, 0, 1),
+(96, 1, 1219622400, 1233446399, 3, 90, 'by_percent', '0.0000', 1, 0, 1),
+(97, 1, 1219622400, 1233446399, 0, 91, 'by_percent', '0.0000', 1, 0, 1),
+(98, 1, 1219622400, 1233446399, 1, 91, 'by_percent', '0.0000', 1, 0, 1),
+(99, 1, 1219622400, 1233446399, 2, 91, 'by_percent', '0.0000', 1, 0, 1),
+(100, 1, 1219622400, 1233446399, 3, 91, 'by_percent', '0.0000', 1, 0, 1),
+(101, 1, 1219622400, 1233446399, 0, 92, 'by_percent', '0.0000', 1, 0, 1),
+(102, 1, 1219622400, 1233446399, 1, 92, 'by_percent', '0.0000', 1, 0, 1),
+(103, 1, 1219622400, 1233446399, 2, 92, 'by_percent', '0.0000', 1, 0, 1),
+(104, 1, 1219622400, 1233446399, 3, 92, 'by_percent', '0.0000', 1, 0, 1),
+(105, 1, 1219622400, 1233446399, 0, 103, 'by_percent', '0.0000', 1, 0, 1),
+(106, 1, 1219622400, 1233446399, 1, 103, 'by_percent', '0.0000', 1, 0, 1),
+(107, 1, 1219622400, 1233446399, 2, 103, 'by_percent', '0.0000', 1, 0, 1),
+(108, 1, 1219622400, 1233446399, 3, 103, 'by_percent', '0.0000', 1, 0, 1),
+(109, 1, 1219622400, 1233446399, 0, 104, 'by_percent', '0.0000', 1, 0, 1),
+(110, 1, 1219622400, 1233446399, 1, 104, 'by_percent', '0.0000', 1, 0, 1),
+(111, 1, 1219622400, 1233446399, 2, 104, 'by_percent', '0.0000', 1, 0, 1),
+(112, 1, 1219622400, 1233446399, 3, 104, 'by_percent', '0.0000', 1, 0, 1),
+(113, 1, 1219622400, 1233446399, 0, 105, 'by_percent', '0.0000', 1, 0, 1),
+(114, 1, 1219622400, 1233446399, 1, 105, 'by_percent', '0.0000', 1, 0, 1),
+(115, 1, 1219622400, 1233446399, 2, 105, 'by_percent', '0.0000', 1, 0, 1),
+(116, 1, 1219622400, 1233446399, 3, 105, 'by_percent', '0.0000', 1, 0, 1),
+(117, 1, 1219622400, 1233446399, 0, 106, 'by_percent', '0.0000', 1, 0, 1),
+(118, 1, 1219622400, 1233446399, 1, 106, 'by_percent', '0.0000', 1, 0, 1),
+(119, 1, 1219622400, 1233446399, 2, 106, 'by_percent', '0.0000', 1, 0, 1),
+(120, 1, 1219622400, 1233446399, 3, 106, 'by_percent', '0.0000', 1, 0, 1),
+(121, 1, 1219622400, 1233446399, 0, 107, 'by_percent', '0.0000', 1, 0, 1),
+(122, 1, 1219622400, 1233446399, 1, 107, 'by_percent', '0.0000', 1, 0, 1),
+(123, 1, 1219622400, 1233446399, 2, 107, 'by_percent', '0.0000', 1, 0, 1),
+(124, 1, 1219622400, 1233446399, 3, 107, 'by_percent', '0.0000', 1, 0, 1),
+(125, 1, 1219622400, 1233446399, 0, 108, 'by_percent', '0.0000', 1, 0, 1),
+(126, 1, 1219622400, 1233446399, 1, 108, 'by_percent', '0.0000', 1, 0, 1),
+(127, 1, 1219622400, 1233446399, 2, 108, 'by_percent', '0.0000', 1, 0, 1),
+(128, 1, 1219622400, 1233446399, 3, 108, 'by_percent', '0.0000', 1, 0, 1),
+(129, 1, 1219622400, 1233446399, 0, 109, 'by_percent', '0.0000', 1, 0, 1),
+(130, 1, 1219622400, 1233446399, 1, 109, 'by_percent', '0.0000', 1, 0, 1),
+(131, 1, 1219622400, 1233446399, 2, 109, 'by_percent', '0.0000', 1, 0, 1),
+(132, 1, 1219622400, 1233446399, 3, 109, 'by_percent', '0.0000', 1, 0, 1),
+(133, 1, 1219622400, 1233446399, 0, 110, 'by_percent', '0.0000', 1, 0, 1),
+(134, 1, 1219622400, 1233446399, 1, 110, 'by_percent', '0.0000', 1, 0, 1),
+(135, 1, 1219622400, 1233446399, 2, 110, 'by_percent', '0.0000', 1, 0, 1),
+(136, 1, 1219622400, 1233446399, 3, 110, 'by_percent', '0.0000', 1, 0, 1),
+(137, 1, 1219622400, 1233446399, 0, 111, 'by_percent', '0.0000', 1, 0, 1),
+(138, 1, 1219622400, 1233446399, 1, 111, 'by_percent', '0.0000', 1, 0, 1),
+(139, 1, 1219622400, 1233446399, 2, 111, 'by_percent', '0.0000', 1, 0, 1),
+(140, 1, 1219622400, 1233446399, 3, 111, 'by_percent', '0.0000', 1, 0, 1),
+(141, 1, 1219622400, 1233446399, 0, 117, 'by_percent', '0.0000', 1, 0, 1),
+(142, 1, 1219622400, 1233446399, 1, 117, 'by_percent', '0.0000', 1, 0, 1),
+(143, 1, 1219622400, 1233446399, 2, 117, 'by_percent', '0.0000', 1, 0, 1),
+(144, 1, 1219622400, 1233446399, 3, 117, 'by_percent', '0.0000', 1, 0, 1),
+(145, 1, 1219622400, 1233446399, 0, 118, 'by_percent', '0.0000', 1, 0, 1),
+(146, 1, 1219622400, 1233446399, 1, 118, 'by_percent', '0.0000', 1, 0, 1),
+(147, 1, 1219622400, 1233446399, 2, 118, 'by_percent', '0.0000', 1, 0, 1),
+(148, 1, 1219622400, 1233446399, 3, 118, 'by_percent', '0.0000', 1, 0, 1),
+(149, 1, 1219622400, 1233446399, 0, 119, 'by_percent', '0.0000', 1, 0, 1),
+(150, 1, 1219622400, 1233446399, 1, 119, 'by_percent', '0.0000', 1, 0, 1),
+(151, 1, 1219622400, 1233446399, 2, 119, 'by_percent', '0.0000', 1, 0, 1),
+(152, 1, 1219622400, 1233446399, 3, 119, 'by_percent', '0.0000', 1, 0, 1),
+(153, 1, 1219622400, 1233446399, 0, 120, 'by_percent', '0.0000', 1, 0, 1),
+(154, 1, 1219622400, 1233446399, 1, 120, 'by_percent', '0.0000', 1, 0, 1),
+(155, 1, 1219622400, 1233446399, 2, 120, 'by_percent', '0.0000', 1, 0, 1),
+(156, 1, 1219622400, 1233446399, 3, 120, 'by_percent', '0.0000', 1, 0, 1),
+(157, 1, 1219622400, 1233446399, 0, 121, 'by_percent', '0.0000', 1, 0, 1),
+(158, 1, 1219622400, 1233446399, 1, 121, 'by_percent', '0.0000', 1, 0, 1),
+(159, 1, 1219622400, 1233446399, 2, 121, 'by_percent', '0.0000', 1, 0, 1),
+(160, 1, 1219622400, 1233446399, 3, 121, 'by_percent', '0.0000', 1, 0, 1),
+(161, 1, 1219622400, 1233446399, 0, 122, 'by_percent', '0.0000', 1, 0, 1),
+(162, 1, 1219622400, 1233446399, 1, 122, 'by_percent', '0.0000', 1, 0, 1),
+(163, 1, 1219622400, 1233446399, 2, 122, 'by_percent', '0.0000', 1, 0, 1),
+(164, 1, 1219622400, 1233446399, 3, 122, 'by_percent', '0.0000', 1, 0, 1),
+(165, 1, 1219622400, 1233446399, 0, 123, 'by_percent', '0.0000', 1, 0, 1),
+(166, 1, 1219622400, 1233446399, 1, 123, 'by_percent', '0.0000', 1, 0, 1),
+(167, 1, 1219622400, 1233446399, 2, 123, 'by_percent', '0.0000', 1, 0, 1),
+(168, 1, 1219622400, 1233446399, 3, 123, 'by_percent', '0.0000', 1, 0, 1),
+(169, 1, 1219622400, 1233446399, 0, 124, 'by_percent', '0.0000', 1, 0, 1),
+(170, 1, 1219622400, 1233446399, 1, 124, 'by_percent', '0.0000', 1, 0, 1),
+(171, 1, 1219622400, 1233446399, 2, 124, 'by_percent', '0.0000', 1, 0, 1),
+(172, 1, 1219622400, 1233446399, 3, 124, 'by_percent', '0.0000', 1, 0, 1),
+(173, 1, 1219622400, 1233446399, 0, 125, 'by_percent', '0.0000', 1, 0, 1),
+(174, 1, 1219622400, 1233446399, 1, 125, 'by_percent', '0.0000', 1, 0, 1),
+(175, 1, 1219622400, 1233446399, 2, 125, 'by_percent', '0.0000', 1, 0, 1),
+(176, 1, 1219622400, 1233446399, 3, 125, 'by_percent', '0.0000', 1, 0, 1),
+(177, 1, 1219622400, 1233446399, 0, 126, 'by_percent', '0.0000', 1, 0, 1),
+(178, 1, 1219622400, 1233446399, 1, 126, 'by_percent', '0.0000', 1, 0, 1),
+(179, 1, 1219622400, 1233446399, 2, 126, 'by_percent', '0.0000', 1, 0, 1),
+(180, 1, 1219622400, 1233446399, 3, 126, 'by_percent', '0.0000', 1, 0, 1),
+(181, 1, 1219622400, 1233446399, 0, 127, 'by_percent', '0.0000', 1, 0, 1),
+(182, 1, 1219622400, 1233446399, 1, 127, 'by_percent', '0.0000', 1, 0, 1),
+(183, 1, 1219622400, 1233446399, 2, 127, 'by_percent', '0.0000', 1, 0, 1),
+(184, 1, 1219622400, 1233446399, 3, 127, 'by_percent', '0.0000', 1, 0, 1),
+(185, 1, 1219622400, 1233446399, 0, 128, 'by_percent', '0.0000', 1, 0, 1),
+(186, 1, 1219622400, 1233446399, 1, 128, 'by_percent', '0.0000', 1, 0, 1),
+(187, 1, 1219622400, 1233446399, 2, 128, 'by_percent', '0.0000', 1, 0, 1),
+(188, 1, 1219622400, 1233446399, 3, 128, 'by_percent', '0.0000', 1, 0, 1),
+(189, 1, 1219622400, 1233446399, 0, 129, 'by_percent', '0.0000', 1, 0, 1),
+(190, 1, 1219622400, 1233446399, 1, 129, 'by_percent', '0.0000', 1, 0, 1),
+(191, 1, 1219622400, 1233446399, 2, 129, 'by_percent', '0.0000', 1, 0, 1),
+(192, 1, 1219622400, 1233446399, 3, 129, 'by_percent', '0.0000', 1, 0, 1),
+(193, 1, 1219622400, 1233446399, 0, 130, 'by_percent', '0.0000', 1, 0, 1),
+(194, 1, 1219622400, 1233446399, 1, 130, 'by_percent', '0.0000', 1, 0, 1),
+(195, 1, 1219622400, 1233446399, 2, 130, 'by_percent', '0.0000', 1, 0, 1),
+(196, 1, 1219622400, 1233446399, 3, 130, 'by_percent', '0.0000', 1, 0, 1),
+(197, 1, 1219622400, 1233446399, 0, 131, 'by_percent', '0.0000', 1, 0, 1),
+(198, 1, 1219622400, 1233446399, 1, 131, 'by_percent', '0.0000', 1, 0, 1),
+(199, 1, 1219622400, 1233446399, 2, 131, 'by_percent', '0.0000', 1, 0, 1),
+(200, 1, 1219622400, 1233446399, 3, 131, 'by_percent', '0.0000', 1, 0, 1),
+(201, 1, 1219622400, 1233446399, 0, 132, 'by_percent', '0.0000', 1, 0, 1),
+(202, 1, 1219622400, 1233446399, 1, 132, 'by_percent', '0.0000', 1, 0, 1),
+(203, 1, 1219622400, 1233446399, 2, 132, 'by_percent', '0.0000', 1, 0, 1),
+(204, 1, 1219622400, 1233446399, 3, 132, 'by_percent', '0.0000', 1, 0, 1),
+(205, 1, 1219622400, 1233446399, 0, 133, 'by_percent', '0.0000', 1, 0, 1),
+(206, 1, 1219622400, 1233446399, 1, 133, 'by_percent', '0.0000', 1, 0, 1),
+(207, 1, 1219622400, 1233446399, 2, 133, 'by_percent', '0.0000', 1, 0, 1),
+(208, 1, 1219622400, 1233446399, 3, 133, 'by_percent', '0.0000', 1, 0, 1),
+(209, 1, 1219622400, 1233446399, 0, 134, 'by_percent', '0.0000', 1, 0, 1),
+(210, 1, 1219622400, 1233446399, 1, 134, 'by_percent', '0.0000', 1, 0, 1),
+(211, 1, 1219622400, 1233446399, 2, 134, 'by_percent', '0.0000', 1, 0, 1),
+(212, 1, 1219622400, 1233446399, 3, 134, 'by_percent', '0.0000', 1, 0, 1),
+(213, 1, 1219622400, 1233446399, 0, 135, 'by_percent', '0.0000', 1, 0, 1),
+(214, 1, 1219622400, 1233446399, 1, 135, 'by_percent', '0.0000', 1, 0, 1),
+(215, 1, 1219622400, 1233446399, 2, 135, 'by_percent', '0.0000', 1, 0, 1),
+(216, 1, 1219622400, 1233446399, 3, 135, 'by_percent', '0.0000', 1, 0, 1),
+(217, 1, 1219622400, 1233446399, 0, 137, 'by_percent', '0.0000', 1, 0, 1),
+(218, 1, 1219622400, 1233446399, 1, 137, 'by_percent', '0.0000', 1, 0, 1),
+(219, 1, 1219622400, 1233446399, 2, 137, 'by_percent', '0.0000', 1, 0, 1),
+(220, 1, 1219622400, 1233446399, 3, 137, 'by_percent', '0.0000', 1, 0, 1),
+(221, 1, 1219622400, 1233446399, 0, 158, 'by_percent', '0.0000', 1, 0, 1),
+(222, 1, 1219622400, 1233446399, 1, 158, 'by_percent', '0.0000', 1, 0, 1),
+(223, 1, 1219622400, 1233446399, 2, 158, 'by_percent', '0.0000', 1, 0, 1),
+(224, 1, 1219622400, 1233446399, 3, 158, 'by_percent', '0.0000', 1, 0, 1),
+(225, 1, 1219622400, 1233446399, 0, 163, 'by_percent', '0.0000', 1, 0, 1),
+(226, 1, 1219622400, 1233446399, 1, 163, 'by_percent', '0.0000', 1, 0, 1),
+(227, 1, 1219622400, 1233446399, 2, 163, 'by_percent', '0.0000', 1, 0, 1),
+(228, 1, 1219622400, 1233446399, 3, 163, 'by_percent', '0.0000', 1, 0, 1),
+(229, 1, 1219622400, 1233446399, 0, 165, 'by_percent', '0.0000', 1, 0, 1),
+(230, 1, 1219622400, 1233446399, 1, 165, 'by_percent', '0.0000', 1, 0, 1),
+(231, 1, 1219622400, 1233446399, 2, 165, 'by_percent', '0.0000', 1, 0, 1),
+(232, 1, 1219622400, 1233446399, 3, 165, 'by_percent', '0.0000', 1, 0, 1),
+(233, 3, 1217980800, 1251071999, 0, 16, 'by_percent', '0.0000', 0, 0, 1),
+(234, 3, 1217980800, 1251071999, 1, 16, 'by_percent', '0.0000', 0, 0, 1),
+(235, 3, 1217980800, 1251071999, 2, 16, 'by_percent', '0.0000', 0, 0, 1),
+(236, 3, 1217980800, 1251071999, 4, 16, 'by_percent', '0.0000', 0, 0, 1),
+(237, 3, 1217980800, 1251071999, 0, 17, 'by_percent', '0.0000', 0, 0, 1),
+(238, 3, 1217980800, 1251071999, 1, 17, 'by_percent', '0.0000', 0, 0, 1),
+(239, 3, 1217980800, 1251071999, 2, 17, 'by_percent', '0.0000', 0, 0, 1),
+(240, 3, 1217980800, 1251071999, 4, 17, 'by_percent', '0.0000', 0, 0, 1),
+(241, 3, 1217980800, 1251071999, 0, 18, 'by_percent', '0.0000', 0, 0, 1),
+(242, 3, 1217980800, 1251071999, 1, 18, 'by_percent', '0.0000', 0, 0, 1),
+(243, 3, 1217980800, 1251071999, 2, 18, 'by_percent', '0.0000', 0, 0, 1),
+(244, 3, 1217980800, 1251071999, 4, 18, 'by_percent', '0.0000', 0, 0, 1),
+(245, 3, 1217980800, 1251071999, 0, 19, 'by_percent', '0.0000', 0, 0, 1),
+(246, 3, 1217980800, 1251071999, 1, 19, 'by_percent', '0.0000', 0, 0, 1),
+(247, 3, 1217980800, 1251071999, 2, 19, 'by_percent', '0.0000', 0, 0, 1),
+(248, 3, 1217980800, 1251071999, 4, 19, 'by_percent', '0.0000', 0, 0, 1),
+(249, 3, 1217980800, 1251071999, 0, 20, 'by_percent', '0.0000', 0, 0, 1),
+(250, 3, 1217980800, 1251071999, 1, 20, 'by_percent', '0.0000', 0, 0, 1),
+(251, 3, 1217980800, 1251071999, 2, 20, 'by_percent', '0.0000', 0, 0, 1),
+(252, 3, 1217980800, 1251071999, 4, 20, 'by_percent', '0.0000', 0, 0, 1),
+(253, 3, 1217980800, 1251071999, 0, 25, 'by_percent', '0.0000', 0, 0, 1),
+(254, 3, 1217980800, 1251071999, 1, 25, 'by_percent', '0.0000', 0, 0, 1),
+(255, 3, 1217980800, 1251071999, 2, 25, 'by_percent', '0.0000', 0, 0, 1),
+(256, 3, 1217980800, 1251071999, 4, 25, 'by_percent', '0.0000', 0, 0, 1),
+(257, 3, 1217980800, 1251071999, 0, 26, 'by_percent', '0.0000', 0, 0, 1),
+(258, 3, 1217980800, 1251071999, 1, 26, 'by_percent', '0.0000', 0, 0, 1),
+(259, 3, 1217980800, 1251071999, 2, 26, 'by_percent', '0.0000', 0, 0, 1),
+(260, 3, 1217980800, 1251071999, 4, 26, 'by_percent', '0.0000', 0, 0, 1),
+(261, 3, 1217980800, 1251071999, 0, 27, 'by_percent', '0.0000', 0, 0, 1),
+(262, 3, 1217980800, 1251071999, 1, 27, 'by_percent', '0.0000', 0, 0, 1),
+(263, 3, 1217980800, 1251071999, 2, 27, 'by_percent', '0.0000', 0, 0, 1),
+(264, 3, 1217980800, 1251071999, 4, 27, 'by_percent', '0.0000', 0, 0, 1),
+(265, 3, 1217980800, 1251071999, 0, 28, 'by_percent', '0.0000', 0, 0, 1),
+(266, 3, 1217980800, 1251071999, 1, 28, 'by_percent', '0.0000', 0, 0, 1),
+(267, 3, 1217980800, 1251071999, 2, 28, 'by_percent', '0.0000', 0, 0, 1),
+(268, 3, 1217980800, 1251071999, 4, 28, 'by_percent', '0.0000', 0, 0, 1),
+(269, 3, 1217980800, 1251071999, 0, 29, 'by_percent', '0.0000', 0, 0, 1),
+(270, 3, 1217980800, 1251071999, 1, 29, 'by_percent', '0.0000', 0, 0, 1),
+(271, 3, 1217980800, 1251071999, 2, 29, 'by_percent', '0.0000', 0, 0, 1),
+(272, 3, 1217980800, 1251071999, 4, 29, 'by_percent', '0.0000', 0, 0, 1),
+(273, 3, 1217980800, 1251071999, 0, 30, 'by_percent', '0.0000', 0, 0, 1),
+(274, 3, 1217980800, 1251071999, 1, 30, 'by_percent', '0.0000', 0, 0, 1),
+(275, 3, 1217980800, 1251071999, 2, 30, 'by_percent', '0.0000', 0, 0, 1),
+(276, 3, 1217980800, 1251071999, 4, 30, 'by_percent', '0.0000', 0, 0, 1),
+(277, 3, 1217980800, 1251071999, 0, 31, 'by_percent', '0.0000', 0, 0, 1),
+(278, 3, 1217980800, 1251071999, 1, 31, 'by_percent', '0.0000', 0, 0, 1),
+(279, 3, 1217980800, 1251071999, 2, 31, 'by_percent', '0.0000', 0, 0, 1),
+(280, 3, 1217980800, 1251071999, 4, 31, 'by_percent', '0.0000', 0, 0, 1),
+(281, 3, 1217980800, 1251071999, 0, 32, 'by_percent', '0.0000', 0, 0, 1),
+(282, 3, 1217980800, 1251071999, 1, 32, 'by_percent', '0.0000', 0, 0, 1),
+(283, 3, 1217980800, 1251071999, 2, 32, 'by_percent', '0.0000', 0, 0, 1),
+(284, 3, 1217980800, 1251071999, 4, 32, 'by_percent', '0.0000', 0, 0, 1),
+(285, 3, 1217980800, 1251071999, 0, 33, 'by_percent', '0.0000', 0, 0, 1),
+(286, 3, 1217980800, 1251071999, 1, 33, 'by_percent', '0.0000', 0, 0, 1),
+(287, 3, 1217980800, 1251071999, 2, 33, 'by_percent', '0.0000', 0, 0, 1),
+(288, 3, 1217980800, 1251071999, 4, 33, 'by_percent', '0.0000', 0, 0, 1),
+(289, 3, 1217980800, 1251071999, 0, 34, 'by_percent', '0.0000', 0, 0, 1),
+(290, 3, 1217980800, 1251071999, 1, 34, 'by_percent', '0.0000', 0, 0, 1),
+(291, 3, 1217980800, 1251071999, 2, 34, 'by_percent', '0.0000', 0, 0, 1),
+(292, 3, 1217980800, 1251071999, 4, 34, 'by_percent', '0.0000', 0, 0, 1),
+(293, 3, 1217980800, 1251071999, 0, 35, 'by_percent', '0.0000', 0, 0, 1),
+(294, 3, 1217980800, 1251071999, 1, 35, 'by_percent', '0.0000', 0, 0, 1),
+(295, 3, 1217980800, 1251071999, 2, 35, 'by_percent', '0.0000', 0, 0, 1),
+(296, 3, 1217980800, 1251071999, 4, 35, 'by_percent', '0.0000', 0, 0, 1),
+(297, 3, 1217980800, 1251071999, 0, 36, 'by_percent', '0.0000', 0, 0, 1),
+(298, 3, 1217980800, 1251071999, 1, 36, 'by_percent', '0.0000', 0, 0, 1),
+(299, 3, 1217980800, 1251071999, 2, 36, 'by_percent', '0.0000', 0, 0, 1),
+(300, 3, 1217980800, 1251071999, 4, 36, 'by_percent', '0.0000', 0, 0, 1),
+(301, 3, 1217980800, 1251071999, 0, 37, 'by_percent', '0.0000', 0, 0, 1),
+(302, 3, 1217980800, 1251071999, 1, 37, 'by_percent', '0.0000', 0, 0, 1),
+(303, 3, 1217980800, 1251071999, 2, 37, 'by_percent', '0.0000', 0, 0, 1),
+(304, 3, 1217980800, 1251071999, 4, 37, 'by_percent', '0.0000', 0, 0, 1),
+(305, 3, 1217980800, 1251071999, 0, 38, 'by_percent', '0.0000', 0, 0, 1),
+(306, 3, 1217980800, 1251071999, 1, 38, 'by_percent', '0.0000', 0, 0, 1),
+(307, 3, 1217980800, 1251071999, 2, 38, 'by_percent', '0.0000', 0, 0, 1),
+(308, 3, 1217980800, 1251071999, 4, 38, 'by_percent', '0.0000', 0, 0, 1),
+(309, 3, 1217980800, 1251071999, 0, 39, 'by_percent', '0.0000', 0, 0, 1),
+(310, 3, 1217980800, 1251071999, 1, 39, 'by_percent', '0.0000', 0, 0, 1),
+(311, 3, 1217980800, 1251071999, 2, 39, 'by_percent', '0.0000', 0, 0, 1),
+(312, 3, 1217980800, 1251071999, 4, 39, 'by_percent', '0.0000', 0, 0, 1),
+(313, 3, 1217980800, 1251071999, 0, 41, 'by_percent', '0.0000', 0, 0, 1),
+(314, 3, 1217980800, 1251071999, 1, 41, 'by_percent', '0.0000', 0, 0, 1),
+(315, 3, 1217980800, 1251071999, 2, 41, 'by_percent', '0.0000', 0, 0, 1),
+(316, 3, 1217980800, 1251071999, 4, 41, 'by_percent', '0.0000', 0, 0, 1),
+(317, 3, 1217980800, 1251071999, 0, 42, 'by_percent', '0.0000', 0, 0, 1),
+(318, 3, 1217980800, 1251071999, 1, 42, 'by_percent', '0.0000', 0, 0, 1),
+(319, 3, 1217980800, 1251071999, 2, 42, 'by_percent', '0.0000', 0, 0, 1),
+(320, 3, 1217980800, 1251071999, 4, 42, 'by_percent', '0.0000', 0, 0, 1),
+(321, 3, 1217980800, 1251071999, 0, 44, 'by_percent', '0.0000', 0, 0, 1),
+(322, 3, 1217980800, 1251071999, 1, 44, 'by_percent', '0.0000', 0, 0, 1),
+(323, 3, 1217980800, 1251071999, 2, 44, 'by_percent', '0.0000', 0, 0, 1),
+(324, 3, 1217980800, 1251071999, 4, 44, 'by_percent', '0.0000', 0, 0, 1),
+(325, 3, 1217980800, 1251071999, 0, 45, 'by_percent', '0.0000', 0, 0, 1),
+(326, 3, 1217980800, 1251071999, 1, 45, 'by_percent', '0.0000', 0, 0, 1),
+(327, 3, 1217980800, 1251071999, 2, 45, 'by_percent', '0.0000', 0, 0, 1),
+(328, 3, 1217980800, 1251071999, 4, 45, 'by_percent', '0.0000', 0, 0, 1),
+(329, 3, 1217980800, 1251071999, 0, 46, 'by_percent', '0.0000', 0, 0, 1),
+(330, 3, 1217980800, 1251071999, 1, 46, 'by_percent', '0.0000', 0, 0, 1),
+(331, 3, 1217980800, 1251071999, 2, 46, 'by_percent', '0.0000', 0, 0, 1),
+(332, 3, 1217980800, 1251071999, 4, 46, 'by_percent', '0.0000', 0, 0, 1),
+(333, 3, 1217980800, 1251071999, 0, 47, 'by_percent', '0.0000', 0, 0, 1),
+(334, 3, 1217980800, 1251071999, 1, 47, 'by_percent', '0.0000', 0, 0, 1),
+(335, 3, 1217980800, 1251071999, 2, 47, 'by_percent', '0.0000', 0, 0, 1),
+(336, 3, 1217980800, 1251071999, 4, 47, 'by_percent', '0.0000', 0, 0, 1),
+(337, 3, 1217980800, 1251071999, 0, 48, 'by_percent', '0.0000', 0, 0, 1),
+(338, 3, 1217980800, 1251071999, 1, 48, 'by_percent', '0.0000', 0, 0, 1),
+(339, 3, 1217980800, 1251071999, 2, 48, 'by_percent', '0.0000', 0, 0, 1),
+(340, 3, 1217980800, 1251071999, 4, 48, 'by_percent', '0.0000', 0, 0, 1),
+(341, 3, 1217980800, 1251071999, 0, 49, 'by_percent', '0.0000', 0, 0, 1),
+(342, 3, 1217980800, 1251071999, 1, 49, 'by_percent', '0.0000', 0, 0, 1),
+(343, 3, 1217980800, 1251071999, 2, 49, 'by_percent', '0.0000', 0, 0, 1),
+(344, 3, 1217980800, 1251071999, 4, 49, 'by_percent', '0.0000', 0, 0, 1),
+(345, 3, 1217980800, 1251071999, 0, 51, 'by_percent', '0.0000', 0, 0, 1),
+(346, 3, 1217980800, 1251071999, 1, 51, 'by_percent', '0.0000', 0, 0, 1),
+(347, 3, 1217980800, 1251071999, 2, 51, 'by_percent', '0.0000', 0, 0, 1),
+(348, 3, 1217980800, 1251071999, 4, 51, 'by_percent', '0.0000', 0, 0, 1),
+(349, 3, 1217980800, 1251071999, 0, 52, 'by_percent', '0.0000', 0, 0, 1),
+(350, 3, 1217980800, 1251071999, 1, 52, 'by_percent', '0.0000', 0, 0, 1),
+(351, 3, 1217980800, 1251071999, 2, 52, 'by_percent', '0.0000', 0, 0, 1),
+(352, 3, 1217980800, 1251071999, 4, 52, 'by_percent', '0.0000', 0, 0, 1),
+(353, 3, 1217980800, 1251071999, 0, 53, 'by_percent', '0.0000', 0, 0, 1),
+(354, 3, 1217980800, 1251071999, 1, 53, 'by_percent', '0.0000', 0, 0, 1),
+(355, 3, 1217980800, 1251071999, 2, 53, 'by_percent', '0.0000', 0, 0, 1),
+(356, 3, 1217980800, 1251071999, 4, 53, 'by_percent', '0.0000', 0, 0, 1),
+(357, 3, 1217980800, 1251071999, 0, 54, 'by_percent', '0.0000', 0, 0, 1),
+(358, 3, 1217980800, 1251071999, 1, 54, 'by_percent', '0.0000', 0, 0, 1),
+(359, 3, 1217980800, 1251071999, 2, 54, 'by_percent', '0.0000', 0, 0, 1),
+(360, 3, 1217980800, 1251071999, 4, 54, 'by_percent', '0.0000', 0, 0, 1),
+(361, 3, 1217980800, 1251071999, 0, 74, 'by_percent', '0.0000', 0, 0, 1),
+(362, 3, 1217980800, 1251071999, 1, 74, 'by_percent', '0.0000', 0, 0, 1),
+(363, 3, 1217980800, 1251071999, 2, 74, 'by_percent', '0.0000', 0, 0, 1),
+(364, 3, 1217980800, 1251071999, 4, 74, 'by_percent', '0.0000', 0, 0, 1),
+(365, 3, 1217980800, 1251071999, 0, 75, 'by_percent', '0.0000', 0, 0, 1),
+(366, 3, 1217980800, 1251071999, 1, 75, 'by_percent', '0.0000', 0, 0, 1),
+(367, 3, 1217980800, 1251071999, 2, 75, 'by_percent', '0.0000', 0, 0, 1),
+(368, 3, 1217980800, 1251071999, 4, 75, 'by_percent', '0.0000', 0, 0, 1),
+(369, 3, 1217980800, 1251071999, 0, 79, 'by_percent', '0.0000', 0, 0, 1),
+(370, 3, 1217980800, 1251071999, 1, 79, 'by_percent', '0.0000', 0, 0, 1),
+(371, 3, 1217980800, 1251071999, 2, 79, 'by_percent', '0.0000', 0, 0, 1),
+(372, 3, 1217980800, 1251071999, 4, 79, 'by_percent', '0.0000', 0, 0, 1),
+(373, 3, 1217980800, 1251071999, 0, 80, 'by_percent', '0.0000', 0, 0, 1),
+(374, 3, 1217980800, 1251071999, 1, 80, 'by_percent', '0.0000', 0, 0, 1),
+(375, 3, 1217980800, 1251071999, 2, 80, 'by_percent', '0.0000', 0, 0, 1),
+(376, 3, 1217980800, 1251071999, 4, 80, 'by_percent', '0.0000', 0, 0, 1),
+(377, 3, 1217980800, 1251071999, 0, 81, 'by_percent', '0.0000', 0, 0, 1),
+(378, 3, 1217980800, 1251071999, 1, 81, 'by_percent', '0.0000', 0, 0, 1),
+(379, 3, 1217980800, 1251071999, 2, 81, 'by_percent', '0.0000', 0, 0, 1),
+(380, 3, 1217980800, 1251071999, 4, 81, 'by_percent', '0.0000', 0, 0, 1),
+(381, 3, 1217980800, 1251071999, 0, 82, 'by_percent', '0.0000', 0, 0, 1),
+(382, 3, 1217980800, 1251071999, 1, 82, 'by_percent', '0.0000', 0, 0, 1),
+(383, 3, 1217980800, 1251071999, 2, 82, 'by_percent', '0.0000', 0, 0, 1),
+(384, 3, 1217980800, 1251071999, 4, 82, 'by_percent', '0.0000', 0, 0, 1),
+(385, 3, 1217980800, 1251071999, 0, 83, 'by_percent', '0.0000', 0, 0, 1),
+(386, 3, 1217980800, 1251071999, 1, 83, 'by_percent', '0.0000', 0, 0, 1),
+(387, 3, 1217980800, 1251071999, 2, 83, 'by_percent', '0.0000', 0, 0, 1),
+(388, 3, 1217980800, 1251071999, 4, 83, 'by_percent', '0.0000', 0, 0, 1),
+(389, 3, 1217980800, 1251071999, 0, 84, 'by_percent', '0.0000', 0, 0, 1),
+(390, 3, 1217980800, 1251071999, 1, 84, 'by_percent', '0.0000', 0, 0, 1),
+(391, 3, 1217980800, 1251071999, 2, 84, 'by_percent', '0.0000', 0, 0, 1),
+(392, 3, 1217980800, 1251071999, 4, 84, 'by_percent', '0.0000', 0, 0, 1),
+(393, 3, 1217980800, 1251071999, 0, 85, 'by_percent', '0.0000', 0, 0, 1),
+(394, 3, 1217980800, 1251071999, 1, 85, 'by_percent', '0.0000', 0, 0, 1),
+(395, 3, 1217980800, 1251071999, 2, 85, 'by_percent', '0.0000', 0, 0, 1),
+(396, 3, 1217980800, 1251071999, 4, 85, 'by_percent', '0.0000', 0, 0, 1),
+(397, 3, 1217980800, 1251071999, 0, 86, 'by_percent', '0.0000', 0, 0, 1),
+(398, 3, 1217980800, 1251071999, 1, 86, 'by_percent', '0.0000', 0, 0, 1),
+(399, 3, 1217980800, 1251071999, 2, 86, 'by_percent', '0.0000', 0, 0, 1),
+(400, 3, 1217980800, 1251071999, 4, 86, 'by_percent', '0.0000', 0, 0, 1),
+(401, 3, 1217980800, 1251071999, 0, 87, 'by_percent', '0.0000', 0, 0, 1),
+(402, 3, 1217980800, 1251071999, 1, 87, 'by_percent', '0.0000', 0, 0, 1),
+(403, 3, 1217980800, 1251071999, 2, 87, 'by_percent', '0.0000', 0, 0, 1),
+(404, 3, 1217980800, 1251071999, 4, 87, 'by_percent', '0.0000', 0, 0, 1),
+(405, 3, 1217980800, 1251071999, 0, 88, 'by_percent', '0.0000', 0, 0, 1),
+(406, 3, 1217980800, 1251071999, 1, 88, 'by_percent', '0.0000', 0, 0, 1),
+(407, 3, 1217980800, 1251071999, 2, 88, 'by_percent', '0.0000', 0, 0, 1),
+(408, 3, 1217980800, 1251071999, 4, 88, 'by_percent', '0.0000', 0, 0, 1),
+(409, 3, 1217980800, 1251071999, 0, 89, 'by_percent', '0.0000', 0, 0, 1),
+(410, 3, 1217980800, 1251071999, 1, 89, 'by_percent', '0.0000', 0, 0, 1),
+(411, 3, 1217980800, 1251071999, 2, 89, 'by_percent', '0.0000', 0, 0, 1),
+(412, 3, 1217980800, 1251071999, 4, 89, 'by_percent', '0.0000', 0, 0, 1),
+(413, 3, 1217980800, 1251071999, 0, 90, 'by_percent', '0.0000', 0, 0, 1),
+(414, 3, 1217980800, 1251071999, 1, 90, 'by_percent', '0.0000', 0, 0, 1),
+(415, 3, 1217980800, 1251071999, 2, 90, 'by_percent', '0.0000', 0, 0, 1),
+(416, 3, 1217980800, 1251071999, 4, 90, 'by_percent', '0.0000', 0, 0, 1),
+(417, 3, 1217980800, 1251071999, 0, 91, 'by_percent', '0.0000', 0, 0, 1),
+(418, 3, 1217980800, 1251071999, 1, 91, 'by_percent', '0.0000', 0, 0, 1),
+(419, 3, 1217980800, 1251071999, 2, 91, 'by_percent', '0.0000', 0, 0, 1),
+(420, 3, 1217980800, 1251071999, 4, 91, 'by_percent', '0.0000', 0, 0, 1),
+(421, 3, 1217980800, 1251071999, 0, 92, 'by_percent', '0.0000', 0, 0, 1),
+(422, 3, 1217980800, 1251071999, 1, 92, 'by_percent', '0.0000', 0, 0, 1),
+(423, 3, 1217980800, 1251071999, 2, 92, 'by_percent', '0.0000', 0, 0, 1),
+(424, 3, 1217980800, 1251071999, 4, 92, 'by_percent', '0.0000', 0, 0, 1),
+(425, 3, 1217980800, 1251071999, 0, 93, 'by_percent', '0.0000', 0, 0, 1),
+(426, 3, 1217980800, 1251071999, 1, 93, 'by_percent', '0.0000', 0, 0, 1),
+(427, 3, 1217980800, 1251071999, 2, 93, 'by_percent', '0.0000', 0, 0, 1),
+(428, 3, 1217980800, 1251071999, 4, 93, 'by_percent', '0.0000', 0, 0, 1),
+(429, 3, 1217980800, 1251071999, 0, 94, 'by_percent', '0.0000', 0, 0, 1),
+(430, 3, 1217980800, 1251071999, 1, 94, 'by_percent', '0.0000', 0, 0, 1),
+(431, 3, 1217980800, 1251071999, 2, 94, 'by_percent', '0.0000', 0, 0, 1),
+(432, 3, 1217980800, 1251071999, 4, 94, 'by_percent', '0.0000', 0, 0, 1),
+(433, 3, 1217980800, 1251071999, 0, 95, 'by_percent', '0.0000', 0, 0, 1),
+(434, 3, 1217980800, 1251071999, 1, 95, 'by_percent', '0.0000', 0, 0, 1),
+(435, 3, 1217980800, 1251071999, 2, 95, 'by_percent', '0.0000', 0, 0, 1),
+(436, 3, 1217980800, 1251071999, 4, 95, 'by_percent', '0.0000', 0, 0, 1),
+(437, 3, 1217980800, 1251071999, 0, 96, 'by_percent', '0.0000', 0, 0, 1),
+(438, 3, 1217980800, 1251071999, 1, 96, 'by_percent', '0.0000', 0, 0, 1),
+(439, 3, 1217980800, 1251071999, 2, 96, 'by_percent', '0.0000', 0, 0, 1),
+(440, 3, 1217980800, 1251071999, 4, 96, 'by_percent', '0.0000', 0, 0, 1),
+(441, 3, 1217980800, 1251071999, 0, 97, 'by_percent', '0.0000', 0, 0, 1),
+(442, 3, 1217980800, 1251071999, 1, 97, 'by_percent', '0.0000', 0, 0, 1),
+(443, 3, 1217980800, 1251071999, 2, 97, 'by_percent', '0.0000', 0, 0, 1),
+(444, 3, 1217980800, 1251071999, 4, 97, 'by_percent', '0.0000', 0, 0, 1),
+(445, 3, 1217980800, 1251071999, 0, 98, 'by_percent', '0.0000', 0, 0, 1),
+(446, 3, 1217980800, 1251071999, 1, 98, 'by_percent', '0.0000', 0, 0, 1),
+(447, 3, 1217980800, 1251071999, 2, 98, 'by_percent', '0.0000', 0, 0, 1),
+(448, 3, 1217980800, 1251071999, 4, 98, 'by_percent', '0.0000', 0, 0, 1),
+(449, 3, 1217980800, 1251071999, 0, 99, 'by_percent', '0.0000', 0, 0, 1),
+(450, 3, 1217980800, 1251071999, 1, 99, 'by_percent', '0.0000', 0, 0, 1),
+(451, 3, 1217980800, 1251071999, 2, 99, 'by_percent', '0.0000', 0, 0, 1),
+(452, 3, 1217980800, 1251071999, 4, 99, 'by_percent', '0.0000', 0, 0, 1),
+(453, 3, 1217980800, 1251071999, 0, 100, 'by_percent', '0.0000', 0, 0, 1),
+(454, 3, 1217980800, 1251071999, 1, 100, 'by_percent', '0.0000', 0, 0, 1),
+(455, 3, 1217980800, 1251071999, 2, 100, 'by_percent', '0.0000', 0, 0, 1),
+(456, 3, 1217980800, 1251071999, 4, 100, 'by_percent', '0.0000', 0, 0, 1),
+(457, 3, 1217980800, 1251071999, 0, 101, 'by_percent', '0.0000', 0, 0, 1),
+(458, 3, 1217980800, 1251071999, 1, 101, 'by_percent', '0.0000', 0, 0, 1),
+(459, 3, 1217980800, 1251071999, 2, 101, 'by_percent', '0.0000', 0, 0, 1),
+(460, 3, 1217980800, 1251071999, 4, 101, 'by_percent', '0.0000', 0, 0, 1),
+(461, 3, 1217980800, 1251071999, 0, 102, 'by_percent', '0.0000', 0, 0, 1),
+(462, 3, 1217980800, 1251071999, 1, 102, 'by_percent', '0.0000', 0, 0, 1),
+(463, 3, 1217980800, 1251071999, 2, 102, 'by_percent', '0.0000', 0, 0, 1),
+(464, 3, 1217980800, 1251071999, 4, 102, 'by_percent', '0.0000', 0, 0, 1),
+(465, 3, 1217980800, 1251071999, 0, 103, 'by_percent', '0.0000', 0, 0, 1),
+(466, 3, 1217980800, 1251071999, 1, 103, 'by_percent', '0.0000', 0, 0, 1),
+(467, 3, 1217980800, 1251071999, 2, 103, 'by_percent', '0.0000', 0, 0, 1),
+(468, 3, 1217980800, 1251071999, 4, 103, 'by_percent', '0.0000', 0, 0, 1),
+(469, 3, 1217980800, 1251071999, 0, 104, 'by_percent', '0.0000', 0, 0, 1),
+(470, 3, 1217980800, 1251071999, 1, 104, 'by_percent', '0.0000', 0, 0, 1),
+(471, 3, 1217980800, 1251071999, 2, 104, 'by_percent', '0.0000', 0, 0, 1),
+(472, 3, 1217980800, 1251071999, 4, 104, 'by_percent', '0.0000', 0, 0, 1),
+(473, 3, 1217980800, 1251071999, 0, 105, 'by_percent', '0.0000', 0, 0, 1),
+(474, 3, 1217980800, 1251071999, 1, 105, 'by_percent', '0.0000', 0, 0, 1),
+(475, 3, 1217980800, 1251071999, 2, 105, 'by_percent', '0.0000', 0, 0, 1),
+(476, 3, 1217980800, 1251071999, 4, 105, 'by_percent', '0.0000', 0, 0, 1),
+(477, 3, 1217980800, 1251071999, 0, 106, 'by_percent', '0.0000', 0, 0, 1),
+(478, 3, 1217980800, 1251071999, 1, 106, 'by_percent', '0.0000', 0, 0, 1),
+(479, 3, 1217980800, 1251071999, 2, 106, 'by_percent', '0.0000', 0, 0, 1),
+(480, 3, 1217980800, 1251071999, 4, 106, 'by_percent', '0.0000', 0, 0, 1),
+(481, 3, 1217980800, 1251071999, 0, 107, 'by_percent', '0.0000', 0, 0, 1),
+(482, 3, 1217980800, 1251071999, 1, 107, 'by_percent', '0.0000', 0, 0, 1),
+(483, 3, 1217980800, 1251071999, 2, 107, 'by_percent', '0.0000', 0, 0, 1),
+(484, 3, 1217980800, 1251071999, 4, 107, 'by_percent', '0.0000', 0, 0, 1),
+(485, 3, 1217980800, 1251071999, 0, 108, 'by_percent', '0.0000', 0, 0, 1),
+(486, 3, 1217980800, 1251071999, 1, 108, 'by_percent', '0.0000', 0, 0, 1),
+(487, 3, 1217980800, 1251071999, 2, 108, 'by_percent', '0.0000', 0, 0, 1),
+(488, 3, 1217980800, 1251071999, 4, 108, 'by_percent', '0.0000', 0, 0, 1),
+(489, 3, 1217980800, 1251071999, 0, 109, 'by_percent', '0.0000', 0, 0, 1),
+(490, 3, 1217980800, 1251071999, 1, 109, 'by_percent', '0.0000', 0, 0, 1),
+(491, 3, 1217980800, 1251071999, 2, 109, 'by_percent', '0.0000', 0, 0, 1),
+(492, 3, 1217980800, 1251071999, 4, 109, 'by_percent', '0.0000', 0, 0, 1),
+(493, 3, 1217980800, 1251071999, 0, 110, 'by_percent', '0.0000', 0, 0, 1),
+(494, 3, 1217980800, 1251071999, 1, 110, 'by_percent', '0.0000', 0, 0, 1),
+(495, 3, 1217980800, 1251071999, 2, 110, 'by_percent', '0.0000', 0, 0, 1),
+(496, 3, 1217980800, 1251071999, 4, 110, 'by_percent', '0.0000', 0, 0, 1),
+(497, 3, 1217980800, 1251071999, 0, 111, 'by_percent', '0.0000', 0, 0, 1),
+(498, 3, 1217980800, 1251071999, 1, 111, 'by_percent', '0.0000', 0, 0, 1),
+(499, 3, 1217980800, 1251071999, 2, 111, 'by_percent', '0.0000', 0, 0, 1),
+(500, 3, 1217980800, 1251071999, 4, 111, 'by_percent', '0.0000', 0, 0, 1),
+(501, 3, 1217980800, 1251071999, 0, 112, 'by_percent', '0.0000', 0, 0, 1),
+(502, 3, 1217980800, 1251071999, 1, 112, 'by_percent', '0.0000', 0, 0, 1),
+(503, 3, 1217980800, 1251071999, 2, 112, 'by_percent', '0.0000', 0, 0, 1),
+(504, 3, 1217980800, 1251071999, 4, 112, 'by_percent', '0.0000', 0, 0, 1),
+(505, 3, 1217980800, 1251071999, 0, 113, 'by_percent', '0.0000', 0, 0, 1),
+(506, 3, 1217980800, 1251071999, 1, 113, 'by_percent', '0.0000', 0, 0, 1),
+(507, 3, 1217980800, 1251071999, 2, 113, 'by_percent', '0.0000', 0, 0, 1),
+(508, 3, 1217980800, 1251071999, 4, 113, 'by_percent', '0.0000', 0, 0, 1),
+(509, 3, 1217980800, 1251071999, 0, 114, 'by_percent', '0.0000', 0, 0, 1),
+(510, 3, 1217980800, 1251071999, 1, 114, 'by_percent', '0.0000', 0, 0, 1),
+(511, 3, 1217980800, 1251071999, 2, 114, 'by_percent', '0.0000', 0, 0, 1),
+(512, 3, 1217980800, 1251071999, 4, 114, 'by_percent', '0.0000', 0, 0, 1),
+(513, 3, 1217980800, 1251071999, 0, 115, 'by_percent', '0.0000', 0, 0, 1),
+(514, 3, 1217980800, 1251071999, 1, 115, 'by_percent', '0.0000', 0, 0, 1),
+(515, 3, 1217980800, 1251071999, 2, 115, 'by_percent', '0.0000', 0, 0, 1),
+(516, 3, 1217980800, 1251071999, 4, 115, 'by_percent', '0.0000', 0, 0, 1),
+(517, 3, 1217980800, 1251071999, 0, 117, 'by_percent', '0.0000', 0, 0, 1),
+(518, 3, 1217980800, 1251071999, 1, 117, 'by_percent', '0.0000', 0, 0, 1),
+(519, 3, 1217980800, 1251071999, 2, 117, 'by_percent', '0.0000', 0, 0, 1),
+(520, 3, 1217980800, 1251071999, 4, 117, 'by_percent', '0.0000', 0, 0, 1),
+(521, 3, 1217980800, 1251071999, 0, 118, 'by_percent', '0.0000', 0, 0, 1),
+(522, 3, 1217980800, 1251071999, 1, 118, 'by_percent', '0.0000', 0, 0, 1),
+(523, 3, 1217980800, 1251071999, 2, 118, 'by_percent', '0.0000', 0, 0, 1),
+(524, 3, 1217980800, 1251071999, 4, 118, 'by_percent', '0.0000', 0, 0, 1),
+(525, 3, 1217980800, 1251071999, 0, 119, 'by_percent', '0.0000', 0, 0, 1),
+(526, 3, 1217980800, 1251071999, 1, 119, 'by_percent', '0.0000', 0, 0, 1),
+(527, 3, 1217980800, 1251071999, 2, 119, 'by_percent', '0.0000', 0, 0, 1),
+(528, 3, 1217980800, 1251071999, 4, 119, 'by_percent', '0.0000', 0, 0, 1),
+(529, 3, 1217980800, 1251071999, 0, 120, 'by_percent', '0.0000', 0, 0, 1),
+(530, 3, 1217980800, 1251071999, 1, 120, 'by_percent', '0.0000', 0, 0, 1),
+(531, 3, 1217980800, 1251071999, 2, 120, 'by_percent', '0.0000', 0, 0, 1),
+(532, 3, 1217980800, 1251071999, 4, 120, 'by_percent', '0.0000', 0, 0, 1),
+(533, 3, 1217980800, 1251071999, 0, 121, 'by_percent', '0.0000', 0, 0, 1),
+(534, 3, 1217980800, 1251071999, 1, 121, 'by_percent', '0.0000', 0, 0, 1),
+(535, 3, 1217980800, 1251071999, 2, 121, 'by_percent', '0.0000', 0, 0, 1),
+(536, 3, 1217980800, 1251071999, 4, 121, 'by_percent', '0.0000', 0, 0, 1),
+(537, 3, 1217980800, 1251071999, 0, 122, 'by_percent', '0.0000', 0, 0, 1),
+(538, 3, 1217980800, 1251071999, 1, 122, 'by_percent', '0.0000', 0, 0, 1),
+(539, 3, 1217980800, 1251071999, 2, 122, 'by_percent', '0.0000', 0, 0, 1),
+(540, 3, 1217980800, 1251071999, 4, 122, 'by_percent', '0.0000', 0, 0, 1),
+(541, 3, 1217980800, 1251071999, 0, 123, 'by_percent', '0.0000', 0, 0, 1),
+(542, 3, 1217980800, 1251071999, 1, 123, 'by_percent', '0.0000', 0, 0, 1),
+(543, 3, 1217980800, 1251071999, 2, 123, 'by_percent', '0.0000', 0, 0, 1),
+(544, 3, 1217980800, 1251071999, 4, 123, 'by_percent', '0.0000', 0, 0, 1),
+(545, 3, 1217980800, 1251071999, 0, 124, 'by_percent', '0.0000', 0, 0, 1),
+(546, 3, 1217980800, 1251071999, 1, 124, 'by_percent', '0.0000', 0, 0, 1),
+(547, 3, 1217980800, 1251071999, 2, 124, 'by_percent', '0.0000', 0, 0, 1),
+(548, 3, 1217980800, 1251071999, 4, 124, 'by_percent', '0.0000', 0, 0, 1),
+(549, 3, 1217980800, 1251071999, 0, 125, 'by_percent', '0.0000', 0, 0, 1),
+(550, 3, 1217980800, 1251071999, 1, 125, 'by_percent', '0.0000', 0, 0, 1),
+(551, 3, 1217980800, 1251071999, 2, 125, 'by_percent', '0.0000', 0, 0, 1),
+(552, 3, 1217980800, 1251071999, 4, 125, 'by_percent', '0.0000', 0, 0, 1),
+(553, 3, 1217980800, 1251071999, 0, 126, 'by_percent', '0.0000', 0, 0, 1),
+(554, 3, 1217980800, 1251071999, 1, 126, 'by_percent', '0.0000', 0, 0, 1),
+(555, 3, 1217980800, 1251071999, 2, 126, 'by_percent', '0.0000', 0, 0, 1),
+(556, 3, 1217980800, 1251071999, 4, 126, 'by_percent', '0.0000', 0, 0, 1),
+(557, 3, 1217980800, 1251071999, 0, 127, 'by_percent', '0.0000', 0, 0, 1),
+(558, 3, 1217980800, 1251071999, 1, 127, 'by_percent', '0.0000', 0, 0, 1),
+(559, 3, 1217980800, 1251071999, 2, 127, 'by_percent', '0.0000', 0, 0, 1),
+(560, 3, 1217980800, 1251071999, 4, 127, 'by_percent', '0.0000', 0, 0, 1),
+(561, 3, 1217980800, 1251071999, 0, 128, 'by_percent', '0.0000', 0, 0, 1),
+(562, 3, 1217980800, 1251071999, 1, 128, 'by_percent', '0.0000', 0, 0, 1),
+(563, 3, 1217980800, 1251071999, 2, 128, 'by_percent', '0.0000', 0, 0, 1),
+(564, 3, 1217980800, 1251071999, 4, 128, 'by_percent', '0.0000', 0, 0, 1),
+(565, 3, 1217980800, 1251071999, 0, 129, 'by_percent', '0.0000', 0, 0, 1),
+(566, 3, 1217980800, 1251071999, 1, 129, 'by_percent', '0.0000', 0, 0, 1),
+(567, 3, 1217980800, 1251071999, 2, 129, 'by_percent', '0.0000', 0, 0, 1),
+(568, 3, 1217980800, 1251071999, 4, 129, 'by_percent', '0.0000', 0, 0, 1),
+(569, 3, 1217980800, 1251071999, 0, 130, 'by_percent', '0.0000', 0, 0, 1),
+(570, 3, 1217980800, 1251071999, 1, 130, 'by_percent', '0.0000', 0, 0, 1),
+(571, 3, 1217980800, 1251071999, 2, 130, 'by_percent', '0.0000', 0, 0, 1),
+(572, 3, 1217980800, 1251071999, 4, 130, 'by_percent', '0.0000', 0, 0, 1),
+(573, 3, 1217980800, 1251071999, 0, 131, 'by_percent', '0.0000', 0, 0, 1),
+(574, 3, 1217980800, 1251071999, 1, 131, 'by_percent', '0.0000', 0, 0, 1),
+(575, 3, 1217980800, 1251071999, 2, 131, 'by_percent', '0.0000', 0, 0, 1),
+(576, 3, 1217980800, 1251071999, 4, 131, 'by_percent', '0.0000', 0, 0, 1),
+(577, 3, 1217980800, 1251071999, 0, 132, 'by_percent', '0.0000', 0, 0, 1),
+(578, 3, 1217980800, 1251071999, 1, 132, 'by_percent', '0.0000', 0, 0, 1),
+(579, 3, 1217980800, 1251071999, 2, 132, 'by_percent', '0.0000', 0, 0, 1),
+(580, 3, 1217980800, 1251071999, 4, 132, 'by_percent', '0.0000', 0, 0, 1),
+(581, 3, 1217980800, 1251071999, 0, 133, 'by_percent', '0.0000', 0, 0, 1),
+(582, 3, 1217980800, 1251071999, 1, 133, 'by_percent', '0.0000', 0, 0, 1),
+(583, 3, 1217980800, 1251071999, 2, 133, 'by_percent', '0.0000', 0, 0, 1),
+(584, 3, 1217980800, 1251071999, 4, 133, 'by_percent', '0.0000', 0, 0, 1),
+(585, 3, 1217980800, 1251071999, 0, 134, 'by_percent', '0.0000', 0, 0, 1),
+(586, 3, 1217980800, 1251071999, 1, 134, 'by_percent', '0.0000', 0, 0, 1),
+(587, 3, 1217980800, 1251071999, 2, 134, 'by_percent', '0.0000', 0, 0, 1),
+(588, 3, 1217980800, 1251071999, 4, 134, 'by_percent', '0.0000', 0, 0, 1),
+(589, 3, 1217980800, 1251071999, 0, 135, 'by_percent', '0.0000', 0, 0, 1),
+(590, 3, 1217980800, 1251071999, 1, 135, 'by_percent', '0.0000', 0, 0, 1),
+(591, 3, 1217980800, 1251071999, 2, 135, 'by_percent', '0.0000', 0, 0, 1),
+(592, 3, 1217980800, 1251071999, 4, 135, 'by_percent', '0.0000', 0, 0, 1),
+(593, 3, 1217980800, 1251071999, 0, 137, 'by_percent', '0.0000', 0, 0, 1),
+(594, 3, 1217980800, 1251071999, 1, 137, 'by_percent', '0.0000', 0, 0, 1),
+(595, 3, 1217980800, 1251071999, 2, 137, 'by_percent', '0.0000', 0, 0, 1),
+(596, 3, 1217980800, 1251071999, 4, 137, 'by_percent', '0.0000', 0, 0, 1),
+(597, 3, 1217980800, 1251071999, 0, 138, 'by_percent', '0.0000', 0, 0, 1),
+(598, 3, 1217980800, 1251071999, 1, 138, 'by_percent', '0.0000', 0, 0, 1),
+(599, 3, 1217980800, 1251071999, 2, 138, 'by_percent', '0.0000', 0, 0, 1),
+(600, 3, 1217980800, 1251071999, 4, 138, 'by_percent', '0.0000', 0, 0, 1),
+(601, 3, 1217980800, 1251071999, 0, 139, 'by_percent', '0.0000', 0, 0, 1),
+(602, 3, 1217980800, 1251071999, 1, 139, 'by_percent', '0.0000', 0, 0, 1),
+(603, 3, 1217980800, 1251071999, 2, 139, 'by_percent', '0.0000', 0, 0, 1),
+(604, 3, 1217980800, 1251071999, 4, 139, 'by_percent', '0.0000', 0, 0, 1),
+(605, 3, 1217980800, 1251071999, 0, 142, 'by_percent', '0.0000', 0, 0, 1),
+(606, 3, 1217980800, 1251071999, 1, 142, 'by_percent', '0.0000', 0, 0, 1),
+(607, 3, 1217980800, 1251071999, 2, 142, 'by_percent', '0.0000', 0, 0, 1),
+(608, 3, 1217980800, 1251071999, 4, 142, 'by_percent', '0.0000', 0, 0, 1),
+(609, 3, 1217980800, 1251071999, 0, 144, 'by_percent', '0.0000', 0, 0, 1),
+(610, 3, 1217980800, 1251071999, 1, 144, 'by_percent', '0.0000', 0, 0, 1),
+(611, 3, 1217980800, 1251071999, 2, 144, 'by_percent', '0.0000', 0, 0, 1),
+(612, 3, 1217980800, 1251071999, 4, 144, 'by_percent', '0.0000', 0, 0, 1),
+(613, 3, 1217980800, 1251071999, 0, 146, 'by_percent', '0.0000', 0, 0, 1),
+(614, 3, 1217980800, 1251071999, 1, 146, 'by_percent', '0.0000', 0, 0, 1),
+(615, 3, 1217980800, 1251071999, 2, 146, 'by_percent', '0.0000', 0, 0, 1),
+(616, 3, 1217980800, 1251071999, 4, 146, 'by_percent', '0.0000', 0, 0, 1),
+(617, 3, 1217980800, 1251071999, 0, 158, 'by_percent', '0.0000', 0, 0, 1),
+(618, 3, 1217980800, 1251071999, 1, 158, 'by_percent', '0.0000', 0, 0, 1),
+(619, 3, 1217980800, 1251071999, 2, 158, 'by_percent', '0.0000', 0, 0, 1),
+(620, 3, 1217980800, 1251071999, 4, 158, 'by_percent', '0.0000', 0, 0, 1),
+(621, 3, 1217980800, 1251071999, 0, 163, 'by_percent', '0.0000', 0, 0, 1),
+(622, 3, 1217980800, 1251071999, 1, 163, 'by_percent', '0.0000', 0, 0, 1),
+(623, 3, 1217980800, 1251071999, 2, 163, 'by_percent', '0.0000', 0, 0, 1),
+(624, 3, 1217980800, 1251071999, 4, 163, 'by_percent', '0.0000', 0, 0, 1),
+(625, 3, 1217980800, 1251071999, 0, 164, 'by_percent', '0.0000', 0, 0, 1),
+(626, 3, 1217980800, 1251071999, 1, 164, 'by_percent', '0.0000', 0, 0, 1),
+(627, 3, 1217980800, 1251071999, 2, 164, 'by_percent', '0.0000', 0, 0, 1),
+(628, 3, 1217980800, 1251071999, 4, 164, 'by_percent', '0.0000', 0, 0, 1),
+(629, 3, 1217980800, 1251071999, 0, 165, 'by_percent', '0.0000', 0, 0, 1),
+(630, 3, 1217980800, 1251071999, 1, 165, 'by_percent', '0.0000', 0, 0, 1),
+(631, 3, 1217980800, 1251071999, 2, 165, 'by_percent', '0.0000', 0, 0, 1),
+(632, 3, 1217980800, 1251071999, 4, 165, 'by_percent', '0.0000', 0, 0, 1),
+(633, 4, 1219795200, 1251503999, 0, 135, 'by_percent', '0.0000', 1, 0, 1),
+(634, 4, 1219795200, 1251503999, 1, 135, 'by_percent', '0.0000', 1, 0, 1),
+(635, 4, 1219795200, 1251503999, 2, 135, 'by_percent', '0.0000', 1, 0, 1),
+(636, 4, 1219795200, 1251503999, 4, 135, 'by_percent', '0.0000', 1, 0, 1),
+(637, 5, 1219536000, 1254182399, 0, 41, 'by_percent', '0.0000', 1, 0, 1),
+(638, 5, 1219536000, 1254182399, 1, 41, 'by_percent', '0.0000', 1, 0, 1),
+(639, 5, 1219536000, 1254182399, 2, 41, 'by_percent', '0.0000', 1, 0, 1),
+(640, 5, 1219536000, 1254182399, 4, 41, 'by_percent', '0.0000', 1, 0, 1),
+(641, 5, 1219536000, 1254182399, 0, 52, 'by_percent', '0.0000', 1, 0, 1),
+(642, 5, 1219536000, 1254182399, 1, 52, 'by_percent', '0.0000', 1, 0, 1),
+(643, 5, 1219536000, 1254182399, 2, 52, 'by_percent', '0.0000', 1, 0, 1),
+(644, 5, 1219536000, 1254182399, 4, 52, 'by_percent', '0.0000', 1, 0, 1),
+(645, 6, 1219881600, 1256947199, 0, 35, 'by_percent', '0.0000', 0, 0, 1),
+(646, 6, 1219881600, 1256947199, 1, 35, 'by_percent', '0.0000', 0, 0, 1),
+(647, 6, 1219881600, 1256947199, 2, 35, 'by_percent', '0.0000', 0, 0, 1),
+(648, 6, 1219881600, 1256947199, 0, 36, 'by_percent', '0.0000', 0, 0, 1),
+(649, 6, 1219881600, 1256947199, 1, 36, 'by_percent', '0.0000', 0, 0, 1),
+(650, 6, 1219881600, 1256947199, 2, 36, 'by_percent', '0.0000', 0, 0, 1),
+(651, 6, 1219881600, 1256947199, 0, 37, 'by_percent', '0.0000', 0, 0, 1),
+(652, 6, 1219881600, 1256947199, 1, 37, 'by_percent', '0.0000', 0, 0, 1),
+(653, 6, 1219881600, 1256947199, 2, 37, 'by_percent', '0.0000', 0, 0, 1),
+(654, 6, 1219881600, 1256947199, 0, 38, 'by_percent', '0.0000', 0, 0, 1),
+(655, 6, 1219881600, 1256947199, 1, 38, 'by_percent', '0.0000', 0, 0, 1),
+(656, 6, 1219881600, 1256947199, 2, 38, 'by_percent', '0.0000', 0, 0, 1),
+(657, 6, 1219881600, 1256947199, 0, 39, 'by_percent', '0.0000', 0, 0, 1),
+(658, 6, 1219881600, 1256947199, 1, 39, 'by_percent', '0.0000', 0, 0, 1),
+(659, 6, 1219881600, 1256947199, 2, 39, 'by_percent', '0.0000', 0, 0, 1),
+(660, 6, 1219881600, 1256947199, 0, 117, 'by_percent', '0.0000', 0, 0, 1),
+(661, 6, 1219881600, 1256947199, 1, 117, 'by_percent', '0.0000', 0, 0, 1),
+(662, 6, 1219881600, 1256947199, 2, 117, 'by_percent', '0.0000', 0, 0, 1),
+(663, 6, 1219881600, 1256947199, 0, 118, 'by_percent', '0.0000', 0, 0, 1),
+(664, 6, 1219881600, 1256947199, 1, 118, 'by_percent', '0.0000', 0, 0, 1),
+(665, 6, 1219881600, 1256947199, 2, 118, 'by_percent', '0.0000', 0, 0, 1),
+(666, 6, 1219881600, 1256947199, 0, 119, 'by_percent', '0.0000', 0, 0, 1),
+(667, 6, 1219881600, 1256947199, 1, 119, 'by_percent', '0.0000', 0, 0, 1),
+(668, 6, 1219881600, 1256947199, 2, 119, 'by_percent', '0.0000', 0, 0, 1),
+(669, 6, 1219881600, 1256947199, 0, 120, 'by_percent', '0.0000', 0, 0, 1),
+(670, 6, 1219881600, 1256947199, 1, 120, 'by_percent', '0.0000', 0, 0, 1),
+(671, 6, 1219881600, 1256947199, 2, 120, 'by_percent', '0.0000', 0, 0, 1),
+(672, 6, 1219881600, 1256947199, 0, 121, 'by_percent', '0.0000', 0, 0, 1),
+(673, 6, 1219881600, 1256947199, 1, 121, 'by_percent', '0.0000', 0, 0, 1),
+(674, 6, 1219881600, 1256947199, 2, 121, 'by_percent', '0.0000', 0, 0, 1),
+(675, 6, 1219881600, 1256947199, 0, 122, 'by_percent', '0.0000', 0, 0, 1),
+(676, 6, 1219881600, 1256947199, 1, 122, 'by_percent', '0.0000', 0, 0, 1),
+(677, 6, 1219881600, 1256947199, 2, 122, 'by_percent', '0.0000', 0, 0, 1),
+(678, 6, 1219881600, 1256947199, 0, 123, 'by_percent', '0.0000', 0, 0, 1),
+(679, 6, 1219881600, 1256947199, 1, 123, 'by_percent', '0.0000', 0, 0, 1),
+(680, 6, 1219881600, 1256947199, 2, 123, 'by_percent', '0.0000', 0, 0, 1),
+(681, 6, 1219881600, 1256947199, 0, 124, 'by_percent', '0.0000', 0, 0, 1),
+(682, 6, 1219881600, 1256947199, 1, 124, 'by_percent', '0.0000', 0, 0, 1),
+(683, 6, 1219881600, 1256947199, 2, 124, 'by_percent', '0.0000', 0, 0, 1),
+(684, 6, 1219881600, 1256947199, 0, 125, 'by_percent', '0.0000', 0, 0, 1),
+(685, 6, 1219881600, 1256947199, 1, 125, 'by_percent', '0.0000', 0, 0, 1),
+(686, 6, 1219881600, 1256947199, 2, 125, 'by_percent', '0.0000', 0, 0, 1),
+(687, 6, 1219881600, 1256947199, 0, 126, 'by_percent', '0.0000', 0, 0, 1),
+(688, 6, 1219881600, 1256947199, 1, 126, 'by_percent', '0.0000', 0, 0, 1);
+INSERT INTO `catalogrule_product` (`rule_product_id`, `rule_id`, `from_time`, `to_time`, `customer_group_id`, `product_id`, `action_operator`, `action_amount`, `action_stop`, `sort_order`, `website_id`) VALUES
+(689, 6, 1219881600, 1256947199, 2, 126, 'by_percent', '0.0000', 0, 0, 1),
+(690, 6, 1219881600, 1256947199, 0, 127, 'by_percent', '0.0000', 0, 0, 1),
+(691, 6, 1219881600, 1256947199, 1, 127, 'by_percent', '0.0000', 0, 0, 1),
+(692, 6, 1219881600, 1256947199, 2, 127, 'by_percent', '0.0000', 0, 0, 1),
+(693, 6, 1219881600, 1256947199, 0, 128, 'by_percent', '0.0000', 0, 0, 1),
+(694, 6, 1219881600, 1256947199, 1, 128, 'by_percent', '0.0000', 0, 0, 1),
+(695, 6, 1219881600, 1256947199, 2, 128, 'by_percent', '0.0000', 0, 0, 1),
+(696, 6, 1219881600, 1256947199, 0, 129, 'by_percent', '0.0000', 0, 0, 1),
+(697, 6, 1219881600, 1256947199, 1, 129, 'by_percent', '0.0000', 0, 0, 1),
+(698, 6, 1219881600, 1256947199, 2, 129, 'by_percent', '0.0000', 0, 0, 1),
+(699, 6, 1219881600, 1256947199, 0, 130, 'by_percent', '0.0000', 0, 0, 1),
+(700, 6, 1219881600, 1256947199, 1, 130, 'by_percent', '0.0000', 0, 0, 1),
+(701, 6, 1219881600, 1256947199, 2, 130, 'by_percent', '0.0000', 0, 0, 1),
+(702, 6, 1219881600, 1256947199, 0, 131, 'by_percent', '0.0000', 0, 0, 1),
+(703, 6, 1219881600, 1256947199, 1, 131, 'by_percent', '0.0000', 0, 0, 1),
+(704, 6, 1219881600, 1256947199, 2, 131, 'by_percent', '0.0000', 0, 0, 1),
+(705, 6, 1219881600, 1256947199, 0, 137, 'by_percent', '0.0000', 0, 0, 1),
+(706, 6, 1219881600, 1256947199, 1, 137, 'by_percent', '0.0000', 0, 0, 1),
+(707, 6, 1219881600, 1256947199, 2, 137, 'by_percent', '0.0000', 0, 0, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogrule_product_price`
+-- Structure de la table `catalogrule_product_price`
 --
 
+DROP TABLE IF EXISTS `catalogrule_product_price`;
 CREATE TABLE IF NOT EXISTS `catalogrule_product_price` (
-  `rule_product_price_id` int(10) unsigned NOT NULL auto_increment,
-  `rule_date` date NOT NULL default '0000-00-00',
-  `customer_group_id` smallint(5) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `rule_price` decimal(12,4) NOT NULL default '0.0000',
+  `rule_product_price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rule_date` date NOT NULL DEFAULT '0000-00-00',
+  `customer_group_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `rule_price` decimal(12,4) NOT NULL DEFAULT '0.0000',
   `website_id` smallint(5) unsigned NOT NULL,
-  `latest_start_date` date default NULL,
-  `earliest_end_date` date default NULL,
-  PRIMARY KEY  (`rule_product_price_id`),
+  `latest_start_date` date DEFAULT NULL,
+  `earliest_end_date` date DEFAULT NULL,
+  PRIMARY KEY (`rule_product_price_id`),
   UNIQUE KEY `rule_date` (`rule_date`,`website_id`,`customer_group_id`,`product_id`),
   KEY `FK_catalogrule_product_price_customergroup` (`customer_group_id`),
   KEY `FK_catalogrule_product_price_website` (`website_id`),
@@ -1599,1357 +1629,1358 @@ CREATE TABLE IF NOT EXISTS `catalogrule_product_price` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7375 ;
 
 --
--- Dumping data for table `catalogrule_product_price`
+-- Contenu de la table `catalogrule_product_price`
 --
 
 INSERT INTO `catalogrule_product_price` (`rule_product_price_id`, `rule_date`, `customer_group_id`, `product_id`, `rule_price`, `website_id`, `latest_start_date`, `earliest_end_date`) VALUES
-(6034, '2008-12-26', 0, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6035, '2008-12-27', 0, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6036, '2008-12-28', 0, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6037, '2008-12-26', 0, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6038, '2008-12-27', 0, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6039, '2008-12-28', 0, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6040, '2008-12-26', 0, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6041, '2008-12-27', 0, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6042, '2008-12-28', 0, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6043, '2008-12-26', 0, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6044, '2008-12-27', 0, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6045, '2008-12-28', 0, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6046, '2008-12-26', 0, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6047, '2008-12-27', 0, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6048, '2008-12-28', 0, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6049, '2008-12-26', 0, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6050, '2008-12-27', 0, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6051, '2008-12-28', 0, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6052, '2008-12-26', 0, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6053, '2008-12-27', 0, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6054, '2008-12-28', 0, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6055, '2008-12-26', 0, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6056, '2008-12-27', 0, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6057, '2008-12-28', 0, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6058, '2008-12-26', 0, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6059, '2008-12-27', 0, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6060, '2008-12-28', 0, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6061, '2008-12-26', 0, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6062, '2008-12-27', 0, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6063, '2008-12-28', 0, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6064, '2008-12-26', 0, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6065, '2008-12-27', 0, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6066, '2008-12-28', 0, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6067, '2008-12-26', 0, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6068, '2008-12-27', 0, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6069, '2008-12-28', 0, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6070, '2008-12-26', 0, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6071, '2008-12-27', 0, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6072, '2008-12-28', 0, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6073, '2008-12-26', 0, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6074, '2008-12-27', 0, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6075, '2008-12-28', 0, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6076, '2008-12-26', 0, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6077, '2008-12-27', 0, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6078, '2008-12-28', 0, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6079, '2008-12-26', 0, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6080, '2008-12-27', 0, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6081, '2008-12-28', 0, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6082, '2008-12-26', 0, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6083, '2008-12-27', 0, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6084, '2008-12-28', 0, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6085, '2008-12-26', 0, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6086, '2008-12-27', 0, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6087, '2008-12-28', 0, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6088, '2008-12-26', 0, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6089, '2008-12-27', 0, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6090, '2008-12-28', 0, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6091, '2008-12-26', 0, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6092, '2008-12-27', 0, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6093, '2008-12-28', 0, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6094, '2008-12-26', 0, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6095, '2008-12-27', 0, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6096, '2008-12-28', 0, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6097, '2008-12-26', 0, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6098, '2008-12-27', 0, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6099, '2008-12-28', 0, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6100, '2008-12-26', 0, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6101, '2008-12-27', 0, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6102, '2008-12-28', 0, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6103, '2008-12-26', 0, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6104, '2008-12-27', 0, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6105, '2008-12-28', 0, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6106, '2008-12-26', 0, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6107, '2008-12-27', 0, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6108, '2008-12-28', 0, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6109, '2008-12-26', 0, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6110, '2008-12-27', 0, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6111, '2008-12-28', 0, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6112, '2008-12-26', 0, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6113, '2008-12-27', 0, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6114, '2008-12-28', 0, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6115, '2008-12-26', 0, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6116, '2008-12-27', 0, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6117, '2008-12-28', 0, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6118, '2008-12-26', 0, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6119, '2008-12-27', 0, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6120, '2008-12-28', 0, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6121, '2008-12-26', 0, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6122, '2008-12-27', 0, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6123, '2008-12-28', 0, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6124, '2008-12-26', 0, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6125, '2008-12-27', 0, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6126, '2008-12-28', 0, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6127, '2008-12-26', 0, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6128, '2008-12-27', 0, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6129, '2008-12-28', 0, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6130, '2008-12-26', 0, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6131, '2008-12-27', 0, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6132, '2008-12-28', 0, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6136, '2008-12-26', 0, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6137, '2008-12-27', 0, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6138, '2008-12-28', 0, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6139, '2008-12-26', 0, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6140, '2008-12-27', 0, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6141, '2008-12-28', 0, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6142, '2008-12-26', 0, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6143, '2008-12-27', 0, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6144, '2008-12-28', 0, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6145, '2008-12-26', 0, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6146, '2008-12-27', 0, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6147, '2008-12-28', 0, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6148, '2008-12-26', 0, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6149, '2008-12-27', 0, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6150, '2008-12-28', 0, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6151, '2008-12-26', 0, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6152, '2008-12-27', 0, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6153, '2008-12-28', 0, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6154, '2008-12-26', 0, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6155, '2008-12-27', 0, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6156, '2008-12-28', 0, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6157, '2008-12-26', 0, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6158, '2008-12-27', 0, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6159, '2008-12-28', 0, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6160, '2008-12-26', 0, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6161, '2008-12-27', 0, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6162, '2008-12-28', 0, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6163, '2008-12-26', 0, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6164, '2008-12-27', 0, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6165, '2008-12-28', 0, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6166, '2008-12-26', 0, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6167, '2008-12-27', 0, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6168, '2008-12-28', 0, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6169, '2008-12-26', 0, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6170, '2008-12-27', 0, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6171, '2008-12-28', 0, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6172, '2008-12-26', 0, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6173, '2008-12-27', 0, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6174, '2008-12-28', 0, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6175, '2008-12-26', 0, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6176, '2008-12-27', 0, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6177, '2008-12-28', 0, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6178, '2008-12-26', 0, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6179, '2008-12-27', 0, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6180, '2008-12-28', 0, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6181, '2008-12-26', 0, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6182, '2008-12-27', 0, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6183, '2008-12-28', 0, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6184, '2008-12-26', 0, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6185, '2008-12-27', 0, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6186, '2008-12-28', 0, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6187, '2008-12-26', 0, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6188, '2008-12-27', 0, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6189, '2008-12-28', 0, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6190, '2008-12-26', 0, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6191, '2008-12-27', 0, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6192, '2008-12-28', 0, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6193, '2008-12-26', 0, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6194, '2008-12-27', 0, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6195, '2008-12-28', 0, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6196, '2008-12-26', 0, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6197, '2008-12-27', 0, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6198, '2008-12-28', 0, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6199, '2008-12-26', 0, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6200, '2008-12-27', 0, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6201, '2008-12-28', 0, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6202, '2008-12-26', 0, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6203, '2008-12-27', 0, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6204, '2008-12-28', 0, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6205, '2008-12-26', 0, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6206, '2008-12-27', 0, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6207, '2008-12-28', 0, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6208, '2008-12-26', 0, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6209, '2008-12-27', 0, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6210, '2008-12-28', 0, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6211, '2008-12-26', 0, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6212, '2008-12-27', 0, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6213, '2008-12-28', 0, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6214, '2008-12-26', 0, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6215, '2008-12-27', 0, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6216, '2008-12-28', 0, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6217, '2008-12-26', 0, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6218, '2008-12-27', 0, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6219, '2008-12-28', 0, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6220, '2008-12-26', 0, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6221, '2008-12-27', 0, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6222, '2008-12-28', 0, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6223, '2008-12-26', 0, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6224, '2008-12-27', 0, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6225, '2008-12-28', 0, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6226, '2008-12-26', 0, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6227, '2008-12-27', 0, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6228, '2008-12-28', 0, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6229, '2008-12-26', 0, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6230, '2008-12-27', 0, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6231, '2008-12-28', 0, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6232, '2008-12-26', 0, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6233, '2008-12-27', 0, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6234, '2008-12-28', 0, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6238, '2008-12-26', 0, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6239, '2008-12-27', 0, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6240, '2008-12-28', 0, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6241, '2008-12-26', 0, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6242, '2008-12-27', 0, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6243, '2008-12-28', 0, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6244, '2008-12-26', 0, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6245, '2008-12-27', 0, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6246, '2008-12-28', 0, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6247, '2008-12-26', 0, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6248, '2008-12-27', 0, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6249, '2008-12-28', 0, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6250, '2008-12-26', 0, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6251, '2008-12-27', 0, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6252, '2008-12-28', 0, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6253, '2008-12-26', 0, 117, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6254, '2008-12-27', 0, 117, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6255, '2008-12-28', 0, 117, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6256, '2008-12-26', 0, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6257, '2008-12-27', 0, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6258, '2008-12-28', 0, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6259, '2008-12-26', 0, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6260, '2008-12-27', 0, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6261, '2008-12-28', 0, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6262, '2008-12-26', 0, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6263, '2008-12-27', 0, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6264, '2008-12-28', 0, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6265, '2008-12-26', 0, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6266, '2008-12-27', 0, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6267, '2008-12-28', 0, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6268, '2008-12-26', 0, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6269, '2008-12-27', 0, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6270, '2008-12-28', 0, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6271, '2008-12-26', 0, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(6272, '2008-12-27', 0, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(6273, '2008-12-28', 0, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(6274, '2008-12-26', 0, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6275, '2008-12-27', 0, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6276, '2008-12-28', 0, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6277, '2008-12-26', 0, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6278, '2008-12-27', 0, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6279, '2008-12-28', 0, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6280, '2008-12-26', 0, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6281, '2008-12-27', 0, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6282, '2008-12-28', 0, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6283, '2008-12-26', 0, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6284, '2008-12-27', 0, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6285, '2008-12-28', 0, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6286, '2008-12-26', 0, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6287, '2008-12-27', 0, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6288, '2008-12-28', 0, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6289, '2008-12-26', 0, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6290, '2008-12-27', 0, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6291, '2008-12-28', 0, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6292, '2008-12-26', 0, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6293, '2008-12-27', 0, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6294, '2008-12-28', 0, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6295, '2008-12-26', 0, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6296, '2008-12-27', 0, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6297, '2008-12-28', 0, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6298, '2008-12-26', 0, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6299, '2008-12-27', 0, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6300, '2008-12-28', 0, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6301, '2008-12-26', 0, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6302, '2008-12-27', 0, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6303, '2008-12-28', 0, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6304, '2008-12-26', 0, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6305, '2008-12-27', 0, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6306, '2008-12-28', 0, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6307, '2008-12-26', 0, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6308, '2008-12-27', 0, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6309, '2008-12-28', 0, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6310, '2008-12-26', 0, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6311, '2008-12-27', 0, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6312, '2008-12-28', 0, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6313, '2008-12-26', 0, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6314, '2008-12-27', 0, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6315, '2008-12-28', 0, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6316, '2008-12-26', 0, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6317, '2008-12-27', 0, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6318, '2008-12-28', 0, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6319, '2008-12-26', 0, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6320, '2008-12-27', 0, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6321, '2008-12-28', 0, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6322, '2008-12-26', 0, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6323, '2008-12-27', 0, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6324, '2008-12-28', 0, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6325, '2008-12-26', 0, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6326, '2008-12-27', 0, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6327, '2008-12-28', 0, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6328, '2008-12-26', 0, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6329, '2008-12-27', 0, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6330, '2008-12-28', 0, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6331, '2008-12-26', 1, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6332, '2008-12-27', 1, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6333, '2008-12-28', 1, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6334, '2008-12-26', 1, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6335, '2008-12-27', 1, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6336, '2008-12-28', 1, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6337, '2008-12-26', 1, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6338, '2008-12-27', 1, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6339, '2008-12-28', 1, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6340, '2008-12-26', 1, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6341, '2008-12-27', 1, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6342, '2008-12-28', 1, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6343, '2008-12-26', 1, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6344, '2008-12-27', 1, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6345, '2008-12-28', 1, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6346, '2008-12-26', 1, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6347, '2008-12-27', 1, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6348, '2008-12-28', 1, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6349, '2008-12-26', 1, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6350, '2008-12-27', 1, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6351, '2008-12-28', 1, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6352, '2008-12-26', 1, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6353, '2008-12-27', 1, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6354, '2008-12-28', 1, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6355, '2008-12-26', 1, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6356, '2008-12-27', 1, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6357, '2008-12-28', 1, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6358, '2008-12-26', 1, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6359, '2008-12-27', 1, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6360, '2008-12-28', 1, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6361, '2008-12-26', 1, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6362, '2008-12-27', 1, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6363, '2008-12-28', 1, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6364, '2008-12-26', 1, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6365, '2008-12-27', 1, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6366, '2008-12-28', 1, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6367, '2008-12-26', 1, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6368, '2008-12-27', 1, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6369, '2008-12-28', 1, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6370, '2008-12-26', 1, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6371, '2008-12-27', 1, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6372, '2008-12-28', 1, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6373, '2008-12-26', 1, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6374, '2008-12-27', 1, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6375, '2008-12-28', 1, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6376, '2008-12-26', 1, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6377, '2008-12-27', 1, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6378, '2008-12-28', 1, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6379, '2008-12-26', 1, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6380, '2008-12-27', 1, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6381, '2008-12-28', 1, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6382, '2008-12-26', 1, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6383, '2008-12-27', 1, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6384, '2008-12-28', 1, 37, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6385, '2008-12-26', 1, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6386, '2008-12-27', 1, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6387, '2008-12-28', 1, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6388, '2008-12-26', 1, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6389, '2008-12-27', 1, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6390, '2008-12-28', 1, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6391, '2008-12-26', 1, 41, 399.9900, 1, '2008-08-24', '2009-08-23'),
-(6392, '2008-12-27', 1, 41, 399.9900, 1, '2008-08-24', '2009-08-23'),
-(6393, '2008-12-28', 1, 41, 399.9900, 1, '2008-08-24', '2009-08-23'),
-(6394, '2008-12-26', 1, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6395, '2008-12-27', 1, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6396, '2008-12-28', 1, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6397, '2008-12-26', 1, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6398, '2008-12-27', 1, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6399, '2008-12-28', 1, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6400, '2008-12-26', 1, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6401, '2008-12-27', 1, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6402, '2008-12-28', 1, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6403, '2008-12-26', 1, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6404, '2008-12-27', 1, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6405, '2008-12-28', 1, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6406, '2008-12-26', 1, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6407, '2008-12-27', 1, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6408, '2008-12-28', 1, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6409, '2008-12-26', 1, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6410, '2008-12-27', 1, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6411, '2008-12-28', 1, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6412, '2008-12-26', 1, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6413, '2008-12-27', 1, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6414, '2008-12-28', 1, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6415, '2008-12-26', 1, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6416, '2008-12-27', 1, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6417, '2008-12-28', 1, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6418, '2008-12-26', 1, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6419, '2008-12-27', 1, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6420, '2008-12-28', 1, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6421, '2008-12-26', 1, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6422, '2008-12-27', 1, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6423, '2008-12-28', 1, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6424, '2008-12-26', 1, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6425, '2008-12-27', 1, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6426, '2008-12-28', 1, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6427, '2008-12-26', 1, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6428, '2008-12-27', 1, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6429, '2008-12-28', 1, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6430, '2008-12-26', 1, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6431, '2008-12-27', 1, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6432, '2008-12-28', 1, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6433, '2008-12-26', 1, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6434, '2008-12-27', 1, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6435, '2008-12-28', 1, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6436, '2008-12-26', 1, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6437, '2008-12-27', 1, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6438, '2008-12-28', 1, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6439, '2008-12-26', 1, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6440, '2008-12-27', 1, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6441, '2008-12-28', 1, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6442, '2008-12-26', 1, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6443, '2008-12-27', 1, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6444, '2008-12-28', 1, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6445, '2008-12-26', 1, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6446, '2008-12-27', 1, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6447, '2008-12-28', 1, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6448, '2008-12-26', 1, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6449, '2008-12-27', 1, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6450, '2008-12-28', 1, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6451, '2008-12-26', 1, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6452, '2008-12-27', 1, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6453, '2008-12-28', 1, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6454, '2008-12-26', 1, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6455, '2008-12-27', 1, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6456, '2008-12-28', 1, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6457, '2008-12-26', 1, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6458, '2008-12-27', 1, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6459, '2008-12-28', 1, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6460, '2008-12-26', 1, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6461, '2008-12-27', 1, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6462, '2008-12-28', 1, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6463, '2008-12-26', 1, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6464, '2008-12-27', 1, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6465, '2008-12-28', 1, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6466, '2008-12-26', 1, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6467, '2008-12-27', 1, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6468, '2008-12-28', 1, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6469, '2008-12-26', 1, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6470, '2008-12-27', 1, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6471, '2008-12-28', 1, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6472, '2008-12-26', 1, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6473, '2008-12-27', 1, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6474, '2008-12-28', 1, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6475, '2008-12-26', 1, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6476, '2008-12-27', 1, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6477, '2008-12-28', 1, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6478, '2008-12-26', 1, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6479, '2008-12-27', 1, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6480, '2008-12-28', 1, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6481, '2008-12-26', 1, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6482, '2008-12-27', 1, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6483, '2008-12-28', 1, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6484, '2008-12-26', 1, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6485, '2008-12-27', 1, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6486, '2008-12-28', 1, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6487, '2008-12-26', 1, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6488, '2008-12-27', 1, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6489, '2008-12-28', 1, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6490, '2008-12-26', 1, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6491, '2008-12-27', 1, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6492, '2008-12-28', 1, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6493, '2008-12-26', 1, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6494, '2008-12-27', 1, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6495, '2008-12-28', 1, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6496, '2008-12-26', 1, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6497, '2008-12-27', 1, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6498, '2008-12-28', 1, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6499, '2008-12-26', 1, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6500, '2008-12-27', 1, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6501, '2008-12-28', 1, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6502, '2008-12-26', 1, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6503, '2008-12-27', 1, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6504, '2008-12-28', 1, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6505, '2008-12-26', 1, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6506, '2008-12-27', 1, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6507, '2008-12-28', 1, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6508, '2008-12-26', 1, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6509, '2008-12-27', 1, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6510, '2008-12-28', 1, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6511, '2008-12-26', 1, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6512, '2008-12-27', 1, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6513, '2008-12-28', 1, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6514, '2008-12-26', 1, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6515, '2008-12-27', 1, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6516, '2008-12-28', 1, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6517, '2008-12-26', 1, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6518, '2008-12-27', 1, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6519, '2008-12-28', 1, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6520, '2008-12-26', 1, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6521, '2008-12-27', 1, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6522, '2008-12-28', 1, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6523, '2008-12-26', 1, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6524, '2008-12-27', 1, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6525, '2008-12-28', 1, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6526, '2008-12-26', 1, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6527, '2008-12-27', 1, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6528, '2008-12-28', 1, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6529, '2008-12-26', 1, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6530, '2008-12-27', 1, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6531, '2008-12-28', 1, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6532, '2008-12-26', 1, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6533, '2008-12-27', 1, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6534, '2008-12-28', 1, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6535, '2008-12-26', 1, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6536, '2008-12-27', 1, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6537, '2008-12-28', 1, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6538, '2008-12-26', 1, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6539, '2008-12-27', 1, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6540, '2008-12-28', 1, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6541, '2008-12-26', 1, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6542, '2008-12-27', 1, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6543, '2008-12-28', 1, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6544, '2008-12-26', 1, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6545, '2008-12-27', 1, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6546, '2008-12-28', 1, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6547, '2008-12-26', 1, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6548, '2008-12-27', 1, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6549, '2008-12-28', 1, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6550, '2008-12-26', 1, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6551, '2008-12-27', 1, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6552, '2008-12-28', 1, 119, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6553, '2008-12-26', 1, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6554, '2008-12-27', 1, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6555, '2008-12-28', 1, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6556, '2008-12-26', 1, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6557, '2008-12-27', 1, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6558, '2008-12-28', 1, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6559, '2008-12-26', 1, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6560, '2008-12-27', 1, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6561, '2008-12-28', 1, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6562, '2008-12-26', 1, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6563, '2008-12-27', 1, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6564, '2008-12-28', 1, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6565, '2008-12-26', 1, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6566, '2008-12-27', 1, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6567, '2008-12-28', 1, 124, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6568, '2008-12-26', 1, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6569, '2008-12-27', 1, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6570, '2008-12-28', 1, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6571, '2008-12-26', 1, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6572, '2008-12-27', 1, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6573, '2008-12-28', 1, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6574, '2008-12-26', 1, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6575, '2008-12-27', 1, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6576, '2008-12-28', 1, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6577, '2008-12-26', 1, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6578, '2008-12-27', 1, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6579, '2008-12-28', 1, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6580, '2008-12-26', 1, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6581, '2008-12-27', 1, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6582, '2008-12-28', 1, 129, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6583, '2008-12-26', 1, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6584, '2008-12-27', 1, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6585, '2008-12-28', 1, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6586, '2008-12-26', 1, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6587, '2008-12-27', 1, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6588, '2008-12-28', 1, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6589, '2008-12-26', 1, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6590, '2008-12-27', 1, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6591, '2008-12-28', 1, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6592, '2008-12-26', 1, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6593, '2008-12-27', 1, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6594, '2008-12-28', 1, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6595, '2008-12-26', 1, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6596, '2008-12-27', 1, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6597, '2008-12-28', 1, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6598, '2008-12-26', 1, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6599, '2008-12-27', 1, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6600, '2008-12-28', 1, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6601, '2008-12-26', 1, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6602, '2008-12-27', 1, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6603, '2008-12-28', 1, 137, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6604, '2008-12-26', 1, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6605, '2008-12-27', 1, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6606, '2008-12-28', 1, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6607, '2008-12-26', 1, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6608, '2008-12-27', 1, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6609, '2008-12-28', 1, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6610, '2008-12-26', 1, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6611, '2008-12-27', 1, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6612, '2008-12-28', 1, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6613, '2008-12-26', 1, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6614, '2008-12-27', 1, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6615, '2008-12-28', 1, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6616, '2008-12-26', 1, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6617, '2008-12-27', 1, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6618, '2008-12-28', 1, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6619, '2008-12-26', 1, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6620, '2008-12-27', 1, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6621, '2008-12-28', 1, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6622, '2008-12-26', 2, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6623, '2008-12-27', 2, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6624, '2008-12-28', 2, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(6625, '2008-12-26', 2, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6626, '2008-12-27', 2, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6627, '2008-12-28', 2, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(6628, '2008-12-26', 2, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6629, '2008-12-27', 2, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6630, '2008-12-28', 2, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(6631, '2008-12-26', 2, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6632, '2008-12-27', 2, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6633, '2008-12-28', 2, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6634, '2008-12-26', 2, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6635, '2008-12-27', 2, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6636, '2008-12-28', 2, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6637, '2008-12-26', 2, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6638, '2008-12-27', 2, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6639, '2008-12-28', 2, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(6640, '2008-12-26', 2, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6641, '2008-12-27', 2, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6642, '2008-12-28', 2, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(6643, '2008-12-26', 2, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6644, '2008-12-27', 2, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6645, '2008-12-28', 2, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(6646, '2008-12-26', 2, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6647, '2008-12-27', 2, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6648, '2008-12-28', 2, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(6649, '2008-12-26', 2, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6650, '2008-12-27', 2, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6651, '2008-12-28', 2, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6652, '2008-12-26', 2, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6653, '2008-12-27', 2, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6654, '2008-12-28', 2, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6655, '2008-12-26', 2, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6656, '2008-12-27', 2, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6657, '2008-12-28', 2, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6658, '2008-12-26', 2, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6659, '2008-12-27', 2, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6660, '2008-12-28', 2, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6661, '2008-12-26', 2, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6662, '2008-12-27', 2, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6663, '2008-12-28', 2, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6664, '2008-12-26', 2, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6665, '2008-12-27', 2, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6666, '2008-12-28', 2, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6667, '2008-12-26', 2, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6668, '2008-12-27', 2, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6669, '2008-12-28', 2, 35, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6670, '2008-12-26', 2, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6671, '2008-12-27', 2, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6672, '2008-12-28', 2, 36, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6673, '2008-12-26', 2, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6674, '2008-12-27', 2, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6675, '2008-12-28', 2, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6676, '2008-12-26', 2, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6677, '2008-12-27', 2, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6678, '2008-12-28', 2, 38, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6679, '2008-12-26', 2, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6680, '2008-12-27', 2, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6681, '2008-12-28', 2, 39, 30.0000, 1, '2008-08-28', '2009-01-31'),
-(6682, '2008-12-26', 2, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6683, '2008-12-27', 2, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6684, '2008-12-28', 2, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(6685, '2008-12-26', 2, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6686, '2008-12-27', 2, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6687, '2008-12-28', 2, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(6688, '2008-12-26', 2, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6689, '2008-12-27', 2, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6690, '2008-12-28', 2, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(6691, '2008-12-26', 2, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6692, '2008-12-27', 2, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6693, '2008-12-28', 2, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6694, '2008-12-26', 2, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6695, '2008-12-27', 2, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6696, '2008-12-28', 2, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(6697, '2008-12-26', 2, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6698, '2008-12-27', 2, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6699, '2008-12-28', 2, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(6700, '2008-12-26', 2, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6701, '2008-12-27', 2, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6702, '2008-12-28', 2, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6703, '2008-12-26', 2, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6704, '2008-12-27', 2, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6705, '2008-12-28', 2, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6706, '2008-12-26', 2, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6707, '2008-12-27', 2, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6708, '2008-12-28', 2, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(6709, '2008-12-26', 2, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6710, '2008-12-27', 2, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6711, '2008-12-28', 2, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(6712, '2008-12-26', 2, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6713, '2008-12-27', 2, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6714, '2008-12-28', 2, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(6715, '2008-12-26', 2, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6716, '2008-12-27', 2, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6717, '2008-12-28', 2, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(6718, '2008-12-26', 2, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6719, '2008-12-27', 2, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6720, '2008-12-28', 2, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6721, '2008-12-26', 2, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6722, '2008-12-27', 2, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6723, '2008-12-28', 2, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6724, '2008-12-26', 2, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6725, '2008-12-27', 2, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6726, '2008-12-28', 2, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6727, '2008-12-26', 2, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6728, '2008-12-27', 2, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6729, '2008-12-28', 2, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6730, '2008-12-26', 2, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6731, '2008-12-27', 2, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6732, '2008-12-28', 2, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6733, '2008-12-26', 2, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6734, '2008-12-27', 2, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6735, '2008-12-28', 2, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6736, '2008-12-26', 2, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6737, '2008-12-27', 2, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6738, '2008-12-28', 2, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6739, '2008-12-26', 2, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6740, '2008-12-27', 2, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6741, '2008-12-28', 2, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6742, '2008-12-26', 2, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6743, '2008-12-27', 2, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6744, '2008-12-28', 2, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6748, '2008-12-26', 2, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6749, '2008-12-27', 2, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6750, '2008-12-28', 2, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6751, '2008-12-26', 2, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6752, '2008-12-27', 2, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6753, '2008-12-28', 2, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6754, '2008-12-26', 2, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6755, '2008-12-27', 2, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6756, '2008-12-28', 2, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6757, '2008-12-26', 2, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6758, '2008-12-27', 2, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6759, '2008-12-28', 2, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6760, '2008-12-26', 2, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6761, '2008-12-27', 2, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6762, '2008-12-28', 2, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6763, '2008-12-26', 2, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6764, '2008-12-27', 2, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6765, '2008-12-28', 2, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6766, '2008-12-26', 2, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6767, '2008-12-27', 2, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6768, '2008-12-28', 2, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6769, '2008-12-26', 2, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6770, '2008-12-27', 2, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6771, '2008-12-28', 2, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6772, '2008-12-26', 2, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6773, '2008-12-27', 2, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6774, '2008-12-28', 2, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6775, '2008-12-26', 2, 95, 134.9900, 1, '2008-08-06', '2009-08-23');
+(6034, '2008-12-26', 0, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6035, '2008-12-27', 0, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6036, '2008-12-28', 0, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6037, '2008-12-26', 0, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6038, '2008-12-27', 0, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6039, '2008-12-28', 0, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6040, '2008-12-26', 0, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6041, '2008-12-27', 0, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6042, '2008-12-28', 0, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6043, '2008-12-26', 0, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6044, '2008-12-27', 0, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6045, '2008-12-28', 0, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6046, '2008-12-26', 0, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6047, '2008-12-27', 0, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6048, '2008-12-28', 0, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6049, '2008-12-26', 0, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6050, '2008-12-27', 0, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6051, '2008-12-28', 0, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6052, '2008-12-26', 0, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6053, '2008-12-27', 0, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6054, '2008-12-28', 0, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6055, '2008-12-26', 0, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6056, '2008-12-27', 0, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6057, '2008-12-28', 0, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6058, '2008-12-26', 0, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6059, '2008-12-27', 0, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6060, '2008-12-28', 0, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6061, '2008-12-26', 0, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6062, '2008-12-27', 0, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6063, '2008-12-28', 0, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6064, '2008-12-26', 0, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6065, '2008-12-27', 0, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6066, '2008-12-28', 0, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6067, '2008-12-26', 0, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6068, '2008-12-27', 0, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6069, '2008-12-28', 0, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6070, '2008-12-26', 0, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6071, '2008-12-27', 0, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6072, '2008-12-28', 0, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6073, '2008-12-26', 0, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6074, '2008-12-27', 0, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6075, '2008-12-28', 0, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6076, '2008-12-26', 0, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6077, '2008-12-27', 0, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6078, '2008-12-28', 0, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6079, '2008-12-26', 0, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6080, '2008-12-27', 0, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6081, '2008-12-28', 0, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6082, '2008-12-26', 0, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6083, '2008-12-27', 0, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6084, '2008-12-28', 0, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6085, '2008-12-26', 0, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6086, '2008-12-27', 0, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6087, '2008-12-28', 0, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6088, '2008-12-26', 0, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6089, '2008-12-27', 0, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6090, '2008-12-28', 0, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6091, '2008-12-26', 0, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6092, '2008-12-27', 0, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6093, '2008-12-28', 0, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6094, '2008-12-26', 0, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6095, '2008-12-27', 0, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6096, '2008-12-28', 0, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6097, '2008-12-26', 0, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6098, '2008-12-27', 0, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6099, '2008-12-28', 0, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6100, '2008-12-26', 0, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6101, '2008-12-27', 0, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6102, '2008-12-28', 0, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6103, '2008-12-26', 0, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6104, '2008-12-27', 0, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6105, '2008-12-28', 0, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6106, '2008-12-26', 0, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6107, '2008-12-27', 0, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6108, '2008-12-28', 0, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6109, '2008-12-26', 0, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6110, '2008-12-27', 0, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6111, '2008-12-28', 0, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6112, '2008-12-26', 0, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6113, '2008-12-27', 0, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6114, '2008-12-28', 0, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6115, '2008-12-26', 0, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6116, '2008-12-27', 0, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6117, '2008-12-28', 0, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6118, '2008-12-26', 0, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6119, '2008-12-27', 0, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6120, '2008-12-28', 0, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6121, '2008-12-26', 0, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6122, '2008-12-27', 0, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6123, '2008-12-28', 0, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6124, '2008-12-26', 0, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6125, '2008-12-27', 0, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6126, '2008-12-28', 0, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6127, '2008-12-26', 0, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6128, '2008-12-27', 0, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6129, '2008-12-28', 0, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6130, '2008-12-26', 0, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6131, '2008-12-27', 0, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6132, '2008-12-28', 0, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6136, '2008-12-26', 0, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6137, '2008-12-27', 0, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6138, '2008-12-28', 0, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6139, '2008-12-26', 0, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6140, '2008-12-27', 0, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6141, '2008-12-28', 0, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6142, '2008-12-26', 0, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6143, '2008-12-27', 0, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6144, '2008-12-28', 0, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6145, '2008-12-26', 0, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6146, '2008-12-27', 0, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6147, '2008-12-28', 0, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6148, '2008-12-26', 0, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6149, '2008-12-27', 0, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6150, '2008-12-28', 0, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6151, '2008-12-26', 0, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6152, '2008-12-27', 0, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6153, '2008-12-28', 0, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6154, '2008-12-26', 0, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6155, '2008-12-27', 0, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6156, '2008-12-28', 0, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6157, '2008-12-26', 0, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6158, '2008-12-27', 0, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6159, '2008-12-28', 0, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6160, '2008-12-26', 0, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6161, '2008-12-27', 0, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6162, '2008-12-28', 0, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6163, '2008-12-26', 0, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6164, '2008-12-27', 0, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6165, '2008-12-28', 0, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6166, '2008-12-26', 0, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6167, '2008-12-27', 0, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6168, '2008-12-28', 0, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6169, '2008-12-26', 0, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6170, '2008-12-27', 0, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6171, '2008-12-28', 0, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6172, '2008-12-26', 0, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6173, '2008-12-27', 0, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6174, '2008-12-28', 0, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6175, '2008-12-26', 0, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6176, '2008-12-27', 0, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6177, '2008-12-28', 0, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6178, '2008-12-26', 0, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6179, '2008-12-27', 0, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6180, '2008-12-28', 0, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6181, '2008-12-26', 0, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6182, '2008-12-27', 0, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6183, '2008-12-28', 0, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6184, '2008-12-26', 0, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6185, '2008-12-27', 0, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6186, '2008-12-28', 0, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6187, '2008-12-26', 0, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6188, '2008-12-27', 0, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6189, '2008-12-28', 0, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6190, '2008-12-26', 0, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6191, '2008-12-27', 0, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6192, '2008-12-28', 0, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6193, '2008-12-26', 0, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6194, '2008-12-27', 0, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6195, '2008-12-28', 0, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6196, '2008-12-26', 0, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6197, '2008-12-27', 0, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6198, '2008-12-28', 0, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6199, '2008-12-26', 0, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6200, '2008-12-27', 0, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6201, '2008-12-28', 0, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6202, '2008-12-26', 0, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6203, '2008-12-27', 0, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6204, '2008-12-28', 0, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6205, '2008-12-26', 0, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6206, '2008-12-27', 0, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6207, '2008-12-28', 0, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6208, '2008-12-26', 0, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6209, '2008-12-27', 0, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6210, '2008-12-28', 0, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6211, '2008-12-26', 0, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6212, '2008-12-27', 0, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6213, '2008-12-28', 0, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6214, '2008-12-26', 0, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6215, '2008-12-27', 0, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6216, '2008-12-28', 0, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6217, '2008-12-26', 0, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6218, '2008-12-27', 0, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6219, '2008-12-28', 0, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6220, '2008-12-26', 0, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6221, '2008-12-27', 0, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6222, '2008-12-28', 0, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6223, '2008-12-26', 0, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6224, '2008-12-27', 0, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6225, '2008-12-28', 0, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6226, '2008-12-26', 0, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6227, '2008-12-27', 0, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6228, '2008-12-28', 0, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6229, '2008-12-26', 0, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6230, '2008-12-27', 0, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6231, '2008-12-28', 0, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6232, '2008-12-26', 0, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6233, '2008-12-27', 0, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6234, '2008-12-28', 0, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6238, '2008-12-26', 0, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6239, '2008-12-27', 0, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6240, '2008-12-28', 0, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6241, '2008-12-26', 0, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6242, '2008-12-27', 0, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6243, '2008-12-28', 0, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6244, '2008-12-26', 0, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6245, '2008-12-27', 0, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6246, '2008-12-28', 0, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6247, '2008-12-26', 0, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6248, '2008-12-27', 0, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6249, '2008-12-28', 0, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6250, '2008-12-26', 0, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6251, '2008-12-27', 0, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6252, '2008-12-28', 0, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6253, '2008-12-26', 0, 117, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6254, '2008-12-27', 0, 117, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6255, '2008-12-28', 0, 117, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6256, '2008-12-26', 0, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6257, '2008-12-27', 0, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6258, '2008-12-28', 0, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6259, '2008-12-26', 0, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6260, '2008-12-27', 0, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6261, '2008-12-28', 0, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6262, '2008-12-26', 0, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6263, '2008-12-27', 0, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6264, '2008-12-28', 0, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6265, '2008-12-26', 0, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6266, '2008-12-27', 0, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6267, '2008-12-28', 0, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6268, '2008-12-26', 0, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6269, '2008-12-27', 0, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6270, '2008-12-28', 0, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6271, '2008-12-26', 0, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(6272, '2008-12-27', 0, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(6273, '2008-12-28', 0, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(6274, '2008-12-26', 0, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6275, '2008-12-27', 0, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6276, '2008-12-28', 0, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6277, '2008-12-26', 0, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6278, '2008-12-27', 0, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6279, '2008-12-28', 0, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6280, '2008-12-26', 0, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6281, '2008-12-27', 0, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6282, '2008-12-28', 0, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6283, '2008-12-26', 0, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6284, '2008-12-27', 0, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6285, '2008-12-28', 0, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6286, '2008-12-26', 0, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6287, '2008-12-27', 0, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6288, '2008-12-28', 0, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6289, '2008-12-26', 0, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6290, '2008-12-27', 0, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6291, '2008-12-28', 0, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6292, '2008-12-26', 0, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6293, '2008-12-27', 0, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6294, '2008-12-28', 0, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6295, '2008-12-26', 0, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6296, '2008-12-27', 0, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6297, '2008-12-28', 0, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6298, '2008-12-26', 0, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6299, '2008-12-27', 0, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6300, '2008-12-28', 0, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6301, '2008-12-26', 0, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6302, '2008-12-27', 0, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6303, '2008-12-28', 0, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6304, '2008-12-26', 0, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6305, '2008-12-27', 0, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6306, '2008-12-28', 0, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6307, '2008-12-26', 0, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6308, '2008-12-27', 0, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6309, '2008-12-28', 0, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6310, '2008-12-26', 0, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6311, '2008-12-27', 0, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6312, '2008-12-28', 0, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6313, '2008-12-26', 0, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6314, '2008-12-27', 0, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6315, '2008-12-28', 0, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6316, '2008-12-26', 0, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6317, '2008-12-27', 0, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6318, '2008-12-28', 0, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6319, '2008-12-26', 0, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6320, '2008-12-27', 0, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6321, '2008-12-28', 0, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6322, '2008-12-26', 0, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6323, '2008-12-27', 0, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6324, '2008-12-28', 0, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6325, '2008-12-26', 0, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6326, '2008-12-27', 0, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6327, '2008-12-28', 0, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6328, '2008-12-26', 0, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6329, '2008-12-27', 0, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6330, '2008-12-28', 0, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6331, '2008-12-26', 1, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6332, '2008-12-27', 1, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6333, '2008-12-28', 1, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6334, '2008-12-26', 1, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6335, '2008-12-27', 1, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6336, '2008-12-28', 1, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6337, '2008-12-26', 1, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6338, '2008-12-27', 1, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6339, '2008-12-28', 1, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6340, '2008-12-26', 1, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6341, '2008-12-27', 1, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6342, '2008-12-28', 1, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6343, '2008-12-26', 1, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6344, '2008-12-27', 1, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6345, '2008-12-28', 1, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6346, '2008-12-26', 1, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6347, '2008-12-27', 1, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6348, '2008-12-28', 1, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6349, '2008-12-26', 1, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6350, '2008-12-27', 1, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6351, '2008-12-28', 1, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6352, '2008-12-26', 1, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6353, '2008-12-27', 1, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6354, '2008-12-28', 1, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6355, '2008-12-26', 1, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6356, '2008-12-27', 1, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6357, '2008-12-28', 1, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6358, '2008-12-26', 1, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6359, '2008-12-27', 1, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6360, '2008-12-28', 1, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6361, '2008-12-26', 1, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6362, '2008-12-27', 1, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6363, '2008-12-28', 1, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6364, '2008-12-26', 1, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6365, '2008-12-27', 1, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6366, '2008-12-28', 1, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6367, '2008-12-26', 1, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6368, '2008-12-27', 1, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6369, '2008-12-28', 1, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6370, '2008-12-26', 1, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6371, '2008-12-27', 1, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6372, '2008-12-28', 1, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6373, '2008-12-26', 1, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6374, '2008-12-27', 1, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6375, '2008-12-28', 1, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6376, '2008-12-26', 1, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6377, '2008-12-27', 1, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6378, '2008-12-28', 1, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6379, '2008-12-26', 1, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6380, '2008-12-27', 1, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6381, '2008-12-28', 1, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6382, '2008-12-26', 1, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6383, '2008-12-27', 1, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6384, '2008-12-28', 1, 37, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6385, '2008-12-26', 1, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6386, '2008-12-27', 1, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6387, '2008-12-28', 1, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6388, '2008-12-26', 1, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6389, '2008-12-27', 1, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6390, '2008-12-28', 1, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6391, '2008-12-26', 1, 41, '399.9900', 1, '2008-08-24', '2009-08-23'),
+(6392, '2008-12-27', 1, 41, '399.9900', 1, '2008-08-24', '2009-08-23'),
+(6393, '2008-12-28', 1, 41, '399.9900', 1, '2008-08-24', '2009-08-23'),
+(6394, '2008-12-26', 1, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6395, '2008-12-27', 1, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6396, '2008-12-28', 1, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6397, '2008-12-26', 1, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6398, '2008-12-27', 1, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6399, '2008-12-28', 1, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6400, '2008-12-26', 1, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6401, '2008-12-27', 1, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6402, '2008-12-28', 1, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6403, '2008-12-26', 1, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6404, '2008-12-27', 1, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6405, '2008-12-28', 1, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6406, '2008-12-26', 1, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6407, '2008-12-27', 1, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6408, '2008-12-28', 1, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6409, '2008-12-26', 1, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6410, '2008-12-27', 1, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6411, '2008-12-28', 1, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6412, '2008-12-26', 1, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6413, '2008-12-27', 1, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6414, '2008-12-28', 1, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6415, '2008-12-26', 1, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6416, '2008-12-27', 1, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6417, '2008-12-28', 1, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6418, '2008-12-26', 1, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6419, '2008-12-27', 1, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6420, '2008-12-28', 1, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6421, '2008-12-26', 1, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6422, '2008-12-27', 1, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6423, '2008-12-28', 1, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6424, '2008-12-26', 1, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6425, '2008-12-27', 1, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6426, '2008-12-28', 1, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6427, '2008-12-26', 1, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6428, '2008-12-27', 1, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6429, '2008-12-28', 1, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6430, '2008-12-26', 1, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6431, '2008-12-27', 1, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6432, '2008-12-28', 1, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6433, '2008-12-26', 1, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6434, '2008-12-27', 1, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6435, '2008-12-28', 1, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6436, '2008-12-26', 1, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6437, '2008-12-27', 1, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6438, '2008-12-28', 1, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6439, '2008-12-26', 1, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6440, '2008-12-27', 1, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6441, '2008-12-28', 1, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6442, '2008-12-26', 1, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6443, '2008-12-27', 1, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6444, '2008-12-28', 1, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6445, '2008-12-26', 1, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6446, '2008-12-27', 1, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6447, '2008-12-28', 1, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6448, '2008-12-26', 1, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6449, '2008-12-27', 1, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6450, '2008-12-28', 1, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6451, '2008-12-26', 1, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6452, '2008-12-27', 1, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6453, '2008-12-28', 1, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6454, '2008-12-26', 1, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6455, '2008-12-27', 1, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6456, '2008-12-28', 1, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6457, '2008-12-26', 1, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6458, '2008-12-27', 1, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6459, '2008-12-28', 1, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6460, '2008-12-26', 1, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6461, '2008-12-27', 1, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6462, '2008-12-28', 1, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6463, '2008-12-26', 1, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6464, '2008-12-27', 1, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6465, '2008-12-28', 1, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6466, '2008-12-26', 1, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6467, '2008-12-27', 1, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6468, '2008-12-28', 1, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6469, '2008-12-26', 1, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6470, '2008-12-27', 1, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6471, '2008-12-28', 1, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6472, '2008-12-26', 1, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6473, '2008-12-27', 1, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6474, '2008-12-28', 1, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6475, '2008-12-26', 1, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6476, '2008-12-27', 1, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6477, '2008-12-28', 1, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6478, '2008-12-26', 1, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6479, '2008-12-27', 1, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6480, '2008-12-28', 1, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6481, '2008-12-26', 1, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6482, '2008-12-27', 1, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6483, '2008-12-28', 1, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6484, '2008-12-26', 1, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6485, '2008-12-27', 1, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6486, '2008-12-28', 1, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6487, '2008-12-26', 1, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6488, '2008-12-27', 1, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6489, '2008-12-28', 1, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6490, '2008-12-26', 1, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6491, '2008-12-27', 1, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6492, '2008-12-28', 1, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6493, '2008-12-26', 1, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6494, '2008-12-27', 1, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6495, '2008-12-28', 1, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6496, '2008-12-26', 1, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6497, '2008-12-27', 1, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6498, '2008-12-28', 1, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6499, '2008-12-26', 1, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6500, '2008-12-27', 1, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6501, '2008-12-28', 1, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6502, '2008-12-26', 1, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6503, '2008-12-27', 1, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6504, '2008-12-28', 1, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6505, '2008-12-26', 1, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6506, '2008-12-27', 1, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6507, '2008-12-28', 1, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6508, '2008-12-26', 1, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6509, '2008-12-27', 1, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6510, '2008-12-28', 1, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6511, '2008-12-26', 1, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6512, '2008-12-27', 1, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6513, '2008-12-28', 1, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6514, '2008-12-26', 1, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6515, '2008-12-27', 1, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6516, '2008-12-28', 1, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6517, '2008-12-26', 1, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6518, '2008-12-27', 1, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6519, '2008-12-28', 1, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6520, '2008-12-26', 1, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6521, '2008-12-27', 1, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6522, '2008-12-28', 1, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6523, '2008-12-26', 1, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6524, '2008-12-27', 1, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6525, '2008-12-28', 1, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6526, '2008-12-26', 1, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6527, '2008-12-27', 1, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6528, '2008-12-28', 1, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6529, '2008-12-26', 1, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6530, '2008-12-27', 1, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6531, '2008-12-28', 1, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6532, '2008-12-26', 1, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6533, '2008-12-27', 1, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6534, '2008-12-28', 1, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6535, '2008-12-26', 1, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6536, '2008-12-27', 1, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6537, '2008-12-28', 1, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6538, '2008-12-26', 1, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6539, '2008-12-27', 1, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6540, '2008-12-28', 1, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6541, '2008-12-26', 1, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6542, '2008-12-27', 1, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6543, '2008-12-28', 1, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6544, '2008-12-26', 1, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6545, '2008-12-27', 1, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6546, '2008-12-28', 1, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6547, '2008-12-26', 1, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6548, '2008-12-27', 1, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6549, '2008-12-28', 1, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6550, '2008-12-26', 1, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6551, '2008-12-27', 1, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6552, '2008-12-28', 1, 119, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6553, '2008-12-26', 1, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6554, '2008-12-27', 1, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6555, '2008-12-28', 1, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6556, '2008-12-26', 1, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6557, '2008-12-27', 1, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6558, '2008-12-28', 1, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6559, '2008-12-26', 1, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6560, '2008-12-27', 1, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6561, '2008-12-28', 1, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6562, '2008-12-26', 1, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6563, '2008-12-27', 1, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6564, '2008-12-28', 1, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6565, '2008-12-26', 1, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6566, '2008-12-27', 1, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6567, '2008-12-28', 1, 124, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6568, '2008-12-26', 1, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6569, '2008-12-27', 1, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6570, '2008-12-28', 1, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6571, '2008-12-26', 1, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6572, '2008-12-27', 1, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6573, '2008-12-28', 1, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6574, '2008-12-26', 1, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6575, '2008-12-27', 1, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6576, '2008-12-28', 1, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6577, '2008-12-26', 1, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6578, '2008-12-27', 1, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6579, '2008-12-28', 1, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6580, '2008-12-26', 1, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6581, '2008-12-27', 1, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6582, '2008-12-28', 1, 129, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6583, '2008-12-26', 1, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6584, '2008-12-27', 1, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6585, '2008-12-28', 1, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6586, '2008-12-26', 1, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6587, '2008-12-27', 1, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6588, '2008-12-28', 1, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6589, '2008-12-26', 1, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6590, '2008-12-27', 1, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6591, '2008-12-28', 1, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6592, '2008-12-26', 1, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6593, '2008-12-27', 1, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6594, '2008-12-28', 1, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6595, '2008-12-26', 1, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6596, '2008-12-27', 1, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6597, '2008-12-28', 1, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6598, '2008-12-26', 1, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6599, '2008-12-27', 1, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6600, '2008-12-28', 1, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6601, '2008-12-26', 1, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6602, '2008-12-27', 1, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6603, '2008-12-28', 1, 137, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6604, '2008-12-26', 1, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6605, '2008-12-27', 1, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6606, '2008-12-28', 1, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6607, '2008-12-26', 1, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6608, '2008-12-27', 1, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6609, '2008-12-28', 1, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6610, '2008-12-26', 1, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6611, '2008-12-27', 1, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6612, '2008-12-28', 1, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6613, '2008-12-26', 1, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6614, '2008-12-27', 1, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6615, '2008-12-28', 1, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6616, '2008-12-26', 1, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6617, '2008-12-27', 1, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6618, '2008-12-28', 1, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6619, '2008-12-26', 1, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6620, '2008-12-27', 1, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6621, '2008-12-28', 1, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6622, '2008-12-26', 2, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6623, '2008-12-27', 2, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6624, '2008-12-28', 2, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(6625, '2008-12-26', 2, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6626, '2008-12-27', 2, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6627, '2008-12-28', 2, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(6628, '2008-12-26', 2, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6629, '2008-12-27', 2, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6630, '2008-12-28', 2, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(6631, '2008-12-26', 2, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6632, '2008-12-27', 2, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6633, '2008-12-28', 2, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6634, '2008-12-26', 2, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6635, '2008-12-27', 2, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6636, '2008-12-28', 2, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6637, '2008-12-26', 2, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6638, '2008-12-27', 2, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6639, '2008-12-28', 2, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(6640, '2008-12-26', 2, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6641, '2008-12-27', 2, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6642, '2008-12-28', 2, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(6643, '2008-12-26', 2, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6644, '2008-12-27', 2, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6645, '2008-12-28', 2, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(6646, '2008-12-26', 2, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6647, '2008-12-27', 2, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6648, '2008-12-28', 2, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(6649, '2008-12-26', 2, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6650, '2008-12-27', 2, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6651, '2008-12-28', 2, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6652, '2008-12-26', 2, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6653, '2008-12-27', 2, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6654, '2008-12-28', 2, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6655, '2008-12-26', 2, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6656, '2008-12-27', 2, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6657, '2008-12-28', 2, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6658, '2008-12-26', 2, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6659, '2008-12-27', 2, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6660, '2008-12-28', 2, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6661, '2008-12-26', 2, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6662, '2008-12-27', 2, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6663, '2008-12-28', 2, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6664, '2008-12-26', 2, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6665, '2008-12-27', 2, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6666, '2008-12-28', 2, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6667, '2008-12-26', 2, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6668, '2008-12-27', 2, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6669, '2008-12-28', 2, 35, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6670, '2008-12-26', 2, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6671, '2008-12-27', 2, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6672, '2008-12-28', 2, 36, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6673, '2008-12-26', 2, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6674, '2008-12-27', 2, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6675, '2008-12-28', 2, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6676, '2008-12-26', 2, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6677, '2008-12-27', 2, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6678, '2008-12-28', 2, 38, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6679, '2008-12-26', 2, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6680, '2008-12-27', 2, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6681, '2008-12-28', 2, 39, '30.0000', 1, '2008-08-28', '2009-01-31'),
+(6682, '2008-12-26', 2, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6683, '2008-12-27', 2, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6684, '2008-12-28', 2, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(6685, '2008-12-26', 2, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6686, '2008-12-27', 2, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6687, '2008-12-28', 2, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(6688, '2008-12-26', 2, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6689, '2008-12-27', 2, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6690, '2008-12-28', 2, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(6691, '2008-12-26', 2, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6692, '2008-12-27', 2, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6693, '2008-12-28', 2, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6694, '2008-12-26', 2, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6695, '2008-12-27', 2, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6696, '2008-12-28', 2, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(6697, '2008-12-26', 2, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6698, '2008-12-27', 2, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6699, '2008-12-28', 2, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(6700, '2008-12-26', 2, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6701, '2008-12-27', 2, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6702, '2008-12-28', 2, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6703, '2008-12-26', 2, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6704, '2008-12-27', 2, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6705, '2008-12-28', 2, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6706, '2008-12-26', 2, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6707, '2008-12-27', 2, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6708, '2008-12-28', 2, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(6709, '2008-12-26', 2, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6710, '2008-12-27', 2, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6711, '2008-12-28', 2, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(6712, '2008-12-26', 2, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6713, '2008-12-27', 2, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6714, '2008-12-28', 2, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(6715, '2008-12-26', 2, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6716, '2008-12-27', 2, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6717, '2008-12-28', 2, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(6718, '2008-12-26', 2, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6719, '2008-12-27', 2, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6720, '2008-12-28', 2, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6721, '2008-12-26', 2, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6722, '2008-12-27', 2, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6723, '2008-12-28', 2, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6724, '2008-12-26', 2, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6725, '2008-12-27', 2, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6726, '2008-12-28', 2, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6727, '2008-12-26', 2, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6728, '2008-12-27', 2, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6729, '2008-12-28', 2, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6730, '2008-12-26', 2, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6731, '2008-12-27', 2, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6732, '2008-12-28', 2, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6733, '2008-12-26', 2, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6734, '2008-12-27', 2, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6735, '2008-12-28', 2, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6736, '2008-12-26', 2, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6737, '2008-12-27', 2, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6738, '2008-12-28', 2, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6739, '2008-12-26', 2, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6740, '2008-12-27', 2, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6741, '2008-12-28', 2, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6742, '2008-12-26', 2, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6743, '2008-12-27', 2, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6744, '2008-12-28', 2, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6748, '2008-12-26', 2, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6749, '2008-12-27', 2, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6750, '2008-12-28', 2, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6751, '2008-12-26', 2, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6752, '2008-12-27', 2, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6753, '2008-12-28', 2, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6754, '2008-12-26', 2, 88, '15.9900', 1, '2008-08-25', '2009-01-31');
 INSERT INTO `catalogrule_product_price` (`rule_product_price_id`, `rule_date`, `customer_group_id`, `product_id`, `rule_price`, `website_id`, `latest_start_date`, `earliest_end_date`) VALUES
-(6776, '2008-12-27', 2, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6777, '2008-12-28', 2, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6778, '2008-12-26', 2, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6779, '2008-12-27', 2, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6780, '2008-12-28', 2, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6781, '2008-12-26', 2, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6782, '2008-12-27', 2, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6783, '2008-12-28', 2, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(6784, '2008-12-26', 2, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6785, '2008-12-27', 2, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6786, '2008-12-28', 2, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6787, '2008-12-26', 2, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6788, '2008-12-27', 2, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6789, '2008-12-28', 2, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6790, '2008-12-26', 2, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6791, '2008-12-27', 2, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6792, '2008-12-28', 2, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6793, '2008-12-26', 2, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6794, '2008-12-27', 2, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6795, '2008-12-28', 2, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6796, '2008-12-26', 2, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6797, '2008-12-27', 2, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6798, '2008-12-28', 2, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(6799, '2008-12-26', 2, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6800, '2008-12-27', 2, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6801, '2008-12-28', 2, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6802, '2008-12-26', 2, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6803, '2008-12-27', 2, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6804, '2008-12-28', 2, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6805, '2008-12-26', 2, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6806, '2008-12-27', 2, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6807, '2008-12-28', 2, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6808, '2008-12-26', 2, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6809, '2008-12-27', 2, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6810, '2008-12-28', 2, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6811, '2008-12-26', 2, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6812, '2008-12-27', 2, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6813, '2008-12-28', 2, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6814, '2008-12-26', 2, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6815, '2008-12-27', 2, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6816, '2008-12-28', 2, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6817, '2008-12-26', 2, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6818, '2008-12-27', 2, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6819, '2008-12-28', 2, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6820, '2008-12-26', 2, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6821, '2008-12-27', 2, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6822, '2008-12-28', 2, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6823, '2008-12-26', 2, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6824, '2008-12-27', 2, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6825, '2008-12-28', 2, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6826, '2008-12-26', 2, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6827, '2008-12-27', 2, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6828, '2008-12-28', 2, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6829, '2008-12-26', 2, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6830, '2008-12-27', 2, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6831, '2008-12-28', 2, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6832, '2008-12-26', 2, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6833, '2008-12-27', 2, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6834, '2008-12-28', 2, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6835, '2008-12-26', 2, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6836, '2008-12-27', 2, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6837, '2008-12-28', 2, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(6838, '2008-12-26', 2, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6839, '2008-12-27', 2, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6840, '2008-12-28', 2, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6841, '2008-12-26', 2, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6842, '2008-12-27', 2, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6843, '2008-12-28', 2, 118, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6844, '2008-12-26', 2, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6845, '2008-12-27', 2, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6846, '2008-12-28', 2, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6850, '2008-12-26', 2, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6851, '2008-12-27', 2, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6852, '2008-12-28', 2, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6853, '2008-12-26', 2, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6854, '2008-12-27', 2, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6855, '2008-12-28', 2, 121, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6856, '2008-12-26', 2, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6857, '2008-12-27', 2, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6858, '2008-12-28', 2, 122, 22.0000, 1, '2008-08-28', '2009-01-31'),
-(6859, '2008-12-26', 2, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6860, '2008-12-27', 2, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6861, '2008-12-28', 2, 123, 100.0000, 1, '2008-08-28', '2009-01-31'),
-(6862, '2008-12-26', 2, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6863, '2008-12-27', 2, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6864, '2008-12-28', 2, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6865, '2008-12-26', 2, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6866, '2008-12-27', 2, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6867, '2008-12-28', 2, 125, 15.0000, 1, '2008-08-28', '2009-01-31'),
-(6868, '2008-12-26', 2, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6869, '2008-12-27', 2, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6870, '2008-12-28', 2, 126, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6871, '2008-12-26', 2, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6872, '2008-12-27', 2, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6873, '2008-12-28', 2, 127, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6874, '2008-12-26', 2, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6875, '2008-12-27', 2, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6876, '2008-12-28', 2, 128, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6877, '2008-12-26', 2, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6878, '2008-12-27', 2, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6879, '2008-12-28', 2, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6880, '2008-12-26', 2, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6881, '2008-12-27', 2, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6882, '2008-12-28', 2, 130, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6883, '2008-12-26', 2, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6884, '2008-12-27', 2, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6885, '2008-12-28', 2, 131, 13.5000, 1, '2008-08-28', '2009-01-31'),
-(6886, '2008-12-26', 2, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6887, '2008-12-27', 2, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6888, '2008-12-28', 2, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(6889, '2008-12-26', 2, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6890, '2008-12-27', 2, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6891, '2008-12-28', 2, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(6892, '2008-12-26', 2, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6893, '2008-12-27', 2, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6894, '2008-12-28', 2, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(6895, '2008-12-26', 2, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6896, '2008-12-27', 2, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6897, '2008-12-28', 2, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(6898, '2008-12-26', 2, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6899, '2008-12-27', 2, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6900, '2008-12-28', 2, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6901, '2008-12-26', 2, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6902, '2008-12-27', 2, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6903, '2008-12-28', 2, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6904, '2008-12-26', 2, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6905, '2008-12-27', 2, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6906, '2008-12-28', 2, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(6907, '2008-12-26', 2, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6908, '2008-12-27', 2, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6909, '2008-12-28', 2, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(6910, '2008-12-26', 2, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6911, '2008-12-27', 2, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6912, '2008-12-28', 2, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(6913, '2008-12-26', 2, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6914, '2008-12-27', 2, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6915, '2008-12-28', 2, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(6916, '2008-12-26', 2, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6917, '2008-12-27', 2, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6918, '2008-12-28', 2, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(6919, '2008-12-26', 3, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6920, '2008-12-27', 3, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6921, '2008-12-28', 3, 29, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6922, '2008-12-26', 3, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6923, '2008-12-27', 3, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6924, '2008-12-28', 3, 31, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6925, '2008-12-26', 3, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6926, '2008-12-27', 3, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6927, '2008-12-28', 3, 32, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(6928, '2008-12-26', 3, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6929, '2008-12-27', 3, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6930, '2008-12-28', 3, 35, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6931, '2008-12-26', 3, 36, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6932, '2008-12-27', 3, 36, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6933, '2008-12-28', 3, 36, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(6934, '2008-12-26', 3, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6935, '2008-12-27', 3, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6936, '2008-12-28', 3, 37, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(6937, '2008-12-26', 3, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6938, '2008-12-27', 3, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6939, '2008-12-28', 3, 38, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(6940, '2008-12-26', 3, 39, 30.0000, 1, '2008-08-25', '2009-01-31'),
-(6941, '2008-12-27', 3, 39, 30.0000, 1, '2008-08-25', '2009-01-31'),
-(6942, '2008-12-28', 3, 39, 30.0000, 1, '2008-08-25', '2009-01-31'),
-(6943, '2008-12-26', 3, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6944, '2008-12-27', 3, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6945, '2008-12-28', 3, 45, 37.4900, 1, '2008-08-25', '2009-01-31'),
-(6946, '2008-12-26', 3, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6947, '2008-12-27', 3, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6948, '2008-12-28', 3, 49, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6949, '2008-12-26', 3, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6950, '2008-12-27', 3, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6951, '2008-12-28', 3, 74, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6952, '2008-12-26', 3, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6953, '2008-12-27', 3, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6954, '2008-12-28', 3, 75, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6955, '2008-12-26', 3, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6956, '2008-12-27', 3, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6957, '2008-12-28', 3, 79, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6958, '2008-12-26', 3, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6959, '2008-12-27', 3, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6960, '2008-12-28', 3, 80, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6961, '2008-12-26', 3, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6962, '2008-12-27', 3, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6963, '2008-12-28', 3, 81, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6964, '2008-12-26', 3, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6965, '2008-12-27', 3, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6966, '2008-12-28', 3, 82, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(6967, '2008-12-26', 3, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6968, '2008-12-27', 3, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6969, '2008-12-28', 3, 83, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6970, '2008-12-26', 3, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6971, '2008-12-27', 3, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6972, '2008-12-28', 3, 84, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6973, '2008-12-26', 3, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6974, '2008-12-27', 3, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6975, '2008-12-28', 3, 85, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6976, '2008-12-26', 3, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6977, '2008-12-27', 3, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6978, '2008-12-28', 3, 86, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6979, '2008-12-26', 3, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6980, '2008-12-27', 3, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6981, '2008-12-28', 3, 87, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6982, '2008-12-26', 3, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6983, '2008-12-27', 3, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6984, '2008-12-28', 3, 88, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6985, '2008-12-26', 3, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6986, '2008-12-27', 3, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6987, '2008-12-28', 3, 89, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6988, '2008-12-26', 3, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6989, '2008-12-27', 3, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6990, '2008-12-28', 3, 90, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6991, '2008-12-26', 3, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6992, '2008-12-27', 3, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6993, '2008-12-28', 3, 91, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6994, '2008-12-26', 3, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6995, '2008-12-27', 3, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6996, '2008-12-28', 3, 92, 15.9900, 1, '2008-08-25', '2009-01-31'),
-(6997, '2008-12-26', 3, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6998, '2008-12-27', 3, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(6999, '2008-12-28', 3, 103, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7000, '2008-12-26', 3, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7001, '2008-12-27', 3, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7002, '2008-12-28', 3, 104, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7003, '2008-12-26', 3, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7004, '2008-12-27', 3, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7005, '2008-12-28', 3, 105, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7006, '2008-12-26', 3, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7007, '2008-12-27', 3, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7008, '2008-12-28', 3, 106, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7009, '2008-12-26', 3, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7010, '2008-12-27', 3, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7011, '2008-12-28', 3, 107, 69.9900, 1, '2008-08-25', '2009-01-31'),
-(7012, '2008-12-26', 3, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7013, '2008-12-27', 3, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7014, '2008-12-28', 3, 108, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7015, '2008-12-26', 3, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7016, '2008-12-27', 3, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7017, '2008-12-28', 3, 109, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7018, '2008-12-26', 3, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7019, '2008-12-27', 3, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7020, '2008-12-28', 3, 110, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7021, '2008-12-26', 3, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7022, '2008-12-27', 3, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7023, '2008-12-28', 3, 111, 89.9900, 1, '2008-08-25', '2009-01-31'),
-(7024, '2008-12-26', 3, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7025, '2008-12-27', 3, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7026, '2008-12-28', 3, 117, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7027, '2008-12-26', 3, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7028, '2008-12-27', 3, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7029, '2008-12-28', 3, 118, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7030, '2008-12-26', 3, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7031, '2008-12-27', 3, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7032, '2008-12-28', 3, 119, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7033, '2008-12-26', 3, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7034, '2008-12-27', 3, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7035, '2008-12-28', 3, 120, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7036, '2008-12-26', 3, 121, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7037, '2008-12-27', 3, 121, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7038, '2008-12-28', 3, 121, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7039, '2008-12-26', 3, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7040, '2008-12-27', 3, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7041, '2008-12-28', 3, 122, 22.0000, 1, '2008-08-25', '2009-01-31'),
-(7042, '2008-12-26', 3, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(7043, '2008-12-27', 3, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(7044, '2008-12-28', 3, 123, 100.0000, 1, '2008-08-25', '2009-01-31'),
-(7045, '2008-12-26', 3, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7046, '2008-12-27', 3, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7047, '2008-12-28', 3, 124, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7048, '2008-12-26', 3, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7049, '2008-12-27', 3, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7050, '2008-12-28', 3, 125, 15.0000, 1, '2008-08-25', '2009-01-31'),
-(7051, '2008-12-26', 3, 126, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7052, '2008-12-27', 3, 126, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7053, '2008-12-28', 3, 126, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7054, '2008-12-26', 3, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7055, '2008-12-27', 3, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7056, '2008-12-28', 3, 127, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7057, '2008-12-26', 3, 128, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7058, '2008-12-27', 3, 128, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7059, '2008-12-28', 3, 128, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7060, '2008-12-26', 3, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7061, '2008-12-27', 3, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7062, '2008-12-28', 3, 129, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7063, '2008-12-26', 3, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7064, '2008-12-27', 3, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7065, '2008-12-28', 3, 130, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7066, '2008-12-26', 3, 131, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7067, '2008-12-27', 3, 131, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7068, '2008-12-28', 3, 131, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7069, '2008-12-26', 3, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(7070, '2008-12-27', 3, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(7071, '2008-12-28', 3, 132, 99.0000, 1, '2008-08-25', '2009-01-31'),
-(7072, '2008-12-26', 3, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(7073, '2008-12-27', 3, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(7074, '2008-12-28', 3, 133, 34.0000, 1, '2008-08-25', '2009-01-31'),
-(7075, '2008-12-26', 3, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(7076, '2008-12-27', 3, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(7077, '2008-12-28', 3, 134, 19.0000, 1, '2008-08-25', '2009-01-31'),
-(7078, '2008-12-26', 3, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(7079, '2008-12-27', 3, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(7080, '2008-12-28', 3, 135, 41.9500, 1, '2008-08-25', '2009-01-31'),
-(7081, '2008-12-26', 3, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7082, '2008-12-27', 3, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7083, '2008-12-28', 3, 137, 13.5000, 1, '2008-08-25', '2009-01-31'),
-(7084, '2008-12-26', 4, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(7085, '2008-12-27', 4, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(7086, '2008-12-28', 4, 16, 149.9900, 1, '2008-08-06', '2009-08-23'),
-(7087, '2008-12-26', 4, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(7088, '2008-12-27', 4, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(7089, '2008-12-28', 4, 17, 349.9900, 1, '2008-08-06', '2009-08-23'),
-(7090, '2008-12-26', 4, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(7091, '2008-12-27', 4, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(7092, '2008-12-28', 4, 18, 399.9900, 1, '2008-08-06', '2009-08-23'),
-(7093, '2008-12-26', 4, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7094, '2008-12-27', 4, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7095, '2008-12-28', 4, 19, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7096, '2008-12-26', 4, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7097, '2008-12-27', 4, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7098, '2008-12-28', 4, 20, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7099, '2008-12-26', 4, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(7100, '2008-12-27', 4, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(7101, '2008-12-28', 4, 25, 2299.9900, 1, '2008-08-06', '2009-08-23'),
-(7102, '2008-12-26', 4, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(7103, '2008-12-27', 4, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(7104, '2008-12-28', 4, 26, 1799.9900, 1, '2008-08-06', '2009-08-23'),
-(7105, '2008-12-26', 4, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(7106, '2008-12-27', 4, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(7107, '2008-12-28', 4, 27, 2699.9900, 1, '2008-08-06', '2009-08-23'),
-(7108, '2008-12-26', 4, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(7109, '2008-12-27', 4, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(7110, '2008-12-28', 4, 28, 1599.9900, 1, '2008-08-06', '2009-08-23'),
-(7111, '2008-12-26', 4, 29, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7112, '2008-12-27', 4, 29, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7113, '2008-12-28', 4, 29, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7114, '2008-12-26', 4, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7115, '2008-12-27', 4, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7116, '2008-12-28', 4, 30, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7117, '2008-12-26', 4, 31, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7118, '2008-12-27', 4, 31, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7119, '2008-12-28', 4, 31, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7120, '2008-12-26', 4, 32, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7121, '2008-12-27', 4, 32, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7122, '2008-12-28', 4, 32, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7123, '2008-12-26', 4, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7124, '2008-12-27', 4, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7125, '2008-12-28', 4, 33, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7126, '2008-12-26', 4, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7127, '2008-12-27', 4, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7128, '2008-12-28', 4, 34, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7129, '2008-12-26', 4, 35, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7130, '2008-12-27', 4, 35, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7131, '2008-12-28', 4, 35, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7132, '2008-12-26', 4, 36, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7133, '2008-12-27', 4, 36, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7134, '2008-12-28', 4, 36, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7135, '2008-12-26', 4, 37, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7136, '2008-12-27', 4, 37, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7137, '2008-12-28', 4, 37, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7138, '2008-12-26', 4, 38, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7139, '2008-12-27', 4, 38, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7140, '2008-12-28', 4, 38, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7141, '2008-12-26', 4, 39, 30.0000, 1, '2008-08-06', '2009-08-23'),
-(7142, '2008-12-27', 4, 39, 30.0000, 1, '2008-08-06', '2009-08-23'),
-(7143, '2008-12-28', 4, 39, 30.0000, 1, '2008-08-06', '2009-08-23'),
-(7144, '2008-12-26', 4, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(7145, '2008-12-27', 4, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(7146, '2008-12-28', 4, 41, 399.9900, 1, '2008-08-24', '2009-09-28'),
-(7147, '2008-12-26', 4, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(7148, '2008-12-27', 4, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(7149, '2008-12-28', 4, 42, 2299.0000, 1, '2008-08-06', '2009-08-23'),
-(7150, '2008-12-26', 4, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(7151, '2008-12-27', 4, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(7152, '2008-12-28', 4, 44, 550.0000, 1, '2008-08-06', '2009-08-23'),
-(7153, '2008-12-26', 4, 45, 37.4900, 1, '2008-08-06', '2009-08-23'),
-(7154, '2008-12-27', 4, 45, 37.4900, 1, '2008-08-06', '2009-08-23'),
-(7155, '2008-12-28', 4, 45, 37.4900, 1, '2008-08-06', '2009-08-23'),
-(7156, '2008-12-26', 4, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(7157, '2008-12-27', 4, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(7158, '2008-12-28', 4, 46, 161.9400, 1, '2008-08-06', '2009-08-23'),
-(7159, '2008-12-26', 4, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(7160, '2008-12-27', 4, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(7161, '2008-12-28', 4, 47, 329.9900, 1, '2008-08-06', '2009-08-23'),
-(7162, '2008-12-26', 4, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7163, '2008-12-27', 4, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7164, '2008-12-28', 4, 48, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7165, '2008-12-26', 4, 49, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7166, '2008-12-27', 4, 49, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7167, '2008-12-28', 4, 49, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7168, '2008-12-26', 4, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(7169, '2008-12-27', 4, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(7170, '2008-12-28', 4, 51, 299.9900, 1, '2008-08-06', '2009-08-23'),
-(7171, '2008-12-26', 4, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(7172, '2008-12-27', 4, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(7173, '2008-12-28', 4, 52, 129.9900, 1, '2008-08-24', '2009-09-28'),
-(7174, '2008-12-26', 4, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(7175, '2008-12-27', 4, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(7176, '2008-12-28', 4, 53, 599.9900, 1, '2008-08-06', '2009-08-23'),
-(7177, '2008-12-26', 4, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(7178, '2008-12-27', 4, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(7179, '2008-12-28', 4, 54, 699.9900, 1, '2008-08-06', '2009-08-23'),
-(7180, '2008-12-26', 4, 74, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7181, '2008-12-27', 4, 74, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7182, '2008-12-28', 4, 74, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7183, '2008-12-26', 4, 75, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7184, '2008-12-27', 4, 75, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7185, '2008-12-28', 4, 75, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7186, '2008-12-26', 4, 79, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7187, '2008-12-27', 4, 79, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7188, '2008-12-28', 4, 79, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7189, '2008-12-26', 4, 80, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7190, '2008-12-27', 4, 80, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7191, '2008-12-28', 4, 80, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7192, '2008-12-26', 4, 81, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7193, '2008-12-27', 4, 81, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7194, '2008-12-28', 4, 81, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7195, '2008-12-26', 4, 82, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7196, '2008-12-27', 4, 82, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7197, '2008-12-28', 4, 82, 41.9500, 1, '2008-08-06', '2009-08-23'),
-(7198, '2008-12-26', 4, 83, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7199, '2008-12-27', 4, 83, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7200, '2008-12-28', 4, 83, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7201, '2008-12-26', 4, 84, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7202, '2008-12-27', 4, 84, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7203, '2008-12-28', 4, 84, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7204, '2008-12-26', 4, 85, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7205, '2008-12-27', 4, 85, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7206, '2008-12-28', 4, 85, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7207, '2008-12-26', 4, 86, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7208, '2008-12-27', 4, 86, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7209, '2008-12-28', 4, 86, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7210, '2008-12-26', 4, 87, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7211, '2008-12-27', 4, 87, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7212, '2008-12-28', 4, 87, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7213, '2008-12-26', 4, 88, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7214, '2008-12-27', 4, 88, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7215, '2008-12-28', 4, 88, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7216, '2008-12-26', 4, 89, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7217, '2008-12-27', 4, 89, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7218, '2008-12-28', 4, 89, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7219, '2008-12-26', 4, 90, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7220, '2008-12-27', 4, 90, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7221, '2008-12-28', 4, 90, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7222, '2008-12-26', 4, 91, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7223, '2008-12-27', 4, 91, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7224, '2008-12-28', 4, 91, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7225, '2008-12-26', 4, 92, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7226, '2008-12-27', 4, 92, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7227, '2008-12-28', 4, 92, 15.9900, 1, '2008-08-06', '2009-08-23'),
-(7228, '2008-12-26', 4, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7229, '2008-12-27', 4, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7230, '2008-12-28', 4, 93, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7231, '2008-12-26', 4, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7232, '2008-12-27', 4, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7233, '2008-12-28', 4, 94, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7234, '2008-12-26', 4, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7235, '2008-12-27', 4, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7236, '2008-12-28', 4, 95, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7237, '2008-12-26', 4, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7238, '2008-12-27', 4, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7239, '2008-12-28', 4, 96, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7240, '2008-12-26', 4, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7241, '2008-12-27', 4, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7242, '2008-12-28', 4, 97, 134.9900, 1, '2008-08-06', '2009-08-23'),
-(7243, '2008-12-26', 4, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7244, '2008-12-27', 4, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7245, '2008-12-28', 4, 98, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7246, '2008-12-26', 4, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7247, '2008-12-27', 4, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7248, '2008-12-28', 4, 99, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7249, '2008-12-26', 4, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7250, '2008-12-27', 4, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7251, '2008-12-28', 4, 100, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7252, '2008-12-26', 4, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7253, '2008-12-27', 4, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7254, '2008-12-28', 4, 101, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7255, '2008-12-26', 4, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7256, '2008-12-27', 4, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7257, '2008-12-28', 4, 102, 160.9900, 1, '2008-08-06', '2009-08-23'),
-(7258, '2008-12-26', 4, 103, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7259, '2008-12-27', 4, 103, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7260, '2008-12-28', 4, 103, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7261, '2008-12-26', 4, 104, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7262, '2008-12-27', 4, 104, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7263, '2008-12-28', 4, 104, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7264, '2008-12-26', 4, 105, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7265, '2008-12-27', 4, 105, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7266, '2008-12-28', 4, 105, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7267, '2008-12-26', 4, 106, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7268, '2008-12-27', 4, 106, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7269, '2008-12-28', 4, 106, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7270, '2008-12-26', 4, 107, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7271, '2008-12-27', 4, 107, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7272, '2008-12-28', 4, 107, 69.9900, 1, '2008-08-06', '2009-08-23'),
-(7273, '2008-12-26', 4, 108, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7274, '2008-12-27', 4, 108, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7275, '2008-12-28', 4, 108, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7276, '2008-12-26', 4, 109, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7277, '2008-12-27', 4, 109, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7278, '2008-12-28', 4, 109, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7279, '2008-12-26', 4, 110, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7280, '2008-12-27', 4, 110, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7281, '2008-12-28', 4, 110, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7282, '2008-12-26', 4, 111, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7283, '2008-12-27', 4, 111, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7284, '2008-12-28', 4, 111, 89.9900, 1, '2008-08-06', '2009-08-23'),
-(7285, '2008-12-26', 4, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7286, '2008-12-27', 4, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7287, '2008-12-28', 4, 112, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7288, '2008-12-26', 4, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7289, '2008-12-27', 4, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7290, '2008-12-28', 4, 113, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7291, '2008-12-26', 4, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7292, '2008-12-27', 4, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7293, '2008-12-28', 4, 114, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7294, '2008-12-26', 4, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7295, '2008-12-27', 4, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7296, '2008-12-28', 4, 115, 159.9900, 1, '2008-08-06', '2009-08-23'),
-(7297, '2008-12-26', 4, 117, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7298, '2008-12-27', 4, 117, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7299, '2008-12-28', 4, 117, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7300, '2008-12-26', 4, 118, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7301, '2008-12-27', 4, 118, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7302, '2008-12-28', 4, 118, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7303, '2008-12-26', 4, 119, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7304, '2008-12-27', 4, 119, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7305, '2008-12-28', 4, 119, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7306, '2008-12-26', 4, 120, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7307, '2008-12-27', 4, 120, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7308, '2008-12-28', 4, 120, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7309, '2008-12-26', 4, 121, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7310, '2008-12-27', 4, 121, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7311, '2008-12-28', 4, 121, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7312, '2008-12-26', 4, 122, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7313, '2008-12-27', 4, 122, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7314, '2008-12-28', 4, 122, 22.0000, 1, '2008-08-06', '2009-08-23'),
-(7315, '2008-12-26', 4, 123, 100.0000, 1, '2008-08-06', '2009-08-23'),
-(7316, '2008-12-27', 4, 123, 100.0000, 1, '2008-08-06', '2009-08-23'),
-(7317, '2008-12-28', 4, 123, 100.0000, 1, '2008-08-06', '2009-08-23'),
-(7318, '2008-12-26', 4, 124, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7319, '2008-12-27', 4, 124, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7320, '2008-12-28', 4, 124, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7321, '2008-12-26', 4, 125, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7322, '2008-12-27', 4, 125, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7323, '2008-12-28', 4, 125, 15.0000, 1, '2008-08-06', '2009-08-23'),
-(7324, '2008-12-26', 4, 126, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7325, '2008-12-27', 4, 126, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7326, '2008-12-28', 4, 126, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7327, '2008-12-26', 4, 127, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7328, '2008-12-27', 4, 127, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7329, '2008-12-28', 4, 127, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7330, '2008-12-26', 4, 128, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7331, '2008-12-27', 4, 128, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7332, '2008-12-28', 4, 128, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7333, '2008-12-26', 4, 129, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7334, '2008-12-27', 4, 129, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7335, '2008-12-28', 4, 129, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7336, '2008-12-26', 4, 130, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7337, '2008-12-27', 4, 130, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7338, '2008-12-28', 4, 130, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7339, '2008-12-26', 4, 131, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7340, '2008-12-27', 4, 131, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7341, '2008-12-28', 4, 131, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7342, '2008-12-26', 4, 132, 99.0000, 1, '2008-08-06', '2009-08-23'),
-(7343, '2008-12-27', 4, 132, 99.0000, 1, '2008-08-06', '2009-08-23'),
-(7344, '2008-12-28', 4, 132, 99.0000, 1, '2008-08-06', '2009-08-23'),
-(7345, '2008-12-26', 4, 133, 34.0000, 1, '2008-08-06', '2009-08-23'),
-(7346, '2008-12-27', 4, 133, 34.0000, 1, '2008-08-06', '2009-08-23'),
-(7347, '2008-12-28', 4, 133, 34.0000, 1, '2008-08-06', '2009-08-23'),
-(7348, '2008-12-26', 4, 134, 19.0000, 1, '2008-08-06', '2009-08-23'),
-(7349, '2008-12-27', 4, 134, 19.0000, 1, '2008-08-06', '2009-08-23'),
-(7350, '2008-12-28', 4, 134, 19.0000, 1, '2008-08-06', '2009-08-23'),
-(7351, '2008-12-26', 4, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(7352, '2008-12-27', 4, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(7353, '2008-12-28', 4, 135, 41.9500, 1, '2008-08-27', '2009-08-28'),
-(7354, '2008-12-26', 4, 137, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7355, '2008-12-27', 4, 137, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7356, '2008-12-28', 4, 137, 13.5000, 1, '2008-08-06', '2009-08-23'),
-(7357, '2008-12-26', 4, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7358, '2008-12-27', 4, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7359, '2008-12-28', 4, 138, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7360, '2008-12-26', 4, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7361, '2008-12-27', 4, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7362, '2008-12-28', 4, 139, 199.9900, 1, '2008-08-06', '2009-08-23'),
-(7363, '2008-12-26', 4, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7364, '2008-12-27', 4, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7365, '2008-12-28', 4, 142, 150.0000, 1, '2008-08-06', '2009-08-23'),
-(7366, '2008-12-26', 4, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(7367, '2008-12-27', 4, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(7368, '2008-12-28', 4, 144, 250.0000, 1, '2008-08-06', '2009-08-23'),
-(7369, '2008-12-26', 4, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(7370, '2008-12-27', 4, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(7371, '2008-12-28', 4, 146, 325.0000, 1, '2008-08-06', '2009-08-23'),
-(7372, '2008-12-26', 4, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(7373, '2008-12-27', 4, 164, 4999.9500, 1, '2008-08-06', '2009-08-23'),
-(7374, '2008-12-28', 4, 164, 4999.9500, 1, '2008-08-06', '2009-08-23');
+(6755, '2008-12-27', 2, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6756, '2008-12-28', 2, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6757, '2008-12-26', 2, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6758, '2008-12-27', 2, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6759, '2008-12-28', 2, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6760, '2008-12-26', 2, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6761, '2008-12-27', 2, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6762, '2008-12-28', 2, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6763, '2008-12-26', 2, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6764, '2008-12-27', 2, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6765, '2008-12-28', 2, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6766, '2008-12-26', 2, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6767, '2008-12-27', 2, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6768, '2008-12-28', 2, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6769, '2008-12-26', 2, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6770, '2008-12-27', 2, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6771, '2008-12-28', 2, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6772, '2008-12-26', 2, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6773, '2008-12-27', 2, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6774, '2008-12-28', 2, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6775, '2008-12-26', 2, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6776, '2008-12-27', 2, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6777, '2008-12-28', 2, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6778, '2008-12-26', 2, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6779, '2008-12-27', 2, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6780, '2008-12-28', 2, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6781, '2008-12-26', 2, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6782, '2008-12-27', 2, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6783, '2008-12-28', 2, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(6784, '2008-12-26', 2, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6785, '2008-12-27', 2, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6786, '2008-12-28', 2, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6787, '2008-12-26', 2, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6788, '2008-12-27', 2, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6789, '2008-12-28', 2, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6790, '2008-12-26', 2, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6791, '2008-12-27', 2, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6792, '2008-12-28', 2, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6793, '2008-12-26', 2, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6794, '2008-12-27', 2, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6795, '2008-12-28', 2, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6796, '2008-12-26', 2, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6797, '2008-12-27', 2, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6798, '2008-12-28', 2, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(6799, '2008-12-26', 2, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6800, '2008-12-27', 2, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6801, '2008-12-28', 2, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6802, '2008-12-26', 2, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6803, '2008-12-27', 2, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6804, '2008-12-28', 2, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6805, '2008-12-26', 2, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6806, '2008-12-27', 2, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6807, '2008-12-28', 2, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6808, '2008-12-26', 2, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6809, '2008-12-27', 2, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6810, '2008-12-28', 2, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6811, '2008-12-26', 2, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6812, '2008-12-27', 2, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6813, '2008-12-28', 2, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6814, '2008-12-26', 2, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6815, '2008-12-27', 2, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6816, '2008-12-28', 2, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6817, '2008-12-26', 2, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6818, '2008-12-27', 2, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6819, '2008-12-28', 2, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6820, '2008-12-26', 2, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6821, '2008-12-27', 2, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6822, '2008-12-28', 2, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6823, '2008-12-26', 2, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6824, '2008-12-27', 2, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6825, '2008-12-28', 2, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6826, '2008-12-26', 2, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6827, '2008-12-27', 2, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6828, '2008-12-28', 2, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6829, '2008-12-26', 2, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6830, '2008-12-27', 2, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6831, '2008-12-28', 2, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6832, '2008-12-26', 2, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6833, '2008-12-27', 2, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6834, '2008-12-28', 2, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6835, '2008-12-26', 2, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6836, '2008-12-27', 2, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6837, '2008-12-28', 2, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(6838, '2008-12-26', 2, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6839, '2008-12-27', 2, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6840, '2008-12-28', 2, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6841, '2008-12-26', 2, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6842, '2008-12-27', 2, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6843, '2008-12-28', 2, 118, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6844, '2008-12-26', 2, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6845, '2008-12-27', 2, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6846, '2008-12-28', 2, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6850, '2008-12-26', 2, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6851, '2008-12-27', 2, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6852, '2008-12-28', 2, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6853, '2008-12-26', 2, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6854, '2008-12-27', 2, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6855, '2008-12-28', 2, 121, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6856, '2008-12-26', 2, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6857, '2008-12-27', 2, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6858, '2008-12-28', 2, 122, '22.0000', 1, '2008-08-28', '2009-01-31'),
+(6859, '2008-12-26', 2, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6860, '2008-12-27', 2, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6861, '2008-12-28', 2, 123, '100.0000', 1, '2008-08-28', '2009-01-31'),
+(6862, '2008-12-26', 2, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6863, '2008-12-27', 2, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6864, '2008-12-28', 2, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6865, '2008-12-26', 2, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6866, '2008-12-27', 2, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6867, '2008-12-28', 2, 125, '15.0000', 1, '2008-08-28', '2009-01-31'),
+(6868, '2008-12-26', 2, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6869, '2008-12-27', 2, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6870, '2008-12-28', 2, 126, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6871, '2008-12-26', 2, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6872, '2008-12-27', 2, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6873, '2008-12-28', 2, 127, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6874, '2008-12-26', 2, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6875, '2008-12-27', 2, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6876, '2008-12-28', 2, 128, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6877, '2008-12-26', 2, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6878, '2008-12-27', 2, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6879, '2008-12-28', 2, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6880, '2008-12-26', 2, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6881, '2008-12-27', 2, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6882, '2008-12-28', 2, 130, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6883, '2008-12-26', 2, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6884, '2008-12-27', 2, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6885, '2008-12-28', 2, 131, '13.5000', 1, '2008-08-28', '2009-01-31'),
+(6886, '2008-12-26', 2, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6887, '2008-12-27', 2, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6888, '2008-12-28', 2, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(6889, '2008-12-26', 2, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6890, '2008-12-27', 2, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6891, '2008-12-28', 2, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(6892, '2008-12-26', 2, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6893, '2008-12-27', 2, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6894, '2008-12-28', 2, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(6895, '2008-12-26', 2, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6896, '2008-12-27', 2, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6897, '2008-12-28', 2, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(6898, '2008-12-26', 2, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6899, '2008-12-27', 2, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6900, '2008-12-28', 2, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6901, '2008-12-26', 2, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6902, '2008-12-27', 2, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6903, '2008-12-28', 2, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6904, '2008-12-26', 2, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6905, '2008-12-27', 2, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6906, '2008-12-28', 2, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(6907, '2008-12-26', 2, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6908, '2008-12-27', 2, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6909, '2008-12-28', 2, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(6910, '2008-12-26', 2, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6911, '2008-12-27', 2, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6912, '2008-12-28', 2, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(6913, '2008-12-26', 2, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6914, '2008-12-27', 2, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6915, '2008-12-28', 2, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(6916, '2008-12-26', 2, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6917, '2008-12-27', 2, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6918, '2008-12-28', 2, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(6919, '2008-12-26', 3, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6920, '2008-12-27', 3, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6921, '2008-12-28', 3, 29, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6922, '2008-12-26', 3, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6923, '2008-12-27', 3, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6924, '2008-12-28', 3, 31, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6925, '2008-12-26', 3, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6926, '2008-12-27', 3, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6927, '2008-12-28', 3, 32, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(6928, '2008-12-26', 3, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6929, '2008-12-27', 3, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6930, '2008-12-28', 3, 35, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6931, '2008-12-26', 3, 36, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6932, '2008-12-27', 3, 36, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6933, '2008-12-28', 3, 36, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(6934, '2008-12-26', 3, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6935, '2008-12-27', 3, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6936, '2008-12-28', 3, 37, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(6937, '2008-12-26', 3, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6938, '2008-12-27', 3, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6939, '2008-12-28', 3, 38, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(6940, '2008-12-26', 3, 39, '30.0000', 1, '2008-08-25', '2009-01-31'),
+(6941, '2008-12-27', 3, 39, '30.0000', 1, '2008-08-25', '2009-01-31'),
+(6942, '2008-12-28', 3, 39, '30.0000', 1, '2008-08-25', '2009-01-31'),
+(6943, '2008-12-26', 3, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6944, '2008-12-27', 3, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6945, '2008-12-28', 3, 45, '37.4900', 1, '2008-08-25', '2009-01-31'),
+(6946, '2008-12-26', 3, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6947, '2008-12-27', 3, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6948, '2008-12-28', 3, 49, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6949, '2008-12-26', 3, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6950, '2008-12-27', 3, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6951, '2008-12-28', 3, 74, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6952, '2008-12-26', 3, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6953, '2008-12-27', 3, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6954, '2008-12-28', 3, 75, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6955, '2008-12-26', 3, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6956, '2008-12-27', 3, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6957, '2008-12-28', 3, 79, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6958, '2008-12-26', 3, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6959, '2008-12-27', 3, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6960, '2008-12-28', 3, 80, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6961, '2008-12-26', 3, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6962, '2008-12-27', 3, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6963, '2008-12-28', 3, 81, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6964, '2008-12-26', 3, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6965, '2008-12-27', 3, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6966, '2008-12-28', 3, 82, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(6967, '2008-12-26', 3, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6968, '2008-12-27', 3, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6969, '2008-12-28', 3, 83, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6970, '2008-12-26', 3, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6971, '2008-12-27', 3, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6972, '2008-12-28', 3, 84, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6973, '2008-12-26', 3, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6974, '2008-12-27', 3, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6975, '2008-12-28', 3, 85, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6976, '2008-12-26', 3, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6977, '2008-12-27', 3, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6978, '2008-12-28', 3, 86, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6979, '2008-12-26', 3, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6980, '2008-12-27', 3, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6981, '2008-12-28', 3, 87, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6982, '2008-12-26', 3, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6983, '2008-12-27', 3, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6984, '2008-12-28', 3, 88, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6985, '2008-12-26', 3, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6986, '2008-12-27', 3, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6987, '2008-12-28', 3, 89, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6988, '2008-12-26', 3, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6989, '2008-12-27', 3, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6990, '2008-12-28', 3, 90, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6991, '2008-12-26', 3, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6992, '2008-12-27', 3, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6993, '2008-12-28', 3, 91, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6994, '2008-12-26', 3, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6995, '2008-12-27', 3, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6996, '2008-12-28', 3, 92, '15.9900', 1, '2008-08-25', '2009-01-31'),
+(6997, '2008-12-26', 3, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6998, '2008-12-27', 3, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(6999, '2008-12-28', 3, 103, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7000, '2008-12-26', 3, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7001, '2008-12-27', 3, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7002, '2008-12-28', 3, 104, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7003, '2008-12-26', 3, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7004, '2008-12-27', 3, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7005, '2008-12-28', 3, 105, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7006, '2008-12-26', 3, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7007, '2008-12-27', 3, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7008, '2008-12-28', 3, 106, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7009, '2008-12-26', 3, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7010, '2008-12-27', 3, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7011, '2008-12-28', 3, 107, '69.9900', 1, '2008-08-25', '2009-01-31'),
+(7012, '2008-12-26', 3, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7013, '2008-12-27', 3, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7014, '2008-12-28', 3, 108, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7015, '2008-12-26', 3, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7016, '2008-12-27', 3, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7017, '2008-12-28', 3, 109, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7018, '2008-12-26', 3, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7019, '2008-12-27', 3, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7020, '2008-12-28', 3, 110, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7021, '2008-12-26', 3, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7022, '2008-12-27', 3, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7023, '2008-12-28', 3, 111, '89.9900', 1, '2008-08-25', '2009-01-31'),
+(7024, '2008-12-26', 3, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7025, '2008-12-27', 3, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7026, '2008-12-28', 3, 117, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7027, '2008-12-26', 3, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7028, '2008-12-27', 3, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7029, '2008-12-28', 3, 118, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7030, '2008-12-26', 3, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7031, '2008-12-27', 3, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7032, '2008-12-28', 3, 119, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7033, '2008-12-26', 3, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7034, '2008-12-27', 3, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7035, '2008-12-28', 3, 120, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7036, '2008-12-26', 3, 121, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7037, '2008-12-27', 3, 121, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7038, '2008-12-28', 3, 121, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7039, '2008-12-26', 3, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7040, '2008-12-27', 3, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7041, '2008-12-28', 3, 122, '22.0000', 1, '2008-08-25', '2009-01-31'),
+(7042, '2008-12-26', 3, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(7043, '2008-12-27', 3, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(7044, '2008-12-28', 3, 123, '100.0000', 1, '2008-08-25', '2009-01-31'),
+(7045, '2008-12-26', 3, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7046, '2008-12-27', 3, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7047, '2008-12-28', 3, 124, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7048, '2008-12-26', 3, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7049, '2008-12-27', 3, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7050, '2008-12-28', 3, 125, '15.0000', 1, '2008-08-25', '2009-01-31'),
+(7051, '2008-12-26', 3, 126, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7052, '2008-12-27', 3, 126, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7053, '2008-12-28', 3, 126, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7054, '2008-12-26', 3, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7055, '2008-12-27', 3, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7056, '2008-12-28', 3, 127, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7057, '2008-12-26', 3, 128, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7058, '2008-12-27', 3, 128, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7059, '2008-12-28', 3, 128, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7060, '2008-12-26', 3, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7061, '2008-12-27', 3, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7062, '2008-12-28', 3, 129, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7063, '2008-12-26', 3, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7064, '2008-12-27', 3, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7065, '2008-12-28', 3, 130, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7066, '2008-12-26', 3, 131, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7067, '2008-12-27', 3, 131, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7068, '2008-12-28', 3, 131, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7069, '2008-12-26', 3, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(7070, '2008-12-27', 3, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(7071, '2008-12-28', 3, 132, '99.0000', 1, '2008-08-25', '2009-01-31'),
+(7072, '2008-12-26', 3, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(7073, '2008-12-27', 3, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(7074, '2008-12-28', 3, 133, '34.0000', 1, '2008-08-25', '2009-01-31'),
+(7075, '2008-12-26', 3, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(7076, '2008-12-27', 3, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(7077, '2008-12-28', 3, 134, '19.0000', 1, '2008-08-25', '2009-01-31'),
+(7078, '2008-12-26', 3, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(7079, '2008-12-27', 3, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(7080, '2008-12-28', 3, 135, '41.9500', 1, '2008-08-25', '2009-01-31'),
+(7081, '2008-12-26', 3, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7082, '2008-12-27', 3, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7083, '2008-12-28', 3, 137, '13.5000', 1, '2008-08-25', '2009-01-31'),
+(7084, '2008-12-26', 4, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(7085, '2008-12-27', 4, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(7086, '2008-12-28', 4, 16, '149.9900', 1, '2008-08-06', '2009-08-23'),
+(7087, '2008-12-26', 4, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(7088, '2008-12-27', 4, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(7089, '2008-12-28', 4, 17, '349.9900', 1, '2008-08-06', '2009-08-23'),
+(7090, '2008-12-26', 4, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(7091, '2008-12-27', 4, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(7092, '2008-12-28', 4, 18, '399.9900', 1, '2008-08-06', '2009-08-23'),
+(7093, '2008-12-26', 4, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7094, '2008-12-27', 4, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7095, '2008-12-28', 4, 19, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7096, '2008-12-26', 4, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7097, '2008-12-27', 4, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7098, '2008-12-28', 4, 20, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7099, '2008-12-26', 4, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(7100, '2008-12-27', 4, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(7101, '2008-12-28', 4, 25, '2299.9900', 1, '2008-08-06', '2009-08-23'),
+(7102, '2008-12-26', 4, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(7103, '2008-12-27', 4, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(7104, '2008-12-28', 4, 26, '1799.9900', 1, '2008-08-06', '2009-08-23'),
+(7105, '2008-12-26', 4, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(7106, '2008-12-27', 4, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(7107, '2008-12-28', 4, 27, '2699.9900', 1, '2008-08-06', '2009-08-23'),
+(7108, '2008-12-26', 4, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(7109, '2008-12-27', 4, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(7110, '2008-12-28', 4, 28, '1599.9900', 1, '2008-08-06', '2009-08-23'),
+(7111, '2008-12-26', 4, 29, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7112, '2008-12-27', 4, 29, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7113, '2008-12-28', 4, 29, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7114, '2008-12-26', 4, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7115, '2008-12-27', 4, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7116, '2008-12-28', 4, 30, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7117, '2008-12-26', 4, 31, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7118, '2008-12-27', 4, 31, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7119, '2008-12-28', 4, 31, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7120, '2008-12-26', 4, 32, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7121, '2008-12-27', 4, 32, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7122, '2008-12-28', 4, 32, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7123, '2008-12-26', 4, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7124, '2008-12-27', 4, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7125, '2008-12-28', 4, 33, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7126, '2008-12-26', 4, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7127, '2008-12-27', 4, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7128, '2008-12-28', 4, 34, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7129, '2008-12-26', 4, 35, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7130, '2008-12-27', 4, 35, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7131, '2008-12-28', 4, 35, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7132, '2008-12-26', 4, 36, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7133, '2008-12-27', 4, 36, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7134, '2008-12-28', 4, 36, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7135, '2008-12-26', 4, 37, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7136, '2008-12-27', 4, 37, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7137, '2008-12-28', 4, 37, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7138, '2008-12-26', 4, 38, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7139, '2008-12-27', 4, 38, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7140, '2008-12-28', 4, 38, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7141, '2008-12-26', 4, 39, '30.0000', 1, '2008-08-06', '2009-08-23'),
+(7142, '2008-12-27', 4, 39, '30.0000', 1, '2008-08-06', '2009-08-23'),
+(7143, '2008-12-28', 4, 39, '30.0000', 1, '2008-08-06', '2009-08-23'),
+(7144, '2008-12-26', 4, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(7145, '2008-12-27', 4, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(7146, '2008-12-28', 4, 41, '399.9900', 1, '2008-08-24', '2009-09-28'),
+(7147, '2008-12-26', 4, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(7148, '2008-12-27', 4, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(7149, '2008-12-28', 4, 42, '2299.0000', 1, '2008-08-06', '2009-08-23'),
+(7150, '2008-12-26', 4, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(7151, '2008-12-27', 4, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(7152, '2008-12-28', 4, 44, '550.0000', 1, '2008-08-06', '2009-08-23'),
+(7153, '2008-12-26', 4, 45, '37.4900', 1, '2008-08-06', '2009-08-23'),
+(7154, '2008-12-27', 4, 45, '37.4900', 1, '2008-08-06', '2009-08-23'),
+(7155, '2008-12-28', 4, 45, '37.4900', 1, '2008-08-06', '2009-08-23'),
+(7156, '2008-12-26', 4, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(7157, '2008-12-27', 4, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(7158, '2008-12-28', 4, 46, '161.9400', 1, '2008-08-06', '2009-08-23'),
+(7159, '2008-12-26', 4, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(7160, '2008-12-27', 4, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(7161, '2008-12-28', 4, 47, '329.9900', 1, '2008-08-06', '2009-08-23'),
+(7162, '2008-12-26', 4, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7163, '2008-12-27', 4, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7164, '2008-12-28', 4, 48, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7165, '2008-12-26', 4, 49, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7166, '2008-12-27', 4, 49, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7167, '2008-12-28', 4, 49, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7168, '2008-12-26', 4, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(7169, '2008-12-27', 4, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(7170, '2008-12-28', 4, 51, '299.9900', 1, '2008-08-06', '2009-08-23'),
+(7171, '2008-12-26', 4, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(7172, '2008-12-27', 4, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(7173, '2008-12-28', 4, 52, '129.9900', 1, '2008-08-24', '2009-09-28'),
+(7174, '2008-12-26', 4, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(7175, '2008-12-27', 4, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(7176, '2008-12-28', 4, 53, '599.9900', 1, '2008-08-06', '2009-08-23'),
+(7177, '2008-12-26', 4, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(7178, '2008-12-27', 4, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(7179, '2008-12-28', 4, 54, '699.9900', 1, '2008-08-06', '2009-08-23'),
+(7180, '2008-12-26', 4, 74, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7181, '2008-12-27', 4, 74, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7182, '2008-12-28', 4, 74, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7183, '2008-12-26', 4, 75, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7184, '2008-12-27', 4, 75, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7185, '2008-12-28', 4, 75, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7186, '2008-12-26', 4, 79, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7187, '2008-12-27', 4, 79, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7188, '2008-12-28', 4, 79, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7189, '2008-12-26', 4, 80, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7190, '2008-12-27', 4, 80, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7191, '2008-12-28', 4, 80, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7192, '2008-12-26', 4, 81, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7193, '2008-12-27', 4, 81, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7194, '2008-12-28', 4, 81, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7195, '2008-12-26', 4, 82, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7196, '2008-12-27', 4, 82, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7197, '2008-12-28', 4, 82, '41.9500', 1, '2008-08-06', '2009-08-23'),
+(7198, '2008-12-26', 4, 83, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7199, '2008-12-27', 4, 83, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7200, '2008-12-28', 4, 83, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7201, '2008-12-26', 4, 84, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7202, '2008-12-27', 4, 84, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7203, '2008-12-28', 4, 84, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7204, '2008-12-26', 4, 85, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7205, '2008-12-27', 4, 85, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7206, '2008-12-28', 4, 85, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7207, '2008-12-26', 4, 86, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7208, '2008-12-27', 4, 86, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7209, '2008-12-28', 4, 86, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7210, '2008-12-26', 4, 87, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7211, '2008-12-27', 4, 87, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7212, '2008-12-28', 4, 87, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7213, '2008-12-26', 4, 88, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7214, '2008-12-27', 4, 88, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7215, '2008-12-28', 4, 88, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7216, '2008-12-26', 4, 89, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7217, '2008-12-27', 4, 89, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7218, '2008-12-28', 4, 89, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7219, '2008-12-26', 4, 90, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7220, '2008-12-27', 4, 90, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7221, '2008-12-28', 4, 90, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7222, '2008-12-26', 4, 91, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7223, '2008-12-27', 4, 91, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7224, '2008-12-28', 4, 91, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7225, '2008-12-26', 4, 92, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7226, '2008-12-27', 4, 92, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7227, '2008-12-28', 4, 92, '15.9900', 1, '2008-08-06', '2009-08-23'),
+(7228, '2008-12-26', 4, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7229, '2008-12-27', 4, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7230, '2008-12-28', 4, 93, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7231, '2008-12-26', 4, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7232, '2008-12-27', 4, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7233, '2008-12-28', 4, 94, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7234, '2008-12-26', 4, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7235, '2008-12-27', 4, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7236, '2008-12-28', 4, 95, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7237, '2008-12-26', 4, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7238, '2008-12-27', 4, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7239, '2008-12-28', 4, 96, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7240, '2008-12-26', 4, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7241, '2008-12-27', 4, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7242, '2008-12-28', 4, 97, '134.9900', 1, '2008-08-06', '2009-08-23'),
+(7243, '2008-12-26', 4, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7244, '2008-12-27', 4, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7245, '2008-12-28', 4, 98, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7246, '2008-12-26', 4, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7247, '2008-12-27', 4, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7248, '2008-12-28', 4, 99, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7249, '2008-12-26', 4, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7250, '2008-12-27', 4, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7251, '2008-12-28', 4, 100, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7252, '2008-12-26', 4, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7253, '2008-12-27', 4, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7254, '2008-12-28', 4, 101, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7255, '2008-12-26', 4, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7256, '2008-12-27', 4, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7257, '2008-12-28', 4, 102, '160.9900', 1, '2008-08-06', '2009-08-23'),
+(7258, '2008-12-26', 4, 103, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7259, '2008-12-27', 4, 103, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7260, '2008-12-28', 4, 103, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7261, '2008-12-26', 4, 104, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7262, '2008-12-27', 4, 104, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7263, '2008-12-28', 4, 104, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7264, '2008-12-26', 4, 105, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7265, '2008-12-27', 4, 105, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7266, '2008-12-28', 4, 105, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7267, '2008-12-26', 4, 106, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7268, '2008-12-27', 4, 106, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7269, '2008-12-28', 4, 106, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7270, '2008-12-26', 4, 107, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7271, '2008-12-27', 4, 107, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7272, '2008-12-28', 4, 107, '69.9900', 1, '2008-08-06', '2009-08-23'),
+(7273, '2008-12-26', 4, 108, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7274, '2008-12-27', 4, 108, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7275, '2008-12-28', 4, 108, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7276, '2008-12-26', 4, 109, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7277, '2008-12-27', 4, 109, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7278, '2008-12-28', 4, 109, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7279, '2008-12-26', 4, 110, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7280, '2008-12-27', 4, 110, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7281, '2008-12-28', 4, 110, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7282, '2008-12-26', 4, 111, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7283, '2008-12-27', 4, 111, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7284, '2008-12-28', 4, 111, '89.9900', 1, '2008-08-06', '2009-08-23'),
+(7285, '2008-12-26', 4, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7286, '2008-12-27', 4, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7287, '2008-12-28', 4, 112, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7288, '2008-12-26', 4, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7289, '2008-12-27', 4, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7290, '2008-12-28', 4, 113, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7291, '2008-12-26', 4, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7292, '2008-12-27', 4, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7293, '2008-12-28', 4, 114, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7294, '2008-12-26', 4, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7295, '2008-12-27', 4, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7296, '2008-12-28', 4, 115, '159.9900', 1, '2008-08-06', '2009-08-23'),
+(7297, '2008-12-26', 4, 117, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7298, '2008-12-27', 4, 117, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7299, '2008-12-28', 4, 117, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7300, '2008-12-26', 4, 118, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7301, '2008-12-27', 4, 118, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7302, '2008-12-28', 4, 118, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7303, '2008-12-26', 4, 119, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7304, '2008-12-27', 4, 119, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7305, '2008-12-28', 4, 119, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7306, '2008-12-26', 4, 120, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7307, '2008-12-27', 4, 120, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7308, '2008-12-28', 4, 120, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7309, '2008-12-26', 4, 121, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7310, '2008-12-27', 4, 121, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7311, '2008-12-28', 4, 121, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7312, '2008-12-26', 4, 122, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7313, '2008-12-27', 4, 122, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7314, '2008-12-28', 4, 122, '22.0000', 1, '2008-08-06', '2009-08-23'),
+(7315, '2008-12-26', 4, 123, '100.0000', 1, '2008-08-06', '2009-08-23'),
+(7316, '2008-12-27', 4, 123, '100.0000', 1, '2008-08-06', '2009-08-23'),
+(7317, '2008-12-28', 4, 123, '100.0000', 1, '2008-08-06', '2009-08-23'),
+(7318, '2008-12-26', 4, 124, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7319, '2008-12-27', 4, 124, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7320, '2008-12-28', 4, 124, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7321, '2008-12-26', 4, 125, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7322, '2008-12-27', 4, 125, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7323, '2008-12-28', 4, 125, '15.0000', 1, '2008-08-06', '2009-08-23'),
+(7324, '2008-12-26', 4, 126, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7325, '2008-12-27', 4, 126, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7326, '2008-12-28', 4, 126, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7327, '2008-12-26', 4, 127, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7328, '2008-12-27', 4, 127, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7329, '2008-12-28', 4, 127, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7330, '2008-12-26', 4, 128, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7331, '2008-12-27', 4, 128, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7332, '2008-12-28', 4, 128, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7333, '2008-12-26', 4, 129, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7334, '2008-12-27', 4, 129, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7335, '2008-12-28', 4, 129, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7336, '2008-12-26', 4, 130, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7337, '2008-12-27', 4, 130, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7338, '2008-12-28', 4, 130, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7339, '2008-12-26', 4, 131, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7340, '2008-12-27', 4, 131, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7341, '2008-12-28', 4, 131, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7342, '2008-12-26', 4, 132, '99.0000', 1, '2008-08-06', '2009-08-23'),
+(7343, '2008-12-27', 4, 132, '99.0000', 1, '2008-08-06', '2009-08-23'),
+(7344, '2008-12-28', 4, 132, '99.0000', 1, '2008-08-06', '2009-08-23'),
+(7345, '2008-12-26', 4, 133, '34.0000', 1, '2008-08-06', '2009-08-23'),
+(7346, '2008-12-27', 4, 133, '34.0000', 1, '2008-08-06', '2009-08-23'),
+(7347, '2008-12-28', 4, 133, '34.0000', 1, '2008-08-06', '2009-08-23'),
+(7348, '2008-12-26', 4, 134, '19.0000', 1, '2008-08-06', '2009-08-23'),
+(7349, '2008-12-27', 4, 134, '19.0000', 1, '2008-08-06', '2009-08-23'),
+(7350, '2008-12-28', 4, 134, '19.0000', 1, '2008-08-06', '2009-08-23'),
+(7351, '2008-12-26', 4, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(7352, '2008-12-27', 4, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(7353, '2008-12-28', 4, 135, '41.9500', 1, '2008-08-27', '2009-08-28'),
+(7354, '2008-12-26', 4, 137, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7355, '2008-12-27', 4, 137, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7356, '2008-12-28', 4, 137, '13.5000', 1, '2008-08-06', '2009-08-23'),
+(7357, '2008-12-26', 4, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7358, '2008-12-27', 4, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7359, '2008-12-28', 4, 138, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7360, '2008-12-26', 4, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7361, '2008-12-27', 4, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7362, '2008-12-28', 4, 139, '199.9900', 1, '2008-08-06', '2009-08-23'),
+(7363, '2008-12-26', 4, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7364, '2008-12-27', 4, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7365, '2008-12-28', 4, 142, '150.0000', 1, '2008-08-06', '2009-08-23'),
+(7366, '2008-12-26', 4, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(7367, '2008-12-27', 4, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(7368, '2008-12-28', 4, 144, '250.0000', 1, '2008-08-06', '2009-08-23'),
+(7369, '2008-12-26', 4, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(7370, '2008-12-27', 4, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(7371, '2008-12-28', 4, 146, '325.0000', 1, '2008-08-06', '2009-08-23'),
+(7372, '2008-12-26', 4, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(7373, '2008-12-27', 4, 164, '4999.9500', 1, '2008-08-06', '2009-08-23'),
+(7374, '2008-12-28', 4, 164, '4999.9500', 1, '2008-08-06', '2009-08-23');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogsearch_fulltext`
+-- Structure de la table `catalogsearch_fulltext`
 --
 
+DROP TABLE IF EXISTS `catalogsearch_fulltext`;
 CREATE TABLE IF NOT EXISTS `catalogsearch_fulltext` (
   `product_id` int(10) unsigned NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
   `data_index` longtext NOT NULL,
-  PRIMARY KEY  (`product_id`,`store_id`),
+  PRIMARY KEY (`product_id`,`store_id`),
   FULLTEXT KEY `data_index` (`data_index`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogsearch_fulltext`
+-- Contenu de la table `catalogsearch_fulltext`
 --
 
 INSERT INTO `catalogsearch_fulltext` (`product_id`, `store_id`, `data_index`) VALUES
@@ -2960,28 +2991,29 @@ INSERT INTO `catalogsearch_fulltext` (`product_id`, `store_id`, `data_index`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogsearch_query`
+-- Structure de la table `catalogsearch_query`
 --
 
+DROP TABLE IF EXISTS `catalogsearch_query`;
 CREATE TABLE IF NOT EXISTS `catalogsearch_query` (
-  `query_id` int(10) unsigned NOT NULL auto_increment,
-  `query_text` varchar(255) NOT NULL default '',
-  `num_results` int(10) unsigned NOT NULL default '0',
-  `popularity` int(10) unsigned NOT NULL default '0',
-  `redirect` varchar(255) NOT NULL default '',
-  `synonim_for` varchar(255) NOT NULL default '',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `display_in_terms` tinyint(1) NOT NULL default '1',
-  `is_active` tinyint(1) default '1',
-  `is_processed` tinyint(1) default '0',
+  `query_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `query_text` varchar(255) NOT NULL DEFAULT '',
+  `num_results` int(10) unsigned NOT NULL DEFAULT '0',
+  `popularity` int(10) unsigned NOT NULL DEFAULT '0',
+  `redirect` varchar(255) NOT NULL DEFAULT '',
+  `synonim_for` varchar(255) NOT NULL DEFAULT '',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `display_in_terms` tinyint(1) NOT NULL DEFAULT '1',
+  `is_active` tinyint(1) DEFAULT '1',
+  `is_processed` tinyint(1) DEFAULT '0',
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY  (`query_id`),
+  PRIMARY KEY (`query_id`),
   KEY `FK_CATALOGSEARCH_QUERY_STORE` (`store_id`),
   KEY `IDX_SEARCH_QUERY` (`query_text`,`store_id`,`popularity`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
 
 --
--- Dumping data for table `catalogsearch_query`
+-- Contenu de la table `catalogsearch_query`
 --
 
 INSERT INTO `catalogsearch_query` (`query_id`, `query_text`, `num_results`, `popularity`, `redirect`, `synonim_for`, `store_id`, `display_in_terms`, `is_active`, `is_processed`, `updated_at`) VALUES
@@ -3034,47 +3066,49 @@ INSERT INTO `catalogsearch_query` (`query_id`, `query_text`, `num_results`, `pop
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalogsearch_result`
+-- Structure de la table `catalogsearch_result`
 --
 
+DROP TABLE IF EXISTS `catalogsearch_result`;
 CREATE TABLE IF NOT EXISTS `catalogsearch_result` (
   `query_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `relevance` decimal(6,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`query_id`,`product_id`),
+  `relevance` decimal(6,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`query_id`,`product_id`),
   KEY `IDX_QUERY` (`query_id`),
   KEY `IDX_PRODUCT` (`product_id`),
   KEY `IDX_RELEVANCE` (`query_id`,`relevance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalogsearch_result`
+-- Contenu de la table `catalogsearch_result`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity`
+-- Structure de la table `catalog_category_entity`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `path` varchar(255) NOT NULL,
   `position` int(11) NOT NULL,
   `level` int(11) NOT NULL,
   `children_count` int(11) NOT NULL,
-  PRIMARY KEY  (`entity_id`),
+  PRIMARY KEY (`entity_id`),
   KEY `IDX_LEVEL` (`level`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Category Entityies' AUTO_INCREMENT=35 ;
 
 --
--- Dumping data for table `catalog_category_entity`
+-- Contenu de la table `catalog_category_entity`
 --
 
 INSERT INTO `catalog_category_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `parent_id`, `created_at`, `updated_at`, `path`, `position`, `level`, `children_count`) VALUES
@@ -3109,17 +3143,18 @@ INSERT INTO `catalog_category_entity` (`entity_id`, `entity_type_id`, `attribute
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity_datetime`
+-- Structure de la table `catalog_category_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_DATETIME_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_DATETIME_ATTRIBUTE` (`attribute_id`),
@@ -3127,24 +3162,25 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_category_entity_datetime`
+-- Contenu de la table `catalog_category_entity_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity_decimal`
+-- Structure de la table `catalog_category_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_DECIMAL_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_DECIMAL_ATTRIBUTE` (`attribute_id`),
@@ -3152,24 +3188,25 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_decimal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_category_entity_decimal`
+-- Contenu de la table `catalog_category_entity_decimal`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity_int`
+-- Structure de la table `catalog_category_entity_int`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity_int`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_INT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_EMTITY_INT_ATTRIBUTE` (`attribute_id`),
@@ -3177,7 +3214,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_int` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=80 ;
 
 --
--- Dumping data for table `catalog_category_entity_int`
+-- Contenu de la table `catalog_category_entity_int`
 --
 
 INSERT INTO `catalog_category_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -3264,17 +3301,18 @@ INSERT INTO `catalog_category_entity_int` (`value_id`, `entity_type_id`, `attrib
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity_text`
+-- Structure de la table `catalog_category_entity_text`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity_text`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_TEXT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_TEXT_ATTRIBUTE` (`attribute_id`),
@@ -3282,7 +3320,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_text` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=152 ;
 
 --
--- Dumping data for table `catalog_category_entity_text`
+-- Contenu de la table `catalog_category_entity_text`
 --
 
 INSERT INTO `catalog_category_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -3441,25 +3479,26 @@ INSERT INTO `catalog_category_entity_text` (`value_id`, `entity_type_id`, `attri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_entity_varchar`
+-- Structure de la table `catalog_category_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `catalog_category_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `catalog_category_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
-  UNIQUE KEY `IDX_BASE` USING BTREE (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
+  UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`) USING BTREE,
   KEY `FK_ATTRIBUTE_VARCHAR_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=183 ;
 
 --
--- Dumping data for table `catalog_category_entity_varchar`
+-- Contenu de la table `catalog_category_entity_varchar`
 --
 
 INSERT INTO `catalog_category_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -3649,19 +3688,20 @@ INSERT INTO `catalog_category_entity_varchar` (`value_id`, `entity_type_id`, `at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_flat`
+-- Structure de la table `catalog_category_flat`
 --
 
+DROP TABLE IF EXISTS `catalog_category_flat`;
 CREATE TABLE IF NOT EXISTS `catalog_category_flat` (
   `entity_id` int(10) unsigned NOT NULL,
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `path` varchar(255) NOT NULL default '',
-  `level` int(11) NOT NULL default '0',
-  `position` int(11) NOT NULL default '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `path` varchar(255) NOT NULL DEFAULT '',
+  `level` int(11) NOT NULL DEFAULT '0',
+  `position` int(11) NOT NULL DEFAULT '0',
   `children_count` int(11) NOT NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   KEY `CATEGORY_FLAT_CATEGORY_ID` (`entity_id`),
   KEY `CATEGORY_FLAT_STORE_ID` (`store_id`),
   KEY `path` (`path`),
@@ -3669,27 +3709,28 @@ CREATE TABLE IF NOT EXISTS `catalog_category_flat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flat Category';
 
 --
--- Dumping data for table `catalog_category_flat`
+-- Contenu de la table `catalog_category_flat`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_product`
+-- Structure de la table `catalog_category_product`
 --
 
+DROP TABLE IF EXISTS `catalog_category_product`;
 CREATE TABLE IF NOT EXISTS `catalog_category_product` (
-  `category_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `position` int(10) unsigned NOT NULL default '0',
+  `category_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `UNQ_CATEGORY_PRODUCT` (`category_id`,`product_id`),
   KEY `CATALOG_CATEGORY_PRODUCT_CATEGORY` (`category_id`),
   KEY `CATALOG_CATEGORY_PRODUCT_PRODUCT` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog_category_product`
+-- Contenu de la table `catalog_category_product`
 --
 
 INSERT INTO `catalog_category_product` (`category_id`, `product_id`, `position`) VALUES
@@ -3830,15 +3871,16 @@ INSERT INTO `catalog_category_product` (`category_id`, `product_id`, `position`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_category_product_index`
+-- Structure de la table `catalog_category_product_index`
 --
 
+DROP TABLE IF EXISTS `catalog_category_product_index`;
 CREATE TABLE IF NOT EXISTS `catalog_category_product_index` (
-  `category_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `position` int(10) unsigned NOT NULL default '0',
-  `is_parent` tinyint(1) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
+  `category_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
+  `is_parent` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `visibility` tinyint(3) unsigned NOT NULL,
   UNIQUE KEY `UNQ_CATEGORY_PRODUCT` (`category_id`,`product_id`,`is_parent`,`store_id`),
   KEY `FK_CATALOG_CATEGORY_PRODUCT_INDEX_PRODUCT_ENTITY` (`product_id`),
@@ -3848,7 +3890,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_product_index` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog_category_product_index`
+-- Contenu de la table `catalog_category_product_index`
 --
 
 INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `position`, `is_parent`, `store_id`, `visibility`) VALUES
@@ -5161,15 +5203,16 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_compare_item`
+-- Structure de la table `catalog_compare_item`
 --
 
+DROP TABLE IF EXISTS `catalog_compare_item`;
 CREATE TABLE IF NOT EXISTS `catalog_compare_item` (
-  `catalog_compare_item_id` int(11) unsigned NOT NULL auto_increment,
-  `visitor_id` int(11) unsigned NOT NULL default '0',
-  `customer_id` int(11) unsigned default NULL,
-  `product_id` int(11) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`catalog_compare_item_id`),
+  `catalog_compare_item_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `visitor_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `customer_id` int(11) unsigned DEFAULT NULL,
+  `product_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`catalog_compare_item_id`),
   KEY `FK_CATALOG_COMPARE_ITEM_CUSTOMER` (`customer_id`),
   KEY `FK_CATALOG_COMPARE_ITEM_PRODUCT` (`product_id`),
   KEY `IDX_VISITOR_PRODUCTS` (`visitor_id`,`product_id`),
@@ -5177,28 +5220,29 @@ CREATE TABLE IF NOT EXISTS `catalog_compare_item` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_compare_item`
+-- Contenu de la table `catalog_compare_item`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_bundle_option`
+-- Structure de la table `catalog_product_bundle_option`
 --
 
+DROP TABLE IF EXISTS `catalog_product_bundle_option`;
 CREATE TABLE IF NOT EXISTS `catalog_product_bundle_option` (
-  `option_id` int(10) unsigned NOT NULL auto_increment,
+  `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL,
-  `required` tinyint(1) unsigned NOT NULL default '0',
-  `position` int(10) unsigned NOT NULL default '0',
-  `type` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`option_id`),
+  `required` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
+  `type` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`option_id`),
   KEY `FK_CATALOG_PRODUCT_BUNDLE_OPTION_PARENT` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Bundle Options' AUTO_INCREMENT=23 ;
 
 --
--- Dumping data for table `catalog_product_bundle_option`
+-- Contenu de la table `catalog_product_bundle_option`
 --
 
 INSERT INTO `catalog_product_bundle_option` (`option_id`, `parent_id`, `required`, `position`, `type`) VALUES
@@ -5226,20 +5270,21 @@ INSERT INTO `catalog_product_bundle_option` (`option_id`, `parent_id`, `required
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_bundle_option_value`
+-- Structure de la table `catalog_product_bundle_option_value`
 --
 
+DROP TABLE IF EXISTS `catalog_product_bundle_option_value`;
 CREATE TABLE IF NOT EXISTS `catalog_product_bundle_option_value` (
-  `value_id` int(10) unsigned NOT NULL auto_increment,
+  `value_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `option_id` int(10) unsigned NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  `title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   KEY `FK_CATALOG_PRODUCT_BUNDLE_OPTION_VALUE_OPTION` (`option_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Bundle Selections' AUTO_INCREMENT=21 ;
 
 --
--- Dumping data for table `catalog_product_bundle_option_value`
+-- Contenu de la table `catalog_product_bundle_option_value`
 --
 
 INSERT INTO `catalog_product_bundle_option_value` (`value_id`, `option_id`, `store_id`, `title`) VALUES
@@ -5267,148 +5312,151 @@ INSERT INTO `catalog_product_bundle_option_value` (`value_id`, `option_id`, `sto
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_bundle_price_index`
+-- Structure de la table `catalog_product_bundle_price_index`
 --
 
+DROP TABLE IF EXISTS `catalog_product_bundle_price_index`;
 CREATE TABLE IF NOT EXISTS `catalog_product_bundle_price_index` (
   `entity_id` int(10) unsigned NOT NULL,
   `website_id` smallint(5) unsigned NOT NULL,
   `customer_group_id` smallint(3) unsigned NOT NULL,
   `min_price` decimal(12,4) NOT NULL,
   `max_price` decimal(12,4) NOT NULL,
-  PRIMARY KEY  (`entity_id`,`website_id`,`customer_group_id`),
+  PRIMARY KEY (`entity_id`,`website_id`,`customer_group_id`),
   KEY `IDX_WEBSITE` (`website_id`),
   KEY `IDX_CUSTOMER_GROUP` (`customer_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog_product_bundle_price_index`
+-- Contenu de la table `catalog_product_bundle_price_index`
 --
 
 INSERT INTO `catalog_product_bundle_price_index` (`entity_id`, `website_id`, `customer_group_id`, `min_price`, `max_price`) VALUES
-(158, 1, 0, 0.0000, 0.0000),
-(158, 1, 1, 0.0000, 0.0000),
-(158, 1, 2, 0.0000, 0.0000),
-(158, 1, 3, 0.0000, 0.0000),
-(158, 1, 4, 0.0000, 0.0000),
-(163, 1, 0, 0.0000, 0.0000),
-(163, 1, 1, 0.0000, 0.0000),
-(163, 1, 2, 0.0000, 0.0000),
-(163, 1, 3, 0.0000, 0.0000),
-(163, 1, 4, 0.0000, 0.0000),
-(164, 1, 0, 4999.9500, 6348.9500),
-(164, 1, 1, 4999.9500, 6348.9500),
-(164, 1, 2, 4999.9500, 6348.9500),
-(164, 1, 3, 4999.9500, 6348.9500),
-(164, 1, 4, 4999.9500, 6348.9500),
-(165, 1, 0, 0.0000, 0.0000),
-(165, 1, 1, 0.0000, 0.0000),
-(165, 1, 2, 0.0000, 0.0000),
-(165, 1, 3, 0.0000, 0.0000),
-(165, 1, 4, 0.0000, 0.0000);
+(158, 1, 0, '0.0000', '0.0000'),
+(158, 1, 1, '0.0000', '0.0000'),
+(158, 1, 2, '0.0000', '0.0000'),
+(158, 1, 3, '0.0000', '0.0000'),
+(158, 1, 4, '0.0000', '0.0000'),
+(163, 1, 0, '0.0000', '0.0000'),
+(163, 1, 1, '0.0000', '0.0000'),
+(163, 1, 2, '0.0000', '0.0000'),
+(163, 1, 3, '0.0000', '0.0000'),
+(163, 1, 4, '0.0000', '0.0000'),
+(164, 1, 0, '4999.9500', '6348.9500'),
+(164, 1, 1, '4999.9500', '6348.9500'),
+(164, 1, 2, '4999.9500', '6348.9500'),
+(164, 1, 3, '4999.9500', '6348.9500'),
+(164, 1, 4, '4999.9500', '6348.9500'),
+(165, 1, 0, '0.0000', '0.0000'),
+(165, 1, 1, '0.0000', '0.0000'),
+(165, 1, 2, '0.0000', '0.0000'),
+(165, 1, 3, '0.0000', '0.0000'),
+(165, 1, 4, '0.0000', '0.0000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_bundle_selection`
+-- Structure de la table `catalog_product_bundle_selection`
 --
 
+DROP TABLE IF EXISTS `catalog_product_bundle_selection`;
 CREATE TABLE IF NOT EXISTS `catalog_product_bundle_selection` (
-  `selection_id` int(10) unsigned NOT NULL auto_increment,
+  `selection_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `option_id` int(10) unsigned NOT NULL,
   `parent_product_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `position` int(10) unsigned NOT NULL default '0',
-  `is_default` tinyint(1) unsigned NOT NULL default '0',
-  `selection_price_type` tinyint(1) unsigned NOT NULL default '0',
-  `selection_price_value` decimal(12,4) NOT NULL default '0.0000',
-  `selection_qty` decimal(12,4) NOT NULL default '0.0000',
-  `selection_can_change_qty` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`selection_id`),
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
+  `is_default` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `selection_price_type` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `selection_price_value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `selection_qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `selection_can_change_qty` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`selection_id`),
   KEY `FK_CATALOG_PRODUCT_BUNDLE_SELECTION_OPTION` (`option_id`),
   KEY `FK_CATALOG_PRODUCT_BUNDLE_SELECTION_PRODUCT` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Bundle Selections' AUTO_INCREMENT=63 ;
 
 --
--- Dumping data for table `catalog_product_bundle_selection`
+-- Contenu de la table `catalog_product_bundle_selection`
 --
 
 INSERT INTO `catalog_product_bundle_selection` (`selection_id`, `option_id`, `parent_product_id`, `product_id`, `position`, `is_default`, `selection_price_type`, `selection_price_value`, `selection_qty`, `selection_can_change_qty`) VALUES
-(1, 1, 158, 146, 20, 0, 0, 0.0000, 1.0000, 0),
-(2, 1, 158, 142, 0, 0, 0, 0.0000, 1.0000, 0),
-(3, 1, 158, 144, 10, 0, 0, 0.0000, 1.0000, 0),
-(4, 2, 158, 27, 0, 0, 0, 0.0000, 1.0000, 0),
-(5, 3, 163, 142, 0, 0, 0, 0.0000, 1.0000, 1),
-(6, 4, 163, 157, 0, 0, 0, 0.0000, 1.0000, 1),
-(7, 4, 163, 156, 0, 0, 0, 0.0000, 1.0000, 1),
-(8, 4, 163, 152, 0, 0, 0, 0.0000, 1.0000, 1),
-(9, 4, 163, 147, 0, 0, 0, 0.0000, 1.0000, 1),
-(10, 5, 163, 162, 50, 0, 0, 0.0000, 1.0000, 1),
-(11, 5, 163, 159, 0, 0, 0, 0.0000, 1.0000, 1),
-(12, 5, 163, 161, 0, 0, 0, 0.0000, 1.0000, 1),
-(13, 5, 163, 160, 100, 0, 0, 0.0000, 1.0000, 1),
-(14, 6, 163, 149, 0, 0, 0, 0.0000, 1.0000, 1),
-(15, 6, 163, 154, 0, 1, 0, 0.0000, 1.0000, 1),
-(16, 7, 163, 155, 0, 1, 0, 0.0000, 1.0000, 0),
-(17, 7, 163, 150, 0, 0, 0, 0.0000, 1.0000, 0),
-(18, 8, 163, 143, 0, 0, 0, 0.0000, 1.0000, 0),
-(19, 8, 163, 141, 0, 1, 0, 0.0000, 1.0000, 0),
-(20, 8, 163, 140, 0, 0, 0, 0.0000, 1.0000, 0),
-(21, 9, 163, 148, 0, 0, 0, 0.0000, 1.0000, 0),
-(22, 9, 163, 145, 0, 0, 0, 0.0000, 1.0000, 0),
-(23, 9, 163, 153, 0, 1, 0, 0.0000, 1.0000, 0),
-(24, 9, 163, 151, 0, 0, 0, 0.0000, 1.0000, 0),
-(25, 10, 163, 138, 0, 1, 0, 0.0000, 1.0000, 0),
-(26, 10, 163, 139, 0, 0, 0, 0.0000, 1.0000, 0),
-(27, 11, 164, 143, 0, 0, 0, 0.0000, 1.0000, 0),
-(28, 11, 164, 141, 0, 0, 0, 75.0000, 1.0000, 0),
-(29, 11, 164, 140, 0, 0, 0, 150.0000, 1.0000, 0),
-(30, 12, 164, 149, 0, 0, 0, 250.0000, 1.0000, 1),
-(31, 12, 164, 154, 0, 0, 0, 0.0000, 1.0000, 1),
-(32, 13, 164, 161, 0, 0, 0, 199.0000, 1.0000, 1),
-(33, 13, 164, 160, 0, 0, 0, 50.0000, 1.0000, 1),
-(34, 13, 164, 162, 0, 0, 0, 0.0000, 1.0000, 1),
-(35, 13, 164, 159, 0, 0, 0, 0.0000, 1.0000, 1),
-(36, 14, 165, 157, 0, 0, 0, 0.0000, 1.0000, 1),
-(37, 14, 165, 156, 0, 0, 0, 0.0000, 1.0000, 1),
-(38, 14, 165, 152, 0, 0, 0, 0.0000, 1.0000, 1),
-(39, 14, 165, 147, 0, 0, 0, 0.0000, 1.0000, 1),
-(40, 15, 165, 143, 0, 0, 0, 0.0000, 1.0000, 0),
-(41, 15, 165, 141, 0, 0, 0, 0.0000, 1.0000, 0),
-(42, 15, 165, 140, 0, 0, 0, 0.0000, 1.0000, 0),
-(43, 16, 165, 149, 0, 0, 0, 0.0000, 1.0000, 1),
-(44, 16, 165, 150, 0, 0, 0, 0.0000, 1.0000, 1),
-(45, 16, 165, 154, 0, 0, 0, 0.0000, 1.0000, 1),
-(46, 16, 165, 155, 0, 0, 0, 0.0000, 1.0000, 1),
-(47, 17, 165, 138, 0, 0, 0, 0.0000, 1.0000, 0),
-(48, 17, 165, 139, 0, 0, 0, 0.0000, 1.0000, 0),
-(54, 20, 164, 153, 0, 0, 0, 700.0000, 1.0000, 0),
-(55, 20, 164, 151, 0, 0, 0, 200.0000, 1.0000, 0),
-(56, 20, 164, 148, 0, 0, 0, 100.0000, 1.0000, 0),
-(57, 20, 164, 145, 0, 0, 0, 0.0000, 1.0000, 0),
-(58, 21, 164, 139, 0, 0, 0, 0.0000, 1.0000, 0),
-(59, 22, 165, 145, 0, 0, 0, 0.0000, 1.0000, 0),
-(60, 22, 165, 151, 0, 0, 0, 0.0000, 1.0000, 0),
-(61, 22, 165, 148, 0, 0, 0, 0.0000, 1.0000, 0),
-(62, 22, 165, 153, 0, 0, 0, 0.0000, 1.0000, 0);
+(1, 1, 158, 146, 20, 0, 0, '0.0000', '1.0000', 0),
+(2, 1, 158, 142, 0, 0, 0, '0.0000', '1.0000', 0),
+(3, 1, 158, 144, 10, 0, 0, '0.0000', '1.0000', 0),
+(4, 2, 158, 27, 0, 0, 0, '0.0000', '1.0000', 0),
+(5, 3, 163, 142, 0, 0, 0, '0.0000', '1.0000', 1),
+(6, 4, 163, 157, 0, 0, 0, '0.0000', '1.0000', 1),
+(7, 4, 163, 156, 0, 0, 0, '0.0000', '1.0000', 1),
+(8, 4, 163, 152, 0, 0, 0, '0.0000', '1.0000', 1),
+(9, 4, 163, 147, 0, 0, 0, '0.0000', '1.0000', 1),
+(10, 5, 163, 162, 50, 0, 0, '0.0000', '1.0000', 1),
+(11, 5, 163, 159, 0, 0, 0, '0.0000', '1.0000', 1),
+(12, 5, 163, 161, 0, 0, 0, '0.0000', '1.0000', 1),
+(13, 5, 163, 160, 100, 0, 0, '0.0000', '1.0000', 1),
+(14, 6, 163, 149, 0, 0, 0, '0.0000', '1.0000', 1),
+(15, 6, 163, 154, 0, 1, 0, '0.0000', '1.0000', 1),
+(16, 7, 163, 155, 0, 1, 0, '0.0000', '1.0000', 0),
+(17, 7, 163, 150, 0, 0, 0, '0.0000', '1.0000', 0),
+(18, 8, 163, 143, 0, 0, 0, '0.0000', '1.0000', 0),
+(19, 8, 163, 141, 0, 1, 0, '0.0000', '1.0000', 0),
+(20, 8, 163, 140, 0, 0, 0, '0.0000', '1.0000', 0),
+(21, 9, 163, 148, 0, 0, 0, '0.0000', '1.0000', 0),
+(22, 9, 163, 145, 0, 0, 0, '0.0000', '1.0000', 0),
+(23, 9, 163, 153, 0, 1, 0, '0.0000', '1.0000', 0),
+(24, 9, 163, 151, 0, 0, 0, '0.0000', '1.0000', 0),
+(25, 10, 163, 138, 0, 1, 0, '0.0000', '1.0000', 0),
+(26, 10, 163, 139, 0, 0, 0, '0.0000', '1.0000', 0),
+(27, 11, 164, 143, 0, 0, 0, '0.0000', '1.0000', 0),
+(28, 11, 164, 141, 0, 0, 0, '75.0000', '1.0000', 0),
+(29, 11, 164, 140, 0, 0, 0, '150.0000', '1.0000', 0),
+(30, 12, 164, 149, 0, 0, 0, '250.0000', '1.0000', 1),
+(31, 12, 164, 154, 0, 0, 0, '0.0000', '1.0000', 1),
+(32, 13, 164, 161, 0, 0, 0, '199.0000', '1.0000', 1),
+(33, 13, 164, 160, 0, 0, 0, '50.0000', '1.0000', 1),
+(34, 13, 164, 162, 0, 0, 0, '0.0000', '1.0000', 1),
+(35, 13, 164, 159, 0, 0, 0, '0.0000', '1.0000', 1),
+(36, 14, 165, 157, 0, 0, 0, '0.0000', '1.0000', 1),
+(37, 14, 165, 156, 0, 0, 0, '0.0000', '1.0000', 1),
+(38, 14, 165, 152, 0, 0, 0, '0.0000', '1.0000', 1),
+(39, 14, 165, 147, 0, 0, 0, '0.0000', '1.0000', 1),
+(40, 15, 165, 143, 0, 0, 0, '0.0000', '1.0000', 0),
+(41, 15, 165, 141, 0, 0, 0, '0.0000', '1.0000', 0),
+(42, 15, 165, 140, 0, 0, 0, '0.0000', '1.0000', 0),
+(43, 16, 165, 149, 0, 0, 0, '0.0000', '1.0000', 1),
+(44, 16, 165, 150, 0, 0, 0, '0.0000', '1.0000', 1),
+(45, 16, 165, 154, 0, 0, 0, '0.0000', '1.0000', 1),
+(46, 16, 165, 155, 0, 0, 0, '0.0000', '1.0000', 1),
+(47, 17, 165, 138, 0, 0, 0, '0.0000', '1.0000', 0),
+(48, 17, 165, 139, 0, 0, 0, '0.0000', '1.0000', 0),
+(54, 20, 164, 153, 0, 0, 0, '700.0000', '1.0000', 0),
+(55, 20, 164, 151, 0, 0, 0, '200.0000', '1.0000', 0),
+(56, 20, 164, 148, 0, 0, 0, '100.0000', '1.0000', 0),
+(57, 20, 164, 145, 0, 0, 0, '0.0000', '1.0000', 0),
+(58, 21, 164, 139, 0, 0, 0, '0.0000', '1.0000', 0),
+(59, 22, 165, 145, 0, 0, 0, '0.0000', '1.0000', 0),
+(60, 22, 165, 151, 0, 0, 0, '0.0000', '1.0000', 0),
+(61, 22, 165, 148, 0, 0, 0, '0.0000', '1.0000', 0),
+(62, 22, 165, 153, 0, 0, 0, '0.0000', '1.0000', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_enabled_index`
+-- Structure de la table `catalog_product_enabled_index`
 --
 
+DROP TABLE IF EXISTS `catalog_product_enabled_index`;
 CREATE TABLE IF NOT EXISTS `catalog_product_enabled_index` (
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `visibility` smallint(5) unsigned NOT NULL default '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `visibility` smallint(5) unsigned NOT NULL DEFAULT '0',
   UNIQUE KEY `UNQ_PRODUCT_STORE` (`product_id`,`store_id`),
   KEY `IDX_PRODUCT_VISIBILITY_IN_STORE` (`product_id`,`store_id`,`visibility`),
   KEY `FK_CATALOG_PRODUCT_ENABLED_INDEX_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog_product_enabled_index`
+-- Contenu de la table `catalog_product_enabled_index`
 --
 
 INSERT INTO `catalog_product_enabled_index` (`product_id`, `store_id`, `visibility`) VALUES
@@ -5773,28 +5821,29 @@ INSERT INTO `catalog_product_enabled_index` (`product_id`, `store_id`, `visibili
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity`
+-- Structure de la table `catalog_product_entity`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `type_id` varchar(32) NOT NULL default 'simple',
-  `sku` varchar(64) default NULL,
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `type_id` varchar(32) NOT NULL DEFAULT 'simple',
+  `sku` varchar(64) DEFAULT NULL,
   `category_ids` text,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `has_options` smallint(1) NOT NULL default '0',
-  `required_options` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`entity_id`),
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `has_options` smallint(1) NOT NULL DEFAULT '0',
+  `required_options` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`entity_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID` (`attribute_set_id`),
   KEY `sku` (`sku`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Product Entityies' AUTO_INCREMENT=167 ;
 
 --
--- Dumping data for table `catalog_product_entity`
+-- Contenu de la table `catalog_product_entity`
 --
 
 INSERT INTO `catalog_product_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `type_id`, `sku`, `category_ids`, `created_at`, `updated_at`, `has_options`, `required_options`) VALUES
@@ -5922,17 +5971,18 @@ INSERT INTO `catalog_product_entity` (`entity_id`, `entity_type_id`, `attribute_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_datetime`
+-- Structure de la table `catalog_product_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DATETIME_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DATETIME_STORE` (`store_id`),
@@ -5940,7 +5990,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_datetime` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `catalog_product_entity_datetime`
+-- Contenu de la table `catalog_product_entity_datetime`
 --
 
 INSERT INTO `catalog_product_entity_datetime` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -5949,17 +5999,18 @@ INSERT INTO `catalog_product_entity_datetime` (`value_id`, `entity_type_id`, `at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_decimal`
+-- Structure de la table `catalog_product_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_STORE` (`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_PRODUCT_ENTITY` (`entity_id`),
@@ -5967,436 +6018,437 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_decimal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=411 ;
 
 --
--- Dumping data for table `catalog_product_entity_decimal`
+-- Contenu de la table `catalog_product_entity_decimal`
 --
 
 INSERT INTO `catalog_product_entity_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
-(1, 10, 101, 0, 16, 3.2000),
-(2, 10, 99, 0, 16, 149.9900),
-(3, 10, 100, 0, 16, 20.0000),
-(4, 10, 101, 0, 17, 15.2000),
-(5, 10, 99, 0, 17, 349.9900),
-(6, 10, 100, 0, 17, 29.9900),
-(7, 10, 101, 0, 18, 13.6000),
-(8, 10, 99, 0, 18, 399.9900),
-(9, 10, 100, 0, 18, 29.9900),
-(10, 10, 101, 0, 20, 1.0000),
-(11, 10, 99, 0, 20, 150.0000),
-(12, 10, 100, 0, 20, 29.9900),
-(13, 10, 101, 0, 25, 10.6000),
-(14, 10, 99, 0, 25, 2299.9900),
-(15, 10, 100, 0, 25, 1299.9900),
-(16, 10, 101, 0, 26, 11.4000),
-(17, 10, 99, 0, 26, 1799.9900),
-(18, 10, 100, 0, 26, 999.9900),
-(19, 10, 101, 0, 27, 2.8000),
-(20, 10, 99, 0, 27, 2699.9900),
-(21, 10, 100, 0, 27, 899.9900),
-(22, 10, 101, 0, 28, 10.0000),
-(23, 10, 99, 0, 28, 1599.9900),
-(24, 10, 100, 0, 28, 899.9900),
-(25, 10, 101, 0, 29, 1.0000),
-(26, 10, 99, 0, 29, 15.9900),
-(27, 10, 100, 0, 29, 1.0000),
-(28, 10, 101, 0, 30, 3.0000),
-(29, 10, 99, 0, 30, 134.9900),
-(30, 10, 100, 0, 30, 29.9900),
-(31, 10, 101, 0, 31, 2.0000),
-(32, 10, 99, 0, 31, 69.9900),
-(33, 10, 100, 0, 31, 29.9900),
-(34, 10, 101, 0, 32, 2.0000),
-(35, 10, 99, 0, 32, 89.9900),
-(36, 10, 100, 0, 32, 29.9900),
-(37, 10, 101, 0, 33, 4.0000),
-(38, 10, 99, 0, 33, 159.9900),
-(39, 10, 100, 0, 33, 29.9900),
-(40, 10, 101, 0, 34, 2.0000),
-(41, 10, 99, 0, 34, 160.9900),
-(42, 10, 100, 0, 34, 29.9900),
-(43, 10, 101, 0, 35, 0.5000),
-(44, 10, 99, 0, 35, 15.0000),
-(45, 10, 100, 0, 35, 2.0000),
-(46, 10, 101, 0, 36, 0.5000),
-(47, 10, 99, 0, 36, 22.0000),
-(48, 10, 100, 0, 36, 2.0000),
-(49, 10, 101, 0, 37, 0.4400),
-(50, 10, 99, 0, 37, 15.0000),
-(51, 10, 100, 0, 37, 2.0000),
-(52, 10, 101, 0, 38, 0.4400),
-(53, 10, 99, 0, 38, 13.5000),
-(54, 10, 100, 0, 38, 2.0000),
-(55, 10, 101, 0, 19, 30.0000),
-(56, 10, 99, 0, 19, 199.9900),
-(57, 10, 100, 0, 19, 29.9900),
-(58, 10, 101, 0, 39, 1.7500),
-(59, 10, 99, 0, 39, 30.0000),
-(60, 10, 100, 0, 39, 5.0000),
-(61, 10, 101, 0, 41, 128.9700),
-(62, 10, 99, 0, 41, 399.9900),
-(63, 10, 100, 0, 41, 100.0000),
-(64, 10, 503, 0, 41, 399.9900),
-(65, 10, 101, 0, 42, 150.0000),
-(66, 10, 99, 0, 42, 2299.0000),
-(67, 10, 100, 0, 42, 800.0000),
-(68, 10, 503, 0, 42, 2299.0000),
-(69, 10, 503, 0, 28, 1599.9900),
-(70, 10, 503, 0, 27, 2699.9900),
-(71, 10, 503, 0, 26, 1799.9900),
-(72, 10, 503, 0, 25, 2299.9900),
-(73, 10, 101, 0, 44, 4.0000),
-(74, 10, 99, 0, 44, 550.0000),
-(75, 10, 100, 0, 44, 200.0000),
-(76, 10, 503, 0, 44, 449.0000),
-(77, 10, 101, 0, 45, 1.0000),
-(78, 10, 99, 0, 45, 37.4900),
-(79, 10, 100, 0, 45, 20.0000),
-(80, 10, 100, 0, 46, 29.9900),
-(81, 10, 503, 0, 46, 161.9400),
-(82, 10, 101, 0, 47, 3.0000),
-(83, 10, 101, 0, 48, 2.0000),
-(84, 10, 99, 0, 48, 199.9900),
-(85, 10, 100, 0, 48, 29.9900),
-(86, 10, 100, 0, 49, 10.0000),
-(87, 10, 503, 0, 49, 41.9500),
-(88, 10, 101, 0, 51, 20.0000),
-(89, 10, 99, 0, 51, 299.9900),
-(90, 10, 100, 0, 51, 50.0000),
-(91, 10, 503, 0, 51, 299.9900),
-(92, 10, 101, 0, 52, 50.0000),
-(93, 10, 99, 0, 52, 129.9900),
-(94, 10, 100, 0, 52, 50.0000),
-(95, 10, 100, 0, 53, 200.0000),
-(96, 10, 503, 0, 53, 599.9900),
-(97, 10, 101, 0, 54, 500.0000),
-(98, 10, 99, 0, 54, 699.9900),
-(99, 10, 100, 0, 54, 300.0000),
-(100, 10, 503, 0, 54, 699.9900),
-(101, 10, 503, 0, 19, 199.9900),
-(102, 10, 503, 0, 17, 349.9900),
-(103, 10, 503, 0, 29, 15.9900),
-(104, 10, 503, 0, 35, 15.0000),
-(105, 10, 503, 0, 30, 134.9900),
-(106, 10, 503, 0, 36, 22.0000),
-(107, 10, 101, 0, 74, 2.0000),
-(108, 10, 99, 0, 74, 41.9500),
-(109, 10, 100, 0, 74, 10.0000),
-(110, 10, 503, 0, 74, 41.9500),
-(111, 10, 101, 0, 75, 2.0000),
-(112, 10, 99, 0, 75, 41.9500),
-(113, 10, 100, 0, 75, 10.0000),
-(114, 10, 503, 0, 75, 41.9500),
-(115, 10, 101, 0, 79, 2.0000),
-(116, 10, 99, 0, 79, 41.9500),
-(117, 10, 100, 0, 79, 10.0000),
-(118, 10, 503, 0, 79, 41.9500),
-(119, 10, 101, 0, 80, 2.0000),
-(120, 10, 99, 0, 80, 41.9500),
-(121, 10, 100, 0, 80, 10.0000),
-(122, 10, 100, 0, 81, 10.0000),
-(123, 10, 503, 0, 81, 41.9500),
-(124, 10, 101, 0, 82, 2.0000),
-(125, 10, 101, 0, 83, 1.0000),
-(126, 10, 99, 0, 83, 15.9900),
-(127, 10, 100, 0, 83, 2.0000),
-(128, 10, 100, 0, 84, 1.0000),
-(129, 10, 503, 0, 84, 15.9900),
-(130, 10, 101, 0, 85, 1.0000),
-(131, 10, 101, 0, 86, 1.0000),
-(132, 10, 99, 0, 86, 15.9900),
-(133, 10, 100, 0, 86, 1.0000),
-(134, 10, 100, 0, 87, 1.0000),
-(135, 10, 503, 0, 87, 15.9900),
-(136, 10, 101, 0, 88, 1.0000),
-(137, 10, 101, 0, 89, 1.0000),
-(138, 10, 99, 0, 89, 15.9900),
-(139, 10, 100, 0, 89, 1.0000),
-(140, 10, 100, 0, 90, 1.0000),
-(141, 10, 503, 0, 90, 15.9900),
-(142, 10, 101, 0, 91, 1.0000),
-(143, 10, 101, 0, 92, 1.0000),
-(144, 10, 99, 0, 92, 15.9900),
-(145, 10, 100, 0, 92, 1.0000),
-(146, 10, 100, 0, 93, 29.9900),
-(147, 10, 503, 0, 93, 134.9900),
-(148, 10, 101, 0, 94, 3.0000),
-(149, 10, 101, 0, 95, 3.0000),
-(150, 10, 99, 0, 95, 134.9900),
-(151, 10, 100, 0, 95, 29.9900),
-(152, 10, 100, 0, 96, 29.9900),
-(153, 10, 503, 0, 96, 134.9900),
-(154, 10, 101, 0, 97, 3.0000),
-(155, 10, 101, 0, 98, 2.0000),
-(156, 10, 99, 0, 98, 160.9900),
-(157, 10, 100, 0, 98, 29.9900),
-(158, 10, 99, 0, 99, 160.9900),
-(159, 10, 100, 0, 99, 29.9900),
-(160, 10, 503, 0, 99, 160.9900),
-(161, 10, 100, 0, 101, 29.9900),
-(162, 10, 503, 0, 101, 160.9900),
-(163, 10, 101, 0, 102, 2.0000),
-(164, 10, 101, 0, 103, 2.0000),
-(165, 10, 99, 0, 103, 69.9900),
-(166, 10, 100, 0, 103, 29.9900),
-(167, 10, 503, 0, 103, 69.9900),
-(168, 10, 503, 0, 31, 69.9900),
-(169, 10, 101, 0, 104, 2.0000),
-(170, 10, 99, 0, 104, 69.9900),
-(171, 10, 100, 0, 104, 29.9900),
-(172, 10, 503, 0, 104, 69.9900),
-(173, 10, 101, 0, 105, 2.0000),
-(174, 10, 99, 0, 105, 69.9900),
-(175, 10, 100, 0, 105, 29.9900),
-(176, 10, 503, 0, 105, 69.9900),
-(177, 10, 101, 0, 106, 2.0000),
-(178, 10, 99, 0, 106, 69.9900),
-(179, 10, 100, 0, 106, 29.9900),
-(180, 10, 503, 0, 106, 69.9900),
-(181, 10, 101, 0, 107, 2.0000),
-(182, 10, 99, 0, 107, 69.9900),
-(183, 10, 100, 0, 107, 29.9900),
-(184, 10, 503, 0, 107, 69.9900),
-(185, 10, 101, 0, 108, 2.0000),
-(186, 10, 99, 0, 108, 89.9900),
-(187, 10, 100, 0, 108, 29.9900),
-(188, 10, 503, 0, 108, 89.9900),
-(189, 10, 503, 0, 32, 89.9900),
-(190, 10, 101, 0, 109, 2.0000),
-(191, 10, 99, 0, 109, 89.9900),
-(192, 10, 100, 0, 109, 29.9900),
-(193, 10, 503, 0, 109, 89.9900),
-(194, 10, 101, 0, 110, 2.0000),
-(195, 10, 99, 0, 110, 89.9900),
-(196, 10, 100, 0, 110, 29.9900),
-(197, 10, 503, 0, 110, 89.9900),
-(198, 10, 101, 0, 111, 2.0000),
-(199, 10, 99, 0, 111, 89.9900),
-(200, 10, 100, 0, 112, 29.9900),
-(201, 10, 503, 0, 112, 159.9900),
-(202, 10, 101, 0, 113, 4.0000),
-(203, 10, 99, 0, 113, 159.9900),
-(204, 10, 100, 0, 114, 29.9900),
-(205, 10, 503, 0, 114, 159.9900),
-(206, 10, 101, 0, 115, 4.0000),
-(207, 10, 99, 0, 115, 159.9900),
-(208, 10, 100, 0, 115, 29.9900),
-(209, 10, 503, 0, 115, 159.9900),
-(210, 10, 503, 0, 33, 159.9900),
-(211, 10, 101, 0, 117, 0.5000),
-(212, 10, 99, 0, 117, 15.0000),
-(213, 10, 100, 0, 117, 2.0000),
-(214, 10, 503, 0, 117, 15.0000),
-(215, 10, 101, 0, 118, 0.5000),
-(216, 10, 99, 0, 118, 15.0000),
-(217, 10, 100, 0, 118, 2.0000),
-(218, 10, 503, 0, 118, 15.0000),
-(219, 10, 101, 0, 119, 0.5000),
-(220, 10, 99, 0, 120, 22.0000),
-(221, 10, 100, 0, 120, 2.0000),
-(222, 10, 503, 0, 120, 18.0000),
-(223, 10, 101, 0, 121, 0.5000),
-(224, 10, 99, 0, 121, 22.0000),
-(225, 10, 100, 0, 121, 2.0000),
-(226, 10, 503, 0, 121, 22.0000),
-(227, 10, 101, 0, 122, 0.5000),
-(228, 10, 99, 0, 122, 22.0000),
-(229, 10, 100, 0, 123, 2.0000),
-(230, 10, 503, 0, 123, 10.0000),
-(231, 10, 503, 0, 37, 15.0000),
-(232, 10, 101, 0, 124, 0.4400),
-(233, 10, 99, 0, 124, 15.0000),
-(234, 10, 100, 0, 124, 2.0000),
-(235, 10, 503, 0, 124, 15.0000),
-(236, 10, 101, 0, 125, 0.4400),
-(237, 10, 99, 0, 126, 13.5000),
-(238, 10, 100, 0, 126, 2.0000),
-(239, 10, 503, 0, 126, 9.5000),
-(240, 10, 503, 0, 38, 13.5000),
-(241, 10, 101, 0, 127, 0.4400),
-(242, 10, 99, 0, 127, 13.5000),
-(243, 10, 100, 0, 127, 2.0000),
-(244, 10, 503, 0, 128, 13.5000),
-(245, 10, 101, 0, 129, 0.4400),
-(246, 10, 99, 0, 129, 13.5000),
-(247, 10, 100, 0, 129, 2.0000),
-(248, 10, 503, 0, 129, 13.5000),
-(249, 10, 101, 0, 130, 0.4400),
-(250, 10, 99, 0, 130, 13.5000),
-(251, 10, 100, 0, 131, 2.0000),
-(252, 10, 503, 0, 131, 13.5000),
-(253, 10, 503, 0, 20, 150.0000),
-(254, 10, 99, 0, 132, 99.0000),
-(255, 10, 503, 0, 132, 99.0000),
-(256, 10, 99, 0, 134, 19.0000),
-(257, 10, 503, 0, 134, 19.0000),
-(258, 10, 101, 0, 135, 2.0000),
-(259, 10, 99, 0, 135, 41.9500),
-(260, 10, 100, 0, 135, 10.0000),
-(261, 10, 503, 0, 135, 41.9500),
-(262, 10, 101, 0, 137, 0.4400),
-(263, 10, 99, 0, 137, 13.5000),
-(264, 10, 100, 0, 137, 2.0000),
-(265, 10, 101, 0, 139, 10.0000),
-(266, 10, 99, 0, 139, 199.9900),
-(267, 10, 101, 0, 140, 1.0000),
-(268, 10, 99, 0, 140, 199.9900),
-(269, 10, 101, 0, 141, 1.0000),
-(270, 10, 99, 0, 141, 150.9900),
-(271, 10, 99, 0, 142, 150.0000),
-(272, 10, 101, 0, 143, 1.0000),
-(273, 10, 99, 0, 143, 99.9900),
-(274, 10, 99, 0, 144, 250.0000),
-(275, 10, 101, 0, 145, 1.0000),
-(276, 10, 101, 0, 148, 1.0000),
-(277, 10, 99, 0, 148, 98.9900),
-(278, 10, 101, 0, 149, 1.0000),
-(279, 10, 99, 0, 151, 98.9900),
-(280, 10, 101, 0, 152, 1.0000),
-(281, 10, 99, 0, 152, 699.9900),
-(282, 10, 101, 0, 155, 1.0000),
-(283, 10, 99, 0, 155, 99.0000),
-(284, 10, 101, 0, 156, 1.0000),
-(285, 10, 99, 0, 159, 99.9900),
-(286, 10, 101, 0, 160, 1.0000),
-(287, 10, 99, 0, 160, 79.9900),
-(288, 10, 101, 0, 161, 1.0000),
-(289, 10, 101, 0, 162, 1.0000),
-(290, 10, 99, 0, 162, 59.9900),
-(291, 10, 101, 0, 164, 20.0000),
-(292, 10, 99, 0, 164, 4999.9500),
-(293, 10, 101, 0, 165, 10.0000),
-(294, 10, 101, 0, 166, 0.3000),
-(295, 10, 99, 0, 166, 750.0000),
-(296, 10, 567, 0, 165, 75.0000),
-(297, 10, 101, 0, 132, 42.0000),
-(298, 10, 503, 0, 45, 37.4900),
-(299, 10, 101, 0, 46, 2.0000),
-(300, 10, 99, 0, 46, 161.9400),
-(301, 10, 99, 0, 47, 329.9900),
-(302, 10, 100, 0, 47, 29.9900),
-(303, 10, 503, 0, 47, 329.9900),
-(304, 10, 503, 0, 48, 199.9900),
-(305, 10, 101, 0, 49, 2.0000),
-(306, 10, 99, 0, 49, 41.9500),
-(307, 10, 503, 0, 52, 129.9900),
-(308, 10, 101, 0, 53, 200.0000),
-(309, 10, 99, 0, 53, 599.9900),
-(310, 10, 503, 0, 80, 41.9500),
-(311, 10, 101, 0, 81, 2.0000),
-(312, 10, 99, 0, 81, 41.9500),
-(313, 10, 99, 0, 82, 41.9500),
-(314, 10, 100, 0, 82, 10.0000),
-(315, 10, 503, 0, 82, 41.9500),
-(316, 10, 503, 0, 83, 13.9900),
-(317, 10, 101, 0, 84, 1.0000),
-(318, 10, 99, 0, 84, 15.9900),
-(319, 10, 99, 0, 85, 15.9900),
-(320, 10, 100, 0, 85, 1.0000),
-(321, 10, 503, 0, 85, 15.9900),
-(322, 10, 503, 0, 86, 15.9900),
-(323, 10, 101, 0, 87, 1.0000),
-(324, 10, 99, 0, 87, 15.9900),
-(325, 10, 99, 0, 88, 15.9900),
-(326, 10, 100, 0, 88, 1.0000),
-(327, 10, 503, 0, 88, 15.9900),
-(328, 10, 503, 0, 89, 15.9900),
-(329, 10, 101, 0, 90, 1.0000),
-(330, 10, 99, 0, 90, 15.9900),
-(331, 10, 99, 0, 91, 15.9900),
-(332, 10, 100, 0, 91, 1.0000),
-(333, 10, 503, 0, 91, 15.9900),
-(334, 10, 503, 0, 92, 15.9900),
-(335, 10, 101, 0, 93, 3.0000),
-(336, 10, 99, 0, 93, 134.9900),
-(337, 10, 99, 0, 94, 134.9900),
-(338, 10, 100, 0, 94, 29.9900),
-(339, 10, 503, 0, 94, 134.9900),
-(340, 10, 503, 0, 95, 134.9900),
-(341, 10, 101, 0, 96, 3.0000),
-(342, 10, 99, 0, 96, 134.9900),
-(343, 10, 99, 0, 97, 134.9900),
-(344, 10, 100, 0, 97, 29.9900),
-(345, 10, 503, 0, 97, 134.9900),
-(346, 10, 503, 0, 98, 160.9900),
-(347, 10, 503, 0, 34, 160.9900),
-(348, 10, 101, 0, 99, 2.0000),
-(349, 10, 101, 0, 100, 2.0000),
-(350, 10, 99, 0, 100, 160.9900),
-(351, 10, 100, 0, 100, 29.9900),
-(352, 10, 503, 0, 100, 160.9900),
-(353, 10, 101, 0, 101, 2.0000),
-(354, 10, 99, 0, 101, 160.9900),
-(355, 10, 99, 0, 102, 160.9900),
-(356, 10, 100, 0, 102, 29.9900),
-(357, 10, 503, 0, 102, 160.9900),
-(358, 10, 100, 0, 111, 29.9900),
-(359, 10, 503, 0, 111, 89.9900),
-(360, 10, 101, 0, 112, 4.0000),
-(361, 10, 99, 0, 112, 159.9900),
-(362, 10, 100, 0, 113, 29.9900),
-(363, 10, 503, 0, 113, 159.9900),
-(364, 10, 101, 0, 114, 4.0000),
-(365, 10, 99, 0, 114, 159.9900),
-(366, 10, 99, 0, 119, 15.0000),
-(367, 10, 100, 0, 119, 2.0000),
-(368, 10, 503, 0, 119, 10.0000),
-(369, 10, 101, 0, 120, 0.5000),
-(370, 10, 100, 0, 122, 2.0000),
-(371, 10, 503, 0, 122, 22.0000),
-(372, 10, 101, 0, 123, 0.4400),
-(373, 10, 99, 0, 123, 100.0000),
-(374, 10, 99, 0, 125, 15.0000),
-(375, 10, 100, 0, 125, 2.0000),
-(376, 10, 503, 0, 125, 15.0000),
-(377, 10, 101, 0, 126, 0.4400),
-(378, 10, 503, 0, 127, 13.5000),
-(379, 10, 101, 0, 128, 0.4400),
-(380, 10, 99, 0, 128, 13.5000),
-(381, 10, 100, 0, 128, 2.0000),
-(382, 10, 100, 0, 130, 2.0000),
-(383, 10, 503, 0, 130, 13.5000),
-(384, 10, 101, 0, 131, 0.4400),
-(385, 10, 99, 0, 131, 13.5000),
-(386, 10, 503, 0, 16, 149.9900),
-(387, 10, 503, 0, 18, 399.9900),
-(388, 10, 99, 0, 133, 34.0000),
-(389, 10, 503, 0, 133, 34.0000),
-(390, 10, 503, 0, 137, 13.5000),
-(391, 10, 101, 0, 134, 5.0000),
-(392, 10, 101, 0, 138, 10.0000),
-(393, 10, 99, 0, 138, 150.0000),
-(394, 10, 99, 0, 145, 335.9900),
-(395, 10, 99, 0, 146, 325.0000),
-(396, 10, 101, 0, 147, 1.0000),
-(397, 10, 99, 0, 147, 399.9900),
-(398, 10, 99, 0, 149, 399.0000),
-(399, 10, 101, 0, 150, 1.0000),
-(400, 10, 99, 0, 150, 299.0000),
-(401, 10, 101, 0, 151, 1.0000),
-(402, 10, 101, 0, 153, 1.0000),
-(403, 10, 99, 0, 153, 2049.9900),
-(404, 10, 101, 0, 154, 1.0000),
-(405, 10, 99, 0, 154, 299.0000),
-(406, 10, 99, 0, 156, 399.9900),
-(407, 10, 101, 0, 157, 1.0000),
-(408, 10, 99, 0, 157, 699.9900),
-(409, 10, 101, 0, 159, 1.0000),
-(410, 10, 99, 0, 161, 239.9900);
+(1, 10, 101, 0, 16, '3.2000'),
+(2, 10, 99, 0, 16, '149.9900'),
+(3, 10, 100, 0, 16, '20.0000'),
+(4, 10, 101, 0, 17, '15.2000'),
+(5, 10, 99, 0, 17, '349.9900'),
+(6, 10, 100, 0, 17, '29.9900'),
+(7, 10, 101, 0, 18, '13.6000'),
+(8, 10, 99, 0, 18, '399.9900'),
+(9, 10, 100, 0, 18, '29.9900'),
+(10, 10, 101, 0, 20, '1.0000'),
+(11, 10, 99, 0, 20, '150.0000'),
+(12, 10, 100, 0, 20, '29.9900'),
+(13, 10, 101, 0, 25, '10.6000'),
+(14, 10, 99, 0, 25, '2299.9900'),
+(15, 10, 100, 0, 25, '1299.9900'),
+(16, 10, 101, 0, 26, '11.4000'),
+(17, 10, 99, 0, 26, '1799.9900'),
+(18, 10, 100, 0, 26, '999.9900'),
+(19, 10, 101, 0, 27, '2.8000'),
+(20, 10, 99, 0, 27, '2699.9900'),
+(21, 10, 100, 0, 27, '899.9900'),
+(22, 10, 101, 0, 28, '10.0000'),
+(23, 10, 99, 0, 28, '1599.9900'),
+(24, 10, 100, 0, 28, '899.9900'),
+(25, 10, 101, 0, 29, '1.0000'),
+(26, 10, 99, 0, 29, '15.9900'),
+(27, 10, 100, 0, 29, '1.0000'),
+(28, 10, 101, 0, 30, '3.0000'),
+(29, 10, 99, 0, 30, '134.9900'),
+(30, 10, 100, 0, 30, '29.9900'),
+(31, 10, 101, 0, 31, '2.0000'),
+(32, 10, 99, 0, 31, '69.9900'),
+(33, 10, 100, 0, 31, '29.9900'),
+(34, 10, 101, 0, 32, '2.0000'),
+(35, 10, 99, 0, 32, '89.9900'),
+(36, 10, 100, 0, 32, '29.9900'),
+(37, 10, 101, 0, 33, '4.0000'),
+(38, 10, 99, 0, 33, '159.9900'),
+(39, 10, 100, 0, 33, '29.9900'),
+(40, 10, 101, 0, 34, '2.0000'),
+(41, 10, 99, 0, 34, '160.9900'),
+(42, 10, 100, 0, 34, '29.9900'),
+(43, 10, 101, 0, 35, '0.5000'),
+(44, 10, 99, 0, 35, '15.0000'),
+(45, 10, 100, 0, 35, '2.0000'),
+(46, 10, 101, 0, 36, '0.5000'),
+(47, 10, 99, 0, 36, '22.0000'),
+(48, 10, 100, 0, 36, '2.0000'),
+(49, 10, 101, 0, 37, '0.4400'),
+(50, 10, 99, 0, 37, '15.0000'),
+(51, 10, 100, 0, 37, '2.0000'),
+(52, 10, 101, 0, 38, '0.4400'),
+(53, 10, 99, 0, 38, '13.5000'),
+(54, 10, 100, 0, 38, '2.0000'),
+(55, 10, 101, 0, 19, '30.0000'),
+(56, 10, 99, 0, 19, '199.9900'),
+(57, 10, 100, 0, 19, '29.9900'),
+(58, 10, 101, 0, 39, '1.7500'),
+(59, 10, 99, 0, 39, '30.0000'),
+(60, 10, 100, 0, 39, '5.0000'),
+(61, 10, 101, 0, 41, '128.9700'),
+(62, 10, 99, 0, 41, '399.9900'),
+(63, 10, 100, 0, 41, '100.0000'),
+(64, 10, 503, 0, 41, '399.9900'),
+(65, 10, 101, 0, 42, '150.0000'),
+(66, 10, 99, 0, 42, '2299.0000'),
+(67, 10, 100, 0, 42, '800.0000'),
+(68, 10, 503, 0, 42, '2299.0000'),
+(69, 10, 503, 0, 28, '1599.9900'),
+(70, 10, 503, 0, 27, '2699.9900'),
+(71, 10, 503, 0, 26, '1799.9900'),
+(72, 10, 503, 0, 25, '2299.9900'),
+(73, 10, 101, 0, 44, '4.0000'),
+(74, 10, 99, 0, 44, '550.0000'),
+(75, 10, 100, 0, 44, '200.0000'),
+(76, 10, 503, 0, 44, '449.0000'),
+(77, 10, 101, 0, 45, '1.0000'),
+(78, 10, 99, 0, 45, '37.4900'),
+(79, 10, 100, 0, 45, '20.0000'),
+(80, 10, 100, 0, 46, '29.9900'),
+(81, 10, 503, 0, 46, '161.9400'),
+(82, 10, 101, 0, 47, '3.0000'),
+(83, 10, 101, 0, 48, '2.0000'),
+(84, 10, 99, 0, 48, '199.9900'),
+(85, 10, 100, 0, 48, '29.9900'),
+(86, 10, 100, 0, 49, '10.0000'),
+(87, 10, 503, 0, 49, '41.9500'),
+(88, 10, 101, 0, 51, '20.0000'),
+(89, 10, 99, 0, 51, '299.9900'),
+(90, 10, 100, 0, 51, '50.0000'),
+(91, 10, 503, 0, 51, '299.9900'),
+(92, 10, 101, 0, 52, '50.0000'),
+(93, 10, 99, 0, 52, '129.9900'),
+(94, 10, 100, 0, 52, '50.0000'),
+(95, 10, 100, 0, 53, '200.0000'),
+(96, 10, 503, 0, 53, '599.9900'),
+(97, 10, 101, 0, 54, '500.0000'),
+(98, 10, 99, 0, 54, '699.9900'),
+(99, 10, 100, 0, 54, '300.0000'),
+(100, 10, 503, 0, 54, '699.9900'),
+(101, 10, 503, 0, 19, '199.9900'),
+(102, 10, 503, 0, 17, '349.9900'),
+(103, 10, 503, 0, 29, '15.9900'),
+(104, 10, 503, 0, 35, '15.0000'),
+(105, 10, 503, 0, 30, '134.9900'),
+(106, 10, 503, 0, 36, '22.0000'),
+(107, 10, 101, 0, 74, '2.0000'),
+(108, 10, 99, 0, 74, '41.9500'),
+(109, 10, 100, 0, 74, '10.0000'),
+(110, 10, 503, 0, 74, '41.9500'),
+(111, 10, 101, 0, 75, '2.0000'),
+(112, 10, 99, 0, 75, '41.9500'),
+(113, 10, 100, 0, 75, '10.0000'),
+(114, 10, 503, 0, 75, '41.9500'),
+(115, 10, 101, 0, 79, '2.0000'),
+(116, 10, 99, 0, 79, '41.9500'),
+(117, 10, 100, 0, 79, '10.0000'),
+(118, 10, 503, 0, 79, '41.9500'),
+(119, 10, 101, 0, 80, '2.0000'),
+(120, 10, 99, 0, 80, '41.9500'),
+(121, 10, 100, 0, 80, '10.0000'),
+(122, 10, 100, 0, 81, '10.0000'),
+(123, 10, 503, 0, 81, '41.9500'),
+(124, 10, 101, 0, 82, '2.0000'),
+(125, 10, 101, 0, 83, '1.0000'),
+(126, 10, 99, 0, 83, '15.9900'),
+(127, 10, 100, 0, 83, '2.0000'),
+(128, 10, 100, 0, 84, '1.0000'),
+(129, 10, 503, 0, 84, '15.9900'),
+(130, 10, 101, 0, 85, '1.0000'),
+(131, 10, 101, 0, 86, '1.0000'),
+(132, 10, 99, 0, 86, '15.9900'),
+(133, 10, 100, 0, 86, '1.0000'),
+(134, 10, 100, 0, 87, '1.0000'),
+(135, 10, 503, 0, 87, '15.9900'),
+(136, 10, 101, 0, 88, '1.0000'),
+(137, 10, 101, 0, 89, '1.0000'),
+(138, 10, 99, 0, 89, '15.9900'),
+(139, 10, 100, 0, 89, '1.0000'),
+(140, 10, 100, 0, 90, '1.0000'),
+(141, 10, 503, 0, 90, '15.9900'),
+(142, 10, 101, 0, 91, '1.0000'),
+(143, 10, 101, 0, 92, '1.0000'),
+(144, 10, 99, 0, 92, '15.9900'),
+(145, 10, 100, 0, 92, '1.0000'),
+(146, 10, 100, 0, 93, '29.9900'),
+(147, 10, 503, 0, 93, '134.9900'),
+(148, 10, 101, 0, 94, '3.0000'),
+(149, 10, 101, 0, 95, '3.0000'),
+(150, 10, 99, 0, 95, '134.9900'),
+(151, 10, 100, 0, 95, '29.9900'),
+(152, 10, 100, 0, 96, '29.9900'),
+(153, 10, 503, 0, 96, '134.9900'),
+(154, 10, 101, 0, 97, '3.0000'),
+(155, 10, 101, 0, 98, '2.0000'),
+(156, 10, 99, 0, 98, '160.9900'),
+(157, 10, 100, 0, 98, '29.9900'),
+(158, 10, 99, 0, 99, '160.9900'),
+(159, 10, 100, 0, 99, '29.9900'),
+(160, 10, 503, 0, 99, '160.9900'),
+(161, 10, 100, 0, 101, '29.9900'),
+(162, 10, 503, 0, 101, '160.9900'),
+(163, 10, 101, 0, 102, '2.0000'),
+(164, 10, 101, 0, 103, '2.0000'),
+(165, 10, 99, 0, 103, '69.9900'),
+(166, 10, 100, 0, 103, '29.9900'),
+(167, 10, 503, 0, 103, '69.9900'),
+(168, 10, 503, 0, 31, '69.9900'),
+(169, 10, 101, 0, 104, '2.0000'),
+(170, 10, 99, 0, 104, '69.9900'),
+(171, 10, 100, 0, 104, '29.9900'),
+(172, 10, 503, 0, 104, '69.9900'),
+(173, 10, 101, 0, 105, '2.0000'),
+(174, 10, 99, 0, 105, '69.9900'),
+(175, 10, 100, 0, 105, '29.9900'),
+(176, 10, 503, 0, 105, '69.9900'),
+(177, 10, 101, 0, 106, '2.0000'),
+(178, 10, 99, 0, 106, '69.9900'),
+(179, 10, 100, 0, 106, '29.9900'),
+(180, 10, 503, 0, 106, '69.9900'),
+(181, 10, 101, 0, 107, '2.0000'),
+(182, 10, 99, 0, 107, '69.9900'),
+(183, 10, 100, 0, 107, '29.9900'),
+(184, 10, 503, 0, 107, '69.9900'),
+(185, 10, 101, 0, 108, '2.0000'),
+(186, 10, 99, 0, 108, '89.9900'),
+(187, 10, 100, 0, 108, '29.9900'),
+(188, 10, 503, 0, 108, '89.9900'),
+(189, 10, 503, 0, 32, '89.9900'),
+(190, 10, 101, 0, 109, '2.0000'),
+(191, 10, 99, 0, 109, '89.9900'),
+(192, 10, 100, 0, 109, '29.9900'),
+(193, 10, 503, 0, 109, '89.9900'),
+(194, 10, 101, 0, 110, '2.0000'),
+(195, 10, 99, 0, 110, '89.9900'),
+(196, 10, 100, 0, 110, '29.9900'),
+(197, 10, 503, 0, 110, '89.9900'),
+(198, 10, 101, 0, 111, '2.0000'),
+(199, 10, 99, 0, 111, '89.9900'),
+(200, 10, 100, 0, 112, '29.9900'),
+(201, 10, 503, 0, 112, '159.9900'),
+(202, 10, 101, 0, 113, '4.0000'),
+(203, 10, 99, 0, 113, '159.9900'),
+(204, 10, 100, 0, 114, '29.9900'),
+(205, 10, 503, 0, 114, '159.9900'),
+(206, 10, 101, 0, 115, '4.0000'),
+(207, 10, 99, 0, 115, '159.9900'),
+(208, 10, 100, 0, 115, '29.9900'),
+(209, 10, 503, 0, 115, '159.9900'),
+(210, 10, 503, 0, 33, '159.9900'),
+(211, 10, 101, 0, 117, '0.5000'),
+(212, 10, 99, 0, 117, '15.0000'),
+(213, 10, 100, 0, 117, '2.0000'),
+(214, 10, 503, 0, 117, '15.0000'),
+(215, 10, 101, 0, 118, '0.5000'),
+(216, 10, 99, 0, 118, '15.0000'),
+(217, 10, 100, 0, 118, '2.0000'),
+(218, 10, 503, 0, 118, '15.0000'),
+(219, 10, 101, 0, 119, '0.5000'),
+(220, 10, 99, 0, 120, '22.0000'),
+(221, 10, 100, 0, 120, '2.0000'),
+(222, 10, 503, 0, 120, '18.0000'),
+(223, 10, 101, 0, 121, '0.5000'),
+(224, 10, 99, 0, 121, '22.0000'),
+(225, 10, 100, 0, 121, '2.0000'),
+(226, 10, 503, 0, 121, '22.0000'),
+(227, 10, 101, 0, 122, '0.5000'),
+(228, 10, 99, 0, 122, '22.0000'),
+(229, 10, 100, 0, 123, '2.0000'),
+(230, 10, 503, 0, 123, '10.0000'),
+(231, 10, 503, 0, 37, '15.0000'),
+(232, 10, 101, 0, 124, '0.4400'),
+(233, 10, 99, 0, 124, '15.0000'),
+(234, 10, 100, 0, 124, '2.0000'),
+(235, 10, 503, 0, 124, '15.0000'),
+(236, 10, 101, 0, 125, '0.4400'),
+(237, 10, 99, 0, 126, '13.5000'),
+(238, 10, 100, 0, 126, '2.0000'),
+(239, 10, 503, 0, 126, '9.5000'),
+(240, 10, 503, 0, 38, '13.5000'),
+(241, 10, 101, 0, 127, '0.4400'),
+(242, 10, 99, 0, 127, '13.5000'),
+(243, 10, 100, 0, 127, '2.0000'),
+(244, 10, 503, 0, 128, '13.5000'),
+(245, 10, 101, 0, 129, '0.4400'),
+(246, 10, 99, 0, 129, '13.5000'),
+(247, 10, 100, 0, 129, '2.0000'),
+(248, 10, 503, 0, 129, '13.5000'),
+(249, 10, 101, 0, 130, '0.4400'),
+(250, 10, 99, 0, 130, '13.5000'),
+(251, 10, 100, 0, 131, '2.0000'),
+(252, 10, 503, 0, 131, '13.5000'),
+(253, 10, 503, 0, 20, '150.0000'),
+(254, 10, 99, 0, 132, '99.0000'),
+(255, 10, 503, 0, 132, '99.0000'),
+(256, 10, 99, 0, 134, '19.0000'),
+(257, 10, 503, 0, 134, '19.0000'),
+(258, 10, 101, 0, 135, '2.0000'),
+(259, 10, 99, 0, 135, '41.9500'),
+(260, 10, 100, 0, 135, '10.0000'),
+(261, 10, 503, 0, 135, '41.9500'),
+(262, 10, 101, 0, 137, '0.4400'),
+(263, 10, 99, 0, 137, '13.5000'),
+(264, 10, 100, 0, 137, '2.0000'),
+(265, 10, 101, 0, 139, '10.0000'),
+(266, 10, 99, 0, 139, '199.9900'),
+(267, 10, 101, 0, 140, '1.0000'),
+(268, 10, 99, 0, 140, '199.9900'),
+(269, 10, 101, 0, 141, '1.0000'),
+(270, 10, 99, 0, 141, '150.9900'),
+(271, 10, 99, 0, 142, '150.0000'),
+(272, 10, 101, 0, 143, '1.0000'),
+(273, 10, 99, 0, 143, '99.9900'),
+(274, 10, 99, 0, 144, '250.0000'),
+(275, 10, 101, 0, 145, '1.0000'),
+(276, 10, 101, 0, 148, '1.0000'),
+(277, 10, 99, 0, 148, '98.9900'),
+(278, 10, 101, 0, 149, '1.0000'),
+(279, 10, 99, 0, 151, '98.9900'),
+(280, 10, 101, 0, 152, '1.0000'),
+(281, 10, 99, 0, 152, '699.9900'),
+(282, 10, 101, 0, 155, '1.0000'),
+(283, 10, 99, 0, 155, '99.0000'),
+(284, 10, 101, 0, 156, '1.0000'),
+(285, 10, 99, 0, 159, '99.9900'),
+(286, 10, 101, 0, 160, '1.0000'),
+(287, 10, 99, 0, 160, '79.9900'),
+(288, 10, 101, 0, 161, '1.0000'),
+(289, 10, 101, 0, 162, '1.0000'),
+(290, 10, 99, 0, 162, '59.9900'),
+(291, 10, 101, 0, 164, '20.0000'),
+(292, 10, 99, 0, 164, '4999.9500'),
+(293, 10, 101, 0, 165, '10.0000'),
+(294, 10, 101, 0, 166, '0.3000'),
+(295, 10, 99, 0, 166, '750.0000'),
+(296, 10, 567, 0, 165, '75.0000'),
+(297, 10, 101, 0, 132, '42.0000'),
+(298, 10, 503, 0, 45, '37.4900'),
+(299, 10, 101, 0, 46, '2.0000'),
+(300, 10, 99, 0, 46, '161.9400'),
+(301, 10, 99, 0, 47, '329.9900'),
+(302, 10, 100, 0, 47, '29.9900'),
+(303, 10, 503, 0, 47, '329.9900'),
+(304, 10, 503, 0, 48, '199.9900'),
+(305, 10, 101, 0, 49, '2.0000'),
+(306, 10, 99, 0, 49, '41.9500'),
+(307, 10, 503, 0, 52, '129.9900'),
+(308, 10, 101, 0, 53, '200.0000'),
+(309, 10, 99, 0, 53, '599.9900'),
+(310, 10, 503, 0, 80, '41.9500'),
+(311, 10, 101, 0, 81, '2.0000'),
+(312, 10, 99, 0, 81, '41.9500'),
+(313, 10, 99, 0, 82, '41.9500'),
+(314, 10, 100, 0, 82, '10.0000'),
+(315, 10, 503, 0, 82, '41.9500'),
+(316, 10, 503, 0, 83, '13.9900'),
+(317, 10, 101, 0, 84, '1.0000'),
+(318, 10, 99, 0, 84, '15.9900'),
+(319, 10, 99, 0, 85, '15.9900'),
+(320, 10, 100, 0, 85, '1.0000'),
+(321, 10, 503, 0, 85, '15.9900'),
+(322, 10, 503, 0, 86, '15.9900'),
+(323, 10, 101, 0, 87, '1.0000'),
+(324, 10, 99, 0, 87, '15.9900'),
+(325, 10, 99, 0, 88, '15.9900'),
+(326, 10, 100, 0, 88, '1.0000'),
+(327, 10, 503, 0, 88, '15.9900'),
+(328, 10, 503, 0, 89, '15.9900'),
+(329, 10, 101, 0, 90, '1.0000'),
+(330, 10, 99, 0, 90, '15.9900'),
+(331, 10, 99, 0, 91, '15.9900'),
+(332, 10, 100, 0, 91, '1.0000'),
+(333, 10, 503, 0, 91, '15.9900'),
+(334, 10, 503, 0, 92, '15.9900'),
+(335, 10, 101, 0, 93, '3.0000'),
+(336, 10, 99, 0, 93, '134.9900'),
+(337, 10, 99, 0, 94, '134.9900'),
+(338, 10, 100, 0, 94, '29.9900'),
+(339, 10, 503, 0, 94, '134.9900'),
+(340, 10, 503, 0, 95, '134.9900'),
+(341, 10, 101, 0, 96, '3.0000'),
+(342, 10, 99, 0, 96, '134.9900'),
+(343, 10, 99, 0, 97, '134.9900'),
+(344, 10, 100, 0, 97, '29.9900'),
+(345, 10, 503, 0, 97, '134.9900'),
+(346, 10, 503, 0, 98, '160.9900'),
+(347, 10, 503, 0, 34, '160.9900'),
+(348, 10, 101, 0, 99, '2.0000'),
+(349, 10, 101, 0, 100, '2.0000'),
+(350, 10, 99, 0, 100, '160.9900'),
+(351, 10, 100, 0, 100, '29.9900'),
+(352, 10, 503, 0, 100, '160.9900'),
+(353, 10, 101, 0, 101, '2.0000'),
+(354, 10, 99, 0, 101, '160.9900'),
+(355, 10, 99, 0, 102, '160.9900'),
+(356, 10, 100, 0, 102, '29.9900'),
+(357, 10, 503, 0, 102, '160.9900'),
+(358, 10, 100, 0, 111, '29.9900'),
+(359, 10, 503, 0, 111, '89.9900'),
+(360, 10, 101, 0, 112, '4.0000'),
+(361, 10, 99, 0, 112, '159.9900'),
+(362, 10, 100, 0, 113, '29.9900'),
+(363, 10, 503, 0, 113, '159.9900'),
+(364, 10, 101, 0, 114, '4.0000'),
+(365, 10, 99, 0, 114, '159.9900'),
+(366, 10, 99, 0, 119, '15.0000'),
+(367, 10, 100, 0, 119, '2.0000'),
+(368, 10, 503, 0, 119, '10.0000'),
+(369, 10, 101, 0, 120, '0.5000'),
+(370, 10, 100, 0, 122, '2.0000'),
+(371, 10, 503, 0, 122, '22.0000'),
+(372, 10, 101, 0, 123, '0.4400'),
+(373, 10, 99, 0, 123, '100.0000'),
+(374, 10, 99, 0, 125, '15.0000'),
+(375, 10, 100, 0, 125, '2.0000'),
+(376, 10, 503, 0, 125, '15.0000'),
+(377, 10, 101, 0, 126, '0.4400'),
+(378, 10, 503, 0, 127, '13.5000'),
+(379, 10, 101, 0, 128, '0.4400'),
+(380, 10, 99, 0, 128, '13.5000'),
+(381, 10, 100, 0, 128, '2.0000'),
+(382, 10, 100, 0, 130, '2.0000'),
+(383, 10, 503, 0, 130, '13.5000'),
+(384, 10, 101, 0, 131, '0.4400'),
+(385, 10, 99, 0, 131, '13.5000'),
+(386, 10, 503, 0, 16, '149.9900'),
+(387, 10, 503, 0, 18, '399.9900'),
+(388, 10, 99, 0, 133, '34.0000'),
+(389, 10, 503, 0, 133, '34.0000'),
+(390, 10, 503, 0, 137, '13.5000'),
+(391, 10, 101, 0, 134, '5.0000'),
+(392, 10, 101, 0, 138, '10.0000'),
+(393, 10, 99, 0, 138, '150.0000'),
+(394, 10, 99, 0, 145, '335.9900'),
+(395, 10, 99, 0, 146, '325.0000'),
+(396, 10, 101, 0, 147, '1.0000'),
+(397, 10, 99, 0, 147, '399.9900'),
+(398, 10, 99, 0, 149, '399.0000'),
+(399, 10, 101, 0, 150, '1.0000'),
+(400, 10, 99, 0, 150, '299.0000'),
+(401, 10, 101, 0, 151, '1.0000'),
+(402, 10, 101, 0, 153, '1.0000'),
+(403, 10, 99, 0, 153, '2049.9900'),
+(404, 10, 101, 0, 154, '1.0000'),
+(405, 10, 99, 0, 154, '299.0000'),
+(406, 10, 99, 0, 156, '399.9900'),
+(407, 10, 101, 0, 157, '1.0000'),
+(408, 10, 99, 0, 157, '699.9900'),
+(409, 10, 101, 0, 159, '1.0000'),
+(410, 10, 99, 0, 161, '239.9900');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_gallery`
+-- Structure de la table `catalog_product_entity_gallery`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_gallery`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_gallery` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `position` int(11) NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `position` int(11) NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_GALLERY_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_GALLERY_ATTRIBUTE` (`attribute_id`),
@@ -6404,24 +6456,25 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_product_entity_gallery`
+-- Contenu de la table `catalog_product_entity_gallery`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_int`
+-- Structure de la table `catalog_product_entity_int`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_int`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` mediumint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_INT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_INT_STORE` (`store_id`),
@@ -6429,7 +6482,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_int` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=688 ;
 
 --
--- Dumping data for table `catalog_product_entity_int`
+-- Contenu de la table `catalog_product_entity_int`
 --
 
 INSERT INTO `catalog_product_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -7124,21 +7177,22 @@ INSERT INTO `catalog_product_entity_int` (`value_id`, `entity_type_id`, `attribu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_media_gallery`
+-- Structure de la table `catalog_product_entity_media_gallery`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_media_gallery`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_media_gallery` (
-  `value_id` int(11) unsigned NOT NULL auto_increment,
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) default NULL,
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`value_id`),
   KEY `FK_CATALOG_PRODUCT_MEDIA_GALLERY_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_MEDIA_GALLERY_ENTITY` (`entity_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Catalog product media gallery' AUTO_INCREMENT=366 ;
 
 --
--- Dumping data for table `catalog_product_entity_media_gallery`
+-- Contenu de la table `catalog_product_entity_media_gallery`
 --
 
 INSERT INTO `catalog_product_entity_media_gallery` (`value_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -7390,21 +7444,22 @@ INSERT INTO `catalog_product_entity_media_gallery` (`value_id`, `attribute_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_media_gallery_value`
+-- Structure de la table `catalog_product_entity_media_gallery_value`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_media_gallery_value`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_media_gallery_value` (
-  `value_id` int(11) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `label` varchar(255) default NULL,
-  `position` int(11) unsigned default NULL,
-  `disabled` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`value_id`,`store_id`),
+  `value_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `label` varchar(255) DEFAULT NULL,
+  `position` int(11) unsigned DEFAULT NULL,
+  `disabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_MEDIA_GALLERY_VALUE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Catalog product media gallery values';
 
 --
--- Dumping data for table `catalog_product_entity_media_gallery_value`
+-- Contenu de la table `catalog_product_entity_media_gallery_value`
 --
 
 INSERT INTO `catalog_product_entity_media_gallery_value` (`value_id`, `store_id`, `label`, `position`, `disabled`) VALUES
@@ -7656,17 +7711,18 @@ INSERT INTO `catalog_product_entity_media_gallery_value` (`value_id`, `store_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_text`
+-- Structure de la table `catalog_product_entity_text`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_text`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` mediumint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_TEXT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_TEXT_STORE` (`store_id`),
@@ -7674,7 +7730,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_text` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=693 ;
 
 --
--- Dumping data for table `catalog_product_entity_text`
+-- Contenu de la table `catalog_product_entity_text`
 --
 
 INSERT INTO `catalog_product_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -8376,53 +8432,55 @@ INSERT INTO `catalog_product_entity_text` (`value_id`, `entity_type_id`, `attrib
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_tier_price`
+-- Structure de la table `catalog_product_entity_tier_price`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_tier_price`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_tier_price` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `all_groups` tinyint(1) unsigned NOT NULL default '1',
-  `customer_group_id` smallint(5) unsigned NOT NULL default '0',
-  `qty` decimal(12,4) NOT NULL default '1.0000',
-  `value` decimal(12,4) NOT NULL default '0.0000',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `all_groups` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `customer_group_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `qty` decimal(12,4) NOT NULL DEFAULT '1.0000',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
   `website_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_TIER_PRICE_PRODUCT_ENTITY` (`entity_id`),
   KEY `FK_catalog_product_entity_tier_price_group` (`customer_group_id`),
   KEY `FK_CATALOG_PRODUCT_TIER_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Dumping data for table `catalog_product_entity_tier_price`
+-- Contenu de la table `catalog_product_entity_tier_price`
 --
 
 INSERT INTO `catalog_product_entity_tier_price` (`value_id`, `entity_id`, `all_groups`, `customer_group_id`, `qty`, `value`, `website_id`) VALUES
-(1, 44, 1, 0, 2.0000, 449.0000, 0),
-(2, 123, 1, 0, 5.0000, 90.0000, 0),
-(3, 123, 1, 0, 10.0000, 80.0000, 0),
-(4, 123, 1, 0, 20.0000, 70.0000, 0),
-(5, 120, 1, 0, 5.0000, 21.0000, 0),
-(6, 120, 1, 0, 10.0000, 20.0000, 0),
-(7, 120, 1, 0, 20.0000, 18.0000, 0),
-(8, 126, 1, 0, 5.0000, 12.5000, 0),
-(9, 126, 1, 0, 10.0000, 11.5000, 0),
-(10, 126, 1, 0, 20.0000, 9.5000, 0);
+(1, 44, 1, 0, '2.0000', '449.0000', 0),
+(2, 123, 1, 0, '5.0000', '90.0000', 0),
+(3, 123, 1, 0, '10.0000', '80.0000', 0),
+(4, 123, 1, 0, '20.0000', '70.0000', 0),
+(5, 120, 1, 0, '5.0000', '21.0000', 0),
+(6, 120, 1, 0, '10.0000', '20.0000', 0),
+(7, 120, 1, 0, '20.0000', '18.0000', 0),
+(8, 126, 1, 0, '5.0000', '12.5000', 0),
+(9, 126, 1, 0, '10.0000', '11.5000', 0),
+(10, 126, 1, 0, '20.0000', '9.5000', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_entity_varchar`
+-- Structure de la table `catalog_product_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `catalog_product_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `catalog_product_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` mediumint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_STORE` (`store_id`),
@@ -8430,7 +8488,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_varchar` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1283 ;
 
 --
--- Dumping data for table `catalog_product_entity_varchar`
+-- Contenu de la table `catalog_product_entity_varchar`
 --
 
 INSERT INTO `catalog_product_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `store_id`, `entity_id`, `value`) VALUES
@@ -9707,22 +9765,23 @@ INSERT INTO `catalog_product_entity_varchar` (`value_id`, `entity_type_id`, `att
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link`
+-- Structure de la table `catalog_product_link`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link` (
-  `link_id` int(11) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `linked_product_id` int(10) unsigned NOT NULL default '0',
-  `link_type_id` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`link_id`),
+  `link_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `linked_product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `link_type_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`link_id`),
   KEY `FK_LINK_PRODUCT` (`product_id`),
   KEY `FK_LINKED_PRODUCT` (`linked_product_id`),
   KEY `FK_PRODUCT_LINK_TYPE` (`link_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Related products' AUTO_INCREMENT=2737 ;
 
 --
--- Dumping data for table `catalog_product_link`
+-- Contenu de la table `catalog_product_link`
 --
 
 INSERT INTO `catalog_product_link` (`link_id`, `product_id`, `linked_product_id`, `link_type_id`) VALUES
@@ -9993,20 +10052,21 @@ INSERT INTO `catalog_product_link` (`link_id`, `product_id`, `linked_product_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link_attribute`
+-- Structure de la table `catalog_product_link_attribute`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link_attribute`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link_attribute` (
-  `product_link_attribute_id` smallint(6) unsigned NOT NULL auto_increment,
-  `link_type_id` tinyint(3) unsigned NOT NULL default '0',
-  `product_link_attribute_code` varchar(32) NOT NULL default '',
-  `data_type` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`product_link_attribute_id`),
+  `product_link_attribute_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `link_type_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `product_link_attribute_code` varchar(32) NOT NULL DEFAULT '',
+  `data_type` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`product_link_attribute_id`),
   KEY `FK_ATTRIBUTE_PRODUCT_LINK_TYPE` (`link_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Attributes for product link' AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `catalog_product_link_attribute`
+-- Contenu de la table `catalog_product_link_attribute`
 --
 
 INSERT INTO `catalog_product_link_attribute` (`product_link_attribute_id`, `link_type_id`, `product_link_attribute_code`, `data_type`) VALUES
@@ -10021,50 +10081,52 @@ INSERT INTO `catalog_product_link_attribute` (`product_link_attribute_id`, `link
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link_attribute_decimal`
+-- Structure de la table `catalog_product_link_attribute_decimal`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link_attribute_decimal`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link_attribute_decimal` (
-  `value_id` int(11) unsigned NOT NULL auto_increment,
-  `product_link_attribute_id` smallint(6) unsigned default NULL,
-  `link_id` int(11) unsigned default NULL,
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_link_attribute_id` smallint(6) unsigned DEFAULT NULL,
+  `link_id` int(11) unsigned DEFAULT NULL,
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   KEY `FK_DECIMAL_PRODUCT_LINK_ATTRIBUTE` (`product_link_attribute_id`),
   KEY `FK_DECIMAL_LINK` (`link_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Decimal attributes values' AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `catalog_product_link_attribute_decimal`
+-- Contenu de la table `catalog_product_link_attribute_decimal`
 --
 
 INSERT INTO `catalog_product_link_attribute_decimal` (`value_id`, `product_link_attribute_id`, `link_id`, `value`) VALUES
-(1, 6, 2647, 0.0000),
-(2, 6, 2648, 0.0000),
-(3, 6, 2649, 0.0000),
-(4, 6, 2675, 0.0000),
-(5, 6, 2700, 0.0000),
-(6, 6, 2701, 0.0000),
-(7, 6, 2702, 0.0000);
+(1, 6, 2647, '0.0000'),
+(2, 6, 2648, '0.0000'),
+(3, 6, 2649, '0.0000'),
+(4, 6, 2675, '0.0000'),
+(5, 6, 2700, '0.0000'),
+(6, 6, 2701, '0.0000'),
+(7, 6, 2702, '0.0000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link_attribute_int`
+-- Structure de la table `catalog_product_link_attribute_int`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link_attribute_int`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link_attribute_int` (
-  `value_id` int(11) unsigned NOT NULL auto_increment,
-  `product_link_attribute_id` smallint(6) unsigned default NULL,
-  `link_id` int(11) unsigned default NULL,
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_link_attribute_id` smallint(6) unsigned DEFAULT NULL,
+  `link_id` int(11) unsigned DEFAULT NULL,
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   KEY `FK_INT_PRODUCT_LINK_ATTRIBUTE` (`product_link_attribute_id`),
   KEY `FK_INT_PRODUCT_LINK` (`link_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
 
 --
--- Dumping data for table `catalog_product_link_attribute_int`
+-- Contenu de la table `catalog_product_link_attribute_int`
 --
 
 INSERT INTO `catalog_product_link_attribute_int` (`value_id`, `product_link_attribute_id`, `link_id`, `value`) VALUES
@@ -10129,38 +10191,40 @@ INSERT INTO `catalog_product_link_attribute_int` (`value_id`, `product_link_attr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link_attribute_varchar`
+-- Structure de la table `catalog_product_link_attribute_varchar`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link_attribute_varchar`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link_attribute_varchar` (
-  `value_id` int(11) unsigned NOT NULL auto_increment,
-  `product_link_attribute_id` smallint(6) unsigned NOT NULL default '0',
-  `link_id` int(11) unsigned default NULL,
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `product_link_attribute_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `link_id` int(11) unsigned DEFAULT NULL,
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   KEY `FK_VARCHAR_PRODUCT_LINK_ATTRIBUTE` (`product_link_attribute_id`),
   KEY `FK_VARCHAR_LINK` (`link_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Varchar attributes values' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_product_link_attribute_varchar`
+-- Contenu de la table `catalog_product_link_attribute_varchar`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_link_type`
+-- Structure de la table `catalog_product_link_type`
 --
 
+DROP TABLE IF EXISTS `catalog_product_link_type`;
 CREATE TABLE IF NOT EXISTS `catalog_product_link_type` (
-  `link_type_id` tinyint(3) unsigned NOT NULL auto_increment,
-  `code` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`link_type_id`)
+  `link_type_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`link_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Types of product link(Related, superproduct, bundles)' AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `catalog_product_link_type`
+-- Contenu de la table `catalog_product_link_type`
 --
 
 INSERT INTO `catalog_product_link_type` (`link_type_id`, `code`) VALUES
@@ -10173,26 +10237,27 @@ INSERT INTO `catalog_product_link_type` (`link_type_id`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option`
+-- Structure de la table `catalog_product_option`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option` (
-  `option_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `type` varchar(50) NOT NULL default '',
-  `is_require` tinyint(1) NOT NULL default '1',
-  `sku` varchar(64) NOT NULL default '',
-  `max_characters` int(10) unsigned default NULL,
-  `file_extension` varchar(50) default NULL,
+  `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `type` varchar(50) NOT NULL DEFAULT '',
+  `is_require` tinyint(1) NOT NULL DEFAULT '1',
+  `sku` varchar(64) NOT NULL DEFAULT '',
+  `max_characters` int(10) unsigned DEFAULT NULL,
+  `file_extension` varchar(50) DEFAULT NULL,
   `image_size_x` smallint(5) unsigned NOT NULL,
   `image_size_y` smallint(5) unsigned NOT NULL,
-  `sort_order` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`option_id`),
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`option_id`),
   KEY `CATALOG_PRODUCT_OPTION_PRODUCT` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `catalog_product_option`
+-- Contenu de la table `catalog_product_option`
 --
 
 INSERT INTO `catalog_product_option` (`option_id`, `product_id`, `type`, `is_require`, `sku`, `max_characters`, `file_extension`, `image_size_x`, `image_size_y`, `sort_order`) VALUES
@@ -10202,45 +10267,47 @@ INSERT INTO `catalog_product_option` (`option_id`, `product_id`, `type`, `is_req
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option_price`
+-- Structure de la table `catalog_product_option_price`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option_price`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option_price` (
-  `option_price_id` int(10) unsigned NOT NULL auto_increment,
-  `option_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `price_type` enum('fixed','percent') NOT NULL default 'fixed',
-  PRIMARY KEY  (`option_price_id`),
+  `option_price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `price_type` enum('fixed','percent') NOT NULL DEFAULT 'fixed',
+  PRIMARY KEY (`option_price_id`),
   KEY `CATALOG_PRODUCT_OPTION_PRICE_OPTION` (`option_id`),
   KEY `CATALOG_PRODUCT_OPTION_TITLE_STORE` (`store_id`),
   KEY `IDX_CATALOG_PRODUCT_OPTION_PRICE_SI_OI` (`store_id`,`option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `catalog_product_option_price`
+-- Contenu de la table `catalog_product_option_price`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option_title`
+-- Structure de la table `catalog_product_option_title`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option_title`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option_title` (
-  `option_title_id` int(10) unsigned NOT NULL auto_increment,
-  `option_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`option_title_id`),
+  `option_title_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`option_title_id`),
   KEY `CATALOG_PRODUCT_OPTION_TITLE_OPTION` (`option_id`),
   KEY `CATALOG_PRODUCT_OPTION_TITLE_STORE` (`store_id`),
   KEY `IDX_CATALOG_PRODUCT_OPTION_TITLE_SI_OI` (`store_id`,`option_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `catalog_product_option_title`
+-- Contenu de la table `catalog_product_option_title`
 --
 
 INSERT INTO `catalog_product_option_title` (`option_title_id`, `option_id`, `store_id`, `title`) VALUES
@@ -10250,52 +10317,54 @@ INSERT INTO `catalog_product_option_title` (`option_title_id`, `option_id`, `sto
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option_type_price`
+-- Structure de la table `catalog_product_option_type_price`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option_type_price`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option_type_price` (
-  `option_type_price_id` int(10) unsigned NOT NULL auto_increment,
-  `option_type_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `price_type` enum('fixed','percent') NOT NULL default 'fixed',
-  PRIMARY KEY  (`option_type_price_id`),
+  `option_type_price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_type_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `price_type` enum('fixed','percent') NOT NULL DEFAULT 'fixed',
+  PRIMARY KEY (`option_type_price_id`),
   KEY `CATALOG_PRODUCT_OPTION_TYPE_PRICE_OPTION_TYPE` (`option_type_id`),
   KEY `CATALOG_PRODUCT_OPTION_TYPE_PRICE_STORE` (`store_id`),
   KEY `IDX_CATALOG_PRODUCT_OPTION_TYPE_PRICE_SI_OTI` (`store_id`,`option_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `catalog_product_option_type_price`
+-- Contenu de la table `catalog_product_option_type_price`
 --
 
 INSERT INTO `catalog_product_option_type_price` (`option_type_price_id`, `option_type_id`, `store_id`, `price`, `price_type`) VALUES
-(1, 1, 0, 150.0000, 'fixed'),
-(2, 2, 0, 250.0000, 'fixed'),
-(3, 3, 0, 325.0000, 'fixed'),
-(4, 4, 0, 150.0000, 'fixed'),
-(5, 5, 0, 250.0000, 'fixed'),
-(6, 6, 0, 325.0000, 'fixed');
+(1, 1, 0, '150.0000', 'fixed'),
+(2, 2, 0, '250.0000', 'fixed'),
+(3, 3, 0, '325.0000', 'fixed'),
+(4, 4, 0, '150.0000', 'fixed'),
+(5, 5, 0, '250.0000', 'fixed'),
+(6, 6, 0, '325.0000', 'fixed');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option_type_title`
+-- Structure de la table `catalog_product_option_type_title`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option_type_title`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option_type_title` (
-  `option_type_title_id` int(10) unsigned NOT NULL auto_increment,
-  `option_type_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`option_type_title_id`),
+  `option_type_title_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_type_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`option_type_title_id`),
   KEY `CATALOG_PRODUCT_OPTION_TYPE_TITLE_OPTION` (`option_type_id`),
   KEY `CATALOG_PRODUCT_OPTION_TYPE_TITLE_STORE` (`store_id`),
   KEY `IDX_CATALOG_PRODUCT_OPTION_TYPE_TITLE_SI_OTI` (`store_id`,`option_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `catalog_product_option_type_title`
+-- Contenu de la table `catalog_product_option_type_title`
 --
 
 INSERT INTO `catalog_product_option_type_title` (`option_type_title_id`, `option_type_id`, `store_id`, `title`) VALUES
@@ -10309,20 +10378,21 @@ INSERT INTO `catalog_product_option_type_title` (`option_type_title_id`, `option
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_option_type_value`
+-- Structure de la table `catalog_product_option_type_value`
 --
 
+DROP TABLE IF EXISTS `catalog_product_option_type_value`;
 CREATE TABLE IF NOT EXISTS `catalog_product_option_type_value` (
-  `option_type_id` int(10) unsigned NOT NULL auto_increment,
-  `option_id` int(10) unsigned NOT NULL default '0',
-  `sku` varchar(64) NOT NULL default '',
-  `sort_order` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`option_type_id`),
+  `option_type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sku` varchar(64) NOT NULL DEFAULT '',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`option_type_id`),
   KEY `CATALOG_PRODUCT_OPTION_TYPE_VALUE_OPTION` (`option_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `catalog_product_option_type_value`
+-- Contenu de la table `catalog_product_option_type_value`
 --
 
 INSERT INTO `catalog_product_option_type_value` (`option_type_id`, `option_id`, `sku`, `sort_order`) VALUES
@@ -10336,20 +10406,21 @@ INSERT INTO `catalog_product_option_type_value` (`option_type_id`, `option_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_super_attribute`
+-- Structure de la table `catalog_product_super_attribute`
 --
 
+DROP TABLE IF EXISTS `catalog_product_super_attribute`;
 CREATE TABLE IF NOT EXISTS `catalog_product_super_attribute` (
-  `product_super_attribute_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `position` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`product_super_attribute_id`),
+  `product_super_attribute_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `position` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`product_super_attribute_id`),
   KEY `FK_SUPER_PRODUCT_ATTRIBUTE_PRODUCT` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `catalog_product_super_attribute`
+-- Contenu de la table `catalog_product_super_attribute`
 --
 
 INSERT INTO `catalog_product_super_attribute` (`product_super_attribute_id`, `product_id`, `attribute_id`, `position`) VALUES
@@ -10370,21 +10441,22 @@ INSERT INTO `catalog_product_super_attribute` (`product_super_attribute_id`, `pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_super_attribute_label`
+-- Structure de la table `catalog_product_super_attribute_label`
 --
 
+DROP TABLE IF EXISTS `catalog_product_super_attribute_label`;
 CREATE TABLE IF NOT EXISTS `catalog_product_super_attribute_label` (
-  `value_id` int(10) unsigned NOT NULL auto_increment,
-  `product_super_attribute_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_super_attribute_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   KEY `FK_SUPER_PRODUCT_ATTRIBUTE_LABEL` (`product_super_attribute_id`),
   KEY `IDX_CATALOG_PRODUCT_SUPER_ATTRIBUTE_STORE_PSAI_SI` (`product_super_attribute_id`,`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=14 ;
 
 --
--- Dumping data for table `catalog_product_super_attribute_label`
+-- Contenu de la table `catalog_product_super_attribute_label`
 --
 
 INSERT INTO `catalog_product_super_attribute_label` (`value_id`, `product_super_attribute_id`, `store_id`, `value`) VALUES
@@ -10405,51 +10477,53 @@ INSERT INTO `catalog_product_super_attribute_label` (`value_id`, `product_super_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_super_attribute_pricing`
+-- Structure de la table `catalog_product_super_attribute_pricing`
 --
 
+DROP TABLE IF EXISTS `catalog_product_super_attribute_pricing`;
 CREATE TABLE IF NOT EXISTS `catalog_product_super_attribute_pricing` (
-  `value_id` int(10) unsigned NOT NULL auto_increment,
-  `product_super_attribute_id` int(10) unsigned NOT NULL default '0',
-  `value_index` varchar(255) NOT NULL default '',
-  `is_percent` tinyint(1) unsigned default '0',
-  `pricing_value` decimal(10,4) default NULL,
-  `website_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_super_attribute_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value_index` varchar(255) NOT NULL DEFAULT '',
+  `is_percent` tinyint(1) unsigned DEFAULT '0',
+  `pricing_value` decimal(10,4) DEFAULT NULL,
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   KEY `FK_SUPER_PRODUCT_ATTRIBUTE_PRICING` (`product_super_attribute_id`),
   KEY `FK_CATALOG_PRODUCT_SUPER_PRICE_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `catalog_product_super_attribute_pricing`
+-- Contenu de la table `catalog_product_super_attribute_pricing`
 --
 
 INSERT INTO `catalog_product_super_attribute_pricing` (`value_id`, `product_super_attribute_id`, `value_index`, `is_percent`, `pricing_value`, `website_id`) VALUES
-(1, 12, '100', 0, 10.0000, 0),
-(2, 12, '99', 0, 20.0000, 0),
-(3, 12, '98', 0, 30.0000, 0),
-(4, 3, '39', 0, 1.0000, 0),
-(5, 3, '38', 0, 2.0000, 0),
-(6, 3, '37', 0, 3.0000, 0),
-(7, 13, '22', 0, 5.2500, 0);
+(1, 12, '100', 0, '10.0000', 0),
+(2, 12, '99', 0, '20.0000', 0),
+(3, 12, '98', 0, '30.0000', 0),
+(4, 3, '39', 0, '1.0000', 0),
+(5, 3, '38', 0, '2.0000', 0),
+(6, 3, '37', 0, '3.0000', 0),
+(7, 13, '22', 0, '5.2500', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_super_link`
+-- Structure de la table `catalog_product_super_link`
 --
 
+DROP TABLE IF EXISTS `catalog_product_super_link`;
 CREATE TABLE IF NOT EXISTS `catalog_product_super_link` (
-  `link_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`link_id`),
+  `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`link_id`),
   KEY `FK_SUPER_PRODUCT_LINK_PARENT` (`parent_id`),
   KEY `FK_catalog_product_super_link` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=367 ;
 
 --
--- Dumping data for table `catalog_product_super_link`
+-- Contenu de la table `catalog_product_super_link`
 --
 
 INSERT INTO `catalog_product_super_link` (`link_id`, `product_id`, `parent_id`) VALUES
@@ -10512,18 +10586,19 @@ INSERT INTO `catalog_product_super_link` (`link_id`, `product_id`, `parent_id`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_product_website`
+-- Structure de la table `catalog_product_website`
 --
 
+DROP TABLE IF EXISTS `catalog_product_website`;
 CREATE TABLE IF NOT EXISTS `catalog_product_website` (
-  `product_id` int(10) unsigned NOT NULL auto_increment,
+  `product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `website_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`product_id`,`website_id`),
+  PRIMARY KEY (`product_id`,`website_id`),
   KEY `FK_CATALOG_PRODUCT_WEBSITE_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=167 ;
 
 --
--- Dumping data for table `catalog_product_website`
+-- Contenu de la table `catalog_product_website`
 --
 
 INSERT INTO `catalog_product_website` (`product_id`, `website_id`) VALUES
@@ -10651,31 +10726,33 @@ INSERT INTO `catalog_product_website` (`product_id`, `website_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `checkout_agreement`
+-- Structure de la table `checkout_agreement`
 --
 
+DROP TABLE IF EXISTS `checkout_agreement`;
 CREATE TABLE IF NOT EXISTS `checkout_agreement` (
-  `agreement_id` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `agreement_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
   `content` text NOT NULL,
-  `content_height` varchar(25) default NULL,
+  `content_height` varchar(25) DEFAULT NULL,
   `checkbox_text` text NOT NULL,
-  `is_active` tinyint(4) NOT NULL default '0',
-  `is_html` tinyint(4) NOT NULL default '0',
-  PRIMARY KEY  (`agreement_id`)
+  `is_active` tinyint(4) NOT NULL DEFAULT '0',
+  `is_html` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`agreement_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `checkout_agreement`
+-- Contenu de la table `checkout_agreement`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `checkout_agreement_store`
+-- Structure de la table `checkout_agreement_store`
 --
 
+DROP TABLE IF EXISTS `checkout_agreement_store`;
 CREATE TABLE IF NOT EXISTS `checkout_agreement_store` (
   `agreement_id` int(10) unsigned NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
@@ -10684,72 +10761,75 @@ CREATE TABLE IF NOT EXISTS `checkout_agreement_store` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `checkout_agreement_store`
+-- Contenu de la table `checkout_agreement_store`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chronopay_api_debug`
+-- Structure de la table `chronopay_api_debug`
 --
 
+DROP TABLE IF EXISTS `chronopay_api_debug`;
 CREATE TABLE IF NOT EXISTS `chronopay_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `chronopay_api_debug`
+-- Contenu de la table `chronopay_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_block`
+-- Structure de la table `cms_block`
 --
 
+DROP TABLE IF EXISTS `cms_block`;
 CREATE TABLE IF NOT EXISTS `cms_block` (
-  `block_id` smallint(6) NOT NULL auto_increment,
-  `title` varchar(255) NOT NULL default '',
-  `identifier` varchar(255) NOT NULL default '',
+  `block_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `identifier` varchar(255) NOT NULL DEFAULT '',
   `content` text,
-  `creation_time` datetime default NULL,
-  `update_time` datetime default NULL,
-  `is_active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`block_id`)
+  `creation_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`block_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS Blocks' AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `cms_block`
+-- Contenu de la table `cms_block`
 --
 
 INSERT INTO `cms_block` (`block_id`, `title`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`) VALUES
 (3, 'Electronics Landing', 'electronics-landing', '<div class="left" style="width:284px; margin-right:25px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/cell-phones.html"}}"><img src="{{skin url=''images/media/head_electronics_cellphones.gif}}" alt="Cell Phones" style="display:block; border:0;"/></h3>\r\n<p><img src="{{skin url=''images/media/electronics_cellphones.jpg}}" alt="" usemap="#Map" border="0"/></p>\r\n</div>\r\n<div class="left" style="width:284px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/cameras/digital-cameras.html"}}"><img src="{{skin url=''images/media/head_electronics_digicamera.gif}}" alt="Digital Cameras" style="display:block; border:0;"/></a></h3>\r\n<p><img src="{{skin url=''images/media/electronics_digitalcameras.jpg}}" alt="" usemap="#Map2" border="0"/></p>\r\n</div>\r\n<div class="right" style="width:284px;">\r\n<h3 style="margin-bottom:0;"><a href="{{store direct_url="electronics/computers/laptops.html"}}"><img src="{{skin url=''images/media/head_electronics_laptops.gif}}" alt="Laptops" style="display:block; border:0;"/></a></h3>\r\n<p><img src="{{skin url=''images/media/electronics_laptops.jpg}}" alt="" usemap="#Map3" border="0"/></p>\r\n</div>\r\n<div class="clear"></div>\r\n\r\n<map name="Map">\r\n  <area shape="rect" coords="14,154,78,182" href="{{store direct_url="electronics/cell-phones.html?manufacturer=3"}}">\r\n  <area shape="rect" coords="12,177,80,209" href="{{store direct_url="electronics/cell-phones.html?manufacturer=20"}}">\r\n  <area shape="rect" coords="104,158,167,181" href="{{store direct_url="electronics/cell-phones.html?manufacturer=2"}}">\r\n  <area shape="rect" coords="103,181,179,208" href="{{store direct_url="electronics/cell-phones.html?manufacturer=101"}}">\r\n <area shape="rect" coords="16,203,273,432" href="{{store direct_url="electronics/cell-phones/blackberry-8100-pearl.html"}}">\r\n</map>\r\n\r\n<map name="Map2">\r\n  <area shape="rect" coords="14,152,75,179" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=33"}}">\r\n  <area shape="rect" coords="109,154,163,183" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=31"}}">\r\n  <area shape="rect" coords="14,177,73,208" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=32"}}">\r\n  <area shape="rect" coords="106,180,177,211" href="{{store direct_url="electronics/cameras/digital-cameras.html?manufacturer=34"}}">\r\n</map>\r\n\r\n\r\n<map name="Map3">\r\n  <area shape="rect" coords="15,155,58,179" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=79"}}">\r\n  <area shape="rect" coords="114,152,159,180" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=76"}}">\r\n  <area shape="rect" coords="13,178,67,205" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=77"}}">\r\n  <area shape="rect" coords="114,180,178,205" href="{{store direct_url="electronics/computers/laptops?computer_manufacturers=74"}}">\r\n  <area shape="rect" coords="13,310,154,434" href="{{store direct_url="electronics/computers/laptops/acer-ferrari-3200-notebook-computer-pc.html"}}">\r\n  <area shape="rect" coords="167,310,279,440" href="{{store direct_url="electronics/computers/laptops/toshiba-satellite-a135-s4527-155-4-notebook-pc-intel-pentium-dual-core-processor-t2080-1-gb-ram-120-gb-hard-drive-supermulti-dvd-drive-vista-premium.html"}}">\r\n</map>', '2007-08-28 14:33:10', '2008-08-08 13:08:37', 1),
 (4, 'Cellphones Landing', 'cellphones-landing', '<a href="{{store direct_url="electronics/cell-phones/sony-ericsson-w810i.html"}}"><img src="{{skin url=''images/media/cell_phone_landing_banner1.jpg}}" alt=""/></a>', '2007-08-28 14:59:44', '2008-08-08 13:07:55', 1),
-(5, 'Footer Links', 'footer_links', '<!--\r\n<ul>\r\n<li><a href="{{store direct_url="about-magento-demo-store"}}">About Us</a></li>\r\n<li class="last"><a href="{{store direct_url="customer-service"}}">Customer Service</a></li>\r\n</ul>\r\n-->', '2007-08-30 14:01:52', '2009-09-20 13:13:33', 1),
+(5, 'Footer Links', 'footer_links', '<!--\r\n<li><a href="{{store direct_url="about-magento-demo-store"}}">About Us</a></li>\r\n<li><a href="{{store direct_url="customer-service"}}">Customer Service</a></li>\r\n-->\r\n<ul>\r\n<li class="last"><a href="{{store direct_url="partenaires"}}">Partenaires</a></li>\r\n</ul>\r\n', '2007-08-30 14:01:52', '2009-11-02 23:26:59', 1),
 (6, 'Menu', 'menu', '<li><a href="{{store url=""}}magasin"><span>MAGASIN</span></a></li>\r\n<li><a href="{{store url=""}}creation"><span>CR&Eacute;ATION</span></a></li>\r\n<li><a href="{{store url=""}}contacts"><span>CONTACT</span></a></li>', '2009-09-13 08:45:54', '2009-10-22 21:21:18', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_block_store`
+-- Structure de la table `cms_block_store`
 --
 
+DROP TABLE IF EXISTS `cms_block_store`;
 CREATE TABLE IF NOT EXISTS `cms_block_store` (
   `block_id` smallint(6) NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`block_id`,`store_id`),
+  PRIMARY KEY (`block_id`,`store_id`),
   KEY `FK_CMS_BLOCK_STORE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Blocks to Stores';
 
 --
--- Dumping data for table `cms_block_store`
+-- Contenu de la table `cms_block_store`
 --
 
 INSERT INTO `cms_block_store` (`block_id`, `store_id`) VALUES
@@ -10761,31 +10841,32 @@ INSERT INTO `cms_block_store` (`block_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_page`
+-- Structure de la table `cms_page`
 --
 
+DROP TABLE IF EXISTS `cms_page`;
 CREATE TABLE IF NOT EXISTS `cms_page` (
-  `page_id` smallint(6) NOT NULL auto_increment,
-  `title` varchar(255) NOT NULL default '',
-  `root_template` varchar(255) NOT NULL default '',
+  `page_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `root_template` varchar(255) NOT NULL DEFAULT '',
   `meta_keywords` text NOT NULL,
   `meta_description` text NOT NULL,
-  `identifier` varchar(100) NOT NULL default '',
+  `identifier` varchar(100) NOT NULL DEFAULT '',
   `content` text,
-  `creation_time` datetime default NULL,
-  `update_time` datetime default NULL,
-  `is_active` tinyint(1) NOT NULL default '1',
-  `sort_order` tinyint(4) NOT NULL default '0',
+  `creation_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `sort_order` tinyint(4) NOT NULL DEFAULT '0',
   `layout_update_xml` text,
-  `custom_theme` varchar(100) default NULL,
-  `custom_theme_from` date default NULL,
-  `custom_theme_to` date default NULL,
-  PRIMARY KEY  (`page_id`),
+  `custom_theme` varchar(100) DEFAULT NULL,
+  `custom_theme_from` date DEFAULT NULL,
+  `custom_theme_to` date DEFAULT NULL,
+  PRIMARY KEY (`page_id`),
   KEY `identifier` (`identifier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='CMS pages' AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `cms_page`
+-- Contenu de la table `cms_page`
 --
 
 INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `meta_description`, `identifier`, `content`, `creation_time`, `update_time`, `is_active`, `sort_order`, `layout_update_xml`, `custom_theme`, `custom_theme_from`, `custom_theme_to`) VALUES
@@ -10795,27 +10876,29 @@ INSERT INTO `cms_page` (`page_id`, `title`, `root_template`, `meta_keywords`, `m
 (4, 'Customer Service', 'three_columns', '', '', 'customer-service', '<div class="page-head">\r\n<h3>Customer Service</h3>\r\n</div>\r\n<ul class="disc" style="margin-bottom:15px;">\r\n<li><a href="#answer1">Shipping & Delivery</a></li>\r\n<li><a href="#answer2">Privacy & Security</a></li>\r\n<li><a href="#answer3">Returns & Replacements</a></li>\r\n<li><a href="#answer4">Ordering</a></li>\r\n<li><a href="#answer5">Payment, Pricing & Promotions</a></li>\r\n<li><a href="#answer6">Viewing Orders</a></li>\r\n<li><a href="#answer7">Updating Account Information</a></li>\r\n</ul>\r\n<dl>\r\n<dt id="answer1">Shipping & Delivery</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer2">Privacy & Security</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer3">Returns & Replacements</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer4">Ordering</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer5">Payment, Pricing & Promotions</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer6">Viewing Orders</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n<dt id="answer7">Updating Account Information</dt>\r\n<dd style="margin-bottom:10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi luctus. Duis lobortis. Nulla nec velit. Mauris pulvinar erat non massa. Suspendisse tortor turpis, porta nec, tempus vitae, iaculis semper, pede. Cras vel libero id lectus rhoncus porta. Suspendisse convallis felis ac enim. Vivamus tortor nisl, lobortis in, faucibus et, tempus at, dui. Nunc risus. Proin scelerisque augue. Nam ullamcorper. Phasellus id massa. Pellentesque nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc augue. Aenean sed justo non leo vehicula laoreet. Praesent ipsum libero, auctor ac, tempus nec, tempor nec, justo.</dd>\r\n</dl>', '2007-08-30 14:02:20', '2007-08-30 14:03:37', 1, 0, NULL, NULL, NULL, NULL),
 (5, 'Home page', 'one_column', '', '', 'home.old1', '<!-- this homepage can be used for modern theme  -->\r\n{{block type="core/template" template="sample/home.phtml"}}', '2008-04-16 14:51:52', '2009-09-06 13:58:07', 0, 0, '<!--<reference name="content">\r\n<block type="catalog/product_new" name="home.catalog.product.new" alias="product_new" template="catalog/product/new.phtml" after="cms_page"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_viewed" name="home.reports.product.viewed" alias="product_viewed" template="reports/home_product_viewed.phtml" after="product_new"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n<block type="reports/product_compared" name="home.reports.product.compared" template="reports/home_product_compared.phtml" after="product_viewed"><action method="addPriceBlockType"><type>bundle</type><block>bundle/catalog_product_price</block><template>bundle/catalog/product/price.phtml</template></action></block>\r\n</reference><reference name="right">\r\n<action method="unsetChild"><alias>right.reports.product.viewed</alias></action>\r\n<action method="unsetChild"><alias>right.reports.product.compared</alias></action>\r\n</reference>-->', '', NULL, NULL),
 (6, 'Enable Cookies', 'one_column', '', '', 'enable-cookies', '<div class="std">\r\n    <ul class="messages">\r\n        <li class="notice-msg">\r\n            <ul>\r\n                <li>Please enable cookies in your web browser to continue.</li>\r\n            </ul>\r\n        </li>\r\n    </ul>\r\n    <div class="page-head">\r\n        <h3><a name="top"></a>What are Cookies?</h3>\r\n    </div>\r\n    <p>Cookies are short pieces of data that are sent to your computer when you visit a website. On later visits, this data is then returned to that website. Cookies allow us to recognize you automatically whenever you visit our site so that we can personalize your experience and provide you with better service. We also use cookies (and similar browser data, such as Flash cookies) for fraud prevention and other purposes. If your web browser is set to refuse cookies from our website, you will not be able to complete a purchase or take advantage of certain features of our website, such as storing items in your Shopping Cart or receiving personalized recommendations. As a result, we strongly encourage you to configure your web browser to accept cookies from our website.</p>\r\n    <h3>Enabling Cookies</h3>\r\n    <ul>\r\n        <li><a href="#ie7">Internet Explorer 7.x</a></li>\r\n        <li><a href="#ie6">Internet Explorer 6.x</a></li>\r\n        <li><a href="#firefox">Mozilla/Firefox</a></li>\r\n        <li><a href="#opera">Opera 7.x</a></li>\r\n    </ul>\r\n    <h4><a name="ie7"></a>Internet Explorer 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Start Internet Explorer</p>\r\n        </li>\r\n        <li>\r\n            <p>Under the <strong>Tools</strong> menu, click <strong>Internet Options</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Privacy</strong> tab</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-2.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Advanced</strong> button</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-3.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Put a check mark in the box for <strong>Override Automatic Cookie Handling</strong>, put another check mark in the <strong>Always accept session cookies </strong>box</p>\r\n            <p><img src="{{skin url="images/cookies/ie7-4.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-5.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie7-6.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Restart Internet Explore</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="ie6"></a>Internet Explorer 6.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Select <strong>Internet Options</strong> from the Tools menu</p>\r\n            <p><img src="{{skin url="images/cookies/ie6-1.gif"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> tab</p>\r\n        </li>\r\n        <li>\r\n            <p>Click the <strong>Default</strong> button (or manually slide the bar down to <strong>Medium</strong>) under <strong>Settings</strong>. Click <strong>OK</strong></p>\r\n            <p><img src="{{skin url="images/cookies/ie6-2.gif"}}" alt="" /></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="firefox"></a>Mozilla/Firefox</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong>-menu in Mozilla</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Options...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection in the left part of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/firefox.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>Expand the <strong>Cookies</strong> section</p>\r\n        </li>\r\n        <li>\r\n            <p>Check the <strong>Enable cookies</strong> and <strong>Accept cookies normally</strong> checkboxes</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong>.</p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n    <h4><a name="opera"></a>Opera 7.x</h4>\r\n    <ol>\r\n        <li>\r\n            <p>Click on the <strong>Tools</strong> menu in Opera</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Preferences...</strong> item in the menu - a new window open</p>\r\n        </li>\r\n        <li>\r\n            <p>Click on the <strong>Privacy</strong> selection near the bottom left of the window. (See image below)</p>\r\n            <p><img src="{{skin url="images/cookies/opera.png"}}" alt="" /></p>\r\n        </li>\r\n        <li>\r\n            <p>The <strong>Enable cookies</strong> checkbox must be checked, and <strong>Accept all cookies</strong> should be selected in the &quot;<strong>Normal cookies</strong>&quot; drop-down</p>\r\n        </li>\r\n        <li>\r\n            <p>Save changes by clicking <strong>Ok</strong></p>\r\n        </li>\r\n    </ol>\r\n    <p class="a-top"><a href="#top">Back to Top</a></p>\r\n</div>\r\n', '2009-09-02 23:16:57', '2009-09-02 23:16:57', 1, 0, NULL, NULL, NULL, NULL),
-(7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="198,337,388,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''e-boutique''}}"/>\r\n	<area shape="rect" \r\n	coords="396,337,586,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''contacts''}}"/>\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-10-22 21:15:29', 1, 0, '', '', NULL, NULL),
+(7, 'Cabrera Bijoutier Joaillier', 'one_column', '', '', 'home', '<img alt="home background" src="{{skin url=''images/media/home_background.jpg''}}" usemap="#homemap" style="border:0" />\r\n\r\n<map id="homemap" name="homemap">\r\n	<area shape="rect" \r\n	coords="200,337,396,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''e-boutique''}}"/>\r\n	<area shape="rect" \r\n	coords="402,337,593,399" \r\n	alt="Catalogue"\r\n	href="{{store url=''contacts''}}"/>\r\n</map>\r\n', '2009-09-06 13:42:45', '2009-11-02 22:31:22', 1, 0, '', '', NULL, NULL),
 (8, 'Magasin', 'one_column', '', '', 'magasin', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	text-align: left;\r\n	margin-right: 5px;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/magasin.jpg''}}'' alt=''Photo de la boutique''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Le magasin Cabrera, Joaillerie/Bijouterie</h1>\r\n	<span id=''text-left-col''>\r\nJ’ai découvert le métier à l’âge de 13 ans et j’ai immédiatement compris que j’en ferai ma profession.<br>\r\n<br>\r\nAprès mon apprentissage, j’ai changé d’employeur en 1979 pour parfaire ma formation et découvrir de nouvelles méthodes et c’est en 1989 que je me suis installé comme Artisan Bijoutier Joaillier.<br>\r\n<br>\r\nDepuis l’année dernière j’ai décidé de faire profiter mes clients d’une opportunité qui m’était donnée de commercialiser des bijoux Argent à bas prix.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nJ’ai donc mis en place un système promotionnel que j’ai intitulé « Un bruit qui court » qui fonctionne de la manière suivante : sur 2 articles achetés, le moins cher bénéficie d’une réduction de 50%.<br>\r\n<br>\r\nC’est donc en tant que professionnel et fort d’une grande expérience dans le métier que je me présente à vous.\r\n<br><br>\r\nEn espérant vous compter rapidement dans ma clientèle,\r\n<br><br>\r\ncordialement vôtre,\r\n<br><br>\r\nPierre CABRERA	</span>\r\n</div>\r\n\r\n</div>', '2009-09-20 14:16:42', '2009-11-01 18:28:56', 1, 0, '', '', NULL, NULL),
 (9, 'Test', 'one_column', '', '', 'test', '<style type="text/css">\r\n\r\ndiv.container\r\n{\r\n/*position: relative;*/\r\n}\r\n\r\ndiv.menu\r\n{\r\nz-index: 2;\r\n}\r\n\r\ndiv.quick-access-background\r\n{\r\n/*position: absolute;*/\r\nposition: relative;\r\ntop: -21px;\r\nz-index: 1;\r\n}\r\n</style>\r\n\r\n<div class=''container''>\r\n\r\n<div class=''menu''>\r\ntototo | tatatat | beep\r\n</div>\r\n', '2009-09-27 14:44:53', '2009-09-27 14:44:53', 1, 0, '', '', NULL, NULL),
 (10, 'E-Boutique', 'two_columns_right', '', '', 'e-boutique', '{{block type="catalog/product_list" category_id="3" template="catalog/product/list.phtml"}}', '2009-10-04 13:53:44', '2009-10-04 15:37:43', 1, 0, '', '', NULL, NULL),
-(11, 'Création', 'one_column', '', '', 'creation', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	text-align: left;\r\n	margin-right: 5px;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#buttons\r\n{\r\n	clear: both;\r\n	float: left;\r\n	width: 500px;\r\n	text-align: left;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/creation.jpg''}}'' alt=''Devenez créateur de vos bijoux''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Devenez créateur de vos bijoux</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n<div id=''buttons''>\r\n	<a href=''{{store url=''e-boutique''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_e-boutique.png''}}'' alt="Plus de choix sur l''e-boutique"/>\r\n	</a>\r\n	<a href=''{{store url=''contacts''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_conseil.png''}}'' alt="Besoin d''un conseil ?"/>\r\n	</a>\r\n</div>\r\n\r\n\r\n</div>', '2009-10-05 19:35:02', '2009-10-19 21:04:11', 1, 0, '', '', NULL, NULL);
+(11, 'Création', 'one_column', '', '', 'creation', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #141414;\r\n}\r\n\r\n#left-col\r\n{\r\n	float: left;\r\n	/*width: 40%;*/\r\n}\r\n\r\n#text\r\n{\r\n	float: right;\r\n	text-align: left;\r\n	margin-right: 5px;\r\n	width: 60%;\r\n}\r\n#text-left-col\r\n{\r\n	float: left;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#text-right-col\r\n{\r\n	float: right;\r\n	text-align: justify;\r\n	width: 48%;\r\n}\r\n#buttons\r\n{\r\n	clear: both;\r\n	float: left;\r\n	width: 500px;\r\n	text-align: left;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''left-col''>\r\n	<img src=''{{skin url=''images/media/creation.jpg''}}'' alt=''Devenez créateur de vos bijoux''/>\r\n</div>\r\n\r\n<div id=''text''>\r\n	<h1>Devenez créateur de vos bijoux</h1>\r\n	<span id=''text-left-col''>\r\nHaec subinde Constantius audiens et quaedam referente Thalassio doctus, quem eum odisse iam conpererat lege communi, scribens ad Caesarem blandius adiumenta paulatim illi subtraxit, sollicitari se simulans ne, uti est militare otium fere tumultuosum, in eius perniciem conspiraret, solisque scholis iussit esse contentum palatinis et protectorum cum Scutariis et Gentilibus, et mandabat Domitiano, ex comite largitionum, praefecto ut cum in Syriam venerit, Gallum, quem crebro acciverat, ad Italiam properare blande hortaretur et verecunde.\r\n	</span>\r\n	<span id=''text-right-col''>\r\nAbusus enim multitudine hominum, quam tranquillis in rebus diutius rexit, ex agrestibus habitaculis urbes construxit multis opibus firmas et viribus, quarum ad praesens pleraeque licet Graecis nominibus appellentur, quae isdem ad arbitrium inposita sunt conditoris, primigenia tamen nomina non amittunt, quae eis Assyria lingua institutores veteres indiderunt.\r\n	</span>\r\n</div>\r\n\r\n<div id=''buttons''>\r\n	<a href=''{{store url=''e-boutique''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_e-boutique.png''}}'' alt="Plus de choix sur l''e-boutique"/>\r\n	</a>\r\n	<a href=''{{store url=''contacts''}}''>\r\n		<img class=''button_span'' src=''{{skin url=''images/btn_conseil.png''}}'' alt="Besoin d''un conseil ?"/>\r\n	</a>\r\n</div>\r\n\r\n\r\n</div>', '2009-10-05 19:35:02', '2009-10-19 21:04:11', 1, 0, '', '', NULL, NULL),
+(12, 'Partenaires', 'one_column', '', '', 'partenaires', '<style type="text/css">\r\n\r\n#content\r\n{\r\n	background-color: #333333;\r\n}\r\n\r\n#text\r\n{\r\n	/*float: right;\r\n	margin-right: 5px;\r\n	width: 60%;*/\r\n	background-image: url("{{skin url=''images/fleurs.png''}}");\r\n	background-repeat: no-repeat;\r\n	background-position: bottom right;\r\n	text-align: left;\r\n}\r\n\r\n#imagedefond\r\n{\r\n	float: right;\r\n	margin-right: 5px;\r\n	width: 40%;\r\n}\r\n\r\n</style>\r\n\r\n<div id=''content''>\r\n\r\n<div id=''text''>\r\n	<h1>Nos partenaires</h1>\r\n	<span id=''text''>\r\n		<ul>\r\n		<li><a href="http://www.grospiron.fr"><img alt="GROSPIRON" src="{{skin url=''images/media/logo-grospiron.jpg''}}"/></a></li>\r\n		<li><a href="http://www.schmittgall.fr/"><img alt="SCHMITTGALL" src={{skin url=''images/media/logo-schmittgall.jpg''}} /></a></li>\r\n		<li><a href="http://www.frediani.fr/"><img alt="FREDIANI" src={{skin url=''images/media/logo-frediani.jpg''}} /></a></li>\r\n		</ul>\r\n	</span>\r\n	<div id="imagedefond">\r\n		<!--img alt="fleurs" src="{{skin url=''images/fleurs.png''}}" /-->\r\n	</div>\r\n</div>\r\n</div>', '2009-11-02 23:22:12', '2009-11-03 00:06:24', 1, 0, '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cms_page_store`
+-- Structure de la table `cms_page_store`
 --
 
+DROP TABLE IF EXISTS `cms_page_store`;
 CREATE TABLE IF NOT EXISTS `cms_page_store` (
   `page_id` smallint(6) NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`page_id`,`store_id`),
+  PRIMARY KEY (`page_id`,`store_id`),
   KEY `FK_CMS_PAGE_STORE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='CMS Pages to Stores';
 
 --
--- Dumping data for table `cms_page_store`
+-- Contenu de la table `cms_page_store`
 --
 
 INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
@@ -10829,6 +10912,7 @@ INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
 (9, 0),
 (10, 0),
 (11, 0),
+(12, 0),
 (2, 1),
 (2, 2),
 (2, 3);
@@ -10836,21 +10920,22 @@ INSERT INTO `cms_page_store` (`page_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_config_data`
+-- Structure de la table `core_config_data`
 --
 
+DROP TABLE IF EXISTS `core_config_data`;
 CREATE TABLE IF NOT EXISTS `core_config_data` (
-  `config_id` int(10) unsigned NOT NULL auto_increment,
-  `scope` enum('default','websites','stores','config') NOT NULL default 'default',
-  `scope_id` int(11) NOT NULL default '0',
-  `path` varchar(255) NOT NULL default 'general',
+  `config_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `scope` enum('default','websites','stores','config') NOT NULL DEFAULT 'default',
+  `scope_id` int(11) NOT NULL DEFAULT '0',
+  `path` varchar(255) NOT NULL DEFAULT 'general',
   `value` text NOT NULL,
-  PRIMARY KEY  (`config_id`),
+  PRIMARY KEY (`config_id`),
   UNIQUE KEY `config_scope` (`scope`,`scope_id`,`path`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=342 ;
 
 --
--- Dumping data for table `core_config_data`
+-- Contenu de la table `core_config_data`
 --
 
 INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value`) VALUES
@@ -10862,7 +10947,7 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 (6, 'default', 0, 'currency/options/default', 'EUR'),
 (7, 'default', 0, 'currency/options/allow', 'EUR'),
 (8, 'default', 0, 'web/url/use_store', '0'),
-(9, 'default', 0, 'web/seo/use_rewrites', '1'),
+(9, 'default', 0, 'web/seo/use_rewrites', '0'),
 (10, 'default', 0, 'web/unsecure/base_link_url', '{{unsecure_base_url}}'),
 (11, 'default', 0, 'web/unsecure/base_skin_url', '{{unsecure_base_url}}skin/'),
 (12, 'default', 0, 'web/unsecure/base_media_url', '{{unsecure_base_url}}media/'),
@@ -11199,48 +11284,50 @@ INSERT INTO `core_config_data` (`config_id`, `scope`, `scope_id`, `path`, `value
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_email_template`
+-- Structure de la table `core_email_template`
 --
 
+DROP TABLE IF EXISTS `core_email_template`;
 CREATE TABLE IF NOT EXISTS `core_email_template` (
-  `template_id` int(7) unsigned NOT NULL auto_increment,
-  `template_code` varchar(150) default NULL,
+  `template_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `template_code` varchar(150) DEFAULT NULL,
   `template_text` text,
-  `template_type` int(3) unsigned default NULL,
-  `template_subject` varchar(200) default NULL,
-  `template_sender_name` varchar(200) default NULL,
-  `template_sender_email` varchar(200) default NULL,
-  `added_at` datetime default NULL,
-  `modified_at` datetime default NULL,
-  PRIMARY KEY  (`template_id`),
+  `template_type` int(3) unsigned DEFAULT NULL,
+  `template_subject` varchar(200) DEFAULT NULL,
+  `template_sender_name` varchar(200) DEFAULT NULL,
+  `template_sender_email` varchar(200) DEFAULT NULL,
+  `added_at` datetime DEFAULT NULL,
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`template_id`),
   UNIQUE KEY `template_code` (`template_code`),
   KEY `added_at` (`added_at`),
   KEY `modified_at` (`modified_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Email templates' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `core_email_template`
+-- Contenu de la table `core_email_template`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_flag`
+-- Structure de la table `core_flag`
 --
 
+DROP TABLE IF EXISTS `core_flag`;
 CREATE TABLE IF NOT EXISTS `core_flag` (
-  `flag_id` smallint(5) unsigned NOT NULL auto_increment,
+  `flag_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
   `flag_code` varchar(255) NOT NULL,
-  `state` smallint(5) unsigned NOT NULL default '0',
+  `state` smallint(5) unsigned NOT NULL DEFAULT '0',
   `flag_data` text,
   `last_update` datetime NOT NULL,
-  PRIMARY KEY  (`flag_id`),
+  PRIMARY KEY (`flag_id`),
   KEY `last_update` (`last_update`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `core_flag`
+-- Contenu de la table `core_flag`
 --
 
 INSERT INTO `core_flag` (`flag_id`, `flag_code`, `state`, `flag_data`, `last_update`) VALUES
@@ -11249,58 +11336,61 @@ INSERT INTO `core_flag` (`flag_id`, `flag_code`, `state`, `flag_data`, `last_upd
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_layout_link`
+-- Structure de la table `core_layout_link`
 --
 
+DROP TABLE IF EXISTS `core_layout_link`;
 CREATE TABLE IF NOT EXISTS `core_layout_link` (
-  `layout_link_id` int(10) unsigned NOT NULL auto_increment,
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `package` varchar(64) NOT NULL default '',
-  `theme` varchar(64) NOT NULL default '',
-  `layout_update_id` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`layout_link_id`),
+  `layout_link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `package` varchar(64) NOT NULL DEFAULT '',
+  `theme` varchar(64) NOT NULL DEFAULT '',
+  `layout_update_id` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`layout_link_id`),
   UNIQUE KEY `store_id` (`store_id`,`package`,`theme`,`layout_update_id`),
   KEY `FK_core_layout_link_update` (`layout_update_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `core_layout_link`
+-- Contenu de la table `core_layout_link`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_layout_update`
+-- Structure de la table `core_layout_update`
 --
 
+DROP TABLE IF EXISTS `core_layout_update`;
 CREATE TABLE IF NOT EXISTS `core_layout_update` (
-  `layout_update_id` int(10) unsigned NOT NULL auto_increment,
-  `handle` varchar(255) default NULL,
+  `layout_update_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `handle` varchar(255) DEFAULT NULL,
   `xml` text,
-  PRIMARY KEY  (`layout_update_id`),
+  PRIMARY KEY (`layout_update_id`),
   KEY `handle` (`handle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `core_layout_update`
+-- Contenu de la table `core_layout_update`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_resource`
+-- Structure de la table `core_resource`
 --
 
+DROP TABLE IF EXISTS `core_resource`;
 CREATE TABLE IF NOT EXISTS `core_resource` (
-  `code` varchar(50) NOT NULL default '',
-  `version` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`code`)
+  `code` varchar(50) NOT NULL DEFAULT '',
+  `version` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Resource version registry';
 
 --
--- Dumping data for table `core_resource`
+-- Contenu de la table `core_resource`
 --
 
 INSERT INTO `core_resource` (`code`, `version`) VALUES
@@ -11366,38 +11456,40 @@ INSERT INTO `core_resource` (`code`, `version`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_session`
+-- Structure de la table `core_session`
 --
 
+DROP TABLE IF EXISTS `core_session`;
 CREATE TABLE IF NOT EXISTS `core_session` (
-  `session_id` varchar(255) NOT NULL default '',
-  `website_id` smallint(5) unsigned default NULL,
-  `session_expires` int(10) unsigned NOT NULL default '0',
+  `session_id` varchar(255) NOT NULL DEFAULT '',
+  `website_id` smallint(5) unsigned DEFAULT NULL,
+  `session_expires` int(10) unsigned NOT NULL DEFAULT '0',
   `session_data` mediumblob NOT NULL,
-  PRIMARY KEY  (`session_id`),
+  PRIMARY KEY (`session_id`),
   KEY `FK_SESSION_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Session data store';
 
 --
--- Dumping data for table `core_session`
+-- Contenu de la table `core_session`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_store`
+-- Structure de la table `core_store`
 --
 
+DROP TABLE IF EXISTS `core_store`;
 CREATE TABLE IF NOT EXISTS `core_store` (
-  `store_id` smallint(5) unsigned NOT NULL auto_increment,
-  `code` varchar(32) NOT NULL default '',
-  `website_id` smallint(5) unsigned default '0',
+  `store_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL DEFAULT '',
+  `website_id` smallint(5) unsigned DEFAULT '0',
   `group_id` smallint(5) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  `sort_order` smallint(5) unsigned NOT NULL default '0',
-  `is_active` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`store_id`),
+  `sort_order` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`store_id`),
   UNIQUE KEY `code` (`code`),
   KEY `FK_STORE_WEBSITE` (`website_id`),
   KEY `is_active` (`is_active`,`sort_order`),
@@ -11405,7 +11497,7 @@ CREATE TABLE IF NOT EXISTS `core_store` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Stores' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `core_store`
+-- Contenu de la table `core_store`
 --
 
 INSERT INTO `core_store` (`store_id`, `code`, `website_id`, `group_id`, `name`, `sort_order`, `is_active`) VALUES
@@ -11417,22 +11509,23 @@ INSERT INTO `core_store` (`store_id`, `code`, `website_id`, `group_id`, `name`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_store_group`
+-- Structure de la table `core_store_group`
 --
 
+DROP TABLE IF EXISTS `core_store_group`;
 CREATE TABLE IF NOT EXISTS `core_store_group` (
-  `group_id` smallint(5) unsigned NOT NULL auto_increment,
-  `website_id` smallint(5) unsigned NOT NULL default '0',
+  `group_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
-  `root_category_id` int(10) unsigned NOT NULL default '0',
-  `default_store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`group_id`),
+  `root_category_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `default_store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`group_id`),
   KEY `FK_STORE_GROUP_WEBSITE` (`website_id`),
   KEY `default_store_id` (`default_store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `core_store_group`
+-- Contenu de la table `core_store_group`
 --
 
 INSERT INTO `core_store_group` (`group_id`, `website_id`, `name`, `root_category_id`, `default_store_id`) VALUES
@@ -11442,22 +11535,23 @@ INSERT INTO `core_store_group` (`group_id`, `website_id`, `name`, `root_category
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_translate`
+-- Structure de la table `core_translate`
 --
 
+DROP TABLE IF EXISTS `core_translate`;
 CREATE TABLE IF NOT EXISTS `core_translate` (
-  `key_id` int(10) unsigned NOT NULL auto_increment,
-  `string` varchar(255) NOT NULL default '',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `translate` varchar(255) NOT NULL default '',
-  `locale` varchar(20) NOT NULL default 'en_US',
-  PRIMARY KEY  (`key_id`),
+  `key_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `string` varchar(255) NOT NULL DEFAULT '',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `translate` varchar(255) NOT NULL DEFAULT '',
+  `locale` varchar(20) NOT NULL DEFAULT 'en_US',
+  PRIMARY KEY (`key_id`),
   UNIQUE KEY `IDX_CODE` (`store_id`,`locale`,`string`),
   KEY `FK_CORE_TRANSLATE_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Translation data' AUTO_INCREMENT=47 ;
 
 --
--- Dumping data for table `core_translate`
+-- Contenu de la table `core_translate`
 --
 
 INSERT INTO `core_translate` (`key_id`, `string`, `store_id`, `translate`, `locale`) VALUES
@@ -11511,21 +11605,22 @@ INSERT INTO `core_translate` (`key_id`, `string`, `store_id`, `translate`, `loca
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_url_rewrite`
+-- Structure de la table `core_url_rewrite`
 --
 
+DROP TABLE IF EXISTS `core_url_rewrite`;
 CREATE TABLE IF NOT EXISTS `core_url_rewrite` (
-  `url_rewrite_id` int(10) unsigned NOT NULL auto_increment,
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `category_id` int(10) unsigned default NULL,
-  `product_id` int(10) unsigned default NULL,
-  `id_path` varchar(255) NOT NULL default '',
-  `request_path` varchar(255) NOT NULL default '',
-  `target_path` varchar(255) NOT NULL default '',
-  `is_system` tinyint(1) unsigned default '1',
-  `options` varchar(255) NOT NULL default '',
-  `description` varchar(255) default NULL,
-  PRIMARY KEY  (`url_rewrite_id`),
+  `url_rewrite_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `category_id` int(10) unsigned DEFAULT NULL,
+  `product_id` int(10) unsigned DEFAULT NULL,
+  `id_path` varchar(255) NOT NULL DEFAULT '',
+  `request_path` varchar(255) NOT NULL DEFAULT '',
+  `target_path` varchar(255) NOT NULL DEFAULT '',
+  `is_system` tinyint(1) unsigned DEFAULT '1',
+  `options` varchar(255) NOT NULL DEFAULT '',
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`url_rewrite_id`),
   UNIQUE KEY `UNQ_REQUEST_PATH` (`store_id`,`request_path`),
   UNIQUE KEY `UNQ_PATH` (`store_id`,`id_path`,`is_system`),
   KEY `FK_CORE_URL_REWRITE_STORE` (`store_id`),
@@ -11537,7 +11632,7 @@ CREATE TABLE IF NOT EXISTS `core_url_rewrite` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `core_url_rewrite`
+-- Contenu de la table `core_url_rewrite`
 --
 
 INSERT INTO `core_url_rewrite` (`url_rewrite_id`, `store_id`, `category_id`, `product_id`, `id_path`, `request_path`, `target_path`, `is_system`, `options`, `description`) VALUES
@@ -11554,24 +11649,25 @@ INSERT INTO `core_url_rewrite` (`url_rewrite_id`, `store_id`, `category_id`, `pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `core_website`
+-- Structure de la table `core_website`
 --
 
+DROP TABLE IF EXISTS `core_website`;
 CREATE TABLE IF NOT EXISTS `core_website` (
-  `website_id` smallint(5) unsigned NOT NULL auto_increment,
-  `code` varchar(32) NOT NULL default '',
-  `name` varchar(64) NOT NULL default '',
-  `sort_order` smallint(5) unsigned NOT NULL default '0',
-  `default_group_id` smallint(5) unsigned NOT NULL default '0',
-  `is_default` tinyint(1) unsigned default '0',
-  PRIMARY KEY  (`website_id`),
+  `website_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `code` varchar(32) NOT NULL DEFAULT '',
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `sort_order` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `default_group_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `is_default` tinyint(1) unsigned DEFAULT '0',
+  PRIMARY KEY (`website_id`),
   UNIQUE KEY `code` (`code`),
   KEY `sort_order` (`sort_order`),
   KEY `default_group_id` (`default_group_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Websites' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `core_website`
+-- Contenu de la table `core_website`
 --
 
 INSERT INTO `core_website` (`website_id`, `code`, `name`, `sort_order`, `default_group_id`, `is_default`) VALUES
@@ -11581,65 +11677,68 @@ INSERT INTO `core_website` (`website_id`, `code`, `name`, `sort_order`, `default
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cron_schedule`
+-- Structure de la table `cron_schedule`
 --
 
+DROP TABLE IF EXISTS `cron_schedule`;
 CREATE TABLE IF NOT EXISTS `cron_schedule` (
-  `schedule_id` int(10) unsigned NOT NULL auto_increment,
-  `job_code` varchar(255) NOT NULL default '0',
-  `status` enum('pending','running','success','missed','error') NOT NULL default 'pending',
+  `schedule_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `job_code` varchar(255) NOT NULL DEFAULT '0',
+  `status` enum('pending','running','success','missed','error') NOT NULL DEFAULT 'pending',
   `messages` text,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `scheduled_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `executed_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `finished_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`schedule_id`),
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `scheduled_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `executed_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `finished_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`schedule_id`),
   KEY `task_name` (`job_code`),
   KEY `scheduled_at` (`scheduled_at`,`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `cron_schedule`
+-- Contenu de la table `cron_schedule`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity`
+-- Structure de la table `customer_address_entity`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_id` varchar(50) NOT NULL default '',
-  `parent_id` int(10) unsigned default NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`entity_id`),
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_id` varchar(50) NOT NULL DEFAULT '',
+  `parent_id` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`entity_id`),
   KEY `FK_CUSTOMER_ADDRESS_CUSTOMER_ID` (`parent_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Customer Address Entityies' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity`
+-- Contenu de la table `customer_address_entity`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity_datetime`
+-- Structure de la table `customer_address_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_ADDRESS_DATETIME_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_ADDRESS_DATETIME_ATTRIBUTE` (`attribute_id`),
@@ -11648,23 +11747,24 @@ CREATE TABLE IF NOT EXISTS `customer_address_entity_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity_datetime`
+-- Contenu de la table `customer_address_entity_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity_decimal`
+-- Structure de la table `customer_address_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_ADDRESS_DECIMAL_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_ADDRESS_DECIMAL_ATTRIBUTE` (`attribute_id`),
@@ -11673,23 +11773,24 @@ CREATE TABLE IF NOT EXISTS `customer_address_entity_decimal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity_decimal`
+-- Contenu de la table `customer_address_entity_decimal`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity_int`
+-- Structure de la table `customer_address_entity_int`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity_int`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_ADDRESS_INT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_ADDRESS_INT_ATTRIBUTE` (`attribute_id`),
@@ -11698,23 +11799,24 @@ CREATE TABLE IF NOT EXISTS `customer_address_entity_int` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity_int`
+-- Contenu de la table `customer_address_entity_int`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity_text`
+-- Structure de la table `customer_address_entity_text`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity_text`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_ADDRESS_TEXT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_ADDRESS_TEXT_ATTRIBUTE` (`attribute_id`),
@@ -11722,23 +11824,24 @@ CREATE TABLE IF NOT EXISTS `customer_address_entity_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity_text`
+-- Contenu de la table `customer_address_entity_text`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_address_entity_varchar`
+-- Structure de la table `customer_address_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `customer_address_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `customer_address_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_ADDRESS_VARCHAR_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_ADDRESS_VARCHAR_ATTRIBUTE` (`attribute_id`),
@@ -11747,29 +11850,30 @@ CREATE TABLE IF NOT EXISTS `customer_address_entity_varchar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_address_entity_varchar`
+-- Contenu de la table `customer_address_entity_varchar`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity`
+-- Structure de la table `customer_entity`
 --
 
+DROP TABLE IF EXISTS `customer_entity`;
 CREATE TABLE IF NOT EXISTS `customer_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `website_id` smallint(5) unsigned default NULL,
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `group_id` smallint(3) unsigned NOT NULL,
-  `increment_id` varchar(50) NOT NULL default '',
-  `store_id` smallint(5) unsigned default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`entity_id`),
+  `increment_id` varchar(50) NOT NULL DEFAULT '',
+  `store_id` smallint(5) unsigned DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`entity_id`),
   KEY `FK_CUSTOMER_ENTITY_STORE` (`store_id`),
   KEY `IDX_ENTITY_TYPE` (`entity_type_id`),
   KEY `IDX_AUTH` (`email`,`website_id`),
@@ -11777,7 +11881,7 @@ CREATE TABLE IF NOT EXISTS `customer_entity` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Customer Entityies' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `customer_entity`
+-- Contenu de la table `customer_entity`
 --
 
 INSERT INTO `customer_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `website_id`, `email`, `group_id`, `increment_id`, `store_id`, `created_at`, `updated_at`, `is_active`) VALUES
@@ -11786,16 +11890,17 @@ INSERT INTO `customer_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity_datetime`
+-- Structure de la table `customer_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `customer_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `customer_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_DATETIME_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_DATETIME_ATTRIBUTE` (`attribute_id`),
@@ -11804,23 +11909,24 @@ CREATE TABLE IF NOT EXISTS `customer_entity_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_entity_datetime`
+-- Contenu de la table `customer_entity_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity_decimal`
+-- Structure de la table `customer_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `customer_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `customer_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_DECIMAL_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_DECIMAL_ATTRIBUTE` (`attribute_id`),
@@ -11829,23 +11935,24 @@ CREATE TABLE IF NOT EXISTS `customer_entity_decimal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_entity_decimal`
+-- Contenu de la table `customer_entity_decimal`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity_int`
+-- Structure de la table `customer_entity_int`
 --
 
+DROP TABLE IF EXISTS `customer_entity_int`;
 CREATE TABLE IF NOT EXISTS `customer_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_INT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_INT_ATTRIBUTE` (`attribute_id`),
@@ -11854,7 +11961,7 @@ CREATE TABLE IF NOT EXISTS `customer_entity_int` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `customer_entity_int`
+-- Contenu de la table `customer_entity_int`
 --
 
 INSERT INTO `customer_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -11865,16 +11972,17 @@ INSERT INTO `customer_entity_int` (`value_id`, `entity_type_id`, `attribute_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity_text`
+-- Structure de la table `customer_entity_text`
 --
 
+DROP TABLE IF EXISTS `customer_entity_text`;
 CREATE TABLE IF NOT EXISTS `customer_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_TEXT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_TEXT_ATTRIBUTE` (`attribute_id`),
@@ -11882,23 +11990,24 @@ CREATE TABLE IF NOT EXISTS `customer_entity_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `customer_entity_text`
+-- Contenu de la table `customer_entity_text`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_entity_varchar`
+-- Structure de la table `customer_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `customer_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `customer_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `IDX_ATTRIBUTE_VALUE` (`entity_id`,`attribute_id`),
   KEY `FK_CUSTOMER_VARCHAR_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CUSTOMER_VARCHAR_ATTRIBUTE` (`attribute_id`),
@@ -11907,7 +12016,7 @@ CREATE TABLE IF NOT EXISTS `customer_entity_varchar` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `customer_entity_varchar`
+-- Contenu de la table `customer_entity_varchar`
 --
 
 INSERT INTO `customer_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -11922,18 +12031,19 @@ INSERT INTO `customer_entity_varchar` (`value_id`, `entity_type_id`, `attribute_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer_group`
+-- Structure de la table `customer_group`
 --
 
+DROP TABLE IF EXISTS `customer_group`;
 CREATE TABLE IF NOT EXISTS `customer_group` (
-  `customer_group_id` smallint(3) unsigned NOT NULL auto_increment,
-  `customer_group_code` varchar(32) NOT NULL default '',
-  `tax_class_id` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`customer_group_id`)
+  `customer_group_id` smallint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_group_code` varchar(32) NOT NULL DEFAULT '',
+  `tax_class_id` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`customer_group_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Customer groups' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `customer_group`
+-- Contenu de la table `customer_group`
 --
 
 INSERT INTO `customer_group` (`customer_group_id`, `customer_group_code`, `tax_class_id`) VALUES
@@ -11946,151 +12056,158 @@ INSERT INTO `customer_group` (`customer_group_id`, `customer_group_code`, `tax_c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cybermut_api_debug`
+-- Structure de la table `cybermut_api_debug`
 --
 
+DROP TABLE IF EXISTS `cybermut_api_debug`;
 CREATE TABLE IF NOT EXISTS `cybermut_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `cybermut_api_debug`
+-- Contenu de la table `cybermut_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cybersource_api_debug`
+-- Structure de la table `cybersource_api_debug`
 --
 
+DROP TABLE IF EXISTS `cybersource_api_debug`;
 CREATE TABLE IF NOT EXISTS `cybersource_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `action` varchar(255) default NULL,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `action` varchar(255) DEFAULT NULL,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `cybersource_api_debug`
+-- Contenu de la table `cybersource_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_batch`
+-- Structure de la table `dataflow_batch`
 --
 
+DROP TABLE IF EXISTS `dataflow_batch`;
 CREATE TABLE IF NOT EXISTS `dataflow_batch` (
-  `batch_id` int(10) unsigned NOT NULL auto_increment,
-  `profile_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `adapter` varchar(128) default NULL,
+  `batch_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `profile_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `adapter` varchar(128) DEFAULT NULL,
   `params` text,
-  `created_at` datetime default NULL,
-  PRIMARY KEY  (`batch_id`),
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`batch_id`),
   KEY `FK_DATAFLOW_BATCH_PROFILE` (`profile_id`),
   KEY `FK_DATAFLOW_BATCH_STORE` (`store_id`),
   KEY `IDX_CREATED_AT` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_batch`
+-- Contenu de la table `dataflow_batch`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_batch_export`
+-- Structure de la table `dataflow_batch_export`
 --
 
+DROP TABLE IF EXISTS `dataflow_batch_export`;
 CREATE TABLE IF NOT EXISTS `dataflow_batch_export` (
-  `batch_export_id` bigint(20) unsigned NOT NULL auto_increment,
-  `batch_id` int(10) unsigned NOT NULL default '0',
+  `batch_export_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `batch_id` int(10) unsigned NOT NULL DEFAULT '0',
   `batch_data` longtext,
-  `status` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`batch_export_id`),
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`batch_export_id`),
   KEY `FK_DATAFLOW_BATCH_EXPORT_BATCH` (`batch_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_batch_export`
+-- Contenu de la table `dataflow_batch_export`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_batch_import`
+-- Structure de la table `dataflow_batch_import`
 --
 
+DROP TABLE IF EXISTS `dataflow_batch_import`;
 CREATE TABLE IF NOT EXISTS `dataflow_batch_import` (
-  `batch_import_id` bigint(20) unsigned NOT NULL auto_increment,
-  `batch_id` int(10) unsigned NOT NULL default '0',
+  `batch_import_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `batch_id` int(10) unsigned NOT NULL DEFAULT '0',
   `batch_data` longtext,
-  `status` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`batch_import_id`),
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`batch_import_id`),
   KEY `FK_DATAFLOW_BATCH_IMPORT_BATCH` (`batch_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_batch_import`
+-- Contenu de la table `dataflow_batch_import`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_import_data`
+-- Structure de la table `dataflow_import_data`
 --
 
+DROP TABLE IF EXISTS `dataflow_import_data`;
 CREATE TABLE IF NOT EXISTS `dataflow_import_data` (
-  `import_id` int(11) NOT NULL auto_increment,
-  `session_id` int(11) default NULL,
-  `serial_number` int(11) NOT NULL default '0',
+  `import_id` int(11) NOT NULL AUTO_INCREMENT,
+  `session_id` int(11) DEFAULT NULL,
+  `serial_number` int(11) NOT NULL DEFAULT '0',
   `value` text,
-  `status` int(1) NOT NULL default '0',
-  PRIMARY KEY  (`import_id`),
+  `status` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`import_id`),
   KEY `FK_dataflow_import_data` (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_import_data`
+-- Contenu de la table `dataflow_import_data`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_profile`
+-- Structure de la table `dataflow_profile`
 --
 
+DROP TABLE IF EXISTS `dataflow_profile`;
 CREATE TABLE IF NOT EXISTS `dataflow_profile` (
-  `profile_id` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
+  `profile_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `actions_xml` text,
   `gui_data` text,
-  `direction` enum('import','export') default NULL,
-  `entity_type` varchar(64) NOT NULL default '',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `data_transfer` enum('file','interactive') default NULL,
-  PRIMARY KEY  (`profile_id`)
+  `direction` enum('import','export') DEFAULT NULL,
+  `entity_type` varchar(64) NOT NULL DEFAULT '',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `data_transfer` enum('file','interactive') DEFAULT NULL,
+  PRIMARY KEY (`profile_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `dataflow_profile`
+-- Contenu de la table `dataflow_profile`
 --
 
 INSERT INTO `dataflow_profile` (`profile_id`, `name`, `created_at`, `updated_at`, `actions_xml`, `gui_data`, `direction`, `entity_type`, `store_id`, `data_transfer`) VALUES
@@ -12104,82 +12221,86 @@ INSERT INTO `dataflow_profile` (`profile_id`, `name`, `created_at`, `updated_at`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_profile_history`
+-- Structure de la table `dataflow_profile_history`
 --
 
+DROP TABLE IF EXISTS `dataflow_profile_history`;
 CREATE TABLE IF NOT EXISTS `dataflow_profile_history` (
-  `history_id` int(10) unsigned NOT NULL auto_increment,
-  `profile_id` int(10) unsigned NOT NULL default '0',
-  `action_code` varchar(64) default NULL,
-  `user_id` int(10) unsigned NOT NULL default '0',
-  `performed_at` datetime default NULL,
-  PRIMARY KEY  (`history_id`),
+  `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `profile_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `action_code` varchar(64) DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `performed_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`history_id`),
   KEY `FK_dataflow_profile_history` (`profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_profile_history`
+-- Contenu de la table `dataflow_profile_history`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dataflow_session`
+-- Structure de la table `dataflow_session`
 --
 
+DROP TABLE IF EXISTS `dataflow_session`;
 CREATE TABLE IF NOT EXISTS `dataflow_session` (
-  `session_id` int(11) NOT NULL auto_increment,
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `created_date` datetime default NULL,
-  `file` varchar(255) default NULL,
-  `type` varchar(32) default NULL,
-  `direction` varchar(32) default NULL,
-  `comment` varchar(255) default NULL,
-  PRIMARY KEY  (`session_id`)
+  `created_date` datetime DEFAULT NULL,
+  `file` varchar(255) DEFAULT NULL,
+  `type` varchar(32) DEFAULT NULL,
+  `direction` varchar(32) DEFAULT NULL,
+  `comment` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `dataflow_session`
+-- Contenu de la table `dataflow_session`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `design_change`
+-- Structure de la table `design_change`
 --
 
+DROP TABLE IF EXISTS `design_change`;
 CREATE TABLE IF NOT EXISTS `design_change` (
-  `design_change_id` int(11) NOT NULL auto_increment,
+  `design_change_id` int(11) NOT NULL AUTO_INCREMENT,
   `store_id` smallint(5) unsigned NOT NULL,
   `design` varchar(255) NOT NULL,
-  `date_from` date default NULL,
-  `date_to` date default NULL,
-  PRIMARY KEY  (`design_change_id`),
+  `date_from` date DEFAULT NULL,
+  `date_to` date DEFAULT NULL,
+  PRIMARY KEY (`design_change_id`),
   KEY `FK_DESIGN_CHANGE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `design_change`
+-- Contenu de la table `design_change`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `directory_country`
+-- Structure de la table `directory_country`
 --
 
+DROP TABLE IF EXISTS `directory_country`;
 CREATE TABLE IF NOT EXISTS `directory_country` (
-  `country_id` varchar(2) NOT NULL default '',
-  `iso2_code` varchar(2) NOT NULL default '',
-  `iso3_code` varchar(3) NOT NULL default '',
-  PRIMARY KEY  (`country_id`)
+  `country_id` varchar(2) NOT NULL DEFAULT '',
+  `iso2_code` varchar(2) NOT NULL DEFAULT '',
+  `iso3_code` varchar(3) NOT NULL DEFAULT '',
+  PRIMARY KEY (`country_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Countries';
 
 --
--- Dumping data for table `directory_country`
+-- Contenu de la table `directory_country`
 --
 
 INSERT INTO `directory_country` (`country_id`, `iso2_code`, `iso3_code`) VALUES
@@ -12435,40 +12556,42 @@ INSERT INTO `directory_country` (`country_id`, `iso2_code`, `iso3_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `directory_country_format`
+-- Structure de la table `directory_country_format`
 --
 
+DROP TABLE IF EXISTS `directory_country_format`;
 CREATE TABLE IF NOT EXISTS `directory_country_format` (
-  `country_format_id` int(10) unsigned NOT NULL auto_increment,
-  `country_id` char(2) NOT NULL default '',
-  `type` varchar(30) NOT NULL default '',
+  `country_format_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `country_id` char(2) NOT NULL DEFAULT '',
+  `type` varchar(30) NOT NULL DEFAULT '',
   `format` text NOT NULL,
-  PRIMARY KEY  (`country_format_id`),
+  PRIMARY KEY (`country_format_id`),
   UNIQUE KEY `country_type` (`country_id`,`type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Countries format' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `directory_country_format`
+-- Contenu de la table `directory_country_format`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `directory_country_region`
+-- Structure de la table `directory_country_region`
 --
 
+DROP TABLE IF EXISTS `directory_country_region`;
 CREATE TABLE IF NOT EXISTS `directory_country_region` (
-  `region_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `country_id` varchar(4) NOT NULL default '0',
-  `code` varchar(32) NOT NULL default '',
-  `default_name` varchar(255) default NULL,
-  PRIMARY KEY  (`region_id`),
+  `region_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `country_id` varchar(4) NOT NULL DEFAULT '0',
+  `code` varchar(32) NOT NULL DEFAULT '',
+  `default_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`region_id`),
   KEY `FK_REGION_COUNTRY` (`country_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Country regions' AUTO_INCREMENT=278 ;
 
 --
--- Dumping data for table `directory_country_region`
+-- Contenu de la table `directory_country_region`
 --
 
 INSERT INTO `directory_country_region` (`region_id`, `country_id`, `code`, `default_name`) VALUES
@@ -12753,19 +12876,20 @@ INSERT INTO `directory_country_region` (`region_id`, `country_id`, `code`, `defa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `directory_country_region_name`
+-- Structure de la table `directory_country_region_name`
 --
 
+DROP TABLE IF EXISTS `directory_country_region_name`;
 CREATE TABLE IF NOT EXISTS `directory_country_region_name` (
-  `locale` varchar(8) NOT NULL default '',
-  `region_id` mediumint(8) unsigned NOT NULL default '0',
-  `name` varchar(64) NOT NULL default '',
-  PRIMARY KEY  (`locale`,`region_id`),
+  `locale` varchar(8) NOT NULL DEFAULT '',
+  `region_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `name` varchar(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`locale`,`region_id`),
   KEY `FK_DIRECTORY_REGION_NAME_REGION` (`region_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Regions names';
 
 --
--- Dumping data for table `directory_country_region_name`
+-- Contenu de la table `directory_country_region_name`
 --
 
 INSERT INTO `directory_country_region_name` (`locale`, `region_id`, `name`) VALUES
@@ -13050,245 +13174,254 @@ INSERT INTO `directory_country_region_name` (`locale`, `region_id`, `name`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `directory_currency_rate`
+-- Structure de la table `directory_currency_rate`
 --
 
+DROP TABLE IF EXISTS `directory_currency_rate`;
 CREATE TABLE IF NOT EXISTS `directory_currency_rate` (
-  `currency_from` char(3) NOT NULL default '',
-  `currency_to` char(3) NOT NULL default '',
-  `rate` decimal(24,12) NOT NULL default '0.000000000000',
-  PRIMARY KEY  (`currency_from`,`currency_to`),
+  `currency_from` char(3) NOT NULL DEFAULT '',
+  `currency_to` char(3) NOT NULL DEFAULT '',
+  `rate` decimal(24,12) NOT NULL DEFAULT '0.000000000000',
+  PRIMARY KEY (`currency_from`,`currency_to`),
   KEY `FK_CURRENCY_RATE_TO` (`currency_to`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `directory_currency_rate`
+-- Contenu de la table `directory_currency_rate`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_link`
+-- Structure de la table `downloadable_link`
 --
 
+DROP TABLE IF EXISTS `downloadable_link`;
 CREATE TABLE IF NOT EXISTS `downloadable_link` (
-  `link_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `sort_order` int(10) unsigned NOT NULL default '0',
-  `number_of_downloads` int(10) unsigned default NULL,
-  `is_shareable` smallint(1) unsigned NOT NULL default '0',
-  `link_url` varchar(255) NOT NULL default '',
-  `link_file` varchar(255) NOT NULL default '',
-  `link_type` varchar(20) NOT NULL default '',
-  `sample_url` varchar(255) NOT NULL default '',
-  `sample_file` varchar(255) NOT NULL default '',
-  `sample_type` varchar(20) NOT NULL default '',
-  PRIMARY KEY  (`link_id`),
+  `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
+  `number_of_downloads` int(10) unsigned DEFAULT NULL,
+  `is_shareable` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `link_url` varchar(255) NOT NULL DEFAULT '',
+  `link_file` varchar(255) NOT NULL DEFAULT '',
+  `link_type` varchar(20) NOT NULL DEFAULT '',
+  `sample_url` varchar(255) NOT NULL DEFAULT '',
+  `sample_file` varchar(255) NOT NULL DEFAULT '',
+  `sample_type` varchar(20) NOT NULL DEFAULT '',
+  PRIMARY KEY (`link_id`),
   KEY `DOWNLODABLE_LINK_PRODUCT` (`product_id`),
   KEY `DOWNLODABLE_LINK_PRODUCT_SORT_ORDER` (`product_id`,`sort_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_link`
+-- Contenu de la table `downloadable_link`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_link_price`
+-- Structure de la table `downloadable_link_price`
 --
 
+DROP TABLE IF EXISTS `downloadable_link_price`;
 CREATE TABLE IF NOT EXISTS `downloadable_link_price` (
-  `price_id` int(10) unsigned NOT NULL auto_increment,
-  `link_id` int(10) unsigned NOT NULL default '0',
-  `website_id` smallint(5) unsigned NOT NULL default '0',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`price_id`),
+  `price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `link_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`price_id`),
   KEY `DOWNLOADABLE_LINK_PRICE_LINK` (`link_id`),
   KEY `DOWNLOADABLE_LINK_PRICE_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_link_price`
+-- Contenu de la table `downloadable_link_price`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_link_purchased`
+-- Structure de la table `downloadable_link_purchased`
 --
 
+DROP TABLE IF EXISTS `downloadable_link_purchased`;
 CREATE TABLE IF NOT EXISTS `downloadable_link_purchased` (
-  `purchased_id` int(10) unsigned NOT NULL auto_increment,
-  `order_id` int(10) unsigned NOT NULL default '0',
-  `order_increment_id` varchar(50) NOT NULL default '',
-  `order_item_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `product_name` varchar(255) NOT NULL default '',
-  `product_sku` varchar(255) NOT NULL default '',
-  `link_section_title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`purchased_id`),
+  `purchased_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_increment_id` varchar(50) NOT NULL DEFAULT '',
+  `order_item_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_name` varchar(255) NOT NULL DEFAULT '',
+  `product_sku` varchar(255) NOT NULL DEFAULT '',
+  `link_section_title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`purchased_id`),
   KEY `DOWNLOADABLE_ORDER_ID` (`order_id`),
   KEY `DOWNLOADABLE_CUSTOMER_ID` (`customer_id`),
   KEY `KEY_DOWNLOADABLE_ORDER_ITEM_ID` (`order_item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_link_purchased`
+-- Contenu de la table `downloadable_link_purchased`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_link_purchased_item`
+-- Structure de la table `downloadable_link_purchased_item`
 --
 
+DROP TABLE IF EXISTS `downloadable_link_purchased_item`;
 CREATE TABLE IF NOT EXISTS `downloadable_link_purchased_item` (
-  `item_id` int(10) unsigned NOT NULL auto_increment,
-  `purchased_id` int(10) unsigned NOT NULL default '0',
-  `order_item_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned default '0',
-  `link_hash` varchar(255) NOT NULL default '',
-  `number_of_downloads_bought` int(10) unsigned NOT NULL default '0',
-  `number_of_downloads_used` int(10) unsigned NOT NULL default '0',
-  `link_id` int(20) unsigned NOT NULL default '0',
-  `link_title` varchar(255) NOT NULL default '',
-  `is_shareable` smallint(1) unsigned NOT NULL default '0',
-  `link_url` varchar(255) NOT NULL default '',
-  `link_file` varchar(255) NOT NULL default '',
-  `link_type` varchar(255) NOT NULL default '',
-  `status` varchar(50) NOT NULL default '',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`item_id`),
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `purchased_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_item_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned DEFAULT '0',
+  `link_hash` varchar(255) NOT NULL DEFAULT '',
+  `number_of_downloads_bought` int(10) unsigned NOT NULL DEFAULT '0',
+  `number_of_downloads_used` int(10) unsigned NOT NULL DEFAULT '0',
+  `link_id` int(20) unsigned NOT NULL DEFAULT '0',
+  `link_title` varchar(255) NOT NULL DEFAULT '',
+  `is_shareable` smallint(1) unsigned NOT NULL DEFAULT '0',
+  `link_url` varchar(255) NOT NULL DEFAULT '',
+  `link_file` varchar(255) NOT NULL DEFAULT '',
+  `link_type` varchar(255) NOT NULL DEFAULT '',
+  `status` varchar(50) NOT NULL DEFAULT '',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`item_id`),
   KEY `DOWNLOADABLE_LINK_PURCHASED_ID` (`purchased_id`),
   KEY `DOWNLOADABLE_ORDER_ITEM_ID` (`order_item_id`),
   KEY `DOWNLOADALBE_LINK_HASH` (`link_hash`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_link_purchased_item`
+-- Contenu de la table `downloadable_link_purchased_item`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_link_title`
+-- Structure de la table `downloadable_link_title`
 --
 
+DROP TABLE IF EXISTS `downloadable_link_title`;
 CREATE TABLE IF NOT EXISTS `downloadable_link_title` (
-  `title_id` int(10) unsigned NOT NULL auto_increment,
-  `link_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`title_id`),
+  `title_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `link_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`title_id`),
   KEY `DOWNLOADABLE_LINK_TITLE_LINK` (`link_id`),
   KEY `DOWNLOADABLE_LINK_TITLE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_link_title`
+-- Contenu de la table `downloadable_link_title`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_sample`
+-- Structure de la table `downloadable_sample`
 --
 
+DROP TABLE IF EXISTS `downloadable_sample`;
 CREATE TABLE IF NOT EXISTS `downloadable_sample` (
-  `sample_id` int(10) unsigned NOT NULL auto_increment,
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `sample_url` varchar(255) NOT NULL default '',
-  `sample_file` varchar(255) NOT NULL default '',
-  `sample_type` varchar(20) NOT NULL default '',
-  `sort_order` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`sample_id`),
+  `sample_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `sample_url` varchar(255) NOT NULL DEFAULT '',
+  `sample_file` varchar(255) NOT NULL DEFAULT '',
+  `sample_type` varchar(20) NOT NULL DEFAULT '',
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`sample_id`),
   KEY `DOWNLODABLE_SAMPLE_PRODUCT` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_sample`
+-- Contenu de la table `downloadable_sample`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `downloadable_sample_title`
+-- Structure de la table `downloadable_sample_title`
 --
 
+DROP TABLE IF EXISTS `downloadable_sample_title`;
 CREATE TABLE IF NOT EXISTS `downloadable_sample_title` (
-  `title_id` int(10) unsigned NOT NULL auto_increment,
-  `sample_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `title` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`title_id`),
+  `title_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `sample_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`title_id`),
   KEY `DOWNLOADABLE_SAMPLE_TITLE_SAMPLE` (`sample_id`),
   KEY `DOWNLOADABLE_SAMPLE_TITLE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `downloadable_sample_title`
+-- Contenu de la table `downloadable_sample_title`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_attribute`
+-- Structure de la table `eav_attribute`
 --
 
+DROP TABLE IF EXISTS `eav_attribute`;
 CREATE TABLE IF NOT EXISTS `eav_attribute` (
-  `attribute_id` smallint(5) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_code` varchar(255) NOT NULL default '',
-  `attribute_model` varchar(255) default NULL,
-  `backend_model` varchar(255) default NULL,
-  `backend_type` enum('static','datetime','decimal','int','text','varchar') NOT NULL default 'static',
-  `backend_table` varchar(255) default NULL,
-  `frontend_model` varchar(255) default NULL,
-  `frontend_input` varchar(50) default NULL,
-  `frontend_input_renderer` varchar(255) default NULL,
-  `frontend_label` varchar(255) default NULL,
-  `frontend_class` varchar(255) default NULL,
-  `source_model` varchar(255) default NULL,
-  `is_global` tinyint(1) unsigned NOT NULL default '1',
-  `is_visible` tinyint(1) unsigned NOT NULL default '1',
-  `is_required` tinyint(1) unsigned NOT NULL default '0',
-  `is_user_defined` tinyint(1) unsigned NOT NULL default '0',
+  `attribute_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_code` varchar(255) NOT NULL DEFAULT '',
+  `attribute_model` varchar(255) DEFAULT NULL,
+  `backend_model` varchar(255) DEFAULT NULL,
+  `backend_type` enum('static','datetime','decimal','int','text','varchar') NOT NULL DEFAULT 'static',
+  `backend_table` varchar(255) DEFAULT NULL,
+  `frontend_model` varchar(255) DEFAULT NULL,
+  `frontend_input` varchar(50) DEFAULT NULL,
+  `frontend_input_renderer` varchar(255) DEFAULT NULL,
+  `frontend_label` varchar(255) DEFAULT NULL,
+  `frontend_class` varchar(255) DEFAULT NULL,
+  `source_model` varchar(255) DEFAULT NULL,
+  `is_global` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `is_visible` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `is_required` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_user_defined` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `default_value` text,
-  `is_searchable` tinyint(1) unsigned NOT NULL default '0',
-  `is_filterable` tinyint(1) unsigned NOT NULL default '0',
-  `is_comparable` tinyint(1) unsigned NOT NULL default '0',
-  `is_visible_on_front` tinyint(1) unsigned NOT NULL default '0',
-  `is_html_allowed_on_front` tinyint(1) unsigned NOT NULL default '0',
-  `is_unique` tinyint(1) unsigned NOT NULL default '0',
-  `is_visible_in_advanced_search` tinyint(1) unsigned NOT NULL default '0',
-  `is_configurable` tinyint(1) unsigned NOT NULL default '1',
+  `is_searchable` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_filterable` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_comparable` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_visible_on_front` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_html_allowed_on_front` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_unique` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_visible_in_advanced_search` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_configurable` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `apply_to` varchar(255) NOT NULL,
   `position` int(11) NOT NULL,
   `note` varchar(255) NOT NULL,
-  `is_used_for_price_rules` tinyint(1) unsigned NOT NULL default '1',
-  `is_filterable_in_search` tinyint(1) unsigned NOT NULL default '1',
-  `used_in_product_listing` tinyint(1) unsigned NOT NULL default '0',
-  `used_for_sort_by` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`attribute_id`),
+  `is_used_for_price_rules` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `is_filterable_in_search` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `used_in_product_listing` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `used_for_sort_by` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`attribute_id`),
   UNIQUE KEY `entity_type_id` (`entity_type_id`,`attribute_code`),
   KEY `IDX_USED_FOR_SORT_BY` (`entity_type_id`,`used_for_sort_by`),
   KEY `IDX_USED_IN_PRODUCT_LISTING` (`entity_type_id`,`used_in_product_listing`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=933 ;
 
 --
--- Dumping data for table `eav_attribute`
+-- Contenu de la table `eav_attribute`
 --
 
 INSERT INTO `eav_attribute` (`attribute_id`, `entity_type_id`, `attribute_code`, `attribute_model`, `backend_model`, `backend_type`, `backend_table`, `frontend_model`, `frontend_input`, `frontend_input_renderer`, `frontend_label`, `frontend_class`, `source_model`, `is_global`, `is_visible`, `is_required`, `is_user_defined`, `default_value`, `is_searchable`, `is_filterable`, `is_comparable`, `is_visible_on_front`, `is_html_allowed_on_front`, `is_unique`, `is_visible_in_advanced_search`, `is_configurable`, `apply_to`, `position`, `note`, `is_used_for_price_rules`, `is_filterable_in_search`, `used_in_product_listing`, `used_for_sort_by`) VALUES
@@ -14067,22 +14200,23 @@ INSERT INTO `eav_attribute` (`attribute_id`, `entity_type_id`, `attribute_code`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_attribute_group`
+-- Structure de la table `eav_attribute_group`
 --
 
+DROP TABLE IF EXISTS `eav_attribute_group`;
 CREATE TABLE IF NOT EXISTS `eav_attribute_group` (
-  `attribute_group_id` smallint(5) unsigned NOT NULL auto_increment,
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_group_name` varchar(255) NOT NULL default '',
-  `sort_order` smallint(6) NOT NULL default '0',
-  `default_id` smallint(5) unsigned default '0',
-  PRIMARY KEY  (`attribute_group_id`),
+  `attribute_group_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_group_name` varchar(255) NOT NULL DEFAULT '',
+  `sort_order` smallint(6) NOT NULL DEFAULT '0',
+  `default_id` smallint(5) unsigned DEFAULT '0',
+  PRIMARY KEY (`attribute_group_id`),
   UNIQUE KEY `attribute_set_id` (`attribute_set_id`,`attribute_group_name`),
   KEY `attribute_set_id_2` (`attribute_set_id`,`sort_order`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=168 ;
 
 --
--- Dumping data for table `eav_attribute_group`
+-- Contenu de la table `eav_attribute_group`
 --
 
 INSERT INTO `eav_attribute_group` (`attribute_group_id`, `attribute_set_id`, `attribute_group_name`, `sort_order`, `default_id`) VALUES
@@ -14211,19 +14345,20 @@ INSERT INTO `eav_attribute_group` (`attribute_group_id`, `attribute_set_id`, `at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_attribute_option`
+-- Structure de la table `eav_attribute_option`
 --
 
+DROP TABLE IF EXISTS `eav_attribute_option`;
 CREATE TABLE IF NOT EXISTS `eav_attribute_option` (
-  `option_id` int(10) unsigned NOT NULL auto_increment,
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `sort_order` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`option_id`),
+  `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `sort_order` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`option_id`),
   KEY `FK_ATTRIBUTE_OPTION_ATTRIBUTE` (`attribute_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Attributes option (for source model)' AUTO_INCREMENT=123 ;
 
 --
--- Dumping data for table `eav_attribute_option`
+-- Contenu de la table `eav_attribute_option`
 --
 
 INSERT INTO `eav_attribute_option` (`option_id`, `attribute_id`, `sort_order`) VALUES
@@ -14339,21 +14474,22 @@ INSERT INTO `eav_attribute_option` (`option_id`, `attribute_id`, `sort_order`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_attribute_option_value`
+-- Structure de la table `eav_attribute_option_value`
 --
 
+DROP TABLE IF EXISTS `eav_attribute_option_value`;
 CREATE TABLE IF NOT EXISTS `eav_attribute_option_value` (
-  `value_id` int(10) unsigned NOT NULL auto_increment,
-  `option_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `option_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_OPTION_VALUE_OPTION` (`option_id`),
   KEY `FK_ATTRIBUTE_OPTION_VALUE_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Attribute option values per store' AUTO_INCREMENT=1460 ;
 
 --
--- Dumping data for table `eav_attribute_option_value`
+-- Contenu de la table `eav_attribute_option_value`
 --
 
 INSERT INTO `eav_attribute_option_value` (`value_id`, `option_id`, `store_id`, `value`) VALUES
@@ -14489,21 +14625,22 @@ INSERT INTO `eav_attribute_option_value` (`value_id`, `option_id`, `store_id`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_attribute_set`
+-- Structure de la table `eav_attribute_set`
 --
 
+DROP TABLE IF EXISTS `eav_attribute_set`;
 CREATE TABLE IF NOT EXISTS `eav_attribute_set` (
-  `attribute_set_id` smallint(5) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_set_name` varchar(255) character set utf8 collate utf8_swedish_ci NOT NULL default '',
-  `sort_order` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`attribute_set_id`),
+  `attribute_set_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_swedish_ci NOT NULL DEFAULT '',
+  `sort_order` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`attribute_set_id`),
   UNIQUE KEY `entity_type_id` (`entity_type_id`,`attribute_set_name`),
   KEY `entity_type_id_2` (`entity_type_id`,`sort_order`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
--- Dumping data for table `eav_attribute_set`
+-- Contenu de la table `eav_attribute_set`
 --
 
 INSERT INTO `eav_attribute_set` (`attribute_set_id`, `entity_type_id`, `attribute_set_name`, `sort_order`) VALUES
@@ -14554,26 +14691,27 @@ INSERT INTO `eav_attribute_set` (`attribute_set_id`, `entity_type_id`, `attribut
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity`
+-- Structure de la table `eav_entity`
 --
 
+DROP TABLE IF EXISTS `eav_entity`;
 CREATE TABLE IF NOT EXISTS `eav_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_id` varchar(50) NOT NULL default '',
-  `parent_id` int(11) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`entity_id`),
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_id` varchar(50) NOT NULL DEFAULT '',
+  `parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`entity_id`),
   KEY `FK_ENTITY_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ENTITY_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Entityies' AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `eav_entity`
+-- Contenu de la table `eav_entity`
 --
 
 INSERT INTO `eav_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`) VALUES
@@ -14582,17 +14720,18 @@ INSERT INTO `eav_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `in
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_attribute`
+-- Structure de la table `eav_entity_attribute`
 --
 
+DROP TABLE IF EXISTS `eav_entity_attribute`;
 CREATE TABLE IF NOT EXISTS `eav_entity_attribute` (
-  `entity_attribute_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_group_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `sort_order` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`entity_attribute_id`),
+  `entity_attribute_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_group_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `sort_order` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`entity_attribute_id`),
   UNIQUE KEY `attribute_set_id_2` (`attribute_set_id`,`attribute_id`),
   UNIQUE KEY `attribute_group_id` (`attribute_group_id`,`attribute_id`),
   KEY `attribute_set_id_3` (`attribute_set_id`,`sort_order`),
@@ -14600,7 +14739,7 @@ CREATE TABLE IF NOT EXISTS `eav_entity_attribute` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4602 ;
 
 --
--- Dumping data for table `eav_entity_attribute`
+-- Contenu de la table `eav_entity_attribute`
 --
 
 INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `attribute_set_id`, `attribute_group_id`, `attribute_id`, `sort_order`) VALUES
@@ -16149,17 +16288,18 @@ INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_datetime`
+-- Structure de la table `eav_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `eav_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `eav_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_DATETIME_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ATTRIBUTE_DATETIME_ATTRIBUTE` (`attribute_id`),
   KEY `FK_ATTRIBUTE_DATETIME_STORE` (`store_id`),
@@ -16169,24 +16309,25 @@ CREATE TABLE IF NOT EXISTS `eav_entity_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Datetime values of attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eav_entity_datetime`
+-- Contenu de la table `eav_entity_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_decimal`
+-- Structure de la table `eav_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `eav_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `eav_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_DECIMAL_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ATTRIBUTE_DECIMAL_ATTRIBUTE` (`attribute_id`),
   KEY `FK_ATTRIBUTE_DECIMAL_STORE` (`store_id`),
@@ -16196,24 +16337,25 @@ CREATE TABLE IF NOT EXISTS `eav_entity_decimal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Decimal values of attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eav_entity_decimal`
+-- Contenu de la table `eav_entity_decimal`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_int`
+-- Structure de la table `eav_entity_int`
 --
 
+DROP TABLE IF EXISTS `eav_entity_int`;
 CREATE TABLE IF NOT EXISTS `eav_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_INT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ATTRIBUTE_INT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_ATTRIBUTE_INT_STORE` (`store_id`),
@@ -16223,29 +16365,30 @@ CREATE TABLE IF NOT EXISTS `eav_entity_int` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Integer values of attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eav_entity_int`
+-- Contenu de la table `eav_entity_int`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_store`
+-- Structure de la table `eav_entity_store`
 --
 
+DROP TABLE IF EXISTS `eav_entity_store`;
 CREATE TABLE IF NOT EXISTS `eav_entity_store` (
-  `entity_store_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_prefix` varchar(20) NOT NULL default '',
-  `increment_last_id` varchar(50) NOT NULL default '',
-  PRIMARY KEY  (`entity_store_id`),
+  `entity_store_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_prefix` varchar(20) NOT NULL DEFAULT '',
+  `increment_last_id` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`entity_store_id`),
   KEY `FK_eav_entity_store_entity_type` (`entity_type_id`),
   KEY `FK_eav_entity_store_store` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `eav_entity_store`
+-- Contenu de la table `eav_entity_store`
 --
 
 INSERT INTO `eav_entity_store` (`entity_store_id`, `entity_type_id`, `store_id`, `increment_prefix`, `increment_last_id`) VALUES
@@ -16254,17 +16397,18 @@ INSERT INTO `eav_entity_store` (`entity_store_id`, `entity_type_id`, `store_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_text`
+-- Structure de la table `eav_entity_text`
 --
 
+DROP TABLE IF EXISTS `eav_entity_text`;
 CREATE TABLE IF NOT EXISTS `eav_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_TEXT_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ATTRIBUTE_TEXT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_ATTRIBUTE_TEXT_STORE` (`store_id`),
@@ -16272,37 +16416,38 @@ CREATE TABLE IF NOT EXISTS `eav_entity_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Text values of attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eav_entity_text`
+-- Contenu de la table `eav_entity_text`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_type`
+-- Structure de la table `eav_entity_type`
 --
 
+DROP TABLE IF EXISTS `eav_entity_type`;
 CREATE TABLE IF NOT EXISTS `eav_entity_type` (
-  `entity_type_id` smallint(5) unsigned NOT NULL auto_increment,
-  `entity_type_code` varchar(50) NOT NULL default '',
+  `entity_type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_code` varchar(50) NOT NULL DEFAULT '',
   `entity_model` varchar(255) NOT NULL,
   `attribute_model` varchar(255) NOT NULL,
-  `entity_table` varchar(255) NOT NULL default '',
-  `value_table_prefix` varchar(255) NOT NULL default '',
-  `entity_id_field` varchar(255) NOT NULL default '',
-  `is_data_sharing` tinyint(4) unsigned NOT NULL default '1',
-  `data_sharing_key` varchar(100) default 'default',
-  `default_attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_model` varchar(255) NOT NULL default '',
-  `increment_per_store` tinyint(1) unsigned NOT NULL default '0',
-  `increment_pad_length` tinyint(8) unsigned NOT NULL default '8',
-  `increment_pad_char` char(1) NOT NULL default '0',
-  PRIMARY KEY  (`entity_type_id`),
+  `entity_table` varchar(255) NOT NULL DEFAULT '',
+  `value_table_prefix` varchar(255) NOT NULL DEFAULT '',
+  `entity_id_field` varchar(255) NOT NULL DEFAULT '',
+  `is_data_sharing` tinyint(4) unsigned NOT NULL DEFAULT '1',
+  `data_sharing_key` varchar(100) DEFAULT 'default',
+  `default_attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_model` varchar(255) NOT NULL DEFAULT '',
+  `increment_per_store` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `increment_pad_length` tinyint(8) unsigned NOT NULL DEFAULT '8',
+  `increment_pad_char` char(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`entity_type_id`),
   KEY `entity_name` (`entity_type_code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
--- Dumping data for table `eav_entity_type`
+-- Contenu de la table `eav_entity_type`
 --
 
 INSERT INTO `eav_entity_type` (`entity_type_id`, `entity_type_code`, `entity_model`, `attribute_model`, `entity_table`, `value_table_prefix`, `entity_id_field`, `is_data_sharing`, `data_sharing_key`, `default_attribute_set_id`, `increment_model`, `increment_per_store`, `increment_pad_length`, `increment_pad_char`) VALUES
@@ -16338,17 +16483,18 @@ INSERT INTO `eav_entity_type` (`entity_type_id`, `entity_type_code`, `entity_mod
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eav_entity_varchar`
+-- Structure de la table `eav_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `eav_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `eav_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   KEY `FK_ATTRIBUTE_VARCHAR_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_ATTRIBUTE_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_ATTRIBUTE_VARCHAR_STORE` (`store_id`),
@@ -16358,243 +16504,254 @@ CREATE TABLE IF NOT EXISTS `eav_entity_varchar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Varchar values of attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eav_entity_varchar`
+-- Contenu de la table `eav_entity_varchar`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `eway_api_debug`
+-- Structure de la table `eway_api_debug`
 --
 
+DROP TABLE IF EXISTS `eway_api_debug`;
 CREATE TABLE IF NOT EXISTS `eway_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `eway_api_debug`
+-- Contenu de la table `eway_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flo2cash_api_debug`
+-- Structure de la table `flo2cash_api_debug`
 --
 
+DROP TABLE IF EXISTS `flo2cash_api_debug`;
 CREATE TABLE IF NOT EXISTS `flo2cash_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
   `exception` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `flo2cash_api_debug`
+-- Contenu de la table `flo2cash_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gift_message`
+-- Structure de la table `gift_message`
 --
 
+DROP TABLE IF EXISTS `gift_message`;
 CREATE TABLE IF NOT EXISTS `gift_message` (
-  `gift_message_id` int(7) unsigned NOT NULL auto_increment,
-  `customer_id` int(7) unsigned NOT NULL default '0',
-  `sender` varchar(255) NOT NULL default '',
-  `recipient` varchar(255) NOT NULL default '',
+  `gift_message_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `sender` varchar(255) NOT NULL DEFAULT '',
+  `recipient` varchar(255) NOT NULL DEFAULT '',
   `message` text NOT NULL,
-  PRIMARY KEY  (`gift_message_id`)
+  PRIMARY KEY (`gift_message_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `gift_message`
+-- Contenu de la table `gift_message`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `googlebase_attributes`
+-- Structure de la table `googlebase_attributes`
 --
 
+DROP TABLE IF EXISTS `googlebase_attributes`;
 CREATE TABLE IF NOT EXISTS `googlebase_attributes` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `attribute_id` smallint(5) unsigned NOT NULL,
   `gbase_attribute` varchar(255) NOT NULL,
   `type_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `GOOGLEBASE_ATTRIBUTES_ATTRIBUTE_ID` (`attribute_id`),
   KEY `GOOGLEBASE_ATTRIBUTES_TYPE_ID` (`type_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Google Base Attributes link Product Attributes' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `googlebase_attributes`
+-- Contenu de la table `googlebase_attributes`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `googlebase_items`
+-- Structure de la table `googlebase_items`
 --
 
+DROP TABLE IF EXISTS `googlebase_items`;
 CREATE TABLE IF NOT EXISTS `googlebase_items` (
-  `item_id` int(10) unsigned NOT NULL auto_increment,
-  `type_id` int(10) unsigned NOT NULL default '0',
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `type_id` int(10) unsigned NOT NULL DEFAULT '0',
   `product_id` int(10) unsigned NOT NULL,
   `gbase_item_id` varchar(255) NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  `published` datetime NOT NULL default '0000-00-00 00:00:00',
-  `expires` datetime NOT NULL default '0000-00-00 00:00:00',
-  `impr` smallint(5) unsigned NOT NULL default '0',
-  `clicks` smallint(5) unsigned NOT NULL default '0',
-  `views` smallint(5) unsigned NOT NULL default '0',
-  `is_hidden` tinyint(4) NOT NULL default '0',
-  PRIMARY KEY  (`item_id`),
+  `published` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `expires` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `impr` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `clicks` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `views` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `is_hidden` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`item_id`),
   KEY `GOOGLEBASE_ITEMS_PRODUCT_ID` (`product_id`),
   KEY `GOOGLEBASE_ITEMS_STORE_ID` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Google Base Items Products' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `googlebase_items`
+-- Contenu de la table `googlebase_items`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `googlebase_types`
+-- Structure de la table `googlebase_types`
 --
 
+DROP TABLE IF EXISTS `googlebase_types`;
 CREATE TABLE IF NOT EXISTS `googlebase_types` (
-  `type_id` int(10) unsigned NOT NULL auto_increment,
+  `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `attribute_set_id` smallint(5) unsigned NOT NULL,
   `gbase_itemtype` varchar(255) NOT NULL,
-  `target_country` varchar(2) NOT NULL default 'US',
-  PRIMARY KEY  (`type_id`),
+  `target_country` varchar(2) NOT NULL DEFAULT 'US',
+  PRIMARY KEY (`type_id`),
   KEY `GOOGLEBASE_TYPES_ATTRIBUTE_SET_ID` (`attribute_set_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Google Base Item Types link Attribute Sets' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `googlebase_types`
+-- Contenu de la table `googlebase_types`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `googlecheckout_api_debug`
+-- Structure de la table `googlecheckout_api_debug`
 --
 
+DROP TABLE IF EXISTS `googlecheckout_api_debug`;
 CREATE TABLE IF NOT EXISTS `googlecheckout_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `dir` enum('in','out') default NULL,
-  `url` varchar(255) default NULL,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `dir` enum('in','out') DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`)
+  PRIMARY KEY (`debug_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `googlecheckout_api_debug`
+-- Contenu de la table `googlecheckout_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `googleoptimizer_code`
+-- Structure de la table `googleoptimizer_code`
 --
 
+DROP TABLE IF EXISTS `googleoptimizer_code`;
 CREATE TABLE IF NOT EXISTS `googleoptimizer_code` (
-  `code_id` int(10) unsigned NOT NULL auto_increment,
+  `code_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `entity_id` int(10) unsigned NOT NULL,
-  `entity_type` varchar(50) NOT NULL default '',
+  `entity_type` varchar(50) NOT NULL DEFAULT '',
   `store_id` smallint(5) unsigned NOT NULL,
   `control_script` text,
   `tracking_script` text,
   `conversion_script` text,
-  `conversion_page` varchar(255) NOT NULL default '',
+  `conversion_page` varchar(255) NOT NULL DEFAULT '',
   `additional_data` text,
-  PRIMARY KEY  (`code_id`),
+  PRIMARY KEY (`code_id`),
   KEY `GOOGLEOPTIMIZER_CODE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `googleoptimizer_code`
+-- Contenu de la table `googleoptimizer_code`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ideal_api_debug`
+-- Structure de la table `ideal_api_debug`
 --
 
+DROP TABLE IF EXISTS `ideal_api_debug`;
 CREATE TABLE IF NOT EXISTS `ideal_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `ideal_api_debug`
+-- Contenu de la table `ideal_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_customer`
+-- Structure de la table `log_customer`
 --
 
+DROP TABLE IF EXISTS `log_customer`;
 CREATE TABLE IF NOT EXISTS `log_customer` (
-  `log_id` int(10) unsigned NOT NULL auto_increment,
-  `visitor_id` bigint(20) unsigned default NULL,
-  `customer_id` int(11) NOT NULL default '0',
-  `login_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `logout_at` datetime default NULL,
+  `log_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `visitor_id` bigint(20) unsigned DEFAULT NULL,
+  `customer_id` int(11) NOT NULL DEFAULT '0',
+  `login_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `logout_at` datetime DEFAULT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`log_id`),
+  PRIMARY KEY (`log_id`),
   KEY `IDX_VISITOR` (`visitor_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Customers log information' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `log_customer`
+-- Contenu de la table `log_customer`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_quote`
+-- Structure de la table `log_quote`
 --
 
+DROP TABLE IF EXISTS `log_quote`;
 CREATE TABLE IF NOT EXISTS `log_quote` (
-  `quote_id` int(10) unsigned NOT NULL default '0',
-  `visitor_id` bigint(20) unsigned default NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `deleted_at` datetime default NULL,
-  PRIMARY KEY  (`quote_id`)
+  `quote_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `visitor_id` bigint(20) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`quote_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Quote log data';
 
 --
--- Dumping data for table `log_quote`
+-- Contenu de la table `log_quote`
 --
 
 INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) VALUES
@@ -16618,40 +16775,42 @@ INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_summary`
+-- Structure de la table `log_summary`
 --
 
+DROP TABLE IF EXISTS `log_summary`;
 CREATE TABLE IF NOT EXISTS `log_summary` (
-  `summary_id` bigint(20) unsigned NOT NULL auto_increment,
+  `summary_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `store_id` smallint(5) unsigned NOT NULL,
-  `type_id` smallint(5) unsigned default NULL,
-  `visitor_count` int(11) NOT NULL default '0',
-  `customer_count` int(11) NOT NULL default '0',
-  `add_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`summary_id`)
+  `type_id` smallint(5) unsigned DEFAULT NULL,
+  `visitor_count` int(11) NOT NULL DEFAULT '0',
+  `customer_count` int(11) NOT NULL DEFAULT '0',
+  `add_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`summary_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Summary log information' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `log_summary`
+-- Contenu de la table `log_summary`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_summary_type`
+-- Structure de la table `log_summary_type`
 --
 
+DROP TABLE IF EXISTS `log_summary_type`;
 CREATE TABLE IF NOT EXISTS `log_summary_type` (
-  `type_id` smallint(5) unsigned NOT NULL auto_increment,
-  `type_code` varchar(64) NOT NULL default '',
-  `period` smallint(5) unsigned NOT NULL default '0',
-  `period_type` enum('MINUTE','HOUR','DAY','WEEK','MONTH') NOT NULL default 'MINUTE',
-  PRIMARY KEY  (`type_id`)
+  `type_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `type_code` varchar(64) NOT NULL DEFAULT '',
+  `period` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `period_type` enum('MINUTE','HOUR','DAY','WEEK','MONTH') NOT NULL DEFAULT 'MINUTE',
+  PRIMARY KEY (`type_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Type of summary information' AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `log_summary_type`
+-- Contenu de la table `log_summary_type`
 --
 
 INSERT INTO `log_summary_type` (`type_id`, `type_code`, `period`, `period_type`) VALUES
@@ -16661,19 +16820,20 @@ INSERT INTO `log_summary_type` (`type_id`, `type_code`, `period`, `period_type`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_url`
+-- Structure de la table `log_url`
 --
 
+DROP TABLE IF EXISTS `log_url`;
 CREATE TABLE IF NOT EXISTS `log_url` (
-  `url_id` bigint(20) unsigned NOT NULL default '0',
-  `visitor_id` bigint(20) unsigned default NULL,
-  `visit_time` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`url_id`),
+  `url_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `visitor_id` bigint(20) unsigned DEFAULT NULL,
+  `visit_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`url_id`),
   KEY `IDX_VISITOR` (`visitor_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='URL visiting history';
 
 --
--- Dumping data for table `log_url`
+-- Contenu de la table `log_url`
 --
 
 INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
@@ -18094,23 +18254,54 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (1415, 65, '2009-11-01 18:29:00'),
 (1416, 65, '2009-11-01 18:35:49'),
 (1417, 66, '2009-11-02 21:35:24'),
-(1418, 66, '2009-11-02 21:35:29');
+(1418, 66, '2009-11-02 21:35:29'),
+(1419, 67, '2009-11-02 21:47:04'),
+(1420, 67, '2009-11-02 21:47:33'),
+(1421, 67, '2009-11-02 21:50:21'),
+(1422, 67, '2009-11-02 21:56:56'),
+(1423, 67, '2009-11-02 21:58:03'),
+(1424, 67, '2009-11-02 22:28:21'),
+(1425, 67, '2009-11-02 22:31:26'),
+(1426, 67, '2009-11-02 23:25:42'),
+(1427, 67, '2009-11-02 23:27:04'),
+(1428, 67, '2009-11-02 23:27:11'),
+(1429, 67, '2009-11-02 23:27:34'),
+(1430, 67, '2009-11-02 23:30:01'),
+(1431, 67, '2009-11-02 23:34:34'),
+(1432, 67, '2009-11-02 23:37:16'),
+(1433, 67, '2009-11-02 23:40:53'),
+(1434, 67, '2009-11-02 23:41:25'),
+(1435, 67, '2009-11-02 23:48:25'),
+(1436, 67, '2009-11-02 23:48:27'),
+(1437, 67, '2009-11-02 23:51:06'),
+(1438, 67, '2009-11-02 23:51:33'),
+(1439, 67, '2009-11-02 23:53:37'),
+(1440, 67, '2009-11-02 23:58:51'),
+(1441, 67, '2009-11-02 23:59:47'),
+(1442, 67, '2009-11-03 00:01:37'),
+(1443, 67, '2009-11-03 00:04:24'),
+(1444, 67, '2009-11-03 00:04:38'),
+(1445, 67, '2009-11-03 00:05:20'),
+(1446, 67, '2009-11-03 00:05:29'),
+(1447, 67, '2009-11-03 00:06:28'),
+(1448, 67, '2009-11-03 00:08:55');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_url_info`
+-- Structure de la table `log_url_info`
 --
 
+DROP TABLE IF EXISTS `log_url_info`;
 CREATE TABLE IF NOT EXISTS `log_url_info` (
-  `url_id` bigint(20) unsigned NOT NULL auto_increment,
-  `url` varchar(255) NOT NULL default '',
-  `referer` varchar(255) default NULL,
-  PRIMARY KEY  (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=1419 ;
+  `url_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL DEFAULT '',
+  `referer` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`url_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=1449 ;
 
 --
--- Dumping data for table `log_url_info`
+-- Contenu de la table `log_url_info`
 --
 
 INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
@@ -19534,26 +19725,57 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (1415, 'http://r29620.ovh.net/magento/magasin', 'http://r29620.ovh.net/magento/'),
 (1416, 'http://r29620.ovh.net/magento/creation', 'http://r29620.ovh.net/magento/magasin'),
 (1417, 'http://r29620.ovh.net/magento/index.php/', ''),
-(1418, 'http://r29620.ovh.net/magento/e-boutique/', 'http://r29620.ovh.net/magento/index.php/');
+(1418, 'http://r29620.ovh.net/magento/e-boutique/', 'http://r29620.ovh.net/magento/index.php/'),
+(1419, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(1420, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(1421, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(1422, 'http://192.168.1.23/~tharibo/magento/index.php', ''),
+(1423, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1424, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1425, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1426, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1427, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1428, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1429, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires'),
+(1430, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1431, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1432, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1433, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1434, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1435, 'http://192.168.1.23/~tharibo/magento/', ''),
+(1436, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1437, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1438, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1439, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1440, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1441, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1442, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1443, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1444, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/'),
+(1445, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires'),
+(1446, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
+(1447, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
+(1448, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_visitor`
+-- Structure de la table `log_visitor`
 --
 
+DROP TABLE IF EXISTS `log_visitor`;
 CREATE TABLE IF NOT EXISTS `log_visitor` (
-  `visitor_id` bigint(20) unsigned NOT NULL auto_increment,
-  `session_id` char(64) NOT NULL default '',
-  `first_visit_at` datetime default NULL,
-  `last_visit_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_url_id` bigint(20) unsigned NOT NULL default '0',
+  `visitor_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `session_id` char(64) NOT NULL DEFAULT '',
+  `first_visit_at` datetime DEFAULT NULL,
+  `last_visit_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_url_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=67 ;
+  PRIMARY KEY (`visitor_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=68 ;
 
 --
--- Dumping data for table `log_visitor`
+-- Contenu de la table `log_visitor`
 --
 
 INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_visit_at`, `last_url_id`, `store_id`) VALUES
@@ -19622,27 +19844,29 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (63, 'e66c396c02f8efcbca3e87ec3021e8cd', '2009-10-31 15:12:21', '2009-10-31 15:42:14', 1383, 1),
 (64, 'a25c31e7280417b653f1cb394a984979', '2009-10-31 16:08:21', '2009-10-31 16:12:58', 1407, 1),
 (65, 'dc175f5912aa53b6388e07d7e80b9d7c', '2009-11-01 18:18:55', '2009-11-01 18:35:49', 1416, 1),
-(66, 'e36915200011bcec9298f8134b32af8f', '2009-11-02 21:35:24', '2009-11-02 21:35:29', 1418, 1);
+(66, 'e36915200011bcec9298f8134b32af8f', '2009-11-02 21:35:24', '2009-11-02 21:35:29', 1418, 1),
+(67, '5ff439fd4c71cf0e20443422889a3069', '2009-11-02 21:47:03', '2009-11-03 00:08:55', 1448, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_visitor_info`
+-- Structure de la table `log_visitor_info`
 --
 
+DROP TABLE IF EXISTS `log_visitor_info`;
 CREATE TABLE IF NOT EXISTS `log_visitor_info` (
-  `visitor_id` bigint(20) unsigned NOT NULL default '0',
-  `http_referer` varchar(255) default NULL,
-  `http_user_agent` varchar(255) default NULL,
-  `http_accept_charset` varchar(255) default NULL,
-  `http_accept_language` varchar(255) default NULL,
-  `server_addr` bigint(20) default NULL,
-  `remote_addr` bigint(20) default NULL,
-  PRIMARY KEY  (`visitor_id`)
+  `visitor_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `http_referer` varchar(255) DEFAULT NULL,
+  `http_user_agent` varchar(255) DEFAULT NULL,
+  `http_accept_charset` varchar(255) DEFAULT NULL,
+  `http_accept_language` varchar(255) DEFAULT NULL,
+  `server_addr` bigint(20) DEFAULT NULL,
+  `remote_addr` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`visitor_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Additional information by visitor';
 
 --
--- Dumping data for table `log_visitor_info`
+-- Contenu de la table `log_visitor_info`
 --
 
 INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`, `http_accept_charset`, `http_accept_language`, `server_addr`, `remote_addr`) VALUES
@@ -19711,210 +19935,220 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (63, 'http://r29620.ovh.net/magento/e-boutique/', 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.5; fr; rv:1.9.1.3) Gecko/20090824 Firefox/3.5.3', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743),
 (64, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743),
 (65, '', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.9.1.4) Gecko/20091016 Firefox/3.5.4', 'ISO-8859-15,utf-8;q=0.7,*;q=0.7', 'fr-fr,en-us;q=0.7,en;q=0.3', 1466076829, 1331042743),
-(66, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743);
+(66, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743),
+(67, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731497);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_visitor_online`
+-- Structure de la table `log_visitor_online`
 --
 
+DROP TABLE IF EXISTS `log_visitor_online`;
 CREATE TABLE IF NOT EXISTS `log_visitor_online` (
-  `visitor_id` bigint(20) unsigned NOT NULL auto_increment,
+  `visitor_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `visitor_type` char(1) NOT NULL,
   `remote_addr` bigint(20) NOT NULL,
-  `first_visit_at` datetime default NULL,
-  `last_visit_at` datetime default NULL,
-  `customer_id` int(10) unsigned default NULL,
-  `last_url` varchar(255) default NULL,
-  PRIMARY KEY  (`visitor_id`),
+  `first_visit_at` datetime DEFAULT NULL,
+  `last_visit_at` datetime DEFAULT NULL,
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `last_url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`visitor_id`),
   KEY `IDX_VISITOR_TYPE` (`visitor_type`),
   KEY `IDX_VISIT_TIME` (`first_visit_at`,`last_visit_at`),
   KEY `IDX_CUSTOMER` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `log_visitor_online`
+-- Contenu de la table `log_visitor_online`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_problem`
+-- Structure de la table `newsletter_problem`
 --
 
+DROP TABLE IF EXISTS `newsletter_problem`;
 CREATE TABLE IF NOT EXISTS `newsletter_problem` (
-  `problem_id` int(7) unsigned NOT NULL auto_increment,
-  `subscriber_id` int(7) unsigned default NULL,
-  `queue_id` int(7) unsigned NOT NULL default '0',
-  `problem_error_code` int(3) unsigned default '0',
-  `problem_error_text` varchar(200) default NULL,
-  PRIMARY KEY  (`problem_id`),
+  `problem_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `subscriber_id` int(7) unsigned DEFAULT NULL,
+  `queue_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `problem_error_code` int(3) unsigned DEFAULT '0',
+  `problem_error_text` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`problem_id`),
   KEY `FK_PROBLEM_SUBSCRIBER` (`subscriber_id`),
   KEY `FK_PROBLEM_QUEUE` (`queue_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter problems' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `newsletter_problem`
+-- Contenu de la table `newsletter_problem`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_queue`
+-- Structure de la table `newsletter_queue`
 --
 
+DROP TABLE IF EXISTS `newsletter_queue`;
 CREATE TABLE IF NOT EXISTS `newsletter_queue` (
-  `queue_id` int(7) unsigned NOT NULL auto_increment,
-  `template_id` int(7) unsigned NOT NULL default '0',
-  `queue_status` int(3) unsigned NOT NULL default '0',
-  `queue_start_at` datetime default NULL,
-  `queue_finish_at` datetime default NULL,
-  PRIMARY KEY  (`queue_id`),
+  `queue_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `template_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `queue_status` int(3) unsigned NOT NULL DEFAULT '0',
+  `queue_start_at` datetime DEFAULT NULL,
+  `queue_finish_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`queue_id`),
   KEY `FK_QUEUE_TEMPLATE` (`template_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter queue' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `newsletter_queue`
+-- Contenu de la table `newsletter_queue`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_queue_link`
+-- Structure de la table `newsletter_queue_link`
 --
 
+DROP TABLE IF EXISTS `newsletter_queue_link`;
 CREATE TABLE IF NOT EXISTS `newsletter_queue_link` (
-  `queue_link_id` int(9) unsigned NOT NULL auto_increment,
-  `queue_id` int(7) unsigned NOT NULL default '0',
-  `subscriber_id` int(7) unsigned NOT NULL default '0',
-  `letter_sent_at` datetime default NULL,
-  PRIMARY KEY  (`queue_link_id`),
+  `queue_link_id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `queue_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `subscriber_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `letter_sent_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`queue_link_id`),
   KEY `FK_QUEUE_LINK_SUBSCRIBER` (`subscriber_id`),
   KEY `FK_QUEUE_LINK_QUEUE` (`queue_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter queue to subscriber link' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `newsletter_queue_link`
+-- Contenu de la table `newsletter_queue_link`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_queue_store_link`
+-- Structure de la table `newsletter_queue_store_link`
 --
 
+DROP TABLE IF EXISTS `newsletter_queue_store_link`;
 CREATE TABLE IF NOT EXISTS `newsletter_queue_store_link` (
-  `queue_id` int(7) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`queue_id`,`store_id`),
+  `queue_id` int(7) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`queue_id`,`store_id`),
   KEY `FK_NEWSLETTER_QUEUE_STORE_LINK_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `newsletter_queue_store_link`
+-- Contenu de la table `newsletter_queue_store_link`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_subscriber`
+-- Structure de la table `newsletter_subscriber`
 --
 
+DROP TABLE IF EXISTS `newsletter_subscriber`;
 CREATE TABLE IF NOT EXISTS `newsletter_subscriber` (
-  `subscriber_id` int(7) unsigned NOT NULL auto_increment,
-  `store_id` smallint(5) unsigned default '0',
-  `change_status_at` datetime default NULL,
-  `customer_id` int(11) unsigned NOT NULL default '0',
-  `subscriber_email` varchar(150) NOT NULL default '',
-  `subscriber_status` int(3) NOT NULL default '0',
-  `subscriber_confirm_code` varchar(32) default 'NULL',
-  PRIMARY KEY  (`subscriber_id`),
+  `subscriber_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `store_id` smallint(5) unsigned DEFAULT '0',
+  `change_status_at` datetime DEFAULT NULL,
+  `customer_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `subscriber_email` varchar(150) NOT NULL DEFAULT '',
+  `subscriber_status` int(3) NOT NULL DEFAULT '0',
+  `subscriber_confirm_code` varchar(32) DEFAULT 'NULL',
+  PRIMARY KEY (`subscriber_id`),
   KEY `FK_SUBSCRIBER_CUSTOMER` (`customer_id`),
   KEY `FK_NEWSLETTER_SUBSCRIBER_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter subscribers' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `newsletter_subscriber`
+-- Contenu de la table `newsletter_subscriber`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `newsletter_template`
+-- Structure de la table `newsletter_template`
 --
 
+DROP TABLE IF EXISTS `newsletter_template`;
 CREATE TABLE IF NOT EXISTS `newsletter_template` (
-  `template_id` int(7) unsigned NOT NULL auto_increment,
-  `template_code` varchar(150) default NULL,
+  `template_id` int(7) unsigned NOT NULL AUTO_INCREMENT,
+  `template_code` varchar(150) DEFAULT NULL,
   `template_text` text,
   `template_text_preprocessed` text,
-  `template_type` int(3) unsigned default NULL,
-  `template_subject` varchar(200) default NULL,
-  `template_sender_name` varchar(200) default NULL,
-  `template_sender_email` varchar(200) default NULL,
-  `template_actual` tinyint(1) unsigned default '1',
-  `added_at` datetime default NULL,
-  `modified_at` datetime default NULL,
-  PRIMARY KEY  (`template_id`),
+  `template_type` int(3) unsigned DEFAULT NULL,
+  `template_subject` varchar(200) DEFAULT NULL,
+  `template_sender_name` varchar(200) DEFAULT NULL,
+  `template_sender_email` varchar(200) DEFAULT NULL,
+  `template_actual` tinyint(1) unsigned DEFAULT '1',
+  `added_at` datetime DEFAULT NULL,
+  `modified_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`template_id`),
   KEY `template_actual` (`template_actual`),
   KEY `added_at` (`added_at`),
   KEY `modified_at` (`modified_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Newsletter templates' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `newsletter_template`
+-- Contenu de la table `newsletter_template`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_import`
+-- Structure de la table `oscommerce_import`
 --
 
+DROP TABLE IF EXISTS `oscommerce_import`;
 CREATE TABLE IF NOT EXISTS `oscommerce_import` (
-  `import_id` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(255) default NULL,
-  `created_at` datetime default NULL,
-  `updated_at` datetime default NULL,
+  `import_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   `host` varchar(255) NOT NULL,
   `port` int(5) NOT NULL,
-  `db_name` varchar(255) default NULL,
-  `db_user` varchar(255) default NULL,
-  `db_password` varchar(255) default NULL,
-  `db_type` varchar(32) default NULL,
-  `table_prefix` varchar(32) default NULL,
-  `send_subscription` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`import_id`)
+  `db_name` varchar(255) DEFAULT NULL,
+  `db_user` varchar(255) DEFAULT NULL,
+  `db_password` varchar(255) DEFAULT NULL,
+  `db_type` varchar(32) DEFAULT NULL,
+  `table_prefix` varchar(32) DEFAULT NULL,
+  `send_subscription` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`import_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_import`
+-- Contenu de la table `oscommerce_import`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_import_type`
+-- Structure de la table `oscommerce_import_type`
 --
 
+DROP TABLE IF EXISTS `oscommerce_import_type`;
 CREATE TABLE IF NOT EXISTS `oscommerce_import_type` (
-  `type_id` int(2) unsigned NOT NULL auto_increment,
+  `type_id` int(2) unsigned NOT NULL AUTO_INCREMENT,
   `type_code` varchar(32) NOT NULL,
   `type_name` varchar(255) NOT NULL,
-  PRIMARY KEY  (`type_id`)
+  PRIMARY KEY (`type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `oscommerce_import_type`
+-- Contenu de la table `oscommerce_import_type`
 --
 
 INSERT INTO `oscommerce_import_type` (`type_id`, `type_code`, `type_name`) VALUES
@@ -19931,285 +20165,296 @@ INSERT INTO `oscommerce_import_type` (`type_id`, `type_code`, `type_name`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_orders`
+-- Structure de la table `oscommerce_orders`
 --
 
+DROP TABLE IF EXISTS `oscommerce_orders`;
 CREATE TABLE IF NOT EXISTS `oscommerce_orders` (
-  `osc_magento_id` int(11) NOT NULL auto_increment,
+  `osc_magento_id` int(11) NOT NULL AUTO_INCREMENT,
   `orders_id` int(11) NOT NULL,
-  `customers_id` int(11) NOT NULL default '0',
-  `magento_customers_id` int(11) NOT NULL default '0',
-  `import_id` int(11) NOT NULL default '0',
-  `website_id` int(11) NOT NULL default '0',
-  `customers_name` varchar(64) NOT NULL default '',
-  `customers_company` varchar(32) default NULL,
-  `customers_street_address` varchar(64) NOT NULL default '',
-  `customers_suburb` varchar(32) default NULL,
-  `customers_city` varchar(32) NOT NULL default '',
-  `customers_postcode` varchar(10) NOT NULL default '',
-  `customers_state` varchar(32) default NULL,
-  `customers_country` varchar(32) NOT NULL default '',
-  `customers_telephone` varchar(32) NOT NULL default '',
-  `customers_email_address` varchar(96) NOT NULL default '',
-  `customers_address_format_id` int(5) NOT NULL default '0',
-  `delivery_name` varchar(64) NOT NULL default '',
-  `delivery_company` varchar(32) default NULL,
-  `delivery_street_address` varchar(64) NOT NULL default '',
-  `delivery_suburb` varchar(32) default NULL,
-  `delivery_city` varchar(32) NOT NULL default '',
-  `delivery_postcode` varchar(10) NOT NULL default '',
-  `delivery_state` varchar(32) default NULL,
-  `delivery_country` varchar(32) NOT NULL default '',
-  `delivery_address_format_id` int(5) NOT NULL default '0',
-  `billing_name` varchar(64) NOT NULL default '',
-  `billing_company` varchar(32) default NULL,
-  `billing_street_address` varchar(64) NOT NULL default '',
-  `billing_suburb` varchar(32) default NULL,
-  `billing_city` varchar(32) NOT NULL default '',
-  `billing_postcode` varchar(10) NOT NULL default '',
-  `billing_state` varchar(32) default NULL,
-  `billing_country` varchar(32) NOT NULL default '',
-  `billing_address_format_id` int(5) NOT NULL default '0',
-  `payment_method` varchar(255) NOT NULL default '',
-  `cc_type` varchar(20) default NULL,
-  `cc_owner` varchar(64) default NULL,
-  `cc_number` varchar(32) default NULL,
-  `cc_expires` varchar(4) default NULL,
-  `last_modified` datetime default NULL,
-  `date_purchased` datetime default NULL,
-  `orders_status` varchar(32) default NULL,
-  `orders_date_finished` datetime default NULL,
-  `currency` char(3) default NULL,
-  `currency_value` decimal(14,6) default NULL,
-  `currency_symbol` char(3) default NULL,
-  `orders_total` decimal(14,6) default NULL,
-  PRIMARY KEY  (`osc_magento_id`),
+  `customers_id` int(11) NOT NULL DEFAULT '0',
+  `magento_customers_id` int(11) NOT NULL DEFAULT '0',
+  `import_id` int(11) NOT NULL DEFAULT '0',
+  `website_id` int(11) NOT NULL DEFAULT '0',
+  `customers_name` varchar(64) NOT NULL DEFAULT '',
+  `customers_company` varchar(32) DEFAULT NULL,
+  `customers_street_address` varchar(64) NOT NULL DEFAULT '',
+  `customers_suburb` varchar(32) DEFAULT NULL,
+  `customers_city` varchar(32) NOT NULL DEFAULT '',
+  `customers_postcode` varchar(10) NOT NULL DEFAULT '',
+  `customers_state` varchar(32) DEFAULT NULL,
+  `customers_country` varchar(32) NOT NULL DEFAULT '',
+  `customers_telephone` varchar(32) NOT NULL DEFAULT '',
+  `customers_email_address` varchar(96) NOT NULL DEFAULT '',
+  `customers_address_format_id` int(5) NOT NULL DEFAULT '0',
+  `delivery_name` varchar(64) NOT NULL DEFAULT '',
+  `delivery_company` varchar(32) DEFAULT NULL,
+  `delivery_street_address` varchar(64) NOT NULL DEFAULT '',
+  `delivery_suburb` varchar(32) DEFAULT NULL,
+  `delivery_city` varchar(32) NOT NULL DEFAULT '',
+  `delivery_postcode` varchar(10) NOT NULL DEFAULT '',
+  `delivery_state` varchar(32) DEFAULT NULL,
+  `delivery_country` varchar(32) NOT NULL DEFAULT '',
+  `delivery_address_format_id` int(5) NOT NULL DEFAULT '0',
+  `billing_name` varchar(64) NOT NULL DEFAULT '',
+  `billing_company` varchar(32) DEFAULT NULL,
+  `billing_street_address` varchar(64) NOT NULL DEFAULT '',
+  `billing_suburb` varchar(32) DEFAULT NULL,
+  `billing_city` varchar(32) NOT NULL DEFAULT '',
+  `billing_postcode` varchar(10) NOT NULL DEFAULT '',
+  `billing_state` varchar(32) DEFAULT NULL,
+  `billing_country` varchar(32) NOT NULL DEFAULT '',
+  `billing_address_format_id` int(5) NOT NULL DEFAULT '0',
+  `payment_method` varchar(255) NOT NULL DEFAULT '',
+  `cc_type` varchar(20) DEFAULT NULL,
+  `cc_owner` varchar(64) DEFAULT NULL,
+  `cc_number` varchar(32) DEFAULT NULL,
+  `cc_expires` varchar(4) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  `date_purchased` datetime DEFAULT NULL,
+  `orders_status` varchar(32) DEFAULT NULL,
+  `orders_date_finished` datetime DEFAULT NULL,
+  `currency` char(3) DEFAULT NULL,
+  `currency_value` decimal(14,6) DEFAULT NULL,
+  `currency_symbol` char(3) DEFAULT NULL,
+  `orders_total` decimal(14,6) DEFAULT NULL,
+  PRIMARY KEY (`osc_magento_id`),
   KEY `idx_orders_customers_id` (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_orders`
+-- Contenu de la table `oscommerce_orders`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_orders_products`
+-- Structure de la table `oscommerce_orders_products`
 --
 
+DROP TABLE IF EXISTS `oscommerce_orders_products`;
 CREATE TABLE IF NOT EXISTS `oscommerce_orders_products` (
-  `orders_products_id` int(11) NOT NULL auto_increment,
-  `osc_magento_id` int(11) NOT NULL default '0',
-  `products_id` int(11) NOT NULL default '0',
-  `products_model` varchar(12) default NULL,
-  `products_name` varchar(64) NOT NULL default '',
-  `products_price` decimal(15,4) NOT NULL default '0.0000',
-  `final_price` decimal(15,4) NOT NULL default '0.0000',
-  `products_tax` decimal(7,4) NOT NULL default '0.0000',
-  `products_quantity` int(2) NOT NULL default '0',
-  PRIMARY KEY  (`orders_products_id`),
+  `orders_products_id` int(11) NOT NULL AUTO_INCREMENT,
+  `osc_magento_id` int(11) NOT NULL DEFAULT '0',
+  `products_id` int(11) NOT NULL DEFAULT '0',
+  `products_model` varchar(12) DEFAULT NULL,
+  `products_name` varchar(64) NOT NULL DEFAULT '',
+  `products_price` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `final_price` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `products_tax` decimal(7,4) NOT NULL DEFAULT '0.0000',
+  `products_quantity` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`orders_products_id`),
   KEY `idx_orders_products_osc_magento_id` (`osc_magento_id`),
   KEY `idx_orders_products_products_id` (`products_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_orders_products`
+-- Contenu de la table `oscommerce_orders_products`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_orders_status_history`
+-- Structure de la table `oscommerce_orders_status_history`
 --
 
+DROP TABLE IF EXISTS `oscommerce_orders_status_history`;
 CREATE TABLE IF NOT EXISTS `oscommerce_orders_status_history` (
-  `orders_status_history_id` int(11) NOT NULL auto_increment,
-  `osc_magento_id` int(11) NOT NULL default '0',
-  `orders_status_id` int(5) NOT NULL default '0',
-  `date_added` datetime NOT NULL default '0000-00-00 00:00:00',
-  `customer_notified` int(1) default '0',
+  `orders_status_history_id` int(11) NOT NULL AUTO_INCREMENT,
+  `osc_magento_id` int(11) NOT NULL DEFAULT '0',
+  `orders_status_id` int(5) NOT NULL DEFAULT '0',
+  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `customer_notified` int(1) DEFAULT '0',
   `comments` mediumtext,
-  `orders_status` varchar(32) default NULL,
-  PRIMARY KEY  (`orders_status_history_id`),
+  `orders_status` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`orders_status_history_id`),
   KEY `idx_orders_status_history_osc_magento_id` (`osc_magento_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_orders_status_history`
+-- Contenu de la table `oscommerce_orders_status_history`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_orders_total`
+-- Structure de la table `oscommerce_orders_total`
 --
 
+DROP TABLE IF EXISTS `oscommerce_orders_total`;
 CREATE TABLE IF NOT EXISTS `oscommerce_orders_total` (
-  `orders_total_id` int(10) unsigned NOT NULL auto_increment,
-  `osc_magento_id` int(11) NOT NULL default '0',
-  `title` varchar(255) NOT NULL default '',
-  `text` varchar(255) NOT NULL default '',
-  `value` decimal(15,4) NOT NULL default '0.0000',
-  `class` varchar(32) NOT NULL default '',
-  `sort_order` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`orders_total_id`),
+  `orders_total_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `osc_magento_id` int(11) NOT NULL DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `text` varchar(255) NOT NULL DEFAULT '',
+  `value` decimal(15,4) NOT NULL DEFAULT '0.0000',
+  `class` varchar(32) NOT NULL DEFAULT '',
+  `sort_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`orders_total_id`),
   KEY `idx_orders_total_osc_magento_id` (`osc_magento_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_orders_total`
+-- Contenu de la table `oscommerce_orders_total`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `oscommerce_ref`
+-- Structure de la table `oscommerce_ref`
 --
 
+DROP TABLE IF EXISTS `oscommerce_ref`;
 CREATE TABLE IF NOT EXISTS `oscommerce_ref` (
-  `id` int(10) unsigned NOT NULL auto_increment,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `import_id` int(10) NOT NULL,
   `type_id` int(10) NOT NULL,
   `value` int(10) NOT NULL,
   `ref_id` int(10) NOT NULL,
-  `created_at` datetime default NULL,
-  `user_id` int(10) default NULL,
-  PRIMARY KEY  (`id`)
+  `created_at` datetime DEFAULT NULL,
+  `user_id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `oscommerce_ref`
+-- Contenu de la table `oscommerce_ref`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paybox_api_debug`
+-- Structure de la table `paybox_api_debug`
 --
 
+DROP TABLE IF EXISTS `paybox_api_debug`;
 CREATE TABLE IF NOT EXISTS `paybox_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  `real_order_id` varchar(50) NOT NULL default '',
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `real_order_id` varchar(50) NOT NULL DEFAULT '',
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `paybox_api_debug`
+-- Contenu de la table `paybox_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paybox_question_number`
+-- Structure de la table `paybox_question_number`
 --
 
+DROP TABLE IF EXISTS `paybox_question_number`;
 CREATE TABLE IF NOT EXISTS `paybox_question_number` (
-  `account_id` int(10) unsigned NOT NULL auto_increment,
-  `account_hash` varchar(50) NOT NULL default '',
-  `increment_value` int(10) unsigned NOT NULL default '1',
-  `reset_date` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  PRIMARY KEY  (`account_id`)
+  `account_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `account_hash` varchar(50) NOT NULL DEFAULT '',
+  `increment_value` int(10) unsigned NOT NULL DEFAULT '1',
+  `reset_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `paybox_question_number`
+-- Contenu de la table `paybox_question_number`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paygate_authorizenet_debug`
+-- Structure de la table `paygate_authorizenet_debug`
 --
 
+DROP TABLE IF EXISTS `paygate_authorizenet_debug`;
 CREATE TABLE IF NOT EXISTS `paygate_authorizenet_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `request_body` text,
   `response_body` text,
   `request_serialized` text,
   `result_serialized` text,
   `request_dump` text,
   `result_dump` text,
-  PRIMARY KEY  (`debug_id`)
+  PRIMARY KEY (`debug_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `paygate_authorizenet_debug`
+-- Contenu de la table `paygate_authorizenet_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paypaluk_api_debug`
+-- Structure de la table `paypaluk_api_debug`
 --
 
+DROP TABLE IF EXISTS `paypaluk_api_debug`;
 CREATE TABLE IF NOT EXISTS `paypaluk_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `paypaluk_api_debug`
+-- Contenu de la table `paypaluk_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paypal_api_debug`
+-- Structure de la table `paypal_api_debug`
 --
 
+DROP TABLE IF EXISTS `paypal_api_debug`;
 CREATE TABLE IF NOT EXISTS `paypal_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `paypal_api_debug`
+-- Contenu de la table `paypal_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll`
+-- Structure de la table `poll`
 --
 
+DROP TABLE IF EXISTS `poll`;
 CREATE TABLE IF NOT EXISTS `poll` (
-  `poll_id` int(10) unsigned NOT NULL auto_increment,
-  `poll_title` varchar(255) NOT NULL default '',
-  `votes_count` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned default '0',
-  `date_posted` datetime NOT NULL default '0000-00-00 00:00:00',
-  `date_closed` datetime default NULL,
-  `active` smallint(6) NOT NULL default '1',
-  `closed` tinyint(1) NOT NULL default '0',
-  `answers_display` smallint(6) default NULL,
-  PRIMARY KEY  (`poll_id`),
+  `poll_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `poll_title` varchar(255) NOT NULL DEFAULT '',
+  `votes_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned DEFAULT '0',
+  `date_posted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date_closed` datetime DEFAULT NULL,
+  `active` smallint(6) NOT NULL DEFAULT '1',
+  `closed` tinyint(1) NOT NULL DEFAULT '0',
+  `answers_display` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`poll_id`),
   KEY `FK_POLL_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `poll`
+-- Contenu de la table `poll`
 --
 
 INSERT INTO `poll` (`poll_id`, `poll_title`, `votes_count`, `store_id`, `date_posted`, `date_closed`, `active`, `closed`, `answers_display`) VALUES
@@ -20219,21 +20464,22 @@ INSERT INTO `poll` (`poll_id`, `poll_title`, `votes_count`, `store_id`, `date_po
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll_answer`
+-- Structure de la table `poll_answer`
 --
 
+DROP TABLE IF EXISTS `poll_answer`;
 CREATE TABLE IF NOT EXISTS `poll_answer` (
-  `answer_id` int(10) unsigned NOT NULL auto_increment,
-  `poll_id` int(10) unsigned NOT NULL default '0',
-  `answer_title` varchar(255) NOT NULL default '',
-  `votes_count` int(10) unsigned NOT NULL default '0',
-  `answer_order` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  (`answer_id`),
+  `answer_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `poll_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `answer_title` varchar(255) NOT NULL DEFAULT '',
+  `votes_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `answer_order` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`answer_id`),
   KEY `FK_POLL_PARENT` (`poll_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `poll_answer`
+-- Contenu de la table `poll_answer`
 --
 
 INSERT INTO `poll_answer` (`answer_id`, `poll_id`, `answer_title`, `votes_count`, `answer_order`) VALUES
@@ -20249,18 +20495,19 @@ INSERT INTO `poll_answer` (`answer_id`, `poll_id`, `answer_title`, `votes_count`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll_store`
+-- Structure de la table `poll_store`
 --
 
+DROP TABLE IF EXISTS `poll_store`;
 CREATE TABLE IF NOT EXISTS `poll_store` (
   `poll_id` int(10) unsigned NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`poll_id`,`store_id`),
+  PRIMARY KEY (`poll_id`,`store_id`),
   KEY `FK_POLL_STORE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `poll_store`
+-- Contenu de la table `poll_store`
 --
 
 INSERT INTO `poll_store` (`poll_id`, `store_id`) VALUES
@@ -20271,117 +20518,122 @@ INSERT INTO `poll_store` (`poll_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `poll_vote`
+-- Structure de la table `poll_vote`
 --
 
+DROP TABLE IF EXISTS `poll_vote`;
 CREATE TABLE IF NOT EXISTS `poll_vote` (
-  `vote_id` int(10) unsigned NOT NULL auto_increment,
-  `poll_id` int(10) unsigned NOT NULL default '0',
-  `poll_answer_id` int(10) unsigned NOT NULL default '0',
-  `ip_address` bigint(20) default NULL,
-  `customer_id` int(11) default NULL,
-  `vote_time` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
-  PRIMARY KEY  (`vote_id`),
+  `vote_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `poll_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `poll_answer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `ip_address` bigint(20) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `vote_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`vote_id`),
   KEY `FK_POLL_ANSWER` (`poll_answer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `poll_vote`
+-- Contenu de la table `poll_vote`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_alert_price`
+-- Structure de la table `product_alert_price`
 --
 
+DROP TABLE IF EXISTS `product_alert_price`;
 CREATE TABLE IF NOT EXISTS `product_alert_price` (
-  `alert_price_id` int(10) unsigned NOT NULL auto_increment,
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `website_id` smallint(5) unsigned NOT NULL default '0',
-  `add_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `last_send_date` datetime default NULL,
-  `send_count` smallint(5) unsigned NOT NULL default '0',
-  `status` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`alert_price_id`),
+  `alert_price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `add_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `last_send_date` datetime DEFAULT NULL,
+  `send_count` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`alert_price_id`),
   KEY `FK_PRODUCT_ALERT_PRICE_CUSTOMER` (`customer_id`),
   KEY `FK_PRODUCT_ALERT_PRICE_PRODUCT` (`product_id`),
   KEY `FK_PRODUCT_ALERT_PRICE_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `product_alert_price`
+-- Contenu de la table `product_alert_price`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_alert_stock`
+-- Structure de la table `product_alert_stock`
 --
 
+DROP TABLE IF EXISTS `product_alert_stock`;
 CREATE TABLE IF NOT EXISTS `product_alert_stock` (
-  `alert_stock_id` int(10) unsigned NOT NULL auto_increment,
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
-  `website_id` smallint(5) unsigned NOT NULL default '0',
-  `add_date` datetime NOT NULL default '0000-00-00 00:00:00',
-  `send_date` datetime default NULL,
-  `send_count` smallint(5) unsigned NOT NULL default '0',
-  `status` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`alert_stock_id`),
+  `alert_stock_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `add_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `send_date` datetime DEFAULT NULL,
+  `send_count` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`alert_stock_id`),
   KEY `FK_PRODUCT_ALERT_STOCK_CUSTOMER` (`customer_id`),
   KEY `FK_PRODUCT_ALERT_STOCK_PRODUCT` (`product_id`),
   KEY `FK_PRODUCT_ALERT_STOCK_WEBSITE` (`website_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `product_alert_stock`
+-- Contenu de la table `product_alert_stock`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `protx_api_debug`
+-- Structure de la table `protx_api_debug`
 --
 
+DROP TABLE IF EXISTS `protx_api_debug`;
 CREATE TABLE IF NOT EXISTS `protx_api_debug` (
-  `debug_id` int(10) unsigned NOT NULL auto_increment,
-  `transaction_id` varchar(255) NOT NULL default '',
-  `debug_at` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `debug_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `transaction_id` varchar(255) NOT NULL DEFAULT '',
+  `debug_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `request_body` text,
   `response_body` text,
-  PRIMARY KEY  (`debug_id`),
+  PRIMARY KEY (`debug_id`),
   KEY `debug_at` (`debug_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `protx_api_debug`
+-- Contenu de la table `protx_api_debug`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating`
+-- Structure de la table `rating`
 --
 
+DROP TABLE IF EXISTS `rating`;
 CREATE TABLE IF NOT EXISTS `rating` (
-  `rating_id` smallint(6) unsigned NOT NULL auto_increment,
-  `entity_id` smallint(6) unsigned NOT NULL default '0',
-  `rating_code` varchar(64) NOT NULL default '',
-  `position` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`rating_id`),
+  `rating_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `rating_code` varchar(64) NOT NULL DEFAULT '',
+  `position` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`rating_id`),
   UNIQUE KEY `IDX_CODE` (`rating_code`),
   KEY `FK_RATING_ENTITY` (`entity_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='ratings' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `rating`
+-- Contenu de la table `rating`
 --
 
 INSERT INTO `rating` (`rating_id`, `entity_id`, `rating_code`, `position`) VALUES
@@ -20392,18 +20644,19 @@ INSERT INTO `rating` (`rating_id`, `entity_id`, `rating_code`, `position`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_entity`
+-- Structure de la table `rating_entity`
 --
 
+DROP TABLE IF EXISTS `rating_entity`;
 CREATE TABLE IF NOT EXISTS `rating_entity` (
-  `entity_id` smallint(6) unsigned NOT NULL auto_increment,
-  `entity_code` varchar(64) NOT NULL default '',
-  PRIMARY KEY  (`entity_id`),
+  `entity_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_code` varchar(64) NOT NULL DEFAULT '',
+  PRIMARY KEY (`entity_id`),
   UNIQUE KEY `IDX_CODE` (`entity_code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Rating entities' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `rating_entity`
+-- Contenu de la table `rating_entity`
 --
 
 INSERT INTO `rating_entity` (`entity_id`, `entity_code`) VALUES
@@ -20414,21 +20667,22 @@ INSERT INTO `rating_entity` (`entity_id`, `entity_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_option`
+-- Structure de la table `rating_option`
 --
 
+DROP TABLE IF EXISTS `rating_option`;
 CREATE TABLE IF NOT EXISTS `rating_option` (
-  `option_id` int(10) unsigned NOT NULL auto_increment,
-  `rating_id` smallint(6) unsigned NOT NULL default '0',
-  `code` varchar(32) NOT NULL default '',
-  `value` tinyint(3) unsigned NOT NULL default '0',
-  `position` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`option_id`),
+  `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rating_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `code` varchar(32) NOT NULL DEFAULT '',
+  `value` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `position` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`option_id`),
   KEY `FK_RATING_OPTION_RATING` (`rating_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Rating options' AUTO_INCREMENT=16 ;
 
 --
--- Dumping data for table `rating_option`
+-- Contenu de la table `rating_option`
 --
 
 INSERT INTO `rating_option` (`option_id`, `rating_id`, `code`, `value`, `position`) VALUES
@@ -20451,27 +20705,28 @@ INSERT INTO `rating_option` (`option_id`, `rating_id`, `code`, `value`, `positio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_option_vote`
+-- Structure de la table `rating_option_vote`
 --
 
+DROP TABLE IF EXISTS `rating_option_vote`;
 CREATE TABLE IF NOT EXISTS `rating_option_vote` (
-  `vote_id` bigint(20) unsigned NOT NULL auto_increment,
-  `option_id` int(10) unsigned NOT NULL default '0',
-  `remote_ip` varchar(16) NOT NULL default '',
-  `remote_ip_long` int(11) NOT NULL default '0',
-  `customer_id` int(11) unsigned default '0',
-  `entity_pk_value` bigint(20) unsigned NOT NULL default '0',
-  `rating_id` smallint(6) unsigned NOT NULL default '0',
-  `review_id` bigint(20) unsigned default NULL,
-  `percent` tinyint(3) NOT NULL default '0',
-  `value` tinyint(3) NOT NULL default '0',
-  PRIMARY KEY  (`vote_id`),
+  `vote_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `option_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `remote_ip` varchar(16) NOT NULL DEFAULT '',
+  `remote_ip_long` int(11) NOT NULL DEFAULT '0',
+  `customer_id` int(11) unsigned DEFAULT '0',
+  `entity_pk_value` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `rating_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `review_id` bigint(20) unsigned DEFAULT NULL,
+  `percent` tinyint(3) NOT NULL DEFAULT '0',
+  `value` tinyint(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`vote_id`),
   KEY `FK_RATING_OPTION_VALUE_OPTION` (`option_id`),
   KEY `FK_RATING_OPTION_REVIEW_ID` (`review_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Rating option values' AUTO_INCREMENT=332 ;
 
 --
--- Dumping data for table `rating_option_vote`
+-- Contenu de la table `rating_option_vote`
 --
 
 INSERT INTO `rating_option_vote` (`vote_id`, `option_id`, `remote_ip`, `remote_ip_long`, `customer_id`, `entity_pk_value`, `rating_id`, `review_id`, `percent`, `value`) VALUES
@@ -20810,25 +21065,26 @@ INSERT INTO `rating_option_vote` (`vote_id`, `option_id`, `remote_ip`, `remote_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_option_vote_aggregated`
+-- Structure de la table `rating_option_vote_aggregated`
 --
 
+DROP TABLE IF EXISTS `rating_option_vote_aggregated`;
 CREATE TABLE IF NOT EXISTS `rating_option_vote_aggregated` (
-  `primary_id` int(11) NOT NULL auto_increment,
-  `rating_id` smallint(6) unsigned NOT NULL default '0',
-  `entity_pk_value` bigint(20) unsigned NOT NULL default '0',
-  `vote_count` int(10) unsigned NOT NULL default '0',
-  `vote_value_sum` int(10) unsigned NOT NULL default '0',
-  `percent` tinyint(3) NOT NULL default '0',
-  `percent_approved` tinyint(3) default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`primary_id`),
+  `primary_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rating_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `entity_pk_value` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `vote_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `vote_value_sum` int(10) unsigned NOT NULL DEFAULT '0',
+  `percent` tinyint(3) NOT NULL DEFAULT '0',
+  `percent_approved` tinyint(3) DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`primary_id`),
   KEY `FK_RATING_OPTION_VALUE_AGGREGATE` (`rating_id`),
   KEY `FK_RATING_OPTION_VOTE_AGGREGATED_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=199 ;
 
 --
--- Dumping data for table `rating_option_vote_aggregated`
+-- Contenu de la table `rating_option_vote_aggregated`
 --
 
 INSERT INTO `rating_option_vote_aggregated` (`primary_id`, `rating_id`, `entity_pk_value`, `vote_count`, `vote_value_sum`, `percent`, `percent_approved`, `store_id`) VALUES
@@ -21034,18 +21290,19 @@ INSERT INTO `rating_option_vote_aggregated` (`primary_id`, `rating_id`, `entity_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_store`
+-- Structure de la table `rating_store`
 --
 
+DROP TABLE IF EXISTS `rating_store`;
 CREATE TABLE IF NOT EXISTS `rating_store` (
-  `rating_id` smallint(6) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`rating_id`,`store_id`),
+  `rating_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`rating_id`,`store_id`),
   KEY `FK_RATING_STORE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rating_store`
+-- Contenu de la table `rating_store`
 --
 
 INSERT INTO `rating_store` (`rating_id`, `store_id`) VALUES
@@ -21065,37 +21322,39 @@ INSERT INTO `rating_store` (`rating_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rating_title`
+-- Structure de la table `rating_title`
 --
 
+DROP TABLE IF EXISTS `rating_title`;
 CREATE TABLE IF NOT EXISTS `rating_title` (
-  `rating_id` smallint(6) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`rating_id`,`store_id`),
+  `rating_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`rating_id`,`store_id`),
   KEY `FK_RATING_TITLE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `rating_title`
+-- Contenu de la table `rating_title`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `report_event`
+-- Structure de la table `report_event`
 --
 
+DROP TABLE IF EXISTS `report_event`;
 CREATE TABLE IF NOT EXISTS `report_event` (
-  `event_id` bigint(20) unsigned NOT NULL auto_increment,
-  `logged_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `event_type_id` smallint(6) unsigned NOT NULL default '0',
-  `object_id` int(10) unsigned NOT NULL default '0',
-  `subject_id` int(10) unsigned NOT NULL default '0',
-  `subtype` tinyint(3) unsigned NOT NULL default '0',
+  `event_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `logged_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `event_type_id` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `object_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `subject_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `subtype` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`event_id`),
+  PRIMARY KEY (`event_id`),
   KEY `IDX_EVENT_TYPE` (`event_type_id`),
   KEY `IDX_SUBJECT` (`subject_id`),
   KEY `IDX_OBJECT` (`object_id`),
@@ -21104,7 +21363,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=121 ;
 
 --
--- Dumping data for table `report_event`
+-- Contenu de la table `report_event`
 --
 
 INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id`, `subject_id`, `subtype`, `store_id`) VALUES
@@ -21232,18 +21491,19 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `report_event_types`
+-- Structure de la table `report_event_types`
 --
 
+DROP TABLE IF EXISTS `report_event_types`;
 CREATE TABLE IF NOT EXISTS `report_event_types` (
-  `event_type_id` smallint(6) unsigned NOT NULL auto_increment,
+  `event_type_id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
   `event_name` varchar(64) NOT NULL,
-  `customer_login` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`event_type_id`)
+  `customer_login` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`event_type_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `report_event_types`
+-- Contenu de la table `report_event_types`
 --
 
 INSERT INTO `report_event_types` (`event_type_id`, `event_name`, `customer_login`) VALUES
@@ -21257,23 +21517,24 @@ INSERT INTO `report_event_types` (`event_type_id`, `event_name`, `customer_login
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review`
+-- Structure de la table `review`
 --
 
+DROP TABLE IF EXISTS `review`;
 CREATE TABLE IF NOT EXISTS `review` (
-  `review_id` bigint(20) unsigned NOT NULL auto_increment,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `entity_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_pk_value` int(10) unsigned NOT NULL default '0',
-  `status_id` tinyint(3) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`review_id`),
+  `review_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `entity_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_pk_value` int(10) unsigned NOT NULL DEFAULT '0',
+  `status_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`review_id`),
   KEY `FK_REVIEW_ENTITY` (`entity_id`),
   KEY `FK_REVIEW_STATUS` (`status_id`),
   KEY `FK_REVIEW_PARENT_PRODUCT` (`entity_pk_value`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Review base information' AUTO_INCREMENT=114 ;
 
 --
--- Dumping data for table `review`
+-- Contenu de la table `review`
 --
 
 INSERT INTO `review` (`review_id`, `created_at`, `entity_id`, `entity_pk_value`, `status_id`) VALUES
@@ -21394,24 +21655,25 @@ INSERT INTO `review` (`review_id`, `created_at`, `entity_id`, `entity_pk_value`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_detail`
+-- Structure de la table `review_detail`
 --
 
+DROP TABLE IF EXISTS `review_detail`;
 CREATE TABLE IF NOT EXISTS `review_detail` (
-  `detail_id` bigint(20) unsigned NOT NULL auto_increment,
-  `review_id` bigint(20) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned default '0',
-  `title` varchar(255) NOT NULL default '',
+  `detail_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `review_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned DEFAULT '0',
+  `title` varchar(255) NOT NULL DEFAULT '',
   `detail` text NOT NULL,
-  `nickname` varchar(128) NOT NULL default '',
-  `customer_id` int(10) unsigned default NULL,
-  PRIMARY KEY  (`detail_id`),
+  `nickname` varchar(128) NOT NULL DEFAULT '',
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`detail_id`),
   KEY `FK_REVIEW_DETAIL_REVIEW` (`review_id`),
   KEY `FK_REVIEW_DETAIL_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Review detail information' AUTO_INCREMENT=114 ;
 
 --
--- Dumping data for table `review_detail`
+-- Contenu de la table `review_detail`
 --
 
 INSERT INTO `review_detail` (`detail_id`, `review_id`, `store_id`, `title`, `detail`, `nickname`, `customer_id`) VALUES
@@ -21532,17 +21794,18 @@ INSERT INTO `review_detail` (`detail_id`, `review_id`, `store_id`, `title`, `det
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_entity`
+-- Structure de la table `review_entity`
 --
 
+DROP TABLE IF EXISTS `review_entity`;
 CREATE TABLE IF NOT EXISTS `review_entity` (
-  `entity_id` smallint(5) unsigned NOT NULL auto_increment,
-  `entity_code` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`entity_id`)
+  `entity_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_code` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`entity_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Review entities' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `review_entity`
+-- Contenu de la table `review_entity`
 --
 
 INSERT INTO `review_entity` (`entity_id`, `entity_code`) VALUES
@@ -21553,22 +21816,23 @@ INSERT INTO `review_entity` (`entity_id`, `entity_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_entity_summary`
+-- Structure de la table `review_entity_summary`
 --
 
+DROP TABLE IF EXISTS `review_entity_summary`;
 CREATE TABLE IF NOT EXISTS `review_entity_summary` (
-  `primary_id` bigint(20) NOT NULL auto_increment,
-  `entity_pk_value` bigint(20) NOT NULL default '0',
-  `entity_type` tinyint(4) NOT NULL default '0',
-  `reviews_count` smallint(6) NOT NULL default '0',
-  `rating_summary` tinyint(4) NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`primary_id`),
+  `primary_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `entity_pk_value` bigint(20) NOT NULL DEFAULT '0',
+  `entity_type` tinyint(4) NOT NULL DEFAULT '0',
+  `reviews_count` smallint(6) NOT NULL DEFAULT '0',
+  `rating_summary` tinyint(4) NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`primary_id`),
   KEY `FK_REVIEW_ENTITY_SUMMARY_STORE` (`store_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=147 ;
 
 --
--- Dumping data for table `review_entity_summary`
+-- Contenu de la table `review_entity_summary`
 --
 
 INSERT INTO `review_entity_summary` (`primary_id`, `entity_pk_value`, `entity_type`, `reviews_count`, `rating_summary`, `store_id`) VALUES
@@ -21722,17 +21986,18 @@ INSERT INTO `review_entity_summary` (`primary_id`, `entity_pk_value`, `entity_ty
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_status`
+-- Structure de la table `review_status`
 --
 
+DROP TABLE IF EXISTS `review_status`;
 CREATE TABLE IF NOT EXISTS `review_status` (
-  `status_id` tinyint(3) unsigned NOT NULL auto_increment,
-  `status_code` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`status_id`)
+  `status_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `status_code` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`status_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Review statuses' AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `review_status`
+-- Contenu de la table `review_status`
 --
 
 INSERT INTO `review_status` (`status_id`, `status_code`) VALUES
@@ -21743,18 +22008,19 @@ INSERT INTO `review_status` (`status_id`, `status_code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review_store`
+-- Structure de la table `review_store`
 --
 
+DROP TABLE IF EXISTS `review_store`;
 CREATE TABLE IF NOT EXISTS `review_store` (
-  `review_id` bigint(20) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`review_id`,`store_id`),
+  `review_id` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`review_id`,`store_id`),
   KEY `FK_REVIEW_STORE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `review_store`
+-- Contenu de la table `review_store`
 --
 
 INSERT INTO `review_store` (`review_id`, `store_id`) VALUES
@@ -21947,464 +22213,472 @@ INSERT INTO `review_store` (`review_id`, `store_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salesrule`
+-- Structure de la table `salesrule`
 --
 
+DROP TABLE IF EXISTS `salesrule`;
 CREATE TABLE IF NOT EXISTS `salesrule` (
-  `rule_id` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
+  `rule_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `from_date` date default '0000-00-00',
-  `to_date` date default '0000-00-00',
-  `coupon_code` varchar(255) default NULL,
-  `uses_per_coupon` int(11) NOT NULL default '0',
-  `uses_per_customer` int(11) NOT NULL default '0',
-  `customer_group_ids` varchar(255) NOT NULL default '',
-  `is_active` tinyint(1) NOT NULL default '0',
+  `from_date` date DEFAULT '0000-00-00',
+  `to_date` date DEFAULT '0000-00-00',
+  `coupon_code` varchar(255) DEFAULT NULL,
+  `uses_per_coupon` int(11) NOT NULL DEFAULT '0',
+  `uses_per_customer` int(11) NOT NULL DEFAULT '0',
+  `customer_group_ids` varchar(255) NOT NULL DEFAULT '',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
   `conditions_serialized` mediumtext NOT NULL,
   `actions_serialized` mediumtext NOT NULL,
-  `stop_rules_processing` tinyint(1) NOT NULL default '1',
-  `is_advanced` tinyint(3) unsigned NOT NULL default '1',
+  `stop_rules_processing` tinyint(1) NOT NULL DEFAULT '1',
+  `is_advanced` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `product_ids` text,
-  `sort_order` int(10) unsigned NOT NULL default '0',
-  `simple_action` varchar(32) NOT NULL default '',
-  `discount_amount` decimal(12,4) NOT NULL default '0.0000',
-  `discount_qty` decimal(12,4) unsigned default NULL,
+  `sort_order` int(10) unsigned NOT NULL DEFAULT '0',
+  `simple_action` varchar(32) NOT NULL DEFAULT '',
+  `discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `discount_qty` decimal(12,4) unsigned DEFAULT NULL,
   `discount_step` int(10) unsigned NOT NULL,
-  `simple_free_shipping` tinyint(1) unsigned NOT NULL default '0',
-  `times_used` int(11) unsigned NOT NULL default '0',
-  `is_rss` tinyint(4) NOT NULL default '0',
+  `simple_free_shipping` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `times_used` int(11) unsigned NOT NULL DEFAULT '0',
+  `is_rss` tinyint(4) NOT NULL DEFAULT '0',
   `website_ids` text,
-  PRIMARY KEY  (`rule_id`),
+  PRIMARY KEY (`rule_id`),
   KEY `sort_order` (`is_active`,`sort_order`,`to_date`,`from_date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `salesrule`
+-- Contenu de la table `salesrule`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `salesrule_customer`
+-- Structure de la table `salesrule_customer`
 --
 
+DROP TABLE IF EXISTS `salesrule_customer`;
 CREATE TABLE IF NOT EXISTS `salesrule_customer` (
-  `rule_customer_id` int(10) unsigned NOT NULL auto_increment,
-  `rule_id` int(10) unsigned NOT NULL default '0',
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `times_used` smallint(11) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`rule_customer_id`),
+  `rule_customer_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rule_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `times_used` smallint(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`rule_customer_id`),
   KEY `rule_id` (`rule_id`,`customer_id`),
   KEY `customer_id` (`customer_id`,`rule_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `salesrule_customer`
+-- Contenu de la table `salesrule_customer`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_order_item`
+-- Structure de la table `sales_flat_order_item`
 --
 
+DROP TABLE IF EXISTS `sales_flat_order_item`;
 CREATE TABLE IF NOT EXISTS `sales_flat_order_item` (
-  `item_id` int(10) unsigned NOT NULL auto_increment,
-  `order_id` int(10) unsigned NOT NULL default '0',
-  `parent_item_id` int(10) unsigned default NULL,
-  `quote_item_id` int(10) unsigned default NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `product_id` int(10) unsigned default NULL,
-  `product_type` varchar(255) default NULL,
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_item_id` int(10) unsigned DEFAULT NULL,
+  `quote_item_id` int(10) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `product_id` int(10) unsigned DEFAULT NULL,
+  `product_type` varchar(255) DEFAULT NULL,
   `product_options` text,
-  `weight` decimal(12,4) default '0.0000',
-  `is_virtual` tinyint(1) unsigned default NULL,
-  `sku` varchar(255) NOT NULL default '',
-  `name` varchar(255) default NULL,
+  `weight` decimal(12,4) DEFAULT '0.0000',
+  `is_virtual` tinyint(1) unsigned DEFAULT NULL,
+  `sku` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) DEFAULT NULL,
   `description` text,
   `applied_rule_ids` text,
   `additional_data` text,
-  `free_shipping` tinyint(1) unsigned NOT NULL default '0',
-  `is_qty_decimal` tinyint(1) unsigned default NULL,
-  `no_discount` tinyint(1) unsigned default '0',
-  `qty_backordered` decimal(12,4) default '0.0000',
-  `qty_canceled` decimal(12,4) default '0.0000',
-  `qty_invoiced` decimal(12,4) default '0.0000',
-  `qty_ordered` decimal(12,4) default '0.0000',
-  `qty_refunded` decimal(12,4) default '0.0000',
-  `qty_shipped` decimal(12,4) default '0.0000',
-  `cost` decimal(12,4) default '0.0000',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `base_price` decimal(12,4) NOT NULL default '0.0000',
-  `original_price` decimal(12,4) default NULL,
-  `base_original_price` decimal(12,4) default NULL,
-  `tax_percent` decimal(12,4) default '0.0000',
-  `tax_amount` decimal(12,4) default '0.0000',
-  `base_tax_amount` decimal(12,4) default '0.0000',
-  `tax_invoiced` decimal(12,4) default '0.0000',
-  `base_tax_invoiced` decimal(12,4) default '0.0000',
-  `discount_percent` decimal(12,4) default '0.0000',
-  `discount_amount` decimal(12,4) default '0.0000',
-  `base_discount_amount` decimal(12,4) default '0.0000',
-  `discount_invoiced` decimal(12,4) default '0.0000',
-  `base_discount_invoiced` decimal(12,4) default '0.0000',
-  `amount_refunded` decimal(12,4) default '0.0000',
-  `base_amount_refunded` decimal(12,4) default '0.0000',
-  `row_total` decimal(12,4) NOT NULL default '0.0000',
-  `base_row_total` decimal(12,4) NOT NULL default '0.0000',
-  `row_invoiced` decimal(12,4) NOT NULL default '0.0000',
-  `base_row_invoiced` decimal(12,4) NOT NULL default '0.0000',
-  `row_weight` decimal(12,4) default '0.0000',
-  `gift_message_id` int(10) default NULL,
-  `gift_message_available` int(10) default NULL,
-  `base_tax_before_discount` decimal(12,4) default NULL,
-  `tax_before_discount` decimal(12,4) default NULL,
+  `free_shipping` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_qty_decimal` tinyint(1) unsigned DEFAULT NULL,
+  `no_discount` tinyint(1) unsigned DEFAULT '0',
+  `qty_backordered` decimal(12,4) DEFAULT '0.0000',
+  `qty_canceled` decimal(12,4) DEFAULT '0.0000',
+  `qty_invoiced` decimal(12,4) DEFAULT '0.0000',
+  `qty_ordered` decimal(12,4) DEFAULT '0.0000',
+  `qty_refunded` decimal(12,4) DEFAULT '0.0000',
+  `qty_shipped` decimal(12,4) DEFAULT '0.0000',
+  `cost` decimal(12,4) DEFAULT '0.0000',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `original_price` decimal(12,4) DEFAULT NULL,
+  `base_original_price` decimal(12,4) DEFAULT NULL,
+  `tax_percent` decimal(12,4) DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `base_tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `tax_invoiced` decimal(12,4) DEFAULT '0.0000',
+  `base_tax_invoiced` decimal(12,4) DEFAULT '0.0000',
+  `discount_percent` decimal(12,4) DEFAULT '0.0000',
+  `discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `base_discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `discount_invoiced` decimal(12,4) DEFAULT '0.0000',
+  `base_discount_invoiced` decimal(12,4) DEFAULT '0.0000',
+  `amount_refunded` decimal(12,4) DEFAULT '0.0000',
+  `base_amount_refunded` decimal(12,4) DEFAULT '0.0000',
+  `row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `row_invoiced` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_row_invoiced` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `row_weight` decimal(12,4) DEFAULT '0.0000',
+  `gift_message_id` int(10) DEFAULT NULL,
+  `gift_message_available` int(10) DEFAULT NULL,
+  `base_tax_before_discount` decimal(12,4) DEFAULT NULL,
+  `tax_before_discount` decimal(12,4) DEFAULT NULL,
   `weee_tax_applied` text,
-  `weee_tax_applied_amount` decimal(12,4) default NULL,
-  `weee_tax_applied_row_amount` decimal(12,4) default NULL,
-  `base_weee_tax_applied_amount` decimal(12,4) default NULL,
-  `base_weee_tax_applied_row_amount` decimal(12,4) default NULL,
-  `weee_tax_disposition` decimal(12,4) default NULL,
-  `weee_tax_row_disposition` decimal(12,4) default NULL,
-  `base_weee_tax_disposition` decimal(12,4) default NULL,
-  `base_weee_tax_row_disposition` decimal(12,4) default NULL,
-  `ext_order_item_id` varchar(255) default NULL,
-  `locked_do_invoice` int(10) unsigned default NULL,
-  `locked_do_ship` int(10) unsigned default NULL,
-  PRIMARY KEY  (`item_id`),
+  `weee_tax_applied_amount` decimal(12,4) DEFAULT NULL,
+  `weee_tax_applied_row_amount` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_applied_amount` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_applied_row_amount` decimal(12,4) DEFAULT NULL,
+  `weee_tax_disposition` decimal(12,4) DEFAULT NULL,
+  `weee_tax_row_disposition` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_disposition` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_row_disposition` decimal(12,4) DEFAULT NULL,
+  `ext_order_item_id` varchar(255) DEFAULT NULL,
+  `locked_do_invoice` int(10) unsigned DEFAULT NULL,
+  `locked_do_ship` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`item_id`),
   KEY `IDX_ORDER` (`order_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `sales_flat_order_item`
+-- Contenu de la table `sales_flat_order_item`
 --
 
 INSERT INTO `sales_flat_order_item` (`item_id`, `order_id`, `parent_item_id`, `quote_item_id`, `created_at`, `updated_at`, `product_id`, `product_type`, `product_options`, `weight`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `qty_backordered`, `qty_canceled`, `qty_invoiced`, `qty_ordered`, `qty_refunded`, `qty_shipped`, `cost`, `price`, `base_price`, `original_price`, `base_original_price`, `tax_percent`, `tax_amount`, `base_tax_amount`, `tax_invoiced`, `base_tax_invoiced`, `discount_percent`, `discount_amount`, `base_discount_amount`, `discount_invoiced`, `base_discount_invoiced`, `amount_refunded`, `base_amount_refunded`, `row_total`, `base_row_total`, `row_invoiced`, `base_row_invoiced`, `row_weight`, `gift_message_id`, `gift_message_available`, `base_tax_before_discount`, `tax_before_discount`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`, `ext_order_item_id`, `locked_do_invoice`, `locked_do_ship`) VALUES
-(1, 1, NULL, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 18, 'simple', 'a:1:{s:15:"info_buyRequest";a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}}', 13.6000, 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, NULL, 0.0000, 0.0000, 1.0000, 0.0000, 0.0000, 0.0000, 399.9900, 399.9900, 399.9900, 399.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 399.9900, 399.9900, 0.0000, 0.0000, 13.6000, NULL, 2, 0.0000, 0.0000, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, NULL);
+(1, 1, NULL, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 18, 'simple', 'a:1:{s:15:"info_buyRequest";a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}}', '13.6000', 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '0.0000', '0.0000', '13.6000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote`
+-- Structure de la table `sales_flat_quote`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `converted_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned default '1',
-  `is_virtual` tinyint(1) unsigned default '0',
-  `is_multi_shipping` tinyint(1) unsigned default '0',
-  `items_count` int(10) unsigned default '0',
-  `items_qty` decimal(12,4) default '0.0000',
-  `orig_order_id` int(10) unsigned default '0',
-  `store_to_base_rate` decimal(12,4) default '0.0000',
-  `store_to_quote_rate` decimal(12,4) default '0.0000',
-  `base_to_global_rate` decimal(12,4) default NULL,
-  `base_to_quote_rate` decimal(12,4) default NULL,
-  `global_currency_code` varchar(255) default NULL,
-  `base_currency_code` varchar(255) default NULL,
-  `store_currency_code` varchar(255) default NULL,
-  `quote_currency_code` varchar(255) default NULL,
-  `grand_total` decimal(12,4) default '0.0000',
-  `base_grand_total` decimal(12,4) default '0.0000',
-  `checkout_method` varchar(255) default NULL,
-  `customer_id` int(10) unsigned default '0',
-  `customer_tax_class_id` int(10) unsigned default '0',
-  `customer_group_id` int(10) unsigned default '0',
-  `customer_email` varchar(255) default NULL,
-  `customer_prefix` varchar(40) default NULL,
-  `customer_firstname` varchar(255) default NULL,
-  `customer_middlename` varchar(40) default NULL,
-  `customer_lastname` varchar(255) default NULL,
-  `customer_suffix` varchar(40) default NULL,
-  `customer_dob` datetime default NULL,
-  `customer_note` varchar(255) default NULL,
-  `customer_note_notify` tinyint(1) unsigned default '1',
-  `customer_is_guest` tinyint(1) unsigned default '0',
-  `customer_taxvat` varchar(255) default NULL,
-  `remote_ip` varchar(32) default NULL,
-  `applied_rule_ids` varchar(255) default NULL,
-  `reserved_order_id` varchar(64) default '',
-  `password_hash` varchar(255) default NULL,
-  `coupon_code` varchar(255) default NULL,
-  `subtotal` decimal(12,4) default NULL,
-  `base_subtotal` decimal(12,4) default NULL,
-  `subtotal_with_discount` decimal(12,4) default NULL,
-  `base_subtotal_with_discount` decimal(12,4) default NULL,
-  `gift_message_id` varchar(255) default NULL,
-  `is_changed` int(10) unsigned default NULL,
-  `trigger_recollect` tinyint(1) NOT NULL default '0',
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `converted_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned DEFAULT '1',
+  `is_virtual` tinyint(1) unsigned DEFAULT '0',
+  `is_multi_shipping` tinyint(1) unsigned DEFAULT '0',
+  `items_count` int(10) unsigned DEFAULT '0',
+  `items_qty` decimal(12,4) DEFAULT '0.0000',
+  `orig_order_id` int(10) unsigned DEFAULT '0',
+  `store_to_base_rate` decimal(12,4) DEFAULT '0.0000',
+  `store_to_quote_rate` decimal(12,4) DEFAULT '0.0000',
+  `base_to_global_rate` decimal(12,4) DEFAULT NULL,
+  `base_to_quote_rate` decimal(12,4) DEFAULT NULL,
+  `global_currency_code` varchar(255) DEFAULT NULL,
+  `base_currency_code` varchar(255) DEFAULT NULL,
+  `store_currency_code` varchar(255) DEFAULT NULL,
+  `quote_currency_code` varchar(255) DEFAULT NULL,
+  `grand_total` decimal(12,4) DEFAULT '0.0000',
+  `base_grand_total` decimal(12,4) DEFAULT '0.0000',
+  `checkout_method` varchar(255) DEFAULT NULL,
+  `customer_id` int(10) unsigned DEFAULT '0',
+  `customer_tax_class_id` int(10) unsigned DEFAULT '0',
+  `customer_group_id` int(10) unsigned DEFAULT '0',
+  `customer_email` varchar(255) DEFAULT NULL,
+  `customer_prefix` varchar(40) DEFAULT NULL,
+  `customer_firstname` varchar(255) DEFAULT NULL,
+  `customer_middlename` varchar(40) DEFAULT NULL,
+  `customer_lastname` varchar(255) DEFAULT NULL,
+  `customer_suffix` varchar(40) DEFAULT NULL,
+  `customer_dob` datetime DEFAULT NULL,
+  `customer_note` varchar(255) DEFAULT NULL,
+  `customer_note_notify` tinyint(1) unsigned DEFAULT '1',
+  `customer_is_guest` tinyint(1) unsigned DEFAULT '0',
+  `customer_taxvat` varchar(255) DEFAULT NULL,
+  `remote_ip` varchar(32) DEFAULT NULL,
+  `applied_rule_ids` varchar(255) DEFAULT NULL,
+  `reserved_order_id` varchar(64) DEFAULT '',
+  `password_hash` varchar(255) DEFAULT NULL,
+  `coupon_code` varchar(255) DEFAULT NULL,
+  `subtotal` decimal(12,4) DEFAULT NULL,
+  `base_subtotal` decimal(12,4) DEFAULT NULL,
+  `subtotal_with_discount` decimal(12,4) DEFAULT NULL,
+  `base_subtotal_with_discount` decimal(12,4) DEFAULT NULL,
+  `gift_message_id` varchar(255) DEFAULT NULL,
+  `is_changed` int(10) unsigned DEFAULT NULL,
+  `trigger_recollect` tinyint(1) NOT NULL DEFAULT '0',
   `ext_shipping_info` text,
-  PRIMARY KEY  (`entity_id`),
+  PRIMARY KEY (`entity_id`),
   KEY `FK_SALES_QUOTE_STORE` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`,`store_id`,`is_active`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `sales_flat_quote`
+-- Contenu de la table `sales_flat_quote`
 --
 
 INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_at`, `converted_at`, `is_active`, `is_virtual`, `is_multi_shipping`, `items_count`, `items_qty`, `orig_order_id`, `store_to_base_rate`, `store_to_quote_rate`, `base_to_global_rate`, `base_to_quote_rate`, `global_currency_code`, `base_currency_code`, `store_currency_code`, `quote_currency_code`, `grand_total`, `base_grand_total`, `checkout_method`, `customer_id`, `customer_tax_class_id`, `customer_group_id`, `customer_email`, `customer_prefix`, `customer_firstname`, `customer_middlename`, `customer_lastname`, `customer_suffix`, `customer_dob`, `customer_note`, `customer_note_notify`, `customer_is_guest`, `customer_taxvat`, `remote_ip`, `applied_rule_ids`, `reserved_order_id`, `password_hash`, `coupon_code`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `gift_message_id`, `is_changed`, `trigger_recollect`, `ext_shipping_info`) VALUES
-(1, 1, '2009-10-07 20:25:35', '2009-10-07 21:09:16', '0000-00-00 00:00:00', 0, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 404.9900, 404.9900, '', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, 399.9900, 399.9900, 399.9900, 399.9900, NULL, 1, 0, NULL),
-(2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 349.9900, 349.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, 349.9900, 349.9900, 349.9900, 349.9900, NULL, 1, 0, NULL),
-(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 2299.0000, 2299.0000, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 2299.0000, 2299.0000, 2299.0000, 2299.0000, NULL, 1, 0, NULL),
-(4, 1, '2009-10-18 09:48:22', '2009-10-18 09:49:34', '0000-00-00 00:00:00', 1, 0, 0, 0, 0.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 0.0000, 0.0000, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 1, 0, NULL),
-(5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, 0.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 0.0000, 0.0000, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 1, 0, NULL),
-(6, 1, '2009-10-19 21:44:10', '2009-10-19 21:52:41', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 354.9900, 354.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 349.9900, 349.9900, 349.9900, 349.9900, NULL, 1, 0, NULL),
-(7, 1, '2009-10-21 20:14:20', '2009-10-21 22:11:28', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 349.9900, 349.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 349.9900, 349.9900, 349.9900, 349.9900, NULL, 1, 0, NULL),
-(8, 1, '2009-10-22 20:53:36', '2009-10-22 21:46:46', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 349.9900, 349.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, 349.9900, 349.9900, 349.9900, 349.9900, NULL, 1, 0, NULL),
-(9, 1, '2009-10-26 18:00:15', '2009-10-26 18:03:26', '0000-00-00 00:00:00', 1, 0, 0, 2, 2.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 699.9900, 699.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, 699.9900, 699.9900, 699.9900, 699.9900, NULL, 1, 0, NULL),
-(10, 1, '2009-10-26 19:23:00', '2009-10-26 19:23:35', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 349.9900, 349.9900, 'guest', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '86.201.245.123', '', '', NULL, NULL, 349.9900, 349.9900, 349.9900, 349.9900, NULL, 1, 0, NULL),
-(11, 1, '2009-10-28 07:41:00', '2009-10-28 07:41:01', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 16.9900, 16.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '83.203.113.231', '', '', NULL, NULL, 16.9900, 16.9900, 16.9900, 16.9900, NULL, 1, 0, NULL),
-(12, 1, '2009-10-31 10:03:39', '2009-10-31 10:50:46', '0000-00-00 00:00:00', 1, 0, 0, 3, 4.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 2599.9600, 2599.9600, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, 2599.9600, 2599.9600, 2599.9600, 2599.9600, NULL, 1, 0, NULL),
-(13, 1, '2009-10-31 10:51:15', '2009-10-31 10:51:16', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 149.9900, 149.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, 149.9900, 149.9900, 149.9900, 149.9900, NULL, 1, 0, NULL),
-(14, 1, '2009-10-31 10:53:11', '2009-10-31 10:57:55', '0000-00-00 00:00:00', 1, 0, 0, 7, 7.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 4633.9600, 4633.9600, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, 4633.9600, 4633.9600, 4633.9600, 4633.9600, NULL, 1, 0, NULL),
-(15, 1, '2009-10-31 10:56:27', '2009-10-31 10:56:27', '0000-00-00 00:00:00', 1, 0, 0, 0, 0.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 0.0000, 0.0000, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', NULL, '', NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 1, 0, NULL),
-(16, 1, '2009-10-31 14:12:39', '2009-10-31 15:56:48', '0000-00-00 00:00:00', 1, 0, 0, 1, 1.0000, 0, 1.0000, 1.0000, 1.0000, 1.0000, 'EUR', 'EUR', 'EUR', 'EUR', 2299.9900, 2299.9900, '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, 2299.9900, 2299.9900, 2299.9900, 2299.9900, NULL, 1, 0, NULL);
+(1, 1, '2009-10-07 20:25:35', '2009-10-07 21:09:16', '0000-00-00 00:00:00', 0, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '404.9900', '404.9900', '', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, '399.9900', '399.9900', '399.9900', '399.9900', NULL, 1, 0, NULL),
+(2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
+(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 0, NULL),
+(4, 1, '2009-10-18 09:48:22', '2009-10-18 09:49:34', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
+(5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
+(6, 1, '2009-10-19 21:44:10', '2009-10-19 21:52:41', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '354.9900', '354.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
+(7, 1, '2009-10-21 20:14:20', '2009-10-21 22:11:28', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
+(8, 1, '2009-10-22 20:53:36', '2009-10-22 21:46:46', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
+(9, 1, '2009-10-26 18:00:15', '2009-10-26 18:03:26', '0000-00-00 00:00:00', 1, 0, 0, 2, '2.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '699.9900', '699.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '699.9900', '699.9900', '699.9900', '699.9900', NULL, 1, 0, NULL),
+(10, 1, '2009-10-26 19:23:00', '2009-10-26 19:23:35', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', 'guest', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '86.201.245.123', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
+(11, 1, '2009-10-28 07:41:00', '2009-10-28 07:41:01', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '16.9900', '16.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '83.203.113.231', '', '', NULL, NULL, '16.9900', '16.9900', '16.9900', '16.9900', NULL, 1, 0, NULL),
+(12, 1, '2009-10-31 10:03:39', '2009-10-31 10:50:46', '0000-00-00 00:00:00', 1, 0, 0, 3, '4.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2599.9600', '2599.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2599.9600', '2599.9600', '2599.9600', '2599.9600', NULL, 1, 0, NULL),
+(13, 1, '2009-10-31 10:51:15', '2009-10-31 10:51:16', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '149.9900', '149.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '149.9900', '149.9900', '149.9900', '149.9900', NULL, 1, 0, NULL),
+(14, 1, '2009-10-31 10:53:11', '2009-10-31 10:57:55', '0000-00-00 00:00:00', 1, 0, 0, 7, '7.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '4633.9600', '4633.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '4633.9600', '4633.9600', '4633.9600', '4633.9600', NULL, 1, 0, NULL),
+(15, 1, '2009-10-31 10:56:27', '2009-10-31 10:56:27', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', NULL, '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
+(16, 1, '2009-10-31 14:12:39', '2009-10-31 15:56:48', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.9900', '2299.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2299.9900', '2299.9900', '2299.9900', '2299.9900', NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_address`
+-- Structure de la table `sales_flat_quote_address`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_address`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
-  `address_id` int(10) unsigned NOT NULL auto_increment,
-  `quote_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `customer_id` int(10) unsigned default NULL,
-  `save_in_address_book` tinyint(1) default '0',
-  `customer_address_id` int(10) unsigned default NULL,
-  `address_type` varchar(255) default NULL,
-  `email` varchar(255) default NULL,
-  `prefix` varchar(40) default NULL,
-  `firstname` varchar(255) default NULL,
-  `middlename` varchar(40) default NULL,
-  `lastname` varchar(255) default NULL,
-  `suffix` varchar(40) default NULL,
-  `company` varchar(255) default NULL,
-  `street` varchar(255) default NULL,
-  `city` varchar(255) default NULL,
-  `region` varchar(255) default NULL,
-  `region_id` int(10) unsigned default NULL,
-  `postcode` varchar(255) default NULL,
-  `country_id` varchar(255) default NULL,
-  `telephone` varchar(255) default NULL,
-  `fax` varchar(255) default NULL,
-  `same_as_billing` tinyint(1) unsigned NOT NULL default '0',
-  `free_shipping` tinyint(1) unsigned NOT NULL default '0',
-  `collect_shipping_rates` tinyint(1) unsigned NOT NULL default '0',
-  `shipping_method` varchar(255) NOT NULL default '',
-  `shipping_description` varchar(255) NOT NULL default '',
-  `weight` decimal(12,4) NOT NULL default '0.0000',
-  `subtotal` decimal(12,4) NOT NULL default '0.0000',
-  `base_subtotal` decimal(12,4) NOT NULL default '0.0000',
-  `subtotal_with_discount` decimal(12,4) NOT NULL default '0.0000',
-  `base_subtotal_with_discount` decimal(12,4) NOT NULL default '0.0000',
-  `tax_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_tax_amount` decimal(12,4) NOT NULL default '0.0000',
-  `shipping_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_shipping_amount` decimal(12,4) NOT NULL default '0.0000',
-  `shipping_tax_amount` decimal(12,4) default NULL,
-  `base_shipping_tax_amount` decimal(12,4) default NULL,
-  `discount_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_discount_amount` decimal(12,4) NOT NULL default '0.0000',
-  `grand_total` decimal(12,4) NOT NULL default '0.0000',
-  `base_grand_total` decimal(12,4) NOT NULL default '0.0000',
+  `address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quote_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `save_in_address_book` tinyint(1) DEFAULT '0',
+  `customer_address_id` int(10) unsigned DEFAULT NULL,
+  `address_type` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `prefix` varchar(40) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `middlename` varchar(40) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `suffix` varchar(40) DEFAULT NULL,
+  `company` varchar(255) DEFAULT NULL,
+  `street` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `region` varchar(255) DEFAULT NULL,
+  `region_id` int(10) unsigned DEFAULT NULL,
+  `postcode` varchar(255) DEFAULT NULL,
+  `country_id` varchar(255) DEFAULT NULL,
+  `telephone` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `same_as_billing` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `free_shipping` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `collect_shipping_rates` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `shipping_method` varchar(255) NOT NULL DEFAULT '',
+  `shipping_description` varchar(255) NOT NULL DEFAULT '',
+  `weight` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `subtotal` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_subtotal` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `subtotal_with_discount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_subtotal_with_discount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_tax_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `shipping_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_shipping_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `shipping_tax_amount` decimal(12,4) DEFAULT NULL,
+  `base_shipping_tax_amount` decimal(12,4) DEFAULT NULL,
+  `discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `grand_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_grand_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
   `customer_notes` text,
   `applied_taxes` text,
-  `gift_message_id` varchar(255) default NULL,
-  PRIMARY KEY  (`address_id`),
+  `gift_message_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` (`quote_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
 
 --
--- Dumping data for table `sales_flat_quote_address`
+-- Contenu de la table `sales_flat_quote_address`
 --
 
 INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, `updated_at`, `customer_id`, `save_in_address_book`, `customer_address_id`, `address_type`, `email`, `prefix`, `firstname`, `middlename`, `lastname`, `suffix`, `company`, `street`, `city`, `region`, `region_id`, `postcode`, `country_id`, `telephone`, `fax`, `same_as_billing`, `free_shipping`, `collect_shipping_rates`, `shipping_method`, `shipping_description`, `weight`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `tax_amount`, `base_tax_amount`, `shipping_amount`, `base_shipping_amount`, `shipping_tax_amount`, `base_shipping_tax_amount`, `discount_amount`, `base_discount_amount`, `grand_total`, `base_grand_total`, `customer_notes`, `applied_taxes`, `gift_message_id`) VALUES
-(3, 1, '2009-10-07 20:25:37', '2009-10-07 21:09:16', NULL, 1, NULL, 'billing', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(4, 1, '2009-10-07 20:25:37', '2009-10-07 21:09:17', NULL, 1, NULL, 'shipping', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', 13.6000, 399.9900, 399.9900, 399.9900, 399.9900, 0.0000, 0.0000, 5.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 404.9900, 404.9900, NULL, 'a:0:{}', NULL),
-(7, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(8, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 15.2000, 349.9900, 349.9900, 349.9900, 349.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, NULL, 'a:0:{}', NULL),
-(11, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(12, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 150.0000, 2299.0000, 2299.0000, 2299.0000, 2299.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 2299.0000, 2299.0000, NULL, 'a:0:{}', NULL),
-(15, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(16, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(19, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(20, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(23, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'billing', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(24, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'shipping', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', 15.2000, 349.9900, 349.9900, 349.9900, 349.9900, 0.0000, 0.0000, 5.0000, 5.0000, 0.0000, 0.0000, 0.0000, 0.0000, 354.9900, 354.9900, NULL, 'a:0:{}', NULL),
-(27, 7, '2009-10-21 20:14:21', '2009-10-21 22:11:28', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(28, 7, '2009-10-21 20:14:21', '2009-10-21 22:11:28', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 15.2000, 349.9900, 349.9900, 349.9900, 349.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, NULL, 'a:0:{}', NULL),
-(31, 8, '2009-10-22 20:53:37', '2009-10-22 21:46:46', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(32, 8, '2009-10-22 20:53:37', '2009-10-22 21:46:46', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 15.2000, 349.9900, 349.9900, 349.9900, 349.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, NULL, 'a:0:{}', NULL),
-(35, 9, '2009-10-26 18:00:16', '2009-10-26 18:03:26', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(36, 9, '2009-10-26 18:00:16', '2009-10-26 18:03:26', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 7.2000, 699.9900, 699.9900, 699.9900, 699.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 699.9900, 699.9900, NULL, 'a:0:{}', NULL),
-(39, 10, '2009-10-26 19:23:01', '2009-10-26 19:23:14', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(40, 10, '2009-10-26 19:23:01', '2009-10-26 19:23:14', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 15.2000, 349.9900, 349.9900, 349.9900, 349.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, NULL, 'a:0:{}', NULL),
-(43, 11, '2009-10-28 07:41:01', '2009-10-28 07:41:01', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(44, 11, '2009-10-28 07:41:01', '2009-10-28 07:41:01', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 1.0000, 16.9900, 16.9900, 16.9900, 16.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 16.9900, 16.9900, NULL, 'a:0:{}', NULL),
-(47, 12, '2009-10-31 10:03:40', '2009-10-31 10:50:46', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(48, 12, '2009-10-31 10:03:40', '2009-10-31 10:50:46', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 60.4000, 2599.9600, 2599.9600, 2599.9600, 2599.9600, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 2599.9600, 2599.9600, NULL, 'a:0:{}', NULL),
-(51, 13, '2009-10-31 10:51:16', '2009-10-31 10:51:16', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(52, 13, '2009-10-31 10:51:16', '2009-10-31 10:51:16', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 3.2000, 149.9900, 149.9900, 149.9900, 149.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 149.9900, 149.9900, NULL, 'a:0:{}', NULL),
-(55, 14, '2009-10-31 10:53:25', '2009-10-31 10:57:55', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(56, 14, '2009-10-31 10:53:25', '2009-10-31 10:57:55', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 44.8000, 4633.9600, 4633.9600, 4633.9600, 4633.9600, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 4633.9600, 4633.9600, NULL, 'a:0:{}', NULL),
-(57, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(58, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(61, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, 0.0000, 0.0000, 0.0000, 0.0000, NULL, 'a:0:{}', NULL),
-(62, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', 10.6000, 2299.9900, 2299.9900, 2299.9900, 2299.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 2299.9900, 2299.9900, NULL, 'a:0:{}', NULL);
+(3, 1, '2009-10-07 20:25:37', '2009-10-07 21:09:16', NULL, 1, NULL, 'billing', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(4, 1, '2009-10-07 20:25:37', '2009-10-07 21:09:17', NULL, 1, NULL, 'shipping', 'tharibo@gmail.com', NULL, 'test cybermut', NULL, 'testouille', NULL, '', '3 rue Philippe Féral', 'Toulouse', 'Haute-Garonne', 213, '31000', 'FR', '0679868165', 'no', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', '13.6000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '5.0000', '5.0000', '0.0000', '0.0000', '0.0000', '0.0000', '404.9900', '404.9900', NULL, 'a:0:{}', NULL),
+(7, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(8, 2, '2009-10-07 21:18:31', '2009-10-07 21:18:51', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', NULL, 'a:0:{}', NULL),
+(11, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(12, 3, '2009-10-07 21:21:42', '2009-10-07 21:44:15', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '150.0000', '2299.0000', '2299.0000', '2299.0000', '2299.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', NULL, 'a:0:{}', NULL),
+(15, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(16, 4, '2009-10-18 09:48:24', '2009-10-18 09:49:34', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(19, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(20, 5, '2009-10-18 16:42:13', '2009-10-18 16:43:19', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(23, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'billing', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(24, 6, '2009-10-19 21:44:11', '2009-10-19 21:52:41', NULL, 1, NULL, 'shipping', 'dfggggdfgd@toto.com', NULL, 'dfg', NULL, 'dfgd', NULL, '', 'dfgdfg dfg dfg df', ' dfg df', 'Aisne', 183, '35000', 'FR', '6546546554', 'dfgdfgdfggdfg', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '5.0000', '5.0000', '0.0000', '0.0000', '0.0000', '0.0000', '354.9900', '354.9900', NULL, 'a:0:{}', NULL),
+(27, 7, '2009-10-21 20:14:21', '2009-10-21 22:11:28', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(28, 7, '2009-10-21 20:14:21', '2009-10-21 22:11:28', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', NULL, 'a:0:{}', NULL),
+(31, 8, '2009-10-22 20:53:37', '2009-10-22 21:46:46', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(32, 8, '2009-10-22 20:53:37', '2009-10-22 21:46:46', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', NULL, 'a:0:{}', NULL),
+(35, 9, '2009-10-26 18:00:16', '2009-10-26 18:03:26', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(36, 9, '2009-10-26 18:00:16', '2009-10-26 18:03:26', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '7.2000', '699.9900', '699.9900', '699.9900', '699.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '699.9900', '699.9900', NULL, 'a:0:{}', NULL),
+(39, 10, '2009-10-26 19:23:01', '2009-10-26 19:23:14', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(40, 10, '2009-10-26 19:23:01', '2009-10-26 19:23:14', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '15.2000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', NULL, 'a:0:{}', NULL),
+(43, 11, '2009-10-28 07:41:01', '2009-10-28 07:41:01', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(44, 11, '2009-10-28 07:41:01', '2009-10-28 07:41:01', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '1.0000', '16.9900', '16.9900', '16.9900', '16.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '16.9900', '16.9900', NULL, 'a:0:{}', NULL),
+(47, 12, '2009-10-31 10:03:40', '2009-10-31 10:50:46', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(48, 12, '2009-10-31 10:03:40', '2009-10-31 10:50:46', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '60.4000', '2599.9600', '2599.9600', '2599.9600', '2599.9600', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2599.9600', '2599.9600', NULL, 'a:0:{}', NULL),
+(51, 13, '2009-10-31 10:51:16', '2009-10-31 10:51:16', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(52, 13, '2009-10-31 10:51:16', '2009-10-31 10:51:16', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '3.2000', '149.9900', '149.9900', '149.9900', '149.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '149.9900', '149.9900', NULL, 'a:0:{}', NULL),
+(55, 14, '2009-10-31 10:53:25', '2009-10-31 10:57:55', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(56, 14, '2009-10-31 10:53:25', '2009-10-31 10:57:55', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '44.8000', '4633.9600', '4633.9600', '4633.9600', '4633.9600', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '4633.9600', '4633.9600', NULL, 'a:0:{}', NULL),
+(57, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(58, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(61, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(62, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '10.6000', '2299.9900', '2299.9900', '2299.9900', '2299.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', NULL, 'a:0:{}', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_address_item`
+-- Structure de la table `sales_flat_quote_address_item`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_address_item`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_address_item` (
-  `address_item_id` int(10) unsigned NOT NULL auto_increment,
-  `parent_item_id` int(10) unsigned default NULL,
-  `quote_address_id` int(10) unsigned NOT NULL default '0',
-  `quote_item_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
+  `address_item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_item_id` int(10) unsigned DEFAULT NULL,
+  `quote_address_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `quote_item_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `applied_rule_ids` text,
   `additional_data` text,
-  `weight` decimal(12,4) default '0.0000',
-  `qty` decimal(12,4) NOT NULL default '0.0000',
-  `discount_amount` decimal(12,4) default '0.0000',
-  `tax_amount` decimal(12,4) default '0.0000',
-  `row_total` decimal(12,4) NOT NULL default '0.0000',
-  `base_row_total` decimal(12,4) NOT NULL default '0.0000',
-  `row_total_with_discount` decimal(12,4) default '0.0000',
-  `base_discount_amount` decimal(12,4) default '0.0000',
-  `base_tax_amount` decimal(12,4) default '0.0000',
-  `row_weight` decimal(12,4) default '0.0000',
-  `gift_message_id` varchar(255) default NULL,
-  PRIMARY KEY  (`address_item_id`),
+  `weight` decimal(12,4) DEFAULT '0.0000',
+  `qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `row_total_with_discount` decimal(12,4) DEFAULT '0.0000',
+  `base_discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `base_tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `row_weight` decimal(12,4) DEFAULT '0.0000',
+  `gift_message_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`address_item_id`),
   KEY `FK_QUOTE_ADDRESS_ITEM_QUOTE_ADDRESS` (`quote_address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_ITEM_QUOTE_ITEM` (`quote_item_id`),
   KEY `FK_SALES_FLAT_QUOTE_ADDRESS_ITEM_PARENT` (`parent_item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sales_flat_quote_address_item`
+-- Contenu de la table `sales_flat_quote_address_item`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_item`
+-- Structure de la table `sales_flat_quote_item`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_item`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
-  `item_id` int(10) unsigned NOT NULL auto_increment,
-  `quote_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `product_id` int(10) unsigned default NULL,
-  `parent_item_id` int(10) unsigned default NULL,
-  `is_virtual` tinyint(1) unsigned default NULL,
-  `sku` varchar(255) NOT NULL default '',
-  `name` varchar(255) default NULL,
+  `item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quote_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `product_id` int(10) unsigned DEFAULT NULL,
+  `parent_item_id` int(10) unsigned DEFAULT NULL,
+  `is_virtual` tinyint(1) unsigned DEFAULT NULL,
+  `sku` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) DEFAULT NULL,
   `description` text,
   `applied_rule_ids` text,
   `additional_data` text,
-  `free_shipping` tinyint(1) unsigned NOT NULL default '0',
-  `is_qty_decimal` tinyint(1) unsigned default NULL,
-  `no_discount` tinyint(1) unsigned default '0',
-  `weight` decimal(12,4) default '0.0000',
-  `qty` decimal(12,4) NOT NULL default '0.0000',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `base_price` decimal(12,4) NOT NULL default '0.0000',
-  `custom_price` decimal(12,4) default NULL,
-  `discount_percent` decimal(12,4) default '0.0000',
-  `discount_amount` decimal(12,4) default '0.0000',
-  `base_discount_amount` decimal(12,4) default '0.0000',
-  `tax_percent` decimal(12,4) default '0.0000',
-  `tax_amount` decimal(12,4) default '0.0000',
-  `base_tax_amount` decimal(12,4) default '0.0000',
-  `row_total` decimal(12,4) NOT NULL default '0.0000',
-  `base_row_total` decimal(12,4) NOT NULL default '0.0000',
-  `row_total_with_discount` decimal(12,4) default '0.0000',
-  `row_weight` decimal(12,4) default '0.0000',
-  `product_type` varchar(255) default NULL,
-  `base_tax_before_discount` decimal(12,4) default NULL,
-  `tax_before_discount` decimal(12,4) default NULL,
-  `original_custom_price` decimal(12,4) default NULL,
-  `gift_message_id` varchar(255) default NULL,
+  `free_shipping` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_qty_decimal` tinyint(1) unsigned DEFAULT NULL,
+  `no_discount` tinyint(1) unsigned DEFAULT '0',
+  `weight` decimal(12,4) DEFAULT '0.0000',
+  `qty` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `custom_price` decimal(12,4) DEFAULT NULL,
+  `discount_percent` decimal(12,4) DEFAULT '0.0000',
+  `discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `base_discount_amount` decimal(12,4) DEFAULT '0.0000',
+  `tax_percent` decimal(12,4) DEFAULT '0.0000',
+  `tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `base_tax_amount` decimal(12,4) DEFAULT '0.0000',
+  `row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_row_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `row_total_with_discount` decimal(12,4) DEFAULT '0.0000',
+  `row_weight` decimal(12,4) DEFAULT '0.0000',
+  `product_type` varchar(255) DEFAULT NULL,
+  `base_tax_before_discount` decimal(12,4) DEFAULT NULL,
+  `tax_before_discount` decimal(12,4) DEFAULT NULL,
+  `original_custom_price` decimal(12,4) DEFAULT NULL,
+  `gift_message_id` varchar(255) DEFAULT NULL,
   `weee_tax_applied` text,
-  `weee_tax_applied_amount` decimal(12,4) default NULL,
-  `weee_tax_applied_row_amount` decimal(12,4) default NULL,
-  `base_weee_tax_applied_amount` decimal(12,4) default NULL,
-  `base_weee_tax_applied_row_amount` decimal(12,4) default NULL,
-  `weee_tax_disposition` decimal(12,4) default NULL,
-  `weee_tax_row_disposition` decimal(12,4) default NULL,
-  `base_weee_tax_disposition` decimal(12,4) default NULL,
-  `base_weee_tax_row_disposition` decimal(12,4) default NULL,
-  PRIMARY KEY  (`item_id`),
+  `weee_tax_applied_amount` decimal(12,4) DEFAULT NULL,
+  `weee_tax_applied_row_amount` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_applied_amount` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_applied_row_amount` decimal(12,4) DEFAULT NULL,
+  `weee_tax_disposition` decimal(12,4) DEFAULT NULL,
+  `weee_tax_row_disposition` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_disposition` decimal(12,4) DEFAULT NULL,
+  `base_weee_tax_row_disposition` decimal(12,4) DEFAULT NULL,
+  PRIMARY KEY (`item_id`),
   KEY `FK_SALES_QUOTE_ITEM_SALES_QUOTE` (`quote_id`),
   KEY `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` (`parent_item_id`),
   KEY `FK_SALES_QUOTE_ITEM_CATALOG_PRODUCT_ENTITY` (`product_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
--- Dumping data for table `sales_flat_quote_item`
+-- Contenu de la table `sales_flat_quote_item`
 --
 
 INSERT INTO `sales_flat_quote_item` (`item_id`, `quote_id`, `created_at`, `updated_at`, `product_id`, `parent_item_id`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `weight`, `qty`, `price`, `base_price`, `custom_price`, `discount_percent`, `discount_amount`, `base_discount_amount`, `tax_percent`, `tax_amount`, `base_tax_amount`, `row_total`, `base_row_total`, `row_total_with_discount`, `row_weight`, `product_type`, `base_tax_before_discount`, `tax_before_discount`, `original_custom_price`, `gift_message_id`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`) VALUES
-(1, 1, '2009-10-07 20:25:36', '2009-10-07 21:09:16', 18, NULL, 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, 13.6000, 1.0000, 399.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 399.9900, 399.9900, 399.9900, 13.6000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(2, 2, '2009-10-07 21:18:30', '2009-10-07 21:18:51', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(3, 3, '2009-10-07 21:21:41', '2009-10-07 21:44:15', 42, NULL, 0, 'bar1234', 'Barcelona Bamboo Platform Bed', NULL, '', NULL, 0, 0, 0, 150.0000, 1.0000, 2299.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 2299.0000, 2299.0000, 2299.0000, 150.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(6, 6, '2009-10-19 21:44:10', '2009-10-19 21:52:41', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(8, 7, '2009-10-21 21:32:53', '2009-10-21 22:11:28', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(9, 8, '2009-10-22 20:53:36', '2009-10-22 21:46:46', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(10, 9, '2009-10-26 18:00:15', '2009-10-26 18:03:26', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, 3.2000, 1.0000, 149.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 149.9900, 149.9900, 149.9900, 3.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(11, 9, '2009-10-26 18:03:06', '2009-10-26 18:03:26', 44, NULL, 0, 'Rebel XT', 'Canon Digital Rebel XT 8MP Digital SLR Camera', NULL, '', NULL, 0, 0, 0, 4.0000, 1.0000, 550.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 550.0000, 550.0000, 550.0000, 4.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(12, 10, '2009-10-26 19:23:00', '2009-10-26 19:23:35', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(13, 11, '2009-10-28 07:41:00', '2009-10-28 07:41:01', 83, NULL, 0, 'cn', 'CN Clogs Beach/Garden Clog', NULL, '', NULL, 0, 0, 0, 1.0000, 1.0000, 16.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 16.9900, 16.9900, 16.9900, 1.0000, 'configurable', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(14, 11, '2009-10-28 07:41:00', '2009-10-28 07:41:01', 90, 13, 0, 'cn_m10', 'CN Clogs Beach/Garden Clog', NULL, '', NULL, 0, 0, 0, 1.0000, 1.0000, 0.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(20, 12, '2009-10-31 10:31:08', '2009-10-31 10:50:46', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 2.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 699.9800, 699.9800, 699.9800, 30.4000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(21, 12, '2009-10-31 10:36:09', '2009-10-31 10:50:46', 28, NULL, 0, 'M285-E', 'Toshiba M285-E 14"', NULL, '', NULL, 0, 0, 0, 10.0000, 1.0000, 1599.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 1599.9900, 1599.9900, 1599.9900, 10.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(22, 12, '2009-10-31 10:50:45', '2009-10-31 10:50:46', 51, NULL, 0, '1111', 'Ottoman', NULL, '', NULL, 0, 0, 0, 20.0000, 1.0000, 299.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 299.9900, 299.9900, 299.9900, 20.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(23, 13, '2009-10-31 10:51:15', '2009-10-31 10:51:16', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, 3.2000, 1.0000, 149.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 149.9900, 149.9900, 149.9900, 3.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(32, 14, '2009-10-31 10:57:13', '2009-10-31 10:57:55', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, 3.2000, 1.0000, 149.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 149.9900, 149.9900, 149.9900, 3.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(33, 14, '2009-10-31 10:57:19', '2009-10-31 10:57:55', 26, NULL, 0, 'LX.FR206.001', 'Acer Ferrari 3200 Notebook Computer PC', NULL, '', NULL, 0, 0, 0, 11.4000, 1.0000, 1799.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 1799.9900, 1799.9900, 1799.9900, 11.4000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(34, 14, '2009-10-31 10:57:26', '2009-10-31 10:57:55', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, 15.2000, 1.0000, 349.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 349.9900, 349.9900, 349.9900, 15.2000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(35, 14, '2009-10-31 10:57:35', '2009-10-31 10:57:55', 28, NULL, 0, 'M285-E', 'Toshiba M285-E 14"', NULL, '', NULL, 0, 0, 0, 10.0000, 1.0000, 1599.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 1599.9900, 1599.9900, 1599.9900, 10.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(36, 14, '2009-10-31 10:57:40', '2009-10-31 10:57:55', 44, NULL, 0, 'Rebel XT', 'Canon Digital Rebel XT 8MP Digital SLR Camera', NULL, '', NULL, 0, 0, 0, 4.0000, 1.0000, 550.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 550.0000, 550.0000, 550.0000, 4.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(37, 14, '2009-10-31 10:57:47', '2009-10-31 10:57:55', 20, NULL, 0, 'MM-A900M', 'Samsung MM-A900M Ace', NULL, '', NULL, 0, 0, 0, 1.0000, 1.0000, 150.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 150.0000, 150.0000, 150.0000, 1.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(38, 14, '2009-10-31 10:57:54', '2009-10-31 10:57:55', 133, NULL, 0, 'ac9003', 'Universal Camera Case', NULL, '', NULL, 0, 0, 0, NULL, 1.0000, 34.0000, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 34.0000, 34.0000, 34.0000, 0.0000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000),
-(40, 16, '2009-10-31 15:49:40', '2009-10-31 15:56:48', 25, NULL, 0, 'MA464LL/A', 'Apple MacBook Pro MA464LL/A 15.4" Notebook PC', NULL, '', NULL, 0, 0, 0, 10.6000, 1.0000, 2299.9900, 0.0000, NULL, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 2299.9900, 2299.9900, 2299.9900, 10.6000, 'simple', 0.0000, 0.0000, NULL, NULL, 'a:0:{}', 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000);
+(1, 1, '2009-10-07 20:25:36', '2009-10-07 21:09:16', 18, NULL, 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, '13.6000', '1.0000', '399.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '13.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(2, 2, '2009-10-07 21:18:30', '2009-10-07 21:18:51', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(3, 3, '2009-10-07 21:21:41', '2009-10-07 21:44:15', 42, NULL, 0, 'bar1234', 'Barcelona Bamboo Platform Bed', NULL, '', NULL, 0, 0, 0, '150.0000', '1.0000', '2299.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.0000', '2299.0000', '2299.0000', '150.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(6, 6, '2009-10-19 21:44:10', '2009-10-19 21:52:41', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(8, 7, '2009-10-21 21:32:53', '2009-10-21 22:11:28', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(9, 8, '2009-10-22 20:53:36', '2009-10-22 21:46:46', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(10, 9, '2009-10-26 18:00:15', '2009-10-26 18:03:26', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, '3.2000', '1.0000', '149.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '149.9900', '149.9900', '149.9900', '3.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(11, 9, '2009-10-26 18:03:06', '2009-10-26 18:03:26', 44, NULL, 0, 'Rebel XT', 'Canon Digital Rebel XT 8MP Digital SLR Camera', NULL, '', NULL, 0, 0, 0, '4.0000', '1.0000', '550.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '550.0000', '550.0000', '550.0000', '4.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(12, 10, '2009-10-26 19:23:00', '2009-10-26 19:23:35', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(13, 11, '2009-10-28 07:41:00', '2009-10-28 07:41:01', 83, NULL, 0, 'cn', 'CN Clogs Beach/Garden Clog', NULL, '', NULL, 0, 0, 0, '1.0000', '1.0000', '16.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '16.9900', '16.9900', '16.9900', '1.0000', 'configurable', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(14, 11, '2009-10-28 07:41:00', '2009-10-28 07:41:01', 90, 13, 0, 'cn_m10', 'CN Clogs Beach/Garden Clog', NULL, '', NULL, 0, 0, 0, '1.0000', '1.0000', '0.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(20, 12, '2009-10-31 10:31:08', '2009-10-31 10:50:46', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '2.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '699.9800', '699.9800', '699.9800', '30.4000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(21, 12, '2009-10-31 10:36:09', '2009-10-31 10:50:46', 28, NULL, 0, 'M285-E', 'Toshiba M285-E 14"', NULL, '', NULL, 0, 0, 0, '10.0000', '1.0000', '1599.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1599.9900', '1599.9900', '1599.9900', '10.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(22, 12, '2009-10-31 10:50:45', '2009-10-31 10:50:46', 51, NULL, 0, '1111', 'Ottoman', NULL, '', NULL, 0, 0, 0, '20.0000', '1.0000', '299.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '299.9900', '299.9900', '299.9900', '20.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(23, 13, '2009-10-31 10:51:15', '2009-10-31 10:51:16', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, '3.2000', '1.0000', '149.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '149.9900', '149.9900', '149.9900', '3.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(32, 14, '2009-10-31 10:57:13', '2009-10-31 10:57:55', 16, NULL, 0, 'n2610', 'Nokia 2610 Phone', NULL, '', NULL, 0, 0, 0, '3.2000', '1.0000', '149.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '149.9900', '149.9900', '149.9900', '3.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(33, 14, '2009-10-31 10:57:19', '2009-10-31 10:57:55', 26, NULL, 0, 'LX.FR206.001', 'Acer Ferrari 3200 Notebook Computer PC', NULL, '', NULL, 0, 0, 0, '11.4000', '1.0000', '1799.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1799.9900', '1799.9900', '1799.9900', '11.4000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(34, 14, '2009-10-31 10:57:26', '2009-10-31 10:57:55', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(35, 14, '2009-10-31 10:57:35', '2009-10-31 10:57:55', 28, NULL, 0, 'M285-E', 'Toshiba M285-E 14"', NULL, '', NULL, 0, 0, 0, '10.0000', '1.0000', '1599.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1599.9900', '1599.9900', '1599.9900', '10.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(36, 14, '2009-10-31 10:57:40', '2009-10-31 10:57:55', 44, NULL, 0, 'Rebel XT', 'Canon Digital Rebel XT 8MP Digital SLR Camera', NULL, '', NULL, 0, 0, 0, '4.0000', '1.0000', '550.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '550.0000', '550.0000', '550.0000', '4.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(37, 14, '2009-10-31 10:57:47', '2009-10-31 10:57:55', 20, NULL, 0, 'MM-A900M', 'Samsung MM-A900M Ace', NULL, '', NULL, 0, 0, 0, '1.0000', '1.0000', '150.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '150.0000', '150.0000', '150.0000', '1.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(38, 14, '2009-10-31 10:57:54', '2009-10-31 10:57:55', 133, NULL, 0, 'ac9003', 'Universal Camera Case', NULL, '', NULL, 0, 0, 0, NULL, '1.0000', '34.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '34.0000', '34.0000', '34.0000', '0.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(40, 16, '2009-10-31 15:49:40', '2009-10-31 15:56:48', 25, NULL, 0, 'MA464LL/A', 'Apple MacBook Pro MA464LL/A 15.4" Notebook PC', NULL, '', NULL, 0, 0, 0, '10.6000', '1.0000', '2299.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', '2299.9900', '10.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_item_option`
+-- Structure de la table `sales_flat_quote_item_option`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_item_option`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
-  `option_id` int(10) unsigned NOT NULL auto_increment,
+  `option_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `item_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
   `code` varchar(255) NOT NULL,
   `value` text NOT NULL,
-  PRIMARY KEY  (`option_id`),
+  PRIMARY KEY (`option_id`),
   KEY `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=45 ;
 
 --
--- Dumping data for table `sales_flat_quote_item_option`
+-- Contenu de la table `sales_flat_quote_item_option`
 --
 
 INSERT INTO `sales_flat_quote_item_option` (`option_id`, `item_id`, `product_id`, `code`, `value`) VALUES
@@ -22439,38 +22713,39 @@ INSERT INTO `sales_flat_quote_item_option` (`option_id`, `item_id`, `product_id`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_payment`
+-- Structure de la table `sales_flat_quote_payment`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_payment`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_payment` (
-  `payment_id` int(10) unsigned NOT NULL auto_increment,
-  `quote_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `method` varchar(255) default '',
-  `cc_type` varchar(255) default '',
-  `cc_number_enc` varchar(255) default '',
-  `cc_last4` varchar(255) default '',
-  `cc_cid_enc` varchar(255) default '',
-  `cc_owner` varchar(255) default '',
-  `cc_exp_month` tinyint(2) unsigned default '0',
-  `cc_exp_year` smallint(4) unsigned default '0',
-  `cc_ss_owner` varchar(255) default '',
-  `cc_ss_start_month` tinyint(2) unsigned default '0',
-  `cc_ss_start_year` smallint(4) unsigned default '0',
-  `cybersource_token` varchar(255) default '',
-  `paypal_correlation_id` varchar(255) default '',
-  `paypal_payer_id` varchar(255) default '',
-  `paypal_payer_status` varchar(255) default '',
-  `po_number` varchar(255) default '',
-  `ideal_issuer_id` varchar(255) default NULL,
-  `ideal_issuer_list` varchar(255) default NULL,
-  PRIMARY KEY  (`payment_id`),
+  `payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `quote_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `method` varchar(255) DEFAULT '',
+  `cc_type` varchar(255) DEFAULT '',
+  `cc_number_enc` varchar(255) DEFAULT '',
+  `cc_last4` varchar(255) DEFAULT '',
+  `cc_cid_enc` varchar(255) DEFAULT '',
+  `cc_owner` varchar(255) DEFAULT '',
+  `cc_exp_month` tinyint(2) unsigned DEFAULT '0',
+  `cc_exp_year` smallint(4) unsigned DEFAULT '0',
+  `cc_ss_owner` varchar(255) DEFAULT '',
+  `cc_ss_start_month` tinyint(2) unsigned DEFAULT '0',
+  `cc_ss_start_year` smallint(4) unsigned DEFAULT '0',
+  `cybersource_token` varchar(255) DEFAULT '',
+  `paypal_correlation_id` varchar(255) DEFAULT '',
+  `paypal_payer_id` varchar(255) DEFAULT '',
+  `paypal_payer_status` varchar(255) DEFAULT '',
+  `po_number` varchar(255) DEFAULT '',
+  `ideal_issuer_id` varchar(255) DEFAULT NULL,
+  `ideal_issuer_list` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`payment_id`),
   KEY `FK_SALES_QUOTE_PAYMENT_SALES_QUOTE` (`quote_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `sales_flat_quote_payment`
+-- Contenu de la table `sales_flat_quote_payment`
 --
 
 INSERT INTO `sales_flat_quote_payment` (`payment_id`, `quote_id`, `created_at`, `updated_at`, `method`, `cc_type`, `cc_number_enc`, `cc_last4`, `cc_cid_enc`, `cc_owner`, `cc_exp_month`, `cc_exp_year`, `cc_ss_owner`, `cc_ss_start_month`, `cc_ss_start_year`, `cybersource_token`, `paypal_correlation_id`, `paypal_payer_id`, `paypal_payer_status`, `po_number`, `ideal_issuer_id`, `ideal_issuer_list`) VALUES
@@ -22483,103 +22758,105 @@ INSERT INTO `sales_flat_quote_payment` (`payment_id`, `quote_id`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_flat_quote_shipping_rate`
+-- Structure de la table `sales_flat_quote_shipping_rate`
 --
 
+DROP TABLE IF EXISTS `sales_flat_quote_shipping_rate`;
 CREATE TABLE IF NOT EXISTS `sales_flat_quote_shipping_rate` (
-  `rate_id` int(10) unsigned NOT NULL auto_increment,
-  `address_id` int(10) unsigned NOT NULL default '0',
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `carrier` varchar(255) default NULL,
-  `carrier_title` varchar(255) default NULL,
-  `code` varchar(255) default NULL,
-  `method` varchar(255) default NULL,
+  `rate_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `address_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `carrier` varchar(255) DEFAULT NULL,
+  `carrier_title` varchar(255) DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  `method` varchar(255) DEFAULT NULL,
   `method_description` text,
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `method_title` varchar(255) default NULL,
-  PRIMARY KEY  (`rate_id`),
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `method_title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`rate_id`),
   KEY `FK_SALES_QUOTE_SHIPPING_RATE_ADDRESS` (`address_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `sales_flat_quote_shipping_rate`
+-- Contenu de la table `sales_flat_quote_shipping_rate`
 --
 
 INSERT INTO `sales_flat_quote_shipping_rate` (`rate_id`, `address_id`, `created_at`, `updated_at`, `carrier`, `carrier_title`, `code`, `method`, `method_description`, `price`, `method_title`) VALUES
-(4, 4, '2009-10-07 21:01:56', '2009-10-07 21:09:17', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, 5.0000, 'Fixed'),
-(7, 24, '2009-10-19 21:52:41', '2009-10-19 21:52:41', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, 5.0000, 'Fixed');
+(4, 4, '2009-10-07 21:01:56', '2009-10-07 21:09:17', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed'),
+(7, 24, '2009-10-19 21:52:41', '2009-10-19 21:52:41', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order`
+-- Structure de la table `sales_order`
 --
 
+DROP TABLE IF EXISTS `sales_order`;
 CREATE TABLE IF NOT EXISTS `sales_order` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_id` varchar(50) NOT NULL default '',
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned default NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned NOT NULL default '1',
-  `customer_id` int(10) unsigned default NULL,
-  `tax_amount` decimal(12,4) NOT NULL default '0.0000',
-  `shipping_amount` decimal(12,4) NOT NULL default '0.0000',
-  `discount_amount` decimal(12,4) NOT NULL default '0.0000',
-  `subtotal` decimal(12,4) NOT NULL default '0.0000',
-  `grand_total` decimal(12,4) NOT NULL default '0.0000',
-  `total_paid` decimal(12,4) NOT NULL default '0.0000',
-  `total_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `total_qty_ordered` decimal(12,4) NOT NULL default '0.0000',
-  `total_canceled` decimal(12,4) NOT NULL default '0.0000',
-  `total_invoiced` decimal(12,4) NOT NULL default '0.0000',
-  `total_online_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `total_offline_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `base_tax_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_shipping_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_discount_amount` decimal(12,4) NOT NULL default '0.0000',
-  `base_subtotal` decimal(12,4) NOT NULL default '0.0000',
-  `base_grand_total` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_paid` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_qty_ordered` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_canceled` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_invoiced` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_online_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `base_total_offline_refunded` decimal(12,4) NOT NULL default '0.0000',
-  `subtotal_refunded` decimal(12,4) default NULL,
-  `subtotal_canceled` decimal(12,4) default NULL,
-  `discount_refunded` decimal(12,4) default NULL,
-  `discount_canceled` decimal(12,4) default NULL,
-  `discount_invoiced` decimal(12,4) default NULL,
-  `tax_refunded` decimal(12,4) default NULL,
-  `tax_canceled` decimal(12,4) default NULL,
-  `shipping_refunded` decimal(12,4) default NULL,
-  `shipping_canceled` decimal(12,4) default NULL,
-  `base_subtotal_refunded` decimal(12,4) default NULL,
-  `base_subtotal_canceled` decimal(12,4) default NULL,
-  `base_discount_refunded` decimal(12,4) default NULL,
-  `base_discount_canceled` decimal(12,4) default NULL,
-  `base_discount_invoiced` decimal(12,4) default NULL,
-  `base_tax_refunded` decimal(12,4) default NULL,
-  `base_tax_canceled` decimal(12,4) default NULL,
-  `base_shipping_refunded` decimal(12,4) default NULL,
-  `base_shipping_canceled` decimal(12,4) default NULL,
-  `subtotal_invoiced` decimal(12,4) default NULL,
-  `tax_invoiced` decimal(12,4) default NULL,
-  `shipping_invoiced` decimal(12,4) default NULL,
-  `base_subtotal_invoiced` decimal(12,4) default NULL,
-  `base_tax_invoiced` decimal(12,4) default NULL,
-  `base_shipping_invoiced` decimal(12,4) default NULL,
-  `shipping_tax_amount` decimal(12,4) default NULL,
-  `base_shipping_tax_amount` decimal(12,4) default NULL,
-  `shipping_tax_refunded` decimal(12,4) default NULL,
-  `base_shipping_tax_refunded` decimal(12,4) default NULL,
-  PRIMARY KEY  (`entity_id`),
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_id` varchar(50) NOT NULL DEFAULT '',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `customer_id` int(10) unsigned DEFAULT NULL,
+  `tax_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `shipping_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `subtotal` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `grand_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_paid` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_qty_ordered` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_canceled` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_invoiced` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_online_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `total_offline_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_tax_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_shipping_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_discount_amount` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_subtotal` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_grand_total` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_paid` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_qty_ordered` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_canceled` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_invoiced` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_online_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `base_total_offline_refunded` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `subtotal_refunded` decimal(12,4) DEFAULT NULL,
+  `subtotal_canceled` decimal(12,4) DEFAULT NULL,
+  `discount_refunded` decimal(12,4) DEFAULT NULL,
+  `discount_canceled` decimal(12,4) DEFAULT NULL,
+  `discount_invoiced` decimal(12,4) DEFAULT NULL,
+  `tax_refunded` decimal(12,4) DEFAULT NULL,
+  `tax_canceled` decimal(12,4) DEFAULT NULL,
+  `shipping_refunded` decimal(12,4) DEFAULT NULL,
+  `shipping_canceled` decimal(12,4) DEFAULT NULL,
+  `base_subtotal_refunded` decimal(12,4) DEFAULT NULL,
+  `base_subtotal_canceled` decimal(12,4) DEFAULT NULL,
+  `base_discount_refunded` decimal(12,4) DEFAULT NULL,
+  `base_discount_canceled` decimal(12,4) DEFAULT NULL,
+  `base_discount_invoiced` decimal(12,4) DEFAULT NULL,
+  `base_tax_refunded` decimal(12,4) DEFAULT NULL,
+  `base_tax_canceled` decimal(12,4) DEFAULT NULL,
+  `base_shipping_refunded` decimal(12,4) DEFAULT NULL,
+  `base_shipping_canceled` decimal(12,4) DEFAULT NULL,
+  `subtotal_invoiced` decimal(12,4) DEFAULT NULL,
+  `tax_invoiced` decimal(12,4) DEFAULT NULL,
+  `shipping_invoiced` decimal(12,4) DEFAULT NULL,
+  `base_subtotal_invoiced` decimal(12,4) DEFAULT NULL,
+  `base_tax_invoiced` decimal(12,4) DEFAULT NULL,
+  `base_shipping_invoiced` decimal(12,4) DEFAULT NULL,
+  `shipping_tax_amount` decimal(12,4) DEFAULT NULL,
+  `base_shipping_tax_amount` decimal(12,4) DEFAULT NULL,
+  `shipping_tax_refunded` decimal(12,4) DEFAULT NULL,
+  `base_shipping_tax_refunded` decimal(12,4) DEFAULT NULL,
+  PRIMARY KEY (`entity_id`),
   KEY `FK_sales_order_type` (`entity_type_id`),
   KEY `FK_sales_order_store` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`),
@@ -22587,25 +22864,26 @@ CREATE TABLE IF NOT EXISTS `sales_order` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `sales_order`
+-- Contenu de la table `sales_order`
 --
 
 INSERT INTO `sales_order` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`, `customer_id`, `tax_amount`, `shipping_amount`, `discount_amount`, `subtotal`, `grand_total`, `total_paid`, `total_refunded`, `total_qty_ordered`, `total_canceled`, `total_invoiced`, `total_online_refunded`, `total_offline_refunded`, `base_tax_amount`, `base_shipping_amount`, `base_discount_amount`, `base_subtotal`, `base_grand_total`, `base_total_paid`, `base_total_refunded`, `base_total_qty_ordered`, `base_total_canceled`, `base_total_invoiced`, `base_total_online_refunded`, `base_total_offline_refunded`, `subtotal_refunded`, `subtotal_canceled`, `discount_refunded`, `discount_canceled`, `discount_invoiced`, `tax_refunded`, `tax_canceled`, `shipping_refunded`, `shipping_canceled`, `base_subtotal_refunded`, `base_subtotal_canceled`, `base_discount_refunded`, `base_discount_canceled`, `base_discount_invoiced`, `base_tax_refunded`, `base_tax_canceled`, `base_shipping_refunded`, `base_shipping_canceled`, `subtotal_invoiced`, `tax_invoiced`, `shipping_invoiced`, `base_subtotal_invoiced`, `base_tax_invoiced`, `base_shipping_invoiced`, `shipping_tax_amount`, `base_shipping_tax_amount`, `shipping_tax_refunded`, `base_shipping_tax_refunded`) VALUES
-(1, 4, 0, '100000001', 0, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1, NULL, 0.0000, 5.0000, 0.0000, 399.9900, 404.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 5.0000, 0.0000, 399.9900, 404.9900, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0.0000, 0.0000, NULL, NULL);
+(1, 4, 0, '100000001', 0, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1, NULL, '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_datetime`
+-- Structure de la table `sales_order_datetime`
 --
 
+DROP TABLE IF EXISTS `sales_order_datetime`;
 CREATE TABLE IF NOT EXISTS `sales_order_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_datetime_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_datetime_attribute` (`attribute_id`),
@@ -22613,23 +22891,24 @@ CREATE TABLE IF NOT EXISTS `sales_order_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sales_order_datetime`
+-- Contenu de la table `sales_order_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_decimal`
+-- Structure de la table `sales_order_decimal`
 --
 
+DROP TABLE IF EXISTS `sales_order_decimal`;
 CREATE TABLE IF NOT EXISTS `sales_order_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_decimal_attribute` (`attribute_id`),
@@ -22637,40 +22916,41 @@ CREATE TABLE IF NOT EXISTS `sales_order_decimal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `sales_order_decimal`
+-- Contenu de la table `sales_order_decimal`
 --
 
 INSERT INTO `sales_order_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
-(1, 4, 376, 1, 1.0000),
-(2, 4, 377, 1, 1.0000),
-(3, 4, 889, 1, 1.0000),
-(4, 4, 890, 1, 1.0000),
-(5, 4, 196, 1, 13.6000);
+(1, 4, 376, 1, '1.0000'),
+(2, 4, 377, 1, '1.0000'),
+(3, 4, 889, 1, '1.0000'),
+(4, 4, 890, 1, '1.0000'),
+(5, 4, 196, 1, '13.6000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity`
+-- Structure de la table `sales_order_entity`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity` (
-  `entity_id` int(10) unsigned NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_set_id` smallint(5) unsigned NOT NULL default '0',
-  `increment_id` varchar(50) NOT NULL default '',
-  `parent_id` int(10) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned default NULL,
-  `created_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `updated_at` datetime NOT NULL default '0000-00-00 00:00:00',
-  `is_active` tinyint(1) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`entity_id`),
+  `entity_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_set_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `increment_id` varchar(50) NOT NULL DEFAULT '',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned DEFAULT NULL,
+  `created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `is_active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`entity_id`),
   KEY `FK_sales_order_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_store` (`store_id`),
   KEY `IDX_SALES_ORDER_ENTITY_PARENT` (`parent_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `sales_order_entity`
+-- Contenu de la table `sales_order_entity`
 --
 
 INSERT INTO `sales_order_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`) VALUES
@@ -22684,16 +22964,17 @@ INSERT INTO `sales_order_entity` (`entity_id`, `entity_type_id`, `attribute_set_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity_datetime`
+-- Structure de la table `sales_order_entity_datetime`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity_datetime`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity_datetime` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` datetime NOT NULL default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_entity_datetime_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_datetime_attribute` (`attribute_id`),
@@ -22701,23 +22982,24 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_datetime` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sales_order_entity_datetime`
+-- Contenu de la table `sales_order_entity_datetime`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity_decimal`
+-- Structure de la table `sales_order_entity_decimal`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity_decimal`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity_decimal` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_entity_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_decimal_attribute` (`attribute_id`),
@@ -22725,28 +23007,29 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_decimal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `sales_order_entity_decimal`
+-- Contenu de la table `sales_order_entity_decimal`
 --
 
 INSERT INTO `sales_order_entity_decimal` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
-(1, 8, 597, 3, 404.9900),
-(2, 8, 758, 3, 404.9900),
-(3, 8, 602, 3, 5.0000),
-(4, 8, 763, 3, 5.0000);
+(1, 8, 597, 3, '404.9900'),
+(2, 8, 758, 3, '404.9900'),
+(3, 8, 602, 3, '5.0000'),
+(4, 8, 763, 3, '5.0000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity_int`
+-- Structure de la table `sales_order_entity_int`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity_int`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_entity_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_int_attribute` (`attribute_id`),
@@ -22754,7 +23037,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_int` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `sales_order_entity_int`
+-- Contenu de la table `sales_order_entity_int`
 --
 
 INSERT INTO `sales_order_entity_int` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -22767,16 +23050,17 @@ INSERT INTO `sales_order_entity_int` (`value_id`, `entity_type_id`, `attribute_i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity_text`
+-- Structure de la table `sales_order_entity_text`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity_text`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_entity_text_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_text_attribute` (`attribute_id`),
@@ -22784,7 +23068,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_text` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `sales_order_entity_text`
+-- Contenu de la table `sales_order_entity_text`
 --
 
 INSERT INTO `sales_order_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -22794,16 +23078,17 @@ INSERT INTO `sales_order_entity_text` (`value_id`, `entity_type_id`, `attribute_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_entity_varchar`
+-- Structure de la table `sales_order_entity_varchar`
 --
 
+DROP TABLE IF EXISTS `sales_order_entity_varchar`;
 CREATE TABLE IF NOT EXISTS `sales_order_entity_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(8) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(8) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_entity_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_varchar_attribute` (`attribute_id`),
@@ -22811,7 +23096,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_varchar` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
--- Dumping data for table `sales_order_entity_varchar`
+-- Contenu de la table `sales_order_entity_varchar`
 --
 
 INSERT INTO `sales_order_entity_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -22854,16 +23139,17 @@ INSERT INTO `sales_order_entity_varchar` (`value_id`, `entity_type_id`, `attribu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_int`
+-- Structure de la table `sales_order_int`
 --
 
+DROP TABLE IF EXISTS `sales_order_int`;
 CREATE TABLE IF NOT EXISTS `sales_order_int` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_int_attribute` (`attribute_id`),
@@ -22871,7 +23157,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_int` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Dumping data for table `sales_order_int`
+-- Contenu de la table `sales_order_int`
 --
 
 INSERT INTO `sales_order_int` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -22886,11 +23172,12 @@ INSERT INTO `sales_order_int` (`value_id`, `entity_type_id`, `attribute_id`, `en
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_tax`
+-- Structure de la table `sales_order_tax`
 --
 
+DROP TABLE IF EXISTS `sales_order_tax`;
 CREATE TABLE IF NOT EXISTS `sales_order_tax` (
-  `tax_id` int(10) unsigned NOT NULL auto_increment,
+  `tax_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `order_id` int(10) unsigned NOT NULL,
   `code` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
@@ -22901,29 +23188,30 @@ CREATE TABLE IF NOT EXISTS `sales_order_tax` (
   `base_amount` decimal(12,4) NOT NULL,
   `process` smallint(6) NOT NULL,
   `base_real_amount` decimal(12,4) NOT NULL,
-  `hidden` smallint(5) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`tax_id`),
+  `hidden` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tax_id`),
   KEY `IDX_ORDER_TAX` (`order_id`,`priority`,`position`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sales_order_tax`
+-- Contenu de la table `sales_order_tax`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_text`
+-- Structure de la table `sales_order_text`
 --
 
+DROP TABLE IF EXISTS `sales_order_text`;
 CREATE TABLE IF NOT EXISTS `sales_order_text` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` text NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_text_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_text_attribute` (`attribute_id`),
@@ -22931,23 +23219,24 @@ CREATE TABLE IF NOT EXISTS `sales_order_text` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sales_order_text`
+-- Contenu de la table `sales_order_text`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sales_order_varchar`
+-- Structure de la table `sales_order_varchar`
 --
 
+DROP TABLE IF EXISTS `sales_order_varchar`;
 CREATE TABLE IF NOT EXISTS `sales_order_varchar` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `entity_type_id` smallint(5) unsigned NOT NULL default '0',
-  `attribute_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`value_id`),
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `entity_type_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `attribute_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `value` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`value_id`),
   UNIQUE KEY `UNQ_ENTITY_ATTRIBUTE_TYPE` (`entity_id`,`attribute_id`,`entity_type_id`),
   KEY `FK_sales_order_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_varchar_attribute` (`attribute_id`),
@@ -22955,7 +23244,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_varchar` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Dumping data for table `sales_order_varchar`
+-- Contenu de la table `sales_order_varchar`
 --
 
 INSERT INTO `sales_order_varchar` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
@@ -22975,105 +23264,110 @@ INSERT INTO `sales_order_varchar` (`value_id`, `entity_type_id`, `attribute_id`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sendfriend_log`
+-- Structure de la table `sendfriend_log`
 --
 
+DROP TABLE IF EXISTS `sendfriend_log`;
 CREATE TABLE IF NOT EXISTS `sendfriend_log` (
-  `log_id` int(11) NOT NULL auto_increment,
-  `ip` int(11) unsigned NOT NULL default '0',
-  `time` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`log_id`),
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ip` int(11) unsigned NOT NULL DEFAULT '0',
+  `time` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`log_id`),
   KEY `ip` (`ip`),
   KEY `time` (`time`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='Send to friend function log storage table' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sendfriend_log`
+-- Contenu de la table `sendfriend_log`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shipping_tablerate`
+-- Structure de la table `shipping_tablerate`
 --
 
+DROP TABLE IF EXISTS `shipping_tablerate`;
 CREATE TABLE IF NOT EXISTS `shipping_tablerate` (
-  `pk` int(10) unsigned NOT NULL auto_increment,
-  `website_id` int(11) NOT NULL default '0',
-  `dest_country_id` varchar(4) NOT NULL default '0',
-  `dest_region_id` int(10) NOT NULL default '0',
-  `dest_zip` varchar(10) NOT NULL default '',
-  `condition_name` varchar(20) NOT NULL default '',
-  `condition_value` decimal(12,4) NOT NULL default '0.0000',
-  `price` decimal(12,4) NOT NULL default '0.0000',
-  `cost` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`pk`),
+  `pk` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `website_id` int(11) NOT NULL DEFAULT '0',
+  `dest_country_id` varchar(4) NOT NULL DEFAULT '0',
+  `dest_region_id` int(10) NOT NULL DEFAULT '0',
+  `dest_zip` varchar(10) NOT NULL DEFAULT '',
+  `condition_name` varchar(20) NOT NULL DEFAULT '',
+  `condition_value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `price` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `cost` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`pk`),
   UNIQUE KEY `dest_country` (`website_id`,`dest_country_id`,`dest_region_id`,`dest_zip`,`condition_name`,`condition_value`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `shipping_tablerate`
+-- Contenu de la table `shipping_tablerate`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sitemap`
+-- Structure de la table `sitemap`
 --
 
+DROP TABLE IF EXISTS `sitemap`;
 CREATE TABLE IF NOT EXISTS `sitemap` (
-  `sitemap_id` int(11) NOT NULL auto_increment,
-  `sitemap_type` varchar(32) default NULL,
-  `sitemap_filename` varchar(32) default NULL,
+  `sitemap_id` int(11) NOT NULL AUTO_INCREMENT,
+  `sitemap_type` varchar(32) DEFAULT NULL,
+  `sitemap_filename` varchar(32) DEFAULT NULL,
   `sitemap_path` tinytext,
-  `sitemap_time` timestamp NULL default NULL,
+  `sitemap_time` timestamp NULL DEFAULT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`sitemap_id`),
+  PRIMARY KEY (`sitemap_id`),
   KEY `FK_SITEMAP_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `sitemap`
+-- Contenu de la table `sitemap`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `strikeiron_tax_rate`
+-- Structure de la table `strikeiron_tax_rate`
 --
 
+DROP TABLE IF EXISTS `strikeiron_tax_rate`;
 CREATE TABLE IF NOT EXISTS `strikeiron_tax_rate` (
-  `tax_rate_id` tinyint(4) NOT NULL auto_increment,
-  `tax_country_id` varchar(6) default NULL,
-  `tax_region_id` mediumint(9) unsigned default NULL,
-  `tax_postcode` varchar(12) default NULL,
-  `rate_value` decimal(12,4) NOT NULL default '0.0000',
-  PRIMARY KEY  (`tax_rate_id`)
+  `tax_rate_id` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `tax_country_id` varchar(6) DEFAULT NULL,
+  `tax_region_id` mediumint(9) unsigned DEFAULT NULL,
+  `tax_postcode` varchar(12) DEFAULT NULL,
+  `rate_value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  PRIMARY KEY (`tax_rate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Strikeiron tax rates' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `strikeiron_tax_rate`
+-- Contenu de la table `strikeiron_tax_rate`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag`
+-- Structure de la table `tag`
 --
 
+DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS `tag` (
-  `tag_id` int(11) unsigned NOT NULL auto_increment,
-  `name` varchar(255) NOT NULL default '',
-  `status` smallint(6) NOT NULL default '0',
-  PRIMARY KEY  USING BTREE (`tag_id`)
+  `tag_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `status` smallint(6) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tag_id`) USING BTREE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=199 ;
 
 --
--- Dumping data for table `tag`
+-- Contenu de la table `tag`
 --
 
 INSERT INTO `tag` (`tag_id`, `name`, `status`) VALUES
@@ -23279,18 +23573,19 @@ INSERT INTO `tag` (`tag_id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag_relation`
+-- Structure de la table `tag_relation`
 --
 
+DROP TABLE IF EXISTS `tag_relation`;
 CREATE TABLE IF NOT EXISTS `tag_relation` (
-  `tag_relation_id` int(11) unsigned NOT NULL auto_increment,
-  `tag_id` int(11) unsigned NOT NULL default '0',
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(11) unsigned NOT NULL default '0',
-  `store_id` smallint(6) unsigned NOT NULL default '1',
-  `active` tinyint(1) unsigned NOT NULL default '1',
-  `created_at` datetime default NULL,
-  PRIMARY KEY  USING BTREE (`tag_relation_id`),
+  `tag_relation_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `tag_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(6) unsigned NOT NULL DEFAULT '1',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`tag_relation_id`) USING BTREE,
   KEY `IDX_PRODUCT` (`product_id`),
   KEY `IDX_TAG` (`tag_id`),
   KEY `IDX_CUSTOMER` (`customer_id`),
@@ -23298,7 +23593,7 @@ CREATE TABLE IF NOT EXISTS `tag_relation` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=370 ;
 
 --
--- Dumping data for table `tag_relation`
+-- Contenu de la table `tag_relation`
 --
 
 INSERT INTO `tag_relation` (`tag_relation_id`, `tag_id`, `customer_id`, `product_id`, `store_id`, `active`, `created_at`) VALUES
@@ -23675,24 +23970,25 @@ INSERT INTO `tag_relation` (`tag_relation_id`, `tag_id`, `customer_id`, `product
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tag_summary`
+-- Structure de la table `tag_summary`
 --
 
+DROP TABLE IF EXISTS `tag_summary`;
 CREATE TABLE IF NOT EXISTS `tag_summary` (
-  `tag_id` int(11) unsigned NOT NULL default '0',
-  `store_id` smallint(5) unsigned NOT NULL default '0',
-  `customers` int(11) unsigned NOT NULL default '0',
-  `products` int(11) unsigned NOT NULL default '0',
-  `uses` int(11) unsigned NOT NULL default '0',
-  `historical_uses` int(11) unsigned NOT NULL default '0',
-  `popularity` int(11) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`tag_id`,`store_id`),
+  `tag_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `store_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `customers` int(11) unsigned NOT NULL DEFAULT '0',
+  `products` int(11) unsigned NOT NULL DEFAULT '0',
+  `uses` int(11) unsigned NOT NULL DEFAULT '0',
+  `historical_uses` int(11) unsigned NOT NULL DEFAULT '0',
+  `popularity` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`tag_id`,`store_id`),
   KEY `FK_TAG_SUMMARY_STORE` (`store_id`),
   KEY `IDX_TAG` (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tag_summary`
+-- Contenu de la table `tag_summary`
 --
 
 INSERT INTO `tag_summary` (`tag_id`, `store_id`, `customers`, `products`, `uses`, `historical_uses`, `popularity`) VALUES
@@ -24121,9 +24417,10 @@ INSERT INTO `tag_summary` (`tag_id`, `store_id`, `customers`, `products`, `uses`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_calculation`
+-- Structure de la table `tax_calculation`
 --
 
+DROP TABLE IF EXISTS `tax_calculation`;
 CREATE TABLE IF NOT EXISTS `tax_calculation` (
   `tax_calculation_rate_id` int(11) NOT NULL,
   `tax_calculation_rule_id` int(11) NOT NULL,
@@ -24137,7 +24434,7 @@ CREATE TABLE IF NOT EXISTS `tax_calculation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tax_calculation`
+-- Contenu de la table `tax_calculation`
 --
 
 INSERT INTO `tax_calculation` (`tax_calculation_rate_id`, `tax_calculation_rule_id`, `customer_tax_class_id`, `product_tax_class_id`) VALUES
@@ -24149,69 +24446,72 @@ INSERT INTO `tax_calculation` (`tax_calculation_rate_id`, `tax_calculation_rule_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_calculation_rate`
+-- Structure de la table `tax_calculation_rate`
 --
 
+DROP TABLE IF EXISTS `tax_calculation_rate`;
 CREATE TABLE IF NOT EXISTS `tax_calculation_rate` (
-  `tax_calculation_rate_id` int(11) NOT NULL auto_increment,
+  `tax_calculation_rate_id` int(11) NOT NULL AUTO_INCREMENT,
   `tax_country_id` char(2) NOT NULL,
   `tax_region_id` mediumint(9) NOT NULL,
   `tax_postcode` varchar(12) NOT NULL,
   `code` varchar(255) NOT NULL,
   `rate` decimal(12,4) NOT NULL,
-  PRIMARY KEY  (`tax_calculation_rate_id`),
+  PRIMARY KEY (`tax_calculation_rate_id`),
   KEY `IDX_TAX_CALCULATION_RATE` (`tax_country_id`,`tax_region_id`,`tax_postcode`),
   KEY `IDX_TAX_CALCULATION_RATE_CODE` (`code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `tax_calculation_rate`
+-- Contenu de la table `tax_calculation_rate`
 --
 
 INSERT INTO `tax_calculation_rate` (`tax_calculation_rate_id`, `tax_country_id`, `tax_region_id`, `tax_postcode`, `code`, `rate`) VALUES
-(1, 'US', 12, '*', 'US-CA-*-Rate 1', 8.2500),
-(2, 'US', 43, '*', 'US-NY-*-Rate 1', 8.3750);
+(1, 'US', 12, '*', 'US-CA-*-Rate 1', '8.2500'),
+(2, 'US', 43, '*', 'US-NY-*-Rate 1', '8.3750');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_calculation_rate_title`
+-- Structure de la table `tax_calculation_rate_title`
 --
 
+DROP TABLE IF EXISTS `tax_calculation_rate_title`;
 CREATE TABLE IF NOT EXISTS `tax_calculation_rate_title` (
-  `tax_calculation_rate_title_id` int(11) NOT NULL auto_increment,
+  `tax_calculation_rate_title_id` int(11) NOT NULL AUTO_INCREMENT,
   `tax_calculation_rate_id` int(11) NOT NULL,
   `store_id` smallint(5) unsigned NOT NULL,
   `value` varchar(255) NOT NULL,
-  PRIMARY KEY  (`tax_calculation_rate_title_id`),
+  PRIMARY KEY (`tax_calculation_rate_title_id`),
   KEY `IDX_TAX_CALCULATION_RATE_TITLE` (`tax_calculation_rate_id`,`store_id`),
   KEY `FK_TAX_CALCULATION_RATE_TITLE_RATE` (`tax_calculation_rate_id`),
   KEY `FK_TAX_CALCULATION_RATE_TITLE_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `tax_calculation_rate_title`
+-- Contenu de la table `tax_calculation_rate_title`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_calculation_rule`
+-- Structure de la table `tax_calculation_rule`
 --
 
+DROP TABLE IF EXISTS `tax_calculation_rule`;
 CREATE TABLE IF NOT EXISTS `tax_calculation_rule` (
-  `tax_calculation_rule_id` int(11) NOT NULL auto_increment,
+  `tax_calculation_rule_id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL,
   `priority` mediumint(9) NOT NULL,
   `position` mediumint(9) NOT NULL,
-  PRIMARY KEY  (`tax_calculation_rule_id`),
+  PRIMARY KEY (`tax_calculation_rule_id`),
   KEY `IDX_TAX_CALCULATION_RULE` (`priority`,`position`,`tax_calculation_rule_id`),
   KEY `IDX_TAX_CALCULATION_RULE_CODE` (`code`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `tax_calculation_rule`
+-- Contenu de la table `tax_calculation_rule`
 --
 
 INSERT INTO `tax_calculation_rule` (`tax_calculation_rule_id`, `code`, `priority`, `position`) VALUES
@@ -24221,18 +24521,19 @@ INSERT INTO `tax_calculation_rule` (`tax_calculation_rule_id`, `code`, `priority
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tax_class`
+-- Structure de la table `tax_class`
 --
 
+DROP TABLE IF EXISTS `tax_class`;
 CREATE TABLE IF NOT EXISTS `tax_class` (
-  `class_id` smallint(6) NOT NULL auto_increment,
-  `class_name` varchar(255) NOT NULL default '',
-  `class_type` enum('CUSTOMER','PRODUCT') NOT NULL default 'CUSTOMER',
-  PRIMARY KEY  (`class_id`)
+  `class_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `class_name` varchar(255) NOT NULL DEFAULT '',
+  `class_type` enum('CUSTOMER','PRODUCT') NOT NULL DEFAULT 'CUSTOMER',
+  PRIMARY KEY (`class_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `tax_class`
+-- Contenu de la table `tax_class`
 --
 
 INSERT INTO `tax_class` (`class_id`, `class_name`, `class_type`) VALUES
@@ -24244,499 +24545,501 @@ INSERT INTO `tax_class` (`class_id`, `class_name`, `class_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weee_discount`
+-- Structure de la table `weee_discount`
 --
 
+DROP TABLE IF EXISTS `weee_discount`;
 CREATE TABLE IF NOT EXISTS `weee_discount` (
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `website_id` smallint(5) unsigned NOT NULL default '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
   `customer_group_id` smallint(5) unsigned NOT NULL,
-  `value` decimal(12,4) NOT NULL default '0.0000',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_DISCOUNT_WEBSITE` (`website_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_DISCOUNT_PRODUCT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_DISCOUNT_GROUP` (`customer_group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `weee_discount`
+-- Contenu de la table `weee_discount`
 --
 
 INSERT INTO `weee_discount` (`entity_id`, `website_id`, `customer_group_id`, `value`) VALUES
-(16, 1, 0, 100.0000),
-(17, 1, 0, 100.0000),
-(18, 1, 0, 100.0000),
-(19, 1, 0, 100.0000),
-(20, 1, 0, 100.0000),
-(25, 1, 0, 100.0000),
-(26, 1, 0, 100.0000),
-(27, 1, 0, 100.0000),
-(28, 1, 0, 100.0000),
-(29, 1, 0, 100.0000),
-(30, 1, 0, 100.0000),
-(31, 1, 0, 100.0000),
-(32, 1, 0, 100.0000),
-(33, 1, 0, 100.0000),
-(34, 1, 0, 100.0000),
-(35, 1, 0, 100.0000),
-(36, 1, 0, 100.0000),
-(37, 1, 0, 100.0000),
-(38, 1, 0, 100.0000),
-(39, 1, 0, 100.0000),
-(41, 1, 0, 100.0000),
-(42, 1, 0, 100.0000),
-(44, 1, 0, 100.0000),
-(45, 1, 0, 100.0000),
-(46, 1, 0, 100.0000),
-(47, 1, 0, 100.0000),
-(48, 1, 0, 100.0000),
-(49, 1, 0, 100.0000),
-(51, 1, 0, 100.0000),
-(52, 1, 0, 100.0000),
-(53, 1, 0, 100.0000),
-(54, 1, 0, 100.0000),
-(74, 1, 0, 100.0000),
-(75, 1, 0, 100.0000),
-(79, 1, 0, 100.0000),
-(80, 1, 0, 100.0000),
-(81, 1, 0, 100.0000),
-(82, 1, 0, 100.0000),
-(83, 1, 0, 100.0000),
-(84, 1, 0, 100.0000),
-(85, 1, 0, 100.0000),
-(86, 1, 0, 100.0000),
-(87, 1, 0, 100.0000),
-(88, 1, 0, 100.0000),
-(89, 1, 0, 100.0000),
-(90, 1, 0, 100.0000),
-(91, 1, 0, 100.0000),
-(92, 1, 0, 100.0000),
-(93, 1, 0, 100.0000),
-(94, 1, 0, 100.0000),
-(95, 1, 0, 100.0000),
-(96, 1, 0, 100.0000),
-(97, 1, 0, 100.0000),
-(98, 1, 0, 100.0000),
-(99, 1, 0, 100.0000),
-(100, 1, 0, 100.0000),
-(101, 1, 0, 100.0000),
-(102, 1, 0, 100.0000),
-(103, 1, 0, 100.0000),
-(104, 1, 0, 100.0000),
-(105, 1, 0, 100.0000),
-(106, 1, 0, 100.0000),
-(107, 1, 0, 100.0000),
-(108, 1, 0, 100.0000),
-(109, 1, 0, 100.0000),
-(110, 1, 0, 100.0000),
-(111, 1, 0, 100.0000),
-(112, 1, 0, 100.0000),
-(113, 1, 0, 100.0000),
-(114, 1, 0, 100.0000),
-(115, 1, 0, 100.0000),
-(117, 1, 0, 100.0000),
-(118, 1, 0, 100.0000),
-(119, 1, 0, 100.0000),
-(120, 1, 0, 100.0000),
-(121, 1, 0, 100.0000),
-(122, 1, 0, 100.0000),
-(123, 1, 0, 100.0000),
-(124, 1, 0, 100.0000),
-(125, 1, 0, 100.0000),
-(126, 1, 0, 100.0000),
-(127, 1, 0, 100.0000),
-(128, 1, 0, 100.0000),
-(129, 1, 0, 100.0000),
-(130, 1, 0, 100.0000),
-(131, 1, 0, 100.0000),
-(132, 1, 0, 100.0000),
-(133, 1, 0, 100.0000),
-(134, 1, 0, 100.0000),
-(135, 1, 0, 100.0000),
-(137, 1, 0, 100.0000),
-(138, 1, 0, 100.0000),
-(139, 1, 0, 100.0000),
-(142, 1, 0, 100.0000),
-(144, 1, 0, 100.0000),
-(146, 1, 0, 100.0000),
-(158, 1, 0, 100.0000),
-(163, 1, 0, 100.0000),
-(164, 1, 0, 100.0000),
-(165, 1, 0, 100.0000),
-(16, 1, 1, 100.0000),
-(17, 1, 1, 100.0000),
-(18, 1, 1, 100.0000),
-(19, 1, 1, 100.0000),
-(20, 1, 1, 100.0000),
-(25, 1, 1, 100.0000),
-(26, 1, 1, 100.0000),
-(27, 1, 1, 100.0000),
-(28, 1, 1, 100.0000),
-(29, 1, 1, 100.0000),
-(30, 1, 1, 100.0000),
-(31, 1, 1, 100.0000),
-(32, 1, 1, 100.0000),
-(33, 1, 1, 100.0000),
-(34, 1, 1, 100.0000),
-(35, 1, 1, 100.0000),
-(36, 1, 1, 100.0000),
-(37, 1, 1, 100.0000),
-(38, 1, 1, 100.0000),
-(39, 1, 1, 100.0000),
-(41, 1, 1, 100.0000),
-(42, 1, 1, 100.0000),
-(44, 1, 1, 100.0000),
-(45, 1, 1, 100.0000),
-(46, 1, 1, 100.0000),
-(47, 1, 1, 100.0000),
-(48, 1, 1, 100.0000),
-(49, 1, 1, 100.0000),
-(51, 1, 1, 100.0000),
-(52, 1, 1, 100.0000),
-(53, 1, 1, 100.0000),
-(54, 1, 1, 100.0000),
-(74, 1, 1, 100.0000),
-(75, 1, 1, 100.0000),
-(79, 1, 1, 100.0000),
-(80, 1, 1, 100.0000),
-(81, 1, 1, 100.0000),
-(82, 1, 1, 100.0000),
-(83, 1, 1, 100.0000),
-(84, 1, 1, 100.0000),
-(85, 1, 1, 100.0000),
-(86, 1, 1, 100.0000),
-(87, 1, 1, 100.0000),
-(88, 1, 1, 100.0000),
-(89, 1, 1, 100.0000),
-(90, 1, 1, 100.0000),
-(91, 1, 1, 100.0000),
-(92, 1, 1, 100.0000),
-(93, 1, 1, 100.0000),
-(94, 1, 1, 100.0000),
-(95, 1, 1, 100.0000),
-(96, 1, 1, 100.0000),
-(97, 1, 1, 100.0000),
-(98, 1, 1, 100.0000),
-(99, 1, 1, 100.0000),
-(100, 1, 1, 100.0000),
-(101, 1, 1, 100.0000),
-(102, 1, 1, 100.0000),
-(103, 1, 1, 100.0000),
-(104, 1, 1, 100.0000),
-(105, 1, 1, 100.0000),
-(106, 1, 1, 100.0000),
-(107, 1, 1, 100.0000),
-(108, 1, 1, 100.0000),
-(109, 1, 1, 100.0000),
-(110, 1, 1, 100.0000),
-(111, 1, 1, 100.0000),
-(112, 1, 1, 100.0000),
-(113, 1, 1, 100.0000),
-(114, 1, 1, 100.0000),
-(115, 1, 1, 100.0000),
-(117, 1, 1, 100.0000),
-(118, 1, 1, 100.0000),
-(119, 1, 1, 100.0000),
-(120, 1, 1, 100.0000),
-(121, 1, 1, 100.0000),
-(122, 1, 1, 100.0000),
-(123, 1, 1, 100.0000),
-(124, 1, 1, 100.0000),
-(125, 1, 1, 100.0000),
-(126, 1, 1, 100.0000),
-(127, 1, 1, 100.0000),
-(128, 1, 1, 100.0000),
-(129, 1, 1, 100.0000),
-(130, 1, 1, 100.0000),
-(131, 1, 1, 100.0000),
-(132, 1, 1, 100.0000),
-(133, 1, 1, 100.0000),
-(134, 1, 1, 100.0000),
-(135, 1, 1, 100.0000),
-(137, 1, 1, 100.0000),
-(138, 1, 1, 100.0000),
-(139, 1, 1, 100.0000),
-(142, 1, 1, 100.0000),
-(144, 1, 1, 100.0000),
-(146, 1, 1, 100.0000),
-(158, 1, 1, 100.0000),
-(163, 1, 1, 100.0000),
-(164, 1, 1, 100.0000),
-(165, 1, 1, 100.0000),
-(16, 1, 2, 100.0000),
-(17, 1, 2, 100.0000),
-(18, 1, 2, 100.0000),
-(19, 1, 2, 100.0000),
-(20, 1, 2, 100.0000),
-(25, 1, 2, 100.0000),
-(26, 1, 2, 100.0000),
-(27, 1, 2, 100.0000),
-(28, 1, 2, 100.0000),
-(29, 1, 2, 100.0000),
-(30, 1, 2, 100.0000),
-(31, 1, 2, 100.0000),
-(32, 1, 2, 100.0000),
-(33, 1, 2, 100.0000),
-(34, 1, 2, 100.0000),
-(35, 1, 2, 100.0000),
-(36, 1, 2, 100.0000),
-(37, 1, 2, 100.0000),
-(38, 1, 2, 100.0000),
-(39, 1, 2, 100.0000),
-(41, 1, 2, 100.0000),
-(42, 1, 2, 100.0000),
-(44, 1, 2, 100.0000),
-(45, 1, 2, 100.0000),
-(46, 1, 2, 100.0000),
-(47, 1, 2, 100.0000),
-(48, 1, 2, 100.0000),
-(49, 1, 2, 100.0000),
-(51, 1, 2, 100.0000),
-(52, 1, 2, 100.0000),
-(53, 1, 2, 100.0000),
-(54, 1, 2, 100.0000),
-(74, 1, 2, 100.0000),
-(75, 1, 2, 100.0000),
-(79, 1, 2, 100.0000),
-(80, 1, 2, 100.0000),
-(81, 1, 2, 100.0000),
-(82, 1, 2, 100.0000),
-(83, 1, 2, 100.0000),
-(84, 1, 2, 100.0000),
-(85, 1, 2, 100.0000),
-(86, 1, 2, 100.0000),
-(87, 1, 2, 100.0000),
-(88, 1, 2, 100.0000),
-(89, 1, 2, 100.0000),
-(90, 1, 2, 100.0000),
-(91, 1, 2, 100.0000),
-(92, 1, 2, 100.0000),
-(93, 1, 2, 100.0000),
-(94, 1, 2, 100.0000),
-(95, 1, 2, 100.0000),
-(96, 1, 2, 100.0000),
-(97, 1, 2, 100.0000),
-(98, 1, 2, 100.0000),
-(99, 1, 2, 100.0000),
-(100, 1, 2, 100.0000),
-(101, 1, 2, 100.0000),
-(102, 1, 2, 100.0000),
-(103, 1, 2, 100.0000),
-(104, 1, 2, 100.0000),
-(105, 1, 2, 100.0000),
-(106, 1, 2, 100.0000),
-(107, 1, 2, 100.0000),
-(108, 1, 2, 100.0000),
-(109, 1, 2, 100.0000),
-(110, 1, 2, 100.0000),
-(111, 1, 2, 100.0000),
-(112, 1, 2, 100.0000),
-(113, 1, 2, 100.0000),
-(114, 1, 2, 100.0000),
-(115, 1, 2, 100.0000),
-(117, 1, 2, 100.0000),
-(118, 1, 2, 100.0000),
-(119, 1, 2, 100.0000),
-(120, 1, 2, 100.0000),
-(121, 1, 2, 100.0000),
-(122, 1, 2, 100.0000),
-(123, 1, 2, 100.0000),
-(124, 1, 2, 100.0000),
-(125, 1, 2, 100.0000),
-(126, 1, 2, 100.0000),
-(127, 1, 2, 100.0000),
-(128, 1, 2, 100.0000),
-(129, 1, 2, 100.0000),
-(130, 1, 2, 100.0000),
-(131, 1, 2, 100.0000),
-(132, 1, 2, 100.0000),
-(133, 1, 2, 100.0000),
-(134, 1, 2, 100.0000),
-(135, 1, 2, 100.0000),
-(137, 1, 2, 100.0000),
-(138, 1, 2, 100.0000),
-(139, 1, 2, 100.0000),
-(142, 1, 2, 100.0000),
-(144, 1, 2, 100.0000),
-(146, 1, 2, 100.0000),
-(158, 1, 2, 100.0000),
-(163, 1, 2, 100.0000),
-(164, 1, 2, 100.0000),
-(165, 1, 2, 100.0000),
-(29, 1, 3, 100.0000),
-(31, 1, 3, 100.0000),
-(32, 1, 3, 100.0000),
-(35, 1, 3, 100.0000),
-(36, 1, 3, 100.0000),
-(37, 1, 3, 100.0000),
-(38, 1, 3, 100.0000),
-(39, 1, 3, 100.0000),
-(45, 1, 3, 100.0000),
-(49, 1, 3, 100.0000),
-(74, 1, 3, 100.0000),
-(75, 1, 3, 100.0000),
-(79, 1, 3, 100.0000),
-(80, 1, 3, 100.0000),
-(81, 1, 3, 100.0000),
-(82, 1, 3, 100.0000),
-(83, 1, 3, 100.0000),
-(84, 1, 3, 100.0000),
-(85, 1, 3, 100.0000),
-(86, 1, 3, 100.0000),
-(87, 1, 3, 100.0000),
-(88, 1, 3, 100.0000),
-(89, 1, 3, 100.0000),
-(90, 1, 3, 100.0000),
-(91, 1, 3, 100.0000),
-(92, 1, 3, 100.0000),
-(103, 1, 3, 100.0000),
-(104, 1, 3, 100.0000),
-(105, 1, 3, 100.0000),
-(106, 1, 3, 100.0000),
-(107, 1, 3, 100.0000),
-(108, 1, 3, 100.0000),
-(109, 1, 3, 100.0000),
-(110, 1, 3, 100.0000),
-(111, 1, 3, 100.0000),
-(117, 1, 3, 100.0000),
-(118, 1, 3, 100.0000),
-(119, 1, 3, 100.0000),
-(120, 1, 3, 100.0000),
-(121, 1, 3, 100.0000),
-(122, 1, 3, 100.0000),
-(123, 1, 3, 100.0000),
-(124, 1, 3, 100.0000),
-(125, 1, 3, 100.0000),
-(126, 1, 3, 100.0000),
-(127, 1, 3, 100.0000),
-(128, 1, 3, 100.0000),
-(129, 1, 3, 100.0000),
-(130, 1, 3, 100.0000),
-(131, 1, 3, 100.0000),
-(132, 1, 3, 100.0000),
-(133, 1, 3, 100.0000),
-(134, 1, 3, 100.0000),
-(135, 1, 3, 100.0000),
-(137, 1, 3, 100.0000),
-(158, 1, 3, 100.0000),
-(163, 1, 3, 100.0000),
-(165, 1, 3, 100.0000),
-(16, 1, 4, 100.0000),
-(17, 1, 4, 100.0000),
-(18, 1, 4, 100.0000),
-(19, 1, 4, 100.0000),
-(20, 1, 4, 100.0000),
-(25, 1, 4, 100.0000),
-(26, 1, 4, 100.0000),
-(27, 1, 4, 100.0000),
-(28, 1, 4, 100.0000),
-(29, 1, 4, 100.0000),
-(30, 1, 4, 100.0000),
-(31, 1, 4, 100.0000),
-(32, 1, 4, 100.0000),
-(33, 1, 4, 100.0000),
-(34, 1, 4, 100.0000),
-(35, 1, 4, 100.0000),
-(36, 1, 4, 100.0000),
-(37, 1, 4, 100.0000),
-(38, 1, 4, 100.0000),
-(39, 1, 4, 100.0000),
-(41, 1, 4, 100.0000),
-(42, 1, 4, 100.0000),
-(44, 1, 4, 100.0000),
-(45, 1, 4, 100.0000),
-(46, 1, 4, 100.0000),
-(47, 1, 4, 100.0000),
-(48, 1, 4, 100.0000),
-(49, 1, 4, 100.0000),
-(51, 1, 4, 100.0000),
-(52, 1, 4, 100.0000),
-(53, 1, 4, 100.0000),
-(54, 1, 4, 100.0000),
-(74, 1, 4, 100.0000),
-(75, 1, 4, 100.0000),
-(79, 1, 4, 100.0000),
-(80, 1, 4, 100.0000),
-(81, 1, 4, 100.0000),
-(82, 1, 4, 100.0000),
-(83, 1, 4, 100.0000),
-(84, 1, 4, 100.0000),
-(85, 1, 4, 100.0000),
-(86, 1, 4, 100.0000),
-(87, 1, 4, 100.0000),
-(88, 1, 4, 100.0000),
-(89, 1, 4, 100.0000),
-(90, 1, 4, 100.0000),
-(91, 1, 4, 100.0000),
-(92, 1, 4, 100.0000),
-(93, 1, 4, 100.0000),
-(94, 1, 4, 100.0000),
-(95, 1, 4, 100.0000),
-(96, 1, 4, 100.0000),
-(97, 1, 4, 100.0000),
-(98, 1, 4, 100.0000),
-(99, 1, 4, 100.0000),
-(100, 1, 4, 100.0000),
-(101, 1, 4, 100.0000),
-(102, 1, 4, 100.0000),
-(103, 1, 4, 100.0000),
-(104, 1, 4, 100.0000),
-(105, 1, 4, 100.0000),
-(106, 1, 4, 100.0000),
-(107, 1, 4, 100.0000),
-(108, 1, 4, 100.0000),
-(109, 1, 4, 100.0000),
-(110, 1, 4, 100.0000),
-(111, 1, 4, 100.0000),
-(112, 1, 4, 100.0000),
-(113, 1, 4, 100.0000),
-(114, 1, 4, 100.0000),
-(115, 1, 4, 100.0000),
-(117, 1, 4, 100.0000),
-(118, 1, 4, 100.0000),
-(119, 1, 4, 100.0000),
-(120, 1, 4, 100.0000),
-(121, 1, 4, 100.0000),
-(122, 1, 4, 100.0000),
-(123, 1, 4, 100.0000),
-(124, 1, 4, 100.0000),
-(125, 1, 4, 100.0000),
-(126, 1, 4, 100.0000),
-(127, 1, 4, 100.0000),
-(128, 1, 4, 100.0000),
-(129, 1, 4, 100.0000),
-(130, 1, 4, 100.0000),
-(131, 1, 4, 100.0000),
-(132, 1, 4, 100.0000),
-(133, 1, 4, 100.0000),
-(134, 1, 4, 100.0000),
-(135, 1, 4, 100.0000),
-(137, 1, 4, 100.0000),
-(138, 1, 4, 100.0000),
-(139, 1, 4, 100.0000),
-(142, 1, 4, 100.0000),
-(144, 1, 4, 100.0000),
-(146, 1, 4, 100.0000),
-(158, 1, 4, 100.0000),
-(163, 1, 4, 100.0000),
-(164, 1, 4, 100.0000),
-(165, 1, 4, 100.0000);
+(16, 1, 0, '100.0000'),
+(17, 1, 0, '100.0000'),
+(18, 1, 0, '100.0000'),
+(19, 1, 0, '100.0000'),
+(20, 1, 0, '100.0000'),
+(25, 1, 0, '100.0000'),
+(26, 1, 0, '100.0000'),
+(27, 1, 0, '100.0000'),
+(28, 1, 0, '100.0000'),
+(29, 1, 0, '100.0000'),
+(30, 1, 0, '100.0000'),
+(31, 1, 0, '100.0000'),
+(32, 1, 0, '100.0000'),
+(33, 1, 0, '100.0000'),
+(34, 1, 0, '100.0000'),
+(35, 1, 0, '100.0000'),
+(36, 1, 0, '100.0000'),
+(37, 1, 0, '100.0000'),
+(38, 1, 0, '100.0000'),
+(39, 1, 0, '100.0000'),
+(41, 1, 0, '100.0000'),
+(42, 1, 0, '100.0000'),
+(44, 1, 0, '100.0000'),
+(45, 1, 0, '100.0000'),
+(46, 1, 0, '100.0000'),
+(47, 1, 0, '100.0000'),
+(48, 1, 0, '100.0000'),
+(49, 1, 0, '100.0000'),
+(51, 1, 0, '100.0000'),
+(52, 1, 0, '100.0000'),
+(53, 1, 0, '100.0000'),
+(54, 1, 0, '100.0000'),
+(74, 1, 0, '100.0000'),
+(75, 1, 0, '100.0000'),
+(79, 1, 0, '100.0000'),
+(80, 1, 0, '100.0000'),
+(81, 1, 0, '100.0000'),
+(82, 1, 0, '100.0000'),
+(83, 1, 0, '100.0000'),
+(84, 1, 0, '100.0000'),
+(85, 1, 0, '100.0000'),
+(86, 1, 0, '100.0000'),
+(87, 1, 0, '100.0000'),
+(88, 1, 0, '100.0000'),
+(89, 1, 0, '100.0000'),
+(90, 1, 0, '100.0000'),
+(91, 1, 0, '100.0000'),
+(92, 1, 0, '100.0000'),
+(93, 1, 0, '100.0000'),
+(94, 1, 0, '100.0000'),
+(95, 1, 0, '100.0000'),
+(96, 1, 0, '100.0000'),
+(97, 1, 0, '100.0000'),
+(98, 1, 0, '100.0000'),
+(99, 1, 0, '100.0000'),
+(100, 1, 0, '100.0000'),
+(101, 1, 0, '100.0000'),
+(102, 1, 0, '100.0000'),
+(103, 1, 0, '100.0000'),
+(104, 1, 0, '100.0000'),
+(105, 1, 0, '100.0000'),
+(106, 1, 0, '100.0000'),
+(107, 1, 0, '100.0000'),
+(108, 1, 0, '100.0000'),
+(109, 1, 0, '100.0000'),
+(110, 1, 0, '100.0000'),
+(111, 1, 0, '100.0000'),
+(112, 1, 0, '100.0000'),
+(113, 1, 0, '100.0000'),
+(114, 1, 0, '100.0000'),
+(115, 1, 0, '100.0000'),
+(117, 1, 0, '100.0000'),
+(118, 1, 0, '100.0000'),
+(119, 1, 0, '100.0000'),
+(120, 1, 0, '100.0000'),
+(121, 1, 0, '100.0000'),
+(122, 1, 0, '100.0000'),
+(123, 1, 0, '100.0000'),
+(124, 1, 0, '100.0000'),
+(125, 1, 0, '100.0000'),
+(126, 1, 0, '100.0000'),
+(127, 1, 0, '100.0000'),
+(128, 1, 0, '100.0000'),
+(129, 1, 0, '100.0000'),
+(130, 1, 0, '100.0000'),
+(131, 1, 0, '100.0000'),
+(132, 1, 0, '100.0000'),
+(133, 1, 0, '100.0000'),
+(134, 1, 0, '100.0000'),
+(135, 1, 0, '100.0000'),
+(137, 1, 0, '100.0000'),
+(138, 1, 0, '100.0000'),
+(139, 1, 0, '100.0000'),
+(142, 1, 0, '100.0000'),
+(144, 1, 0, '100.0000'),
+(146, 1, 0, '100.0000'),
+(158, 1, 0, '100.0000'),
+(163, 1, 0, '100.0000'),
+(164, 1, 0, '100.0000'),
+(165, 1, 0, '100.0000'),
+(16, 1, 1, '100.0000'),
+(17, 1, 1, '100.0000'),
+(18, 1, 1, '100.0000'),
+(19, 1, 1, '100.0000'),
+(20, 1, 1, '100.0000'),
+(25, 1, 1, '100.0000'),
+(26, 1, 1, '100.0000'),
+(27, 1, 1, '100.0000'),
+(28, 1, 1, '100.0000'),
+(29, 1, 1, '100.0000'),
+(30, 1, 1, '100.0000'),
+(31, 1, 1, '100.0000'),
+(32, 1, 1, '100.0000'),
+(33, 1, 1, '100.0000'),
+(34, 1, 1, '100.0000'),
+(35, 1, 1, '100.0000'),
+(36, 1, 1, '100.0000'),
+(37, 1, 1, '100.0000'),
+(38, 1, 1, '100.0000'),
+(39, 1, 1, '100.0000'),
+(41, 1, 1, '100.0000'),
+(42, 1, 1, '100.0000'),
+(44, 1, 1, '100.0000'),
+(45, 1, 1, '100.0000'),
+(46, 1, 1, '100.0000'),
+(47, 1, 1, '100.0000'),
+(48, 1, 1, '100.0000'),
+(49, 1, 1, '100.0000'),
+(51, 1, 1, '100.0000'),
+(52, 1, 1, '100.0000'),
+(53, 1, 1, '100.0000'),
+(54, 1, 1, '100.0000'),
+(74, 1, 1, '100.0000'),
+(75, 1, 1, '100.0000'),
+(79, 1, 1, '100.0000'),
+(80, 1, 1, '100.0000'),
+(81, 1, 1, '100.0000'),
+(82, 1, 1, '100.0000'),
+(83, 1, 1, '100.0000'),
+(84, 1, 1, '100.0000'),
+(85, 1, 1, '100.0000'),
+(86, 1, 1, '100.0000'),
+(87, 1, 1, '100.0000'),
+(88, 1, 1, '100.0000'),
+(89, 1, 1, '100.0000'),
+(90, 1, 1, '100.0000'),
+(91, 1, 1, '100.0000'),
+(92, 1, 1, '100.0000'),
+(93, 1, 1, '100.0000'),
+(94, 1, 1, '100.0000'),
+(95, 1, 1, '100.0000'),
+(96, 1, 1, '100.0000'),
+(97, 1, 1, '100.0000'),
+(98, 1, 1, '100.0000'),
+(99, 1, 1, '100.0000'),
+(100, 1, 1, '100.0000'),
+(101, 1, 1, '100.0000'),
+(102, 1, 1, '100.0000'),
+(103, 1, 1, '100.0000'),
+(104, 1, 1, '100.0000'),
+(105, 1, 1, '100.0000'),
+(106, 1, 1, '100.0000'),
+(107, 1, 1, '100.0000'),
+(108, 1, 1, '100.0000'),
+(109, 1, 1, '100.0000'),
+(110, 1, 1, '100.0000'),
+(111, 1, 1, '100.0000'),
+(112, 1, 1, '100.0000'),
+(113, 1, 1, '100.0000'),
+(114, 1, 1, '100.0000'),
+(115, 1, 1, '100.0000'),
+(117, 1, 1, '100.0000'),
+(118, 1, 1, '100.0000'),
+(119, 1, 1, '100.0000'),
+(120, 1, 1, '100.0000'),
+(121, 1, 1, '100.0000'),
+(122, 1, 1, '100.0000'),
+(123, 1, 1, '100.0000'),
+(124, 1, 1, '100.0000'),
+(125, 1, 1, '100.0000'),
+(126, 1, 1, '100.0000'),
+(127, 1, 1, '100.0000'),
+(128, 1, 1, '100.0000'),
+(129, 1, 1, '100.0000'),
+(130, 1, 1, '100.0000'),
+(131, 1, 1, '100.0000'),
+(132, 1, 1, '100.0000'),
+(133, 1, 1, '100.0000'),
+(134, 1, 1, '100.0000'),
+(135, 1, 1, '100.0000'),
+(137, 1, 1, '100.0000'),
+(138, 1, 1, '100.0000'),
+(139, 1, 1, '100.0000'),
+(142, 1, 1, '100.0000'),
+(144, 1, 1, '100.0000'),
+(146, 1, 1, '100.0000'),
+(158, 1, 1, '100.0000'),
+(163, 1, 1, '100.0000'),
+(164, 1, 1, '100.0000'),
+(165, 1, 1, '100.0000'),
+(16, 1, 2, '100.0000'),
+(17, 1, 2, '100.0000'),
+(18, 1, 2, '100.0000'),
+(19, 1, 2, '100.0000'),
+(20, 1, 2, '100.0000'),
+(25, 1, 2, '100.0000'),
+(26, 1, 2, '100.0000'),
+(27, 1, 2, '100.0000'),
+(28, 1, 2, '100.0000'),
+(29, 1, 2, '100.0000'),
+(30, 1, 2, '100.0000'),
+(31, 1, 2, '100.0000'),
+(32, 1, 2, '100.0000'),
+(33, 1, 2, '100.0000'),
+(34, 1, 2, '100.0000'),
+(35, 1, 2, '100.0000'),
+(36, 1, 2, '100.0000'),
+(37, 1, 2, '100.0000'),
+(38, 1, 2, '100.0000'),
+(39, 1, 2, '100.0000'),
+(41, 1, 2, '100.0000'),
+(42, 1, 2, '100.0000'),
+(44, 1, 2, '100.0000'),
+(45, 1, 2, '100.0000'),
+(46, 1, 2, '100.0000'),
+(47, 1, 2, '100.0000'),
+(48, 1, 2, '100.0000'),
+(49, 1, 2, '100.0000'),
+(51, 1, 2, '100.0000'),
+(52, 1, 2, '100.0000'),
+(53, 1, 2, '100.0000'),
+(54, 1, 2, '100.0000'),
+(74, 1, 2, '100.0000'),
+(75, 1, 2, '100.0000'),
+(79, 1, 2, '100.0000'),
+(80, 1, 2, '100.0000'),
+(81, 1, 2, '100.0000'),
+(82, 1, 2, '100.0000'),
+(83, 1, 2, '100.0000'),
+(84, 1, 2, '100.0000'),
+(85, 1, 2, '100.0000'),
+(86, 1, 2, '100.0000'),
+(87, 1, 2, '100.0000'),
+(88, 1, 2, '100.0000'),
+(89, 1, 2, '100.0000'),
+(90, 1, 2, '100.0000'),
+(91, 1, 2, '100.0000'),
+(92, 1, 2, '100.0000'),
+(93, 1, 2, '100.0000'),
+(94, 1, 2, '100.0000'),
+(95, 1, 2, '100.0000'),
+(96, 1, 2, '100.0000'),
+(97, 1, 2, '100.0000'),
+(98, 1, 2, '100.0000'),
+(99, 1, 2, '100.0000'),
+(100, 1, 2, '100.0000'),
+(101, 1, 2, '100.0000'),
+(102, 1, 2, '100.0000'),
+(103, 1, 2, '100.0000'),
+(104, 1, 2, '100.0000'),
+(105, 1, 2, '100.0000'),
+(106, 1, 2, '100.0000'),
+(107, 1, 2, '100.0000'),
+(108, 1, 2, '100.0000'),
+(109, 1, 2, '100.0000'),
+(110, 1, 2, '100.0000'),
+(111, 1, 2, '100.0000'),
+(112, 1, 2, '100.0000'),
+(113, 1, 2, '100.0000'),
+(114, 1, 2, '100.0000'),
+(115, 1, 2, '100.0000'),
+(117, 1, 2, '100.0000'),
+(118, 1, 2, '100.0000'),
+(119, 1, 2, '100.0000'),
+(120, 1, 2, '100.0000'),
+(121, 1, 2, '100.0000'),
+(122, 1, 2, '100.0000'),
+(123, 1, 2, '100.0000'),
+(124, 1, 2, '100.0000'),
+(125, 1, 2, '100.0000'),
+(126, 1, 2, '100.0000'),
+(127, 1, 2, '100.0000'),
+(128, 1, 2, '100.0000'),
+(129, 1, 2, '100.0000'),
+(130, 1, 2, '100.0000'),
+(131, 1, 2, '100.0000'),
+(132, 1, 2, '100.0000'),
+(133, 1, 2, '100.0000'),
+(134, 1, 2, '100.0000'),
+(135, 1, 2, '100.0000'),
+(137, 1, 2, '100.0000'),
+(138, 1, 2, '100.0000'),
+(139, 1, 2, '100.0000'),
+(142, 1, 2, '100.0000'),
+(144, 1, 2, '100.0000'),
+(146, 1, 2, '100.0000'),
+(158, 1, 2, '100.0000'),
+(163, 1, 2, '100.0000'),
+(164, 1, 2, '100.0000'),
+(165, 1, 2, '100.0000'),
+(29, 1, 3, '100.0000'),
+(31, 1, 3, '100.0000'),
+(32, 1, 3, '100.0000'),
+(35, 1, 3, '100.0000'),
+(36, 1, 3, '100.0000'),
+(37, 1, 3, '100.0000'),
+(38, 1, 3, '100.0000'),
+(39, 1, 3, '100.0000'),
+(45, 1, 3, '100.0000'),
+(49, 1, 3, '100.0000'),
+(74, 1, 3, '100.0000'),
+(75, 1, 3, '100.0000'),
+(79, 1, 3, '100.0000'),
+(80, 1, 3, '100.0000'),
+(81, 1, 3, '100.0000'),
+(82, 1, 3, '100.0000'),
+(83, 1, 3, '100.0000'),
+(84, 1, 3, '100.0000'),
+(85, 1, 3, '100.0000'),
+(86, 1, 3, '100.0000'),
+(87, 1, 3, '100.0000'),
+(88, 1, 3, '100.0000'),
+(89, 1, 3, '100.0000'),
+(90, 1, 3, '100.0000'),
+(91, 1, 3, '100.0000'),
+(92, 1, 3, '100.0000'),
+(103, 1, 3, '100.0000'),
+(104, 1, 3, '100.0000'),
+(105, 1, 3, '100.0000'),
+(106, 1, 3, '100.0000'),
+(107, 1, 3, '100.0000'),
+(108, 1, 3, '100.0000'),
+(109, 1, 3, '100.0000'),
+(110, 1, 3, '100.0000'),
+(111, 1, 3, '100.0000'),
+(117, 1, 3, '100.0000'),
+(118, 1, 3, '100.0000'),
+(119, 1, 3, '100.0000'),
+(120, 1, 3, '100.0000'),
+(121, 1, 3, '100.0000'),
+(122, 1, 3, '100.0000'),
+(123, 1, 3, '100.0000'),
+(124, 1, 3, '100.0000'),
+(125, 1, 3, '100.0000'),
+(126, 1, 3, '100.0000'),
+(127, 1, 3, '100.0000'),
+(128, 1, 3, '100.0000'),
+(129, 1, 3, '100.0000'),
+(130, 1, 3, '100.0000'),
+(131, 1, 3, '100.0000'),
+(132, 1, 3, '100.0000'),
+(133, 1, 3, '100.0000'),
+(134, 1, 3, '100.0000'),
+(135, 1, 3, '100.0000'),
+(137, 1, 3, '100.0000'),
+(158, 1, 3, '100.0000'),
+(163, 1, 3, '100.0000'),
+(165, 1, 3, '100.0000'),
+(16, 1, 4, '100.0000'),
+(17, 1, 4, '100.0000'),
+(18, 1, 4, '100.0000'),
+(19, 1, 4, '100.0000'),
+(20, 1, 4, '100.0000'),
+(25, 1, 4, '100.0000'),
+(26, 1, 4, '100.0000'),
+(27, 1, 4, '100.0000'),
+(28, 1, 4, '100.0000'),
+(29, 1, 4, '100.0000'),
+(30, 1, 4, '100.0000'),
+(31, 1, 4, '100.0000'),
+(32, 1, 4, '100.0000'),
+(33, 1, 4, '100.0000'),
+(34, 1, 4, '100.0000'),
+(35, 1, 4, '100.0000'),
+(36, 1, 4, '100.0000'),
+(37, 1, 4, '100.0000'),
+(38, 1, 4, '100.0000'),
+(39, 1, 4, '100.0000'),
+(41, 1, 4, '100.0000'),
+(42, 1, 4, '100.0000'),
+(44, 1, 4, '100.0000'),
+(45, 1, 4, '100.0000'),
+(46, 1, 4, '100.0000'),
+(47, 1, 4, '100.0000'),
+(48, 1, 4, '100.0000'),
+(49, 1, 4, '100.0000'),
+(51, 1, 4, '100.0000'),
+(52, 1, 4, '100.0000'),
+(53, 1, 4, '100.0000'),
+(54, 1, 4, '100.0000'),
+(74, 1, 4, '100.0000'),
+(75, 1, 4, '100.0000'),
+(79, 1, 4, '100.0000'),
+(80, 1, 4, '100.0000'),
+(81, 1, 4, '100.0000'),
+(82, 1, 4, '100.0000'),
+(83, 1, 4, '100.0000'),
+(84, 1, 4, '100.0000'),
+(85, 1, 4, '100.0000'),
+(86, 1, 4, '100.0000'),
+(87, 1, 4, '100.0000'),
+(88, 1, 4, '100.0000'),
+(89, 1, 4, '100.0000'),
+(90, 1, 4, '100.0000'),
+(91, 1, 4, '100.0000'),
+(92, 1, 4, '100.0000'),
+(93, 1, 4, '100.0000'),
+(94, 1, 4, '100.0000'),
+(95, 1, 4, '100.0000'),
+(96, 1, 4, '100.0000'),
+(97, 1, 4, '100.0000'),
+(98, 1, 4, '100.0000'),
+(99, 1, 4, '100.0000'),
+(100, 1, 4, '100.0000'),
+(101, 1, 4, '100.0000'),
+(102, 1, 4, '100.0000'),
+(103, 1, 4, '100.0000'),
+(104, 1, 4, '100.0000'),
+(105, 1, 4, '100.0000'),
+(106, 1, 4, '100.0000'),
+(107, 1, 4, '100.0000'),
+(108, 1, 4, '100.0000'),
+(109, 1, 4, '100.0000'),
+(110, 1, 4, '100.0000'),
+(111, 1, 4, '100.0000'),
+(112, 1, 4, '100.0000'),
+(113, 1, 4, '100.0000'),
+(114, 1, 4, '100.0000'),
+(115, 1, 4, '100.0000'),
+(117, 1, 4, '100.0000'),
+(118, 1, 4, '100.0000'),
+(119, 1, 4, '100.0000'),
+(120, 1, 4, '100.0000'),
+(121, 1, 4, '100.0000'),
+(122, 1, 4, '100.0000'),
+(123, 1, 4, '100.0000'),
+(124, 1, 4, '100.0000'),
+(125, 1, 4, '100.0000'),
+(126, 1, 4, '100.0000'),
+(127, 1, 4, '100.0000'),
+(128, 1, 4, '100.0000'),
+(129, 1, 4, '100.0000'),
+(130, 1, 4, '100.0000'),
+(131, 1, 4, '100.0000'),
+(132, 1, 4, '100.0000'),
+(133, 1, 4, '100.0000'),
+(134, 1, 4, '100.0000'),
+(135, 1, 4, '100.0000'),
+(137, 1, 4, '100.0000'),
+(138, 1, 4, '100.0000'),
+(139, 1, 4, '100.0000'),
+(142, 1, 4, '100.0000'),
+(144, 1, 4, '100.0000'),
+(146, 1, 4, '100.0000'),
+(158, 1, 4, '100.0000'),
+(163, 1, 4, '100.0000'),
+(164, 1, 4, '100.0000'),
+(165, 1, 4, '100.0000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `weee_tax`
+-- Structure de la table `weee_tax`
 --
 
+DROP TABLE IF EXISTS `weee_tax`;
 CREATE TABLE IF NOT EXISTS `weee_tax` (
-  `value_id` int(11) NOT NULL auto_increment,
-  `website_id` smallint(5) unsigned NOT NULL default '0',
-  `entity_id` int(10) unsigned NOT NULL default '0',
-  `country` varchar(2) NOT NULL default '',
-  `value` decimal(12,4) NOT NULL default '0.0000',
-  `state` varchar(255) NOT NULL default '*',
+  `value_id` int(11) NOT NULL AUTO_INCREMENT,
+  `website_id` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `country` varchar(2) NOT NULL DEFAULT '',
+  `value` decimal(12,4) NOT NULL DEFAULT '0.0000',
+  `state` varchar(255) NOT NULL DEFAULT '*',
   `attribute_id` smallint(5) unsigned NOT NULL,
   `entity_type_id` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY  (`value_id`),
+  PRIMARY KEY (`value_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_TAX_WEBSITE` (`website_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_TAX_PRODUCT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_WEEE_TAX_COUNTRY` (`country`),
@@ -24744,91 +25047,93 @@ CREATE TABLE IF NOT EXISTS `weee_tax` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `weee_tax`
+-- Contenu de la table `weee_tax`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wishlist`
+-- Structure de la table `wishlist`
 --
 
+DROP TABLE IF EXISTS `wishlist`;
 CREATE TABLE IF NOT EXISTS `wishlist` (
-  `wishlist_id` int(10) unsigned NOT NULL auto_increment,
-  `customer_id` int(10) unsigned NOT NULL default '0',
-  `shared` tinyint(1) unsigned default '0',
-  `sharing_code` varchar(32) NOT NULL default '',
-  PRIMARY KEY  (`wishlist_id`),
+  `wishlist_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `shared` tinyint(1) unsigned DEFAULT '0',
+  `sharing_code` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`wishlist_id`),
   UNIQUE KEY `FK_CUSTOMER` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Wishlist main' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `wishlist`
+-- Contenu de la table `wishlist`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wishlist_item`
+-- Structure de la table `wishlist_item`
 --
 
+DROP TABLE IF EXISTS `wishlist_item`;
 CREATE TABLE IF NOT EXISTS `wishlist_item` (
-  `wishlist_item_id` int(10) unsigned NOT NULL auto_increment,
-  `wishlist_id` int(10) unsigned NOT NULL default '0',
-  `product_id` int(10) unsigned NOT NULL default '0',
+  `wishlist_item_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `wishlist_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
   `store_id` smallint(5) unsigned NOT NULL,
-  `added_at` datetime default NULL,
+  `added_at` datetime DEFAULT NULL,
   `description` text,
-  PRIMARY KEY  (`wishlist_item_id`),
+  PRIMARY KEY (`wishlist_item_id`),
   KEY `FK_ITEM_WISHLIST` (`wishlist_id`),
   KEY `FK_WISHLIST_PRODUCT` (`product_id`),
   KEY `FK_WISHLIST_STORE` (`store_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Wishlist items' AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `wishlist_item`
+-- Contenu de la table `wishlist_item`
 --
 
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `admin_rule`
+-- Contraintes pour la table `admin_rule`
 --
 ALTER TABLE `admin_rule`
   ADD CONSTRAINT `FK_admin_rule` FOREIGN KEY (`role_id`) REFERENCES `admin_role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `api_rule`
+-- Contraintes pour la table `api_rule`
 --
 ALTER TABLE `api_rule`
   ADD CONSTRAINT `FK_api_rule` FOREIGN KEY (`role_id`) REFERENCES `api_role` (`role_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `api_session`
+-- Contraintes pour la table `api_session`
 --
 ALTER TABLE `api_session`
   ADD CONSTRAINT `FK_API_SESSION_USER` FOREIGN KEY (`user_id`) REFERENCES `api_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogindex_aggregation`
+-- Contraintes pour la table `catalogindex_aggregation`
 --
 ALTER TABLE `catalogindex_aggregation`
   ADD CONSTRAINT `FK_CATALOGINDEX_AGGREGATION_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogindex_aggregation_to_tag`
+-- Contraintes pour la table `catalogindex_aggregation_to_tag`
 --
 ALTER TABLE `catalogindex_aggregation_to_tag`
   ADD CONSTRAINT `FK_CATALOGINDEX_AGGREGATION_TO_TAG_AGGREGATION` FOREIGN KEY (`aggregation_id`) REFERENCES `catalogindex_aggregation` (`aggregation_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOGINDEX_AGGREGATION_TO_TAG_TAG` FOREIGN KEY (`tag_id`) REFERENCES `catalogindex_aggregation_tag` (`tag_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogindex_eav`
+-- Contraintes pour la table `catalogindex_eav`
 --
 ALTER TABLE `catalogindex_eav`
   ADD CONSTRAINT `FK_CATALOGINDEX_EAV_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24836,7 +25141,7 @@ ALTER TABLE `catalogindex_eav`
   ADD CONSTRAINT `FK_CATALOGINDEX_EAV_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogindex_minimal_price`
+-- Contraintes pour la table `catalogindex_minimal_price`
 --
 ALTER TABLE `catalogindex_minimal_price`
   ADD CONSTRAINT `FK_CATALOGINDEX_MINIMAL_PRICE_CUSTOMER_GROUP` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24844,7 +25149,7 @@ ALTER TABLE `catalogindex_minimal_price`
   ADD CONSTRAINT `FK_CI_MINIMAL_PRICE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogindex_price`
+-- Contraintes pour la table `catalogindex_price`
 --
 ALTER TABLE `catalogindex_price`
   ADD CONSTRAINT `FK_CATALOGINDEX_PRICE_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24852,14 +25157,14 @@ ALTER TABLE `catalogindex_price`
   ADD CONSTRAINT `FK_CI_PRICE_WEBSITE_ID` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cataloginventory_stock_item`
+-- Contraintes pour la table `cataloginventory_stock_item`
 --
 ALTER TABLE `cataloginventory_stock_item`
   ADD CONSTRAINT `FK_CATALOGINVENTORY_STOCK_ITEM_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOGINVENTORY_STOCK_ITEM_STOCK` FOREIGN KEY (`stock_id`) REFERENCES `cataloginventory_stock` (`stock_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cataloginventory_stock_status`
+-- Contraintes pour la table `cataloginventory_stock_status`
 --
 ALTER TABLE `cataloginventory_stock_status`
   ADD CONSTRAINT `FK_CATALOGINVENTORY_STOCK_STATUS_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24867,7 +25172,7 @@ ALTER TABLE `cataloginventory_stock_status`
   ADD CONSTRAINT `FK_CATALOGINVENTORY_STOCK_STATUS_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogrule_product`
+-- Contraintes pour la table `catalogrule_product`
 --
 ALTER TABLE `catalogrule_product`
   ADD CONSTRAINT `FK_catalogrule_product_customergroup` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24876,7 +25181,7 @@ ALTER TABLE `catalogrule_product`
   ADD CONSTRAINT `FK_catalogrule_product_website` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogrule_product_price`
+-- Contraintes pour la table `catalogrule_product_price`
 --
 ALTER TABLE `catalogrule_product_price`
   ADD CONSTRAINT `FK_catalogrule_product_price_customergroup` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24884,20 +25189,20 @@ ALTER TABLE `catalogrule_product_price`
   ADD CONSTRAINT `FK_catalogrule_product_price_website` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogsearch_query`
+-- Contraintes pour la table `catalogsearch_query`
 --
 ALTER TABLE `catalogsearch_query`
   ADD CONSTRAINT `FK_CATALOGSEARCH_QUERY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalogsearch_result`
+-- Contraintes pour la table `catalogsearch_result`
 --
 ALTER TABLE `catalogsearch_result`
   ADD CONSTRAINT `FK_CATALOGSEARCH_RESULT_CATALOG_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOGSEARCH_RESULT_QUERY` FOREIGN KEY (`query_id`) REFERENCES `catalogsearch_query` (`query_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_entity_datetime`
+-- Contraintes pour la table `catalog_category_entity_datetime`
 --
 ALTER TABLE `catalog_category_entity_datetime`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_DATETIME_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24905,7 +25210,7 @@ ALTER TABLE `catalog_category_entity_datetime`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_DATETIME_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_entity_decimal`
+-- Contraintes pour la table `catalog_category_entity_decimal`
 --
 ALTER TABLE `catalog_category_entity_decimal`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_DECIMAL_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24913,7 +25218,7 @@ ALTER TABLE `catalog_category_entity_decimal`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_DECIMAL_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_entity_int`
+-- Contraintes pour la table `catalog_category_entity_int`
 --
 ALTER TABLE `catalog_category_entity_int`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_EMTITY_INT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24921,7 +25226,7 @@ ALTER TABLE `catalog_category_entity_int`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_EMTITY_INT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_entity_text`
+-- Contraintes pour la table `catalog_category_entity_text`
 --
 ALTER TABLE `catalog_category_entity_text`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_TEXT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24929,7 +25234,7 @@ ALTER TABLE `catalog_category_entity_text`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_TEXT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_entity_varchar`
+-- Contraintes pour la table `catalog_category_entity_varchar`
 --
 ALTER TABLE `catalog_category_entity_varchar`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24937,21 +25242,21 @@ ALTER TABLE `catalog_category_entity_varchar`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_flat`
+-- Contraintes pour la table `catalog_category_flat`
 --
 ALTER TABLE `catalog_category_flat`
   ADD CONSTRAINT `FK_CATEGORY_FLAT_CATEGORY_ID` FOREIGN KEY (`entity_id`) REFERENCES `catalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATEGORY_FLAT_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_product`
+-- Contraintes pour la table `catalog_category_product`
 --
 ALTER TABLE `catalog_category_product`
   ADD CONSTRAINT `CATALOG_CATEGORY_PRODUCT_CATEGORY` FOREIGN KEY (`category_id`) REFERENCES `catalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `CATALOG_CATEGORY_PRODUCT_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_category_product_index`
+-- Contraintes pour la table `catalog_category_product_index`
 --
 ALTER TABLE `catalog_category_product_index`
   ADD CONSTRAINT `FK_CATALOG_CATEGORY_PRODUCT_INDEX_CATEGORY_ENTITY` FOREIGN KEY (`category_id`) REFERENCES `catalog_category_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24959,26 +25264,26 @@ ALTER TABLE `catalog_category_product_index`
   ADD CONSTRAINT `FK_CATEGORY_PRODUCT_INDEX_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_compare_item`
+-- Contraintes pour la table `catalog_compare_item`
 --
 ALTER TABLE `catalog_compare_item`
   ADD CONSTRAINT `FK_CATALOG_COMPARE_ITEM_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_COMPARE_ITEM_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_bundle_option`
+-- Contraintes pour la table `catalog_product_bundle_option`
 --
 ALTER TABLE `catalog_product_bundle_option`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_BUNDLE_OPTION_PARENT` FOREIGN KEY (`parent_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_bundle_option_value`
+-- Contraintes pour la table `catalog_product_bundle_option_value`
 --
 ALTER TABLE `catalog_product_bundle_option_value`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_BUNDLE_OPTION_VALUE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `catalog_product_bundle_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_bundle_price_index`
+-- Contraintes pour la table `catalog_product_bundle_price_index`
 --
 ALTER TABLE `catalog_product_bundle_price_index`
   ADD CONSTRAINT `CATALOG_PRODUCT_BUNDLE_PRICE_INDEX_CUSTOMER_GROUP` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -24986,28 +25291,28 @@ ALTER TABLE `catalog_product_bundle_price_index`
   ADD CONSTRAINT `CATALOG_PRODUCT_BUNDLE_PRICE_INDEX_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_bundle_selection`
+-- Contraintes pour la table `catalog_product_bundle_selection`
 --
 ALTER TABLE `catalog_product_bundle_selection`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_BUNDLE_SELECTION_OPTION` FOREIGN KEY (`option_id`) REFERENCES `catalog_product_bundle_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_BUNDLE_SELECTION_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_enabled_index`
+-- Contraintes pour la table `catalog_product_enabled_index`
 --
 ALTER TABLE `catalog_product_enabled_index`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENABLED_INDEX_PRODUCT_ENTITY` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENABLED_INDEX_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity`
+-- Contraintes pour la table `catalog_product_entity`
 --
 ALTER TABLE `catalog_product_entity`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID` FOREIGN KEY (`attribute_set_id`) REFERENCES `eav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_datetime`
+-- Contraintes pour la table `catalog_product_entity_datetime`
 --
 ALTER TABLE `catalog_product_entity_datetime`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_DATETIME_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25015,7 +25320,7 @@ ALTER TABLE `catalog_product_entity_datetime`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_DATETIME_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_decimal`
+-- Contraintes pour la table `catalog_product_entity_decimal`
 --
 ALTER TABLE `catalog_product_entity_decimal`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25023,7 +25328,7 @@ ALTER TABLE `catalog_product_entity_decimal`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_gallery`
+-- Contraintes pour la table `catalog_product_entity_gallery`
 --
 ALTER TABLE `catalog_product_entity_gallery`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_GALLERY_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25031,7 +25336,7 @@ ALTER TABLE `catalog_product_entity_gallery`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_GALLERY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_int`
+-- Contraintes pour la table `catalog_product_entity_int`
 --
 ALTER TABLE `catalog_product_entity_int`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_INT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25039,21 +25344,21 @@ ALTER TABLE `catalog_product_entity_int`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_INT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_media_gallery`
+-- Contraintes pour la table `catalog_product_entity_media_gallery`
 --
 ALTER TABLE `catalog_product_entity_media_gallery`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_MEDIA_GALLERY_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_MEDIA_GALLERY_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_media_gallery_value`
+-- Contraintes pour la table `catalog_product_entity_media_gallery_value`
 --
 ALTER TABLE `catalog_product_entity_media_gallery_value`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_MEDIA_GALLERY_VALUE_GALLERY` FOREIGN KEY (`value_id`) REFERENCES `catalog_product_entity_media_gallery` (`value_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_MEDIA_GALLERY_VALUE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_text`
+-- Contraintes pour la table `catalog_product_entity_text`
 --
 ALTER TABLE `catalog_product_entity_text`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_TEXT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25061,7 +25366,7 @@ ALTER TABLE `catalog_product_entity_text`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_TEXT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_tier_price`
+-- Contraintes pour la table `catalog_product_entity_tier_price`
 --
 ALTER TABLE `catalog_product_entity_tier_price`
   ADD CONSTRAINT `FK_catalog_product_entity_tier_price_group` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25069,7 +25374,7 @@ ALTER TABLE `catalog_product_entity_tier_price`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_TIER_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_entity_varchar`
+-- Contraintes pour la table `catalog_product_entity_varchar`
 --
 ALTER TABLE `catalog_product_entity_varchar`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25077,7 +25382,7 @@ ALTER TABLE `catalog_product_entity_varchar`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_link`
+-- Contraintes pour la table `catalog_product_link`
 --
 ALTER TABLE `catalog_product_link`
   ADD CONSTRAINT `FK_PRODUCT_LINK_LINKED_PRODUCT` FOREIGN KEY (`linked_product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25085,87 +25390,87 @@ ALTER TABLE `catalog_product_link`
   ADD CONSTRAINT `FK_PRODUCT_LINK_TYPE` FOREIGN KEY (`link_type_id`) REFERENCES `catalog_product_link_type` (`link_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_link_attribute`
+-- Contraintes pour la table `catalog_product_link_attribute`
 --
 ALTER TABLE `catalog_product_link_attribute`
   ADD CONSTRAINT `FK_ATTRIBUTE_PRODUCT_LINK_TYPE` FOREIGN KEY (`link_type_id`) REFERENCES `catalog_product_link_type` (`link_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_link_attribute_decimal`
+-- Contraintes pour la table `catalog_product_link_attribute_decimal`
 --
 ALTER TABLE `catalog_product_link_attribute_decimal`
   ADD CONSTRAINT `FK_DECIMAL_LINK` FOREIGN KEY (`link_id`) REFERENCES `catalog_product_link` (`link_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DECIMAL_PRODUCT_LINK_ATTRIBUTE` FOREIGN KEY (`product_link_attribute_id`) REFERENCES `catalog_product_link_attribute` (`product_link_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_link_attribute_int`
+-- Contraintes pour la table `catalog_product_link_attribute_int`
 --
 ALTER TABLE `catalog_product_link_attribute_int`
   ADD CONSTRAINT `FK_INT_PRODUCT_LINK` FOREIGN KEY (`link_id`) REFERENCES `catalog_product_link` (`link_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_INT_PRODUCT_LINK_ATTRIBUTE` FOREIGN KEY (`product_link_attribute_id`) REFERENCES `catalog_product_link_attribute` (`product_link_attribute_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `catalog_product_link_attribute_varchar`
+-- Contraintes pour la table `catalog_product_link_attribute_varchar`
 --
 ALTER TABLE `catalog_product_link_attribute_varchar`
   ADD CONSTRAINT `FK_VARCHAR_LINK` FOREIGN KEY (`link_id`) REFERENCES `catalog_product_link` (`link_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_VARCHAR_PRODUCT_LINK_ATTRIBUTE` FOREIGN KEY (`product_link_attribute_id`) REFERENCES `catalog_product_link_attribute` (`product_link_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option`
+-- Contraintes pour la table `catalog_product_option`
 --
 ALTER TABLE `catalog_product_option`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option_price`
+-- Contraintes pour la table `catalog_product_option_price`
 --
 ALTER TABLE `catalog_product_option_price`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_PRICE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `catalog_product_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_PRICE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option_title`
+-- Contraintes pour la table `catalog_product_option_title`
 --
 ALTER TABLE `catalog_product_option_title`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TITLE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `catalog_product_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option_type_price`
+-- Contraintes pour la table `catalog_product_option_type_price`
 --
 ALTER TABLE `catalog_product_option_type_price`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TYPE_PRICE_OPTION` FOREIGN KEY (`option_type_id`) REFERENCES `catalog_product_option_type_value` (`option_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TYPE_PRICE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option_type_title`
+-- Contraintes pour la table `catalog_product_option_type_title`
 --
 ALTER TABLE `catalog_product_option_type_title`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TYPE_TITLE_OPTION` FOREIGN KEY (`option_type_id`) REFERENCES `catalog_product_option_type_value` (`option_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TYPE_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_option_type_value`
+-- Contraintes pour la table `catalog_product_option_type_value`
 --
 ALTER TABLE `catalog_product_option_type_value`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_OPTION_TYPE_VALUE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `catalog_product_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_super_attribute`
+-- Contraintes pour la table `catalog_product_super_attribute`
 --
 ALTER TABLE `catalog_product_super_attribute`
   ADD CONSTRAINT `FK_SUPER_PRODUCT_ATTRIBUTE_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `catalog_product_super_attribute_label`
+-- Contraintes pour la table `catalog_product_super_attribute_label`
 --
 ALTER TABLE `catalog_product_super_attribute_label`
   ADD CONSTRAINT `catalog_product_super_attribute_label_ibfk_1` FOREIGN KEY (`product_super_attribute_id`) REFERENCES `catalog_product_super_attribute` (`product_super_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_SUPER_PRODUCT_ATTRIBUTE_LABEL` FOREIGN KEY (`product_super_attribute_id`) REFERENCES `catalog_product_super_attribute` (`product_super_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_super_attribute_pricing`
+-- Contraintes pour la table `catalog_product_super_attribute_pricing`
 --
 ALTER TABLE `catalog_product_super_attribute_pricing`
   ADD CONSTRAINT `catalog_product_super_attribute_pricing_ibfk_1` FOREIGN KEY (`product_super_attribute_id`) REFERENCES `catalog_product_super_attribute` (`product_super_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25173,7 +25478,7 @@ ALTER TABLE `catalog_product_super_attribute_pricing`
   ADD CONSTRAINT `FK_SUPER_PRODUCT_ATTRIBUTE_PRICING` FOREIGN KEY (`product_super_attribute_id`) REFERENCES `catalog_product_super_attribute` (`product_super_attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_super_link`
+-- Contraintes pour la table `catalog_product_super_link`
 --
 ALTER TABLE `catalog_product_super_link`
   ADD CONSTRAINT `catalog_product_super_link_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25182,67 +25487,67 @@ ALTER TABLE `catalog_product_super_link`
   ADD CONSTRAINT `FK_SUPER_PRODUCT_LINK_PARENT` FOREIGN KEY (`parent_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `catalog_product_website`
+-- Contraintes pour la table `catalog_product_website`
 --
 ALTER TABLE `catalog_product_website`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_WEBSITE_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CATALOG_WEBSITE_PRODUCT_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `checkout_agreement_store`
+-- Contraintes pour la table `checkout_agreement_store`
 --
 ALTER TABLE `checkout_agreement_store`
   ADD CONSTRAINT `FK_CHECKOUT_AGREEMENT` FOREIGN KEY (`agreement_id`) REFERENCES `checkout_agreement` (`agreement_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CHECKOUT_AGREEMENT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cms_block_store`
+-- Contraintes pour la table `cms_block_store`
 --
 ALTER TABLE `cms_block_store`
   ADD CONSTRAINT `FK_CMS_BLOCK_STORE_BLOCK` FOREIGN KEY (`block_id`) REFERENCES `cms_block` (`block_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CMS_BLOCK_STORE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cms_page_store`
+-- Contraintes pour la table `cms_page_store`
 --
 ALTER TABLE `cms_page_store`
   ADD CONSTRAINT `FK_CMS_PAGE_STORE_PAGE` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`page_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CMS_PAGE_STORE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_layout_link`
+-- Contraintes pour la table `core_layout_link`
 --
 ALTER TABLE `core_layout_link`
   ADD CONSTRAINT `FK_CORE_LAYOUT_LINK_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CORE_LAYOUT_LINK_UPDATE` FOREIGN KEY (`layout_update_id`) REFERENCES `core_layout_update` (`layout_update_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_session`
+-- Contraintes pour la table `core_session`
 --
 ALTER TABLE `core_session`
   ADD CONSTRAINT `FK_SESSION_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_store`
+-- Contraintes pour la table `core_store`
 --
 ALTER TABLE `core_store`
   ADD CONSTRAINT `FK_STORE_GROUP_STORE` FOREIGN KEY (`group_id`) REFERENCES `core_store_group` (`group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_STORE_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_store_group`
+-- Contraintes pour la table `core_store_group`
 --
 ALTER TABLE `core_store_group`
   ADD CONSTRAINT `FK_STORE_GROUP_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_translate`
+-- Contraintes pour la table `core_translate`
 --
 ALTER TABLE `core_translate`
   ADD CONSTRAINT `FK_CORE_TRANSLATE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `core_url_rewrite`
+-- Contraintes pour la table `core_url_rewrite`
 --
 ALTER TABLE `core_url_rewrite`
   ADD CONSTRAINT `core_url_rewrite_ibfk_1` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25251,13 +25556,13 @@ ALTER TABLE `core_url_rewrite`
   ADD CONSTRAINT `FK_CORE_URL_REWRITE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity`
+-- Contraintes pour la table `customer_address_entity`
 --
 ALTER TABLE `customer_address_entity`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_CUSTOMER_ID` FOREIGN KEY (`parent_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity_datetime`
+-- Contraintes pour la table `customer_address_entity_datetime`
 --
 ALTER TABLE `customer_address_entity_datetime`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_DATETIME_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25265,7 +25570,7 @@ ALTER TABLE `customer_address_entity_datetime`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_DATETIME_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity_decimal`
+-- Contraintes pour la table `customer_address_entity_decimal`
 --
 ALTER TABLE `customer_address_entity_decimal`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_DECIMAL_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25273,7 +25578,7 @@ ALTER TABLE `customer_address_entity_decimal`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_DECIMAL_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity_int`
+-- Contraintes pour la table `customer_address_entity_int`
 --
 ALTER TABLE `customer_address_entity_int`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_INT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25281,7 +25586,7 @@ ALTER TABLE `customer_address_entity_int`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_INT_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity_text`
+-- Contraintes pour la table `customer_address_entity_text`
 --
 ALTER TABLE `customer_address_entity_text`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_TEXT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25289,7 +25594,7 @@ ALTER TABLE `customer_address_entity_text`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_TEXT_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_address_entity_varchar`
+-- Contraintes pour la table `customer_address_entity_varchar`
 --
 ALTER TABLE `customer_address_entity_varchar`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_VARCHAR_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25297,14 +25602,14 @@ ALTER TABLE `customer_address_entity_varchar`
   ADD CONSTRAINT `FK_CUSTOMER_ADDRESS_VARCHAR_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity`
+-- Contraintes pour la table `customer_entity`
 --
 ALTER TABLE `customer_entity`
   ADD CONSTRAINT `FK_CUSTOMER_ENTITY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_CUSTOMER_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity_datetime`
+-- Contraintes pour la table `customer_entity_datetime`
 --
 ALTER TABLE `customer_entity_datetime`
   ADD CONSTRAINT `FK_CUSTOMER_DATETIME_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25312,7 +25617,7 @@ ALTER TABLE `customer_entity_datetime`
   ADD CONSTRAINT `FK_CUSTOMER_DATETIME_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity_decimal`
+-- Contraintes pour la table `customer_entity_decimal`
 --
 ALTER TABLE `customer_entity_decimal`
   ADD CONSTRAINT `FK_CUSTOMER_DECIMAL_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25320,7 +25625,7 @@ ALTER TABLE `customer_entity_decimal`
   ADD CONSTRAINT `FK_CUSTOMER_DECIMAL_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity_int`
+-- Contraintes pour la table `customer_entity_int`
 --
 ALTER TABLE `customer_entity_int`
   ADD CONSTRAINT `FK_CUSTOMER_INT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25328,7 +25633,7 @@ ALTER TABLE `customer_entity_int`
   ADD CONSTRAINT `FK_CUSTOMER_INT_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity_text`
+-- Contraintes pour la table `customer_entity_text`
 --
 ALTER TABLE `customer_entity_text`
   ADD CONSTRAINT `FK_CUSTOMER_TEXT_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25336,7 +25641,7 @@ ALTER TABLE `customer_entity_text`
   ADD CONSTRAINT `FK_CUSTOMER_TEXT_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `customer_entity_varchar`
+-- Contraintes pour la table `customer_entity_varchar`
 --
 ALTER TABLE `customer_entity_varchar`
   ADD CONSTRAINT `FK_CUSTOMER_VARCHAR_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25344,135 +25649,135 @@ ALTER TABLE `customer_entity_varchar`
   ADD CONSTRAINT `FK_CUSTOMER_VARCHAR_ENTITY_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `dataflow_batch`
+-- Contraintes pour la table `dataflow_batch`
 --
 ALTER TABLE `dataflow_batch`
   ADD CONSTRAINT `FK_DATAFLOW_BATCH_PROFILE` FOREIGN KEY (`profile_id`) REFERENCES `dataflow_profile` (`profile_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_DATAFLOW_BATCH_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `dataflow_batch_export`
+-- Contraintes pour la table `dataflow_batch_export`
 --
 ALTER TABLE `dataflow_batch_export`
   ADD CONSTRAINT `FK_DATAFLOW_BATCH_EXPORT_BATCH` FOREIGN KEY (`batch_id`) REFERENCES `dataflow_batch` (`batch_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `dataflow_batch_import`
+-- Contraintes pour la table `dataflow_batch_import`
 --
 ALTER TABLE `dataflow_batch_import`
   ADD CONSTRAINT `FK_DATAFLOW_BATCH_IMPORT_BATCH` FOREIGN KEY (`batch_id`) REFERENCES `dataflow_batch` (`batch_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `dataflow_import_data`
+-- Contraintes pour la table `dataflow_import_data`
 --
 ALTER TABLE `dataflow_import_data`
   ADD CONSTRAINT `FK_dataflow_import_data` FOREIGN KEY (`session_id`) REFERENCES `dataflow_session` (`session_id`);
 
 --
--- Constraints for table `dataflow_profile_history`
+-- Contraintes pour la table `dataflow_profile_history`
 --
 ALTER TABLE `dataflow_profile_history`
   ADD CONSTRAINT `FK_dataflow_profile_history` FOREIGN KEY (`profile_id`) REFERENCES `dataflow_profile` (`profile_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `design_change`
+-- Contraintes pour la table `design_change`
 --
 ALTER TABLE `design_change`
   ADD CONSTRAINT `FK_DESIGN_CHANGE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `directory_country_region_name`
+-- Contraintes pour la table `directory_country_region_name`
 --
 ALTER TABLE `directory_country_region_name`
   ADD CONSTRAINT `FK_DIRECTORY_REGION_NAME_REGION` FOREIGN KEY (`region_id`) REFERENCES `directory_country_region` (`region_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_link`
+-- Contraintes pour la table `downloadable_link`
 --
 ALTER TABLE `downloadable_link`
   ADD CONSTRAINT `FK_DOWNLODABLE_LINK_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_link_price`
+-- Contraintes pour la table `downloadable_link_price`
 --
 ALTER TABLE `downloadable_link_price`
   ADD CONSTRAINT `FK_DOWNLOADABLE_LINK_PRICE_LINK` FOREIGN KEY (`link_id`) REFERENCES `downloadable_link` (`link_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DOWNLOADABLE_LINK_PRICE_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_link_purchased`
+-- Contraintes pour la table `downloadable_link_purchased`
 --
 ALTER TABLE `downloadable_link_purchased`
   ADD CONSTRAINT `FK_DOWNLOADABLE_ORDER_ID` FOREIGN KEY (`order_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DOWNLOADABLE_PURCHASED_ORDER_ITEM_ID` FOREIGN KEY (`order_item_id`) REFERENCES `sales_flat_order_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_link_purchased_item`
+-- Contraintes pour la table `downloadable_link_purchased_item`
 --
 ALTER TABLE `downloadable_link_purchased_item`
   ADD CONSTRAINT `FK_DOWNLOADABLE_LINK_PURCHASED_ID` FOREIGN KEY (`purchased_id`) REFERENCES `downloadable_link_purchased` (`purchased_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DOWNLOADABLE_ORDER_ITEM_ID` FOREIGN KEY (`order_item_id`) REFERENCES `sales_flat_order_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_link_title`
+-- Contraintes pour la table `downloadable_link_title`
 --
 ALTER TABLE `downloadable_link_title`
   ADD CONSTRAINT `FK_DOWNLOADABLE_LINK_TITLE_LINK` FOREIGN KEY (`link_id`) REFERENCES `downloadable_link` (`link_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DOWNLOADABLE_LINK_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_sample`
+-- Contraintes pour la table `downloadable_sample`
 --
 ALTER TABLE `downloadable_sample`
   ADD CONSTRAINT `FK_DOWNLODABLE_SAMPLE_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `downloadable_sample_title`
+-- Contraintes pour la table `downloadable_sample_title`
 --
 ALTER TABLE `downloadable_sample_title`
   ADD CONSTRAINT `FK_DOWNLOADABLE_SAMPLE_TITLE_SAMPLE` FOREIGN KEY (`sample_id`) REFERENCES `downloadable_sample` (`sample_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_DOWNLOADABLE_SAMPLE_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_attribute`
+-- Contraintes pour la table `eav_attribute`
 --
 ALTER TABLE `eav_attribute`
   ADD CONSTRAINT `FK_eav_attribute` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_attribute_group`
+-- Contraintes pour la table `eav_attribute_group`
 --
 ALTER TABLE `eav_attribute_group`
   ADD CONSTRAINT `FK_eav_attribute_group` FOREIGN KEY (`attribute_set_id`) REFERENCES `eav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_attribute_option`
+-- Contraintes pour la table `eav_attribute_option`
 --
 ALTER TABLE `eav_attribute_option`
   ADD CONSTRAINT `FK_ATTRIBUTE_OPTION_ATTRIBUTE` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_attribute_option_value`
+-- Contraintes pour la table `eav_attribute_option_value`
 --
 ALTER TABLE `eav_attribute_option_value`
   ADD CONSTRAINT `FK_ATTRIBUTE_OPTION_VALUE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `eav_attribute_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_ATTRIBUTE_OPTION_VALUE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_attribute_set`
+-- Contraintes pour la table `eav_attribute_set`
 --
 ALTER TABLE `eav_attribute_set`
   ADD CONSTRAINT `FK_eav_attribute_set` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity`
+-- Contraintes pour la table `eav_entity`
 --
 ALTER TABLE `eav_entity`
   ADD CONSTRAINT `FK_eav_entity` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_eav_entity_store` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_attribute`
+-- Contraintes pour la table `eav_entity_attribute`
 --
 ALTER TABLE `eav_entity_attribute`
   ADD CONSTRAINT `FK_eav_entity_attribute` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25482,7 +25787,7 @@ ALTER TABLE `eav_entity_attribute`
   ADD CONSTRAINT `FK_EAV_ENTITY_ATTRIVUTE_GROUP` FOREIGN KEY (`attribute_group_id`) REFERENCES `eav_attribute_group` (`attribute_group_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_datetime`
+-- Contraintes pour la table `eav_entity_datetime`
 --
 ALTER TABLE `eav_entity_datetime`
   ADD CONSTRAINT `FK_EAV_ENTITY_DATETIME_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `eav_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25490,7 +25795,7 @@ ALTER TABLE `eav_entity_datetime`
   ADD CONSTRAINT `FK_EAV_ENTITY_DATETIME_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_decimal`
+-- Contraintes pour la table `eav_entity_decimal`
 --
 ALTER TABLE `eav_entity_decimal`
   ADD CONSTRAINT `FK_EAV_ENTITY_DECIMAL_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `eav_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25498,7 +25803,7 @@ ALTER TABLE `eav_entity_decimal`
   ADD CONSTRAINT `FK_EAV_ENTITY_DECIMAL_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_int`
+-- Contraintes pour la table `eav_entity_int`
 --
 ALTER TABLE `eav_entity_int`
   ADD CONSTRAINT `FK_EAV_ENTITY_INT_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `eav_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25506,14 +25811,14 @@ ALTER TABLE `eav_entity_int`
   ADD CONSTRAINT `FK_EAV_ENTITY_INT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_store`
+-- Contraintes pour la table `eav_entity_store`
 --
 ALTER TABLE `eav_entity_store`
   ADD CONSTRAINT `FK_eav_entity_store_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_eav_entity_store_store` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_text`
+-- Contraintes pour la table `eav_entity_text`
 --
 ALTER TABLE `eav_entity_text`
   ADD CONSTRAINT `FK_EAV_ENTITY_TEXT_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `eav_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25521,7 +25826,7 @@ ALTER TABLE `eav_entity_text`
   ADD CONSTRAINT `FK_EAV_ENTITY_TEXT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `eav_entity_varchar`
+-- Contraintes pour la table `eav_entity_varchar`
 --
 ALTER TABLE `eav_entity_varchar`
   ADD CONSTRAINT `FK_EAV_ENTITY_VARCHAR_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `eav_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25529,91 +25834,91 @@ ALTER TABLE `eav_entity_varchar`
   ADD CONSTRAINT `FK_EAV_ENTITY_VARCHAR_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `googlebase_attributes`
+-- Contraintes pour la table `googlebase_attributes`
 --
 ALTER TABLE `googlebase_attributes`
   ADD CONSTRAINT `GOOGLEBASE_ATTRIBUTES_ATTRIBUTE_ID` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `GOOGLEBASE_ATTRIBUTES_TYPE_ID` FOREIGN KEY (`type_id`) REFERENCES `googlebase_types` (`type_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `googlebase_items`
+-- Contraintes pour la table `googlebase_items`
 --
 ALTER TABLE `googlebase_items`
   ADD CONSTRAINT `GOOGLEBASE_ITEMS_PRODUCT_ID` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `GOOGLEBASE_ITEMS_STORE_ID` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `googlebase_types`
+-- Contraintes pour la table `googlebase_types`
 --
 ALTER TABLE `googlebase_types`
   ADD CONSTRAINT `GOOGLEBASE_TYPES_ATTRIBUTE_SET_ID` FOREIGN KEY (`attribute_set_id`) REFERENCES `eav_attribute_set` (`attribute_set_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `googleoptimizer_code`
+-- Contraintes pour la table `googleoptimizer_code`
 --
 ALTER TABLE `googleoptimizer_code`
   ADD CONSTRAINT `FK_GOOGLEOPTIMIZER_CODE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `newsletter_problem`
+-- Contraintes pour la table `newsletter_problem`
 --
 ALTER TABLE `newsletter_problem`
   ADD CONSTRAINT `FK_PROBLEM_QUEUE` FOREIGN KEY (`queue_id`) REFERENCES `newsletter_queue` (`queue_id`),
   ADD CONSTRAINT `FK_PROBLEM_SUBSCRIBER` FOREIGN KEY (`subscriber_id`) REFERENCES `newsletter_subscriber` (`subscriber_id`);
 
 --
--- Constraints for table `newsletter_queue`
+-- Contraintes pour la table `newsletter_queue`
 --
 ALTER TABLE `newsletter_queue`
   ADD CONSTRAINT `FK_QUEUE_TEMPLATE` FOREIGN KEY (`template_id`) REFERENCES `newsletter_template` (`template_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `newsletter_queue_link`
+-- Contraintes pour la table `newsletter_queue_link`
 --
 ALTER TABLE `newsletter_queue_link`
   ADD CONSTRAINT `FK_QUEUE_LINK_QUEUE` FOREIGN KEY (`queue_id`) REFERENCES `newsletter_queue` (`queue_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_QUEUE_LINK_SUBSCRIBER` FOREIGN KEY (`subscriber_id`) REFERENCES `newsletter_subscriber` (`subscriber_id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `newsletter_queue_store_link`
+-- Contraintes pour la table `newsletter_queue_store_link`
 --
 ALTER TABLE `newsletter_queue_store_link`
   ADD CONSTRAINT `FK_LINK_QUEUE` FOREIGN KEY (`queue_id`) REFERENCES `newsletter_queue` (`queue_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_NEWSLETTER_QUEUE_STORE_LINK_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `newsletter_subscriber`
+-- Contraintes pour la table `newsletter_subscriber`
 --
 ALTER TABLE `newsletter_subscriber`
   ADD CONSTRAINT `FK_NEWSLETTER_SUBSCRIBER_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `poll`
+-- Contraintes pour la table `poll`
 --
 ALTER TABLE `poll`
   ADD CONSTRAINT `FK_POLL_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `poll_answer`
+-- Contraintes pour la table `poll_answer`
 --
 ALTER TABLE `poll_answer`
   ADD CONSTRAINT `FK_POLL_PARENT` FOREIGN KEY (`poll_id`) REFERENCES `poll` (`poll_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `poll_store`
+-- Contraintes pour la table `poll_store`
 --
 ALTER TABLE `poll_store`
   ADD CONSTRAINT `FK_POLL_STORE_POLL` FOREIGN KEY (`poll_id`) REFERENCES `poll` (`poll_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_POLL_STORE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `poll_vote`
+-- Contraintes pour la table `poll_vote`
 --
 ALTER TABLE `poll_vote`
   ADD CONSTRAINT `FK_POLL_ANSWER` FOREIGN KEY (`poll_answer_id`) REFERENCES `poll_answer` (`answer_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `product_alert_price`
+-- Contraintes pour la table `product_alert_price`
 --
 ALTER TABLE `product_alert_price`
   ADD CONSTRAINT `FK_PRODUCT_ALERT_PRICE_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25621,7 +25926,7 @@ ALTER TABLE `product_alert_price`
   ADD CONSTRAINT `FK_PRODUCT_ALERT_PRICE_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `product_alert_stock`
+-- Contraintes pour la table `product_alert_stock`
 --
 ALTER TABLE `product_alert_stock`
   ADD CONSTRAINT `FK_PRODUCT_ALERT_STOCK_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25629,54 +25934,54 @@ ALTER TABLE `product_alert_stock`
   ADD CONSTRAINT `FK_PRODUCT_ALERT_STOCK_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating`
+-- Contraintes pour la table `rating`
 --
 ALTER TABLE `rating`
   ADD CONSTRAINT `FK_RATING_ENTITY_KEY` FOREIGN KEY (`entity_id`) REFERENCES `rating_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating_option`
+-- Contraintes pour la table `rating_option`
 --
 ALTER TABLE `rating_option`
   ADD CONSTRAINT `FK_RATING_OPTION_RATING` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating_option_vote`
+-- Contraintes pour la table `rating_option_vote`
 --
 ALTER TABLE `rating_option_vote`
   ADD CONSTRAINT `FK_RATING_OPTION_REVIEW_ID` FOREIGN KEY (`review_id`) REFERENCES `review` (`review_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_RATING_OPTION_VALUE_OPTION` FOREIGN KEY (`option_id`) REFERENCES `rating_option` (`option_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating_option_vote_aggregated`
+-- Contraintes pour la table `rating_option_vote_aggregated`
 --
 ALTER TABLE `rating_option_vote_aggregated`
   ADD CONSTRAINT `FK_RATING_OPTION_VALUE_AGGREGATE` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_RATING_OPTION_VOTE_AGGREGATED_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating_store`
+-- Contraintes pour la table `rating_store`
 --
 ALTER TABLE `rating_store`
   ADD CONSTRAINT `FK_RATING_STORE_RATING` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `FK_RATING_STORE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `rating_title`
+-- Contraintes pour la table `rating_title`
 --
 ALTER TABLE `rating_title`
   ADD CONSTRAINT `FK_RATING_TITLE` FOREIGN KEY (`rating_id`) REFERENCES `rating` (`rating_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_RATING_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `report_event`
+-- Contraintes pour la table `report_event`
 --
 ALTER TABLE `report_event`
   ADD CONSTRAINT `FK_REPORT_EVENT_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_REPORT_EVENT_TYPE` FOREIGN KEY (`event_type_id`) REFERENCES `report_event_types` (`event_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `review`
+-- Contraintes pour la table `review`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `FK_REVIEW_ENTITY` FOREIGN KEY (`entity_id`) REFERENCES `review_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25684,20 +25989,20 @@ ALTER TABLE `review`
   ADD CONSTRAINT `FK_REVIEW_STATUS` FOREIGN KEY (`status_id`) REFERENCES `review_status` (`status_id`);
 
 --
--- Constraints for table `review_detail`
+-- Contraintes pour la table `review_detail`
 --
 ALTER TABLE `review_detail`
   ADD CONSTRAINT `FK_REVIEW_DETAIL_REVIEW` FOREIGN KEY (`review_id`) REFERENCES `review` (`review_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_REVIEW_DETAIL_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `review_entity_summary`
+-- Contraintes pour la table `review_entity_summary`
 --
 ALTER TABLE `review_entity_summary`
   ADD CONSTRAINT `FK_REVIEW_ENTITY_SUMMARY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `review_store`
+-- Contraintes pour la table `review_store`
 --
 ALTER TABLE `review_store`
   ADD CONSTRAINT `FK_REVIEW_STORE_REVIEW` FOREIGN KEY (`review_id`) REFERENCES `review` (`review_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25705,26 +26010,26 @@ ALTER TABLE `review_store`
   ADD CONSTRAINT `review_store_ibfk_1` FOREIGN KEY (`review_id`) REFERENCES `review` (`review_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `salesrule_customer`
+-- Contraintes pour la table `salesrule_customer`
 --
 ALTER TABLE `salesrule_customer`
   ADD CONSTRAINT `FK_salesrule_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_salesrule_customer_rule` FOREIGN KEY (`rule_id`) REFERENCES `salesrule` (`rule_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote`
+-- Contraintes pour la table `sales_flat_quote`
 --
 ALTER TABLE `sales_flat_quote`
   ADD CONSTRAINT `FK_SALES_QUOTE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_address`
+-- Contraintes pour la table `sales_flat_quote_address`
 --
 ALTER TABLE `sales_flat_quote_address`
   ADD CONSTRAINT `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` FOREIGN KEY (`quote_id`) REFERENCES `sales_flat_quote` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_address_item`
+-- Contraintes pour la table `sales_flat_quote_address_item`
 --
 ALTER TABLE `sales_flat_quote_address_item`
   ADD CONSTRAINT `FK_QUOTE_ADDRESS_ITEM_QUOTE_ADDRESS` FOREIGN KEY (`quote_address_id`) REFERENCES `sales_flat_quote_address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25732,7 +26037,7 @@ ALTER TABLE `sales_flat_quote_address_item`
   ADD CONSTRAINT `FK_SALES_QUOTE_ADDRESS_ITEM_QUOTE_ITEM` FOREIGN KEY (`quote_item_id`) REFERENCES `sales_flat_quote_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_item`
+-- Contraintes pour la table `sales_flat_quote_item`
 --
 ALTER TABLE `sales_flat_quote_item`
   ADD CONSTRAINT `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` FOREIGN KEY (`parent_item_id`) REFERENCES `sales_flat_quote_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25740,25 +26045,25 @@ ALTER TABLE `sales_flat_quote_item`
   ADD CONSTRAINT `FK_SALES_QUOTE_ITEM_SALES_QUOTE` FOREIGN KEY (`quote_id`) REFERENCES `sales_flat_quote` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_item_option`
+-- Contraintes pour la table `sales_flat_quote_item_option`
 --
 ALTER TABLE `sales_flat_quote_item_option`
   ADD CONSTRAINT `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` FOREIGN KEY (`item_id`) REFERENCES `sales_flat_quote_item` (`item_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_payment`
+-- Contraintes pour la table `sales_flat_quote_payment`
 --
 ALTER TABLE `sales_flat_quote_payment`
   ADD CONSTRAINT `FK_SALES_QUOTE_PAYMENT_SALES_QUOTE` FOREIGN KEY (`quote_id`) REFERENCES `sales_flat_quote` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_flat_quote_shipping_rate`
+-- Contraintes pour la table `sales_flat_quote_shipping_rate`
 --
 ALTER TABLE `sales_flat_quote_shipping_rate`
   ADD CONSTRAINT `FK_SALES_QUOTE_SHIPPING_RATE_ADDRESS` FOREIGN KEY (`address_id`) REFERENCES `sales_flat_quote_address` (`address_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order`
+-- Contraintes pour la table `sales_order`
 --
 ALTER TABLE `sales_order`
   ADD CONSTRAINT `FK_SALES_ORDER_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE SET NULL ON UPDATE CASCADE,
@@ -25766,7 +26071,7 @@ ALTER TABLE `sales_order`
   ADD CONSTRAINT `FK_SALE_ORDER_TYPE` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_datetime`
+-- Contraintes pour la table `sales_order_datetime`
 --
 ALTER TABLE `sales_order_datetime`
   ADD CONSTRAINT `FK_sales_order_datetime` FOREIGN KEY (`entity_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25774,7 +26079,7 @@ ALTER TABLE `sales_order_datetime`
   ADD CONSTRAINT `FK_sales_order_datetime_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_decimal`
+-- Contraintes pour la table `sales_order_decimal`
 --
 ALTER TABLE `sales_order_decimal`
   ADD CONSTRAINT `FK_sales_order_decimal` FOREIGN KEY (`entity_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25782,14 +26087,14 @@ ALTER TABLE `sales_order_decimal`
   ADD CONSTRAINT `FK_sales_order_decimal_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity`
+-- Contraintes pour la table `sales_order_entity`
 --
 ALTER TABLE `sales_order_entity`
   ADD CONSTRAINT `FK_sales_order_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_SALE_ORDER_ENTITY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity_datetime`
+-- Contraintes pour la table `sales_order_entity_datetime`
 --
 ALTER TABLE `sales_order_entity_datetime`
   ADD CONSTRAINT `FK_sales_order_entity_datetime` FOREIGN KEY (`entity_id`) REFERENCES `sales_order_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25797,7 +26102,7 @@ ALTER TABLE `sales_order_entity_datetime`
   ADD CONSTRAINT `FK_sales_order_entity_datetime_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity_decimal`
+-- Contraintes pour la table `sales_order_entity_decimal`
 --
 ALTER TABLE `sales_order_entity_decimal`
   ADD CONSTRAINT `FK_sales_order_entity_decimal` FOREIGN KEY (`entity_id`) REFERENCES `sales_order_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25805,7 +26110,7 @@ ALTER TABLE `sales_order_entity_decimal`
   ADD CONSTRAINT `FK_sales_order_entity_decimal_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity_int`
+-- Contraintes pour la table `sales_order_entity_int`
 --
 ALTER TABLE `sales_order_entity_int`
   ADD CONSTRAINT `FK_sales_order_entity_int` FOREIGN KEY (`entity_id`) REFERENCES `sales_order_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25813,7 +26118,7 @@ ALTER TABLE `sales_order_entity_int`
   ADD CONSTRAINT `FK_sales_order_entity_int_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity_text`
+-- Contraintes pour la table `sales_order_entity_text`
 --
 ALTER TABLE `sales_order_entity_text`
   ADD CONSTRAINT `FK_sales_order_entity_text` FOREIGN KEY (`entity_id`) REFERENCES `sales_order_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25821,7 +26126,7 @@ ALTER TABLE `sales_order_entity_text`
   ADD CONSTRAINT `FK_sales_order_entity_text_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_entity_varchar`
+-- Contraintes pour la table `sales_order_entity_varchar`
 --
 ALTER TABLE `sales_order_entity_varchar`
   ADD CONSTRAINT `FK_sales_order_entity_varchar` FOREIGN KEY (`entity_id`) REFERENCES `sales_order_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25829,7 +26134,7 @@ ALTER TABLE `sales_order_entity_varchar`
   ADD CONSTRAINT `FK_sales_order_entity_varchar_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_int`
+-- Contraintes pour la table `sales_order_int`
 --
 ALTER TABLE `sales_order_int`
   ADD CONSTRAINT `FK_sales_order_int` FOREIGN KEY (`entity_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25837,13 +26142,13 @@ ALTER TABLE `sales_order_int`
   ADD CONSTRAINT `FK_sales_order_int_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_tax`
+-- Contraintes pour la table `sales_order_tax`
 --
 ALTER TABLE `sales_order_tax`
   ADD CONSTRAINT `FK_SALES_ORDER_TAX_ORDER` FOREIGN KEY (`order_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_text`
+-- Contraintes pour la table `sales_order_text`
 --
 ALTER TABLE `sales_order_text`
   ADD CONSTRAINT `FK_sales_order_text` FOREIGN KEY (`entity_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25851,7 +26156,7 @@ ALTER TABLE `sales_order_text`
   ADD CONSTRAINT `FK_sales_order_text_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sales_order_varchar`
+-- Contraintes pour la table `sales_order_varchar`
 --
 ALTER TABLE `sales_order_varchar`
   ADD CONSTRAINT `FK_sales_order_varchar` FOREIGN KEY (`entity_id`) REFERENCES `sales_order` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25859,13 +26164,13 @@ ALTER TABLE `sales_order_varchar`
   ADD CONSTRAINT `FK_sales_order_varchar_entity_type` FOREIGN KEY (`entity_type_id`) REFERENCES `eav_entity_type` (`entity_type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `sitemap`
+-- Contraintes pour la table `sitemap`
 --
 ALTER TABLE `sitemap`
   ADD CONSTRAINT `FK_SITEMAP_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tag_relation`
+-- Contraintes pour la table `tag_relation`
 --
 ALTER TABLE `tag_relation`
   ADD CONSTRAINT `FK_TAG_RELATION_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25874,14 +26179,14 @@ ALTER TABLE `tag_relation`
   ADD CONSTRAINT `FK_TAG_RELATION_TAG` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`tag_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tag_summary`
+-- Contraintes pour la table `tag_summary`
 --
 ALTER TABLE `tag_summary`
   ADD CONSTRAINT `FK_TAG_SUMMARY_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_TAG_SUMMARY_TAG` FOREIGN KEY (`tag_id`) REFERENCES `tag` (`tag_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tax_calculation`
+-- Contraintes pour la table `tax_calculation`
 --
 ALTER TABLE `tax_calculation`
   ADD CONSTRAINT `FK_TAX_CALCULATION_CTC` FOREIGN KEY (`customer_tax_class_id`) REFERENCES `tax_class` (`class_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25890,14 +26195,14 @@ ALTER TABLE `tax_calculation`
   ADD CONSTRAINT `FK_TAX_CALCULATION_RULE` FOREIGN KEY (`tax_calculation_rule_id`) REFERENCES `tax_calculation_rule` (`tax_calculation_rule_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tax_calculation_rate_title`
+-- Contraintes pour la table `tax_calculation_rate_title`
 --
 ALTER TABLE `tax_calculation_rate_title`
   ADD CONSTRAINT `FK_TAX_CALCULATION_RATE_TITLE_RATE` FOREIGN KEY (`tax_calculation_rate_id`) REFERENCES `tax_calculation_rate` (`tax_calculation_rate_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_TAX_CALCULATION_RATE_TITLE_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `weee_discount`
+-- Contraintes pour la table `weee_discount`
 --
 ALTER TABLE `weee_discount`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_WEEE_DISCOUNT_GROUP` FOREIGN KEY (`customer_group_id`) REFERENCES `customer_group` (`customer_group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25905,7 +26210,7 @@ ALTER TABLE `weee_discount`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_WEEE_DISCOUNT_WEBSITE` FOREIGN KEY (`website_id`) REFERENCES `core_website` (`website_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `weee_tax`
+-- Contraintes pour la table `weee_tax`
 --
 ALTER TABLE `weee_tax`
   ADD CONSTRAINT `FK_CATALOG_PRODUCT_ENTITY_WEEE_TAX_COUNTRY` FOREIGN KEY (`country`) REFERENCES `directory_country` (`country_id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -25914,17 +26219,16 @@ ALTER TABLE `weee_tax`
   ADD CONSTRAINT `FK_WEEE_TAX_ATTRIBUTE_ID` FOREIGN KEY (`attribute_id`) REFERENCES `eav_attribute` (`attribute_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `wishlist`
+-- Contraintes pour la table `wishlist`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `FK_CUSTOMER` FOREIGN KEY (`customer_id`) REFERENCES `customer_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `wishlist_item`
+-- Contraintes pour la table `wishlist_item`
 --
 ALTER TABLE `wishlist_item`
   ADD CONSTRAINT `FK_ITEM_WISHLIST` FOREIGN KEY (`wishlist_id`) REFERENCES `wishlist` (`wishlist_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_WISHLIST_ITEM_STORE` FOREIGN KEY (`store_id`) REFERENCES `core_store` (`store_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `FK_WISHLIST_PRODUCT` FOREIGN KEY (`product_id`) REFERENCES `catalog_product_entity` (`entity_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
 SET FOREIGN_KEY_CHECKS=1;
