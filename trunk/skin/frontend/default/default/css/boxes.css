@@ -135,10 +135,10 @@ a.form-button-alt { padding:2px 9px; text-decoration:none; }
 .group-select .legend {
     margin-top:-33px;
     float:left;
-    border:1px solid #f19900;
-    background:#F9F3E3;
+    border:1px solid #b66bce;
+    background:#fff;
     padding:0 8px;
-    color:#E76200;
+    color:#b66bce;
     font-weight:bold;
     font-size:1.1em;
     }
@@ -1432,16 +1432,16 @@ tr.grand_total td, p.grand_total { padding-top:5px; padding-bottom:5px; }
 .account-nav { border:1px solid #bbb; }
 .account-nav .head {
    margin:0;
-   background:url(../images/account_nav_head_bg.gif) repeat-x 0 100% #fc9d36;
+   background:/*url(../images/account_nav_head_bg.gif) repeat-x 0 100%*/ #e9e4ed;
    padding:3px 10px;
     }
-.account-nav .head h3 { color:#fff; font-size:1.1em; }
+.account-nav .head h3 { color:#510154; font-size:1.1em; }
 .account-nav ul { background:#fbfaf6; padding:4px 10px 10px 10px; }
 .account-nav li a, .account-nav li.on { padding:3px 0;  }
 .account-nav li a { display:block; border-bottom:1px solid #ddd; /*background:url(../images/account_nav_link_bg.gif) no-repeat 10px 8px;*/ }
 .account-nav li a, .account-nav li a:hover { color:#b9adbc; text-decoration:none; }
 .account-nav li a:hover { color:#b9adbc; }
-.account-nav li.on { border-bottom:1px solid #ddd; /* background:url(../images/account_nav_on_bg.gif) no-repeat 10px 8px;*/  color:#ea7900; font-weight:bold; }
+.account-nav li.on { border-bottom:1px solid #ddd; /* background:url(../images/account_nav_on_bg.gif) no-repeat 10px 8px;*/  color:#bd88bd; font-weight:bold; }
 .account-nav li.on a { padding:0; }
 .account-nav li.last, .account-nav li.last a { border-bottom:0; }
 
@@ -1479,9 +1479,10 @@ tr.grand_total td, p.grand_total { padding-top:5px; padding-bottom:5px; }
     border-bottom-color:#999;
     background:url(../images/account_box_bg.gif) repeat-x #fff;
     padding:15px;
+    color:#333;
     }
 .account-box .head { margin-bottom:10px; border-bottom:1px solid #d9dde3; }
-.account-box h4 { color:#E65505; font-size:1.1em; text-transform:uppercase; }
+.account-box h4 { color:#510154; font-size:1.1em; text-transform:uppercase; }
 .account-box .inner-head { margin-bottom:8px; background:url(../images/dotted_divider.gif) repeat-x 0 100%; padding-bottom:2px; text-align:right; }
 .account-box h5 { font-size:1.1em;   }
 .account-box h5 a { font-weight:normal; }

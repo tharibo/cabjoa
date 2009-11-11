@@ -3555,7 +3555,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_varchar` (
   `entity_id` int(10) unsigned NOT NULL DEFAULT '0',
   `value` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`value_id`),
-  UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`) USING BTREE,
+  UNIQUE KEY `IDX_BASE` (`entity_type_id`,`entity_id`,`attribute_id`,`store_id`),
   KEY `FK_ATTRIBUTE_VARCHAR_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_STORE` (`store_id`)
@@ -23833,7 +23833,7 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `tag_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `status` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`tag_id`) USING BTREE
+  PRIMARY KEY (`tag_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=199 ;
 
 --
@@ -24055,7 +24055,7 @@ CREATE TABLE IF NOT EXISTS `tag_relation` (
   `store_id` smallint(6) unsigned NOT NULL DEFAULT '1',
   `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `created_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`tag_relation_id`) USING BTREE,
+  PRIMARY KEY (`tag_relation_id`),
   KEY `IDX_PRODUCT` (`product_id`),
   KEY `IDX_TAG` (`tag_id`),
   KEY `IDX_CUSTOMER` (`customer_id`),
