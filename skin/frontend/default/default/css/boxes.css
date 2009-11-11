@@ -261,7 +261,7 @@ td.label        { font-weight:bold; }
 .data-table th.wrap { white-space:normal; }
 .data-table th a,
 .data-table th a:hover { color:#fff; }
-.data-table td { padding:3px 8px; }
+.data-table td { padding:3px 8px; color: #333333 }
 .data-table thead tr th { background:url(../images/data_table_th_bg.gif) repeat-x 0 100% #e8dee6; }
 .data-table tfoot { border-bottom:1px solid #d9dde3; }
 .data-table tfoot tr.first { background:url(../images/base_mini_actions_bg.gif) 0 0 repeat-x; }
@@ -1189,7 +1189,7 @@ tr.grand_total td, p.grand_total { padding-top:5px; padding-bottom:5px; }
 .one-page-checkout-progress h4 { margin:0; color:#999; padding:2px 8px; background:#eee; text-transform:none;  }
 .one-page-checkout-progress h4.complete { border-bottom:1px solid #A3AEB3; background:#D0DCE1; color:#5e8ab4; }
 .one-page-checkout-progress h4 a { text-transform:none; }
-.one-page-checkout-progress .content { padding:8px 13px; }
+.one-page-checkout-progress .content { padding:8px 13px; color: #333333; }
 #opc-login .button-set { border-top:0; }
 #opc-review .box { border:0; padding:0; }
 #opc-review .content { border:1px solid #d9dde3; border-top:0; }

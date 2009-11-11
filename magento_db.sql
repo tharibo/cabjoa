@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mar 03 Novembre 2009 à 01:10
+-- Généré le : Mer 11 Novembre 2009 à 12:43
 -- Version du serveur: 5.1.37
 -- Version de PHP: 5.2.10-2ubuntu6
 
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `admin_user` (
 
 INSERT INTO `admin_user` (`user_id`, `firstname`, `lastname`, `email`, `username`, `password`, `created`, `modified`, `logdate`, `lognum`, `reload_acl_flag`, `is_active`, `extra`) VALUES
 (1, 'Store', 'Owner', 'owner@example.com', 'admin', '60c320903e22e3cdd29b614b126941d1:yC', '2008-08-07 14:39:09', '2008-12-27 20:51:54', '2008-12-27 21:05:00', 2, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}'),
-(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-11-02 22:24:53', 38, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
+(2, 'Thomas', 'Ribo', 'tharibo@gmail.com', 'tharibo', '4c9f76197d9473a53e154391cfc0ec0f:UJ', '2009-09-02 23:17:49', '2009-09-02 23:17:49', '2009-11-03 01:03:26', 39, 0, 1, 'a:1:{s:11:"configState";a:54:{s:7:"web_url";s:1:"0";s:7:"web_seo";s:1:"1";s:12:"web_unsecure";s:1:"1";s:10:"web_secure";s:1:"0";s:11:"web_default";s:1:"0";s:9:"web_polls";s:1:"0";s:10:"web_cookie";s:1:"0";s:11:"web_session";s:1:"0";s:24:"web_browser_capabilities";s:1:"0";s:12:"dev_restrict";s:1:"0";s:9:"dev_debug";s:1:"1";s:20:"dev_translate_inline";s:1:"0";s:7:"dev_log";s:1:"0";s:6:"dev_js";s:1:"0";s:15:"general_country";s:1:"1";s:14:"general_locale";s:1:"1";s:14:"design_package";s:1:"0";s:12:"design_theme";s:1:"0";s:11:"design_head";s:1:"1";s:13:"design_header";s:1:"1";s:13:"design_footer";s:1:"0";s:16:"design_watermark";s:1:"0";s:14:"catalog_review";s:1:"1";s:16:"catalog_frontend";s:1:"1";s:15:"catalog_sitemap";s:1:"1";s:20:"catalog_productalert";s:1:"0";s:25:"catalog_productalert_cron";s:1:"0";s:19:"catalog_placeholder";s:1:"0";s:25:"catalog_recently_products";s:1:"0";s:13:"catalog_price";s:1:"0";s:18:"catalog_navigation";s:1:"0";s:14:"catalog_search";s:1:"0";s:11:"catalog_seo";s:1:"0";s:20:"catalog_downloadable";s:1:"0";s:22:"catalog_custom_options";s:1:"0";s:31:"advanced_modules_disable_output";s:1:"1";s:14:"payment_ccsave";s:1:"0";s:12:"payment_free";s:1:"0";s:15:"payment_checkmo";s:1:"0";s:21:"payment_purchaseorder";s:1:"0";s:20:"payment_authorizenet";s:1:"0";s:16:"payment_verisign";s:1:"0";s:22:"payment_paypal_express";s:1:"0";s:21:"payment_paypal_direct";s:1:"0";s:23:"payment_paypal_standard";s:1:"0";s:24:"payment_paypaluk_express";s:1:"0";s:23:"payment_paypaluk_direct";s:1:"0";s:24:"payment_cybermut_payment";s:1:"1";s:26:"payment_amazonpayments_cba";s:1:"0";s:26:"payment_amazonpayments_asp";s:1:"0";s:12:"admin_emails";s:1:"0";s:13:"admin_startup";s:1:"1";s:9:"admin_url";s:1:"1";s:14:"admin_security";s:1:"0";}}');
 
 -- --------------------------------------------------------
 
@@ -356,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `catalogindex_aggregation_tag` (
   `tag_code` varchar(255) NOT NULL,
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `IDX_CODE` (`tag_code`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `catalogindex_aggregation_tag`
@@ -367,7 +367,9 @@ INSERT INTO `catalogindex_aggregation_tag` (`tag_id`, `tag_code`) VALUES
 (3, 'catalog_category13'),
 (5, 'catalog_category18'),
 (2, 'catalog_category3'),
+(7, 'catalog_category35'),
 (4, 'catalog_category8'),
+(8, 'PRODUCT_PRICE'),
 (6, 'SEARCH_QUERY');
 
 -- --------------------------------------------------------
@@ -483,7 +485,25 @@ INSERT INTO `catalogindex_price` (`entity_id`, `attribute_id`, `customer_group_i
 (166, 99, 1, '0.0000', '750.0000', 2, 1),
 (166, 99, 2, '0.0000', '750.0000', 2, 1),
 (166, 99, 3, '0.0000', '750.0000', 2, 1),
-(166, 99, 4, '0.0000', '750.0000', 2, 1);
+(166, 99, 4, '0.0000', '750.0000', 2, 1),
+(167, 100, 0, '0.0000', '30.0000', 0, 1),
+(167, 99, 0, '0.0000', '100.0000', 1, 1),
+(167, 99, 1, '0.0000', '100.0000', 1, 1),
+(167, 99, 2, '0.0000', '100.0000', 1, 1),
+(167, 99, 3, '0.0000', '100.0000', 1, 1),
+(167, 99, 4, '0.0000', '100.0000', 1, 1),
+(168, 100, 0, '0.0000', '300.0000', 0, 1),
+(168, 99, 0, '0.0000', '1000.0000', 1, 1),
+(168, 99, 1, '0.0000', '1000.0000', 1, 1),
+(168, 99, 2, '0.0000', '1000.0000', 1, 1),
+(168, 99, 3, '0.0000', '1000.0000', 1, 1),
+(168, 99, 4, '0.0000', '1000.0000', 1, 1),
+(169, 100, 0, '0.0000', '3.0000', 0, 1),
+(169, 99, 0, '0.0000', '10.0000', 1, 1),
+(169, 99, 1, '0.0000', '10.0000', 1, 1),
+(169, 99, 2, '0.0000', '10.0000', 1, 1),
+(169, 99, 3, '0.0000', '10.0000', 1, 1),
+(169, 99, 4, '0.0000', '10.0000', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -537,7 +557,7 @@ CREATE TABLE IF NOT EXISTS `cataloginventory_stock_item` (
   UNIQUE KEY `IDX_STOCK_PRODUCT` (`product_id`,`stock_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_ITEM_PRODUCT` (`product_id`),
   KEY `FK_CATALOGINVENTORY_STOCK_ITEM_STOCK` (`stock_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Invetory Stock Item Data' AUTO_INCREMENT=121 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Invetory Stock Item Data' AUTO_INCREMENT=124 ;
 
 --
 -- Contenu de la table `cataloginventory_stock_item`
@@ -545,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `cataloginventory_stock_item` (
 
 INSERT INTO `cataloginventory_stock_item` (`item_id`, `product_id`, `stock_id`, `qty`, `min_qty`, `use_config_min_qty`, `is_qty_decimal`, `backorders`, `use_config_backorders`, `min_sale_qty`, `use_config_min_sale_qty`, `max_sale_qty`, `use_config_max_sale_qty`, `is_in_stock`, `low_stock_date`, `notify_stock_qty`, `use_config_notify_stock_qty`, `manage_stock`, `use_config_manage_stock`, `stock_status_changed_automatically`) VALUES
 (1, 16, 1, '996.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(2, 17, 1, '797.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
+(2, 17, 1, '796.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
 (3, 18, 1, '988.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
 (4, 19, 1, '328.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (5, 20, 1, '361.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '100.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
@@ -663,7 +683,10 @@ INSERT INTO `cataloginventory_stock_item` (`item_id`, `product_id`, `stock_id`, 
 (117, 163, 1, '426.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (118, 164, 1, '968.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
 (119, 165, 1, '79.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, '0000-00-00 00:00:00', NULL, 1, 0, 1, 0),
-(120, 166, 1, '849.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0);
+(120, 166, 1, '849.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
+(121, 167, 1, '11.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
+(122, 168, 1, '49.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0),
+(123, 169, 1, '100.0000', '0.0000', 1, 0, 0, 1, '1.0000', 1, '0.0000', 1, 1, NULL, NULL, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -689,7 +712,7 @@ CREATE TABLE IF NOT EXISTS `cataloginventory_stock_status` (
 
 INSERT INTO `cataloginventory_stock_status` (`product_id`, `website_id`, `stock_id`, `qty`, `stock_status`) VALUES
 (16, 1, 1, '996.0000', 1),
-(17, 1, 1, '797.0000', 1),
+(17, 1, 1, '796.0000', 1),
 (18, 1, 1, '988.0000', 1),
 (19, 1, 1, '328.0000', 1),
 (20, 1, 1, '361.0000', 1),
@@ -807,7 +830,10 @@ INSERT INTO `cataloginventory_stock_status` (`product_id`, `website_id`, `stock_
 (163, 1, 1, '426.0000', 1),
 (164, 1, 1, '968.0000', 1),
 (165, 1, 1, '79.0000', 1),
-(166, 1, 1, '849.0000', 1);
+(166, 1, 1, '849.0000', 1),
+(167, 1, 1, '11.0000', 1),
+(168, 1, 1, '49.0000', 1),
+(169, 1, 1, '100.0000', 1);
 
 -- --------------------------------------------------------
 
@@ -889,7 +915,7 @@ CREATE TABLE IF NOT EXISTS `catalogrule_product` (
   KEY `FK_catalogrule_product_customergroup` (`customer_group_id`),
   KEY `FK_catalogrule_product_website` (`website_id`),
   KEY `FK_CATALOGRULE_PRODUCT_PRODUCT` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=708 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=736 ;
 
 --
 -- Contenu de la table `catalogrule_product`
@@ -1603,7 +1629,27 @@ INSERT INTO `catalogrule_product` (`rule_product_id`, `rule_id`, `from_time`, `t
 (704, 6, 1219881600, 1256947199, 2, 131, 'by_percent', '0.0000', 0, 0, 1),
 (705, 6, 1219881600, 1256947199, 0, 137, 'by_percent', '0.0000', 0, 0, 1),
 (706, 6, 1219881600, 1256947199, 1, 137, 'by_percent', '0.0000', 0, 0, 1),
-(707, 6, 1219881600, 1256947199, 2, 137, 'by_percent', '0.0000', 0, 0, 1);
+(707, 6, 1219881600, 1256947199, 2, 137, 'by_percent', '0.0000', 0, 0, 1),
+(708, 1, 1219622400, 1233446399, 0, 167, 'by_percent', '0.0000', 1, 0, 1),
+(709, 1, 1219622400, 1233446399, 1, 167, 'by_percent', '0.0000', 1, 0, 1),
+(710, 1, 1219622400, 1233446399, 2, 167, 'by_percent', '0.0000', 1, 0, 1),
+(711, 1, 1219622400, 1233446399, 3, 167, 'by_percent', '0.0000', 1, 0, 1),
+(712, 3, 1217980800, 1251071999, 0, 167, 'by_percent', '0.0000', 0, 0, 1),
+(713, 3, 1217980800, 1251071999, 1, 167, 'by_percent', '0.0000', 0, 0, 1),
+(714, 3, 1217980800, 1251071999, 2, 167, 'by_percent', '0.0000', 0, 0, 1),
+(715, 3, 1217980800, 1251071999, 4, 167, 'by_percent', '0.0000', 0, 0, 1),
+(716, 3, 1217980800, 1251071999, 0, 168, 'by_percent', '0.0000', 0, 0, 1),
+(717, 3, 1217980800, 1251071999, 1, 168, 'by_percent', '0.0000', 0, 0, 1),
+(718, 3, 1217980800, 1251071999, 2, 168, 'by_percent', '0.0000', 0, 0, 1),
+(719, 3, 1217980800, 1251071999, 4, 168, 'by_percent', '0.0000', 0, 0, 1),
+(728, 1, 1219622400, 1233446399, 0, 169, 'by_percent', '0.0000', 1, 0, 1),
+(729, 1, 1219622400, 1233446399, 1, 169, 'by_percent', '0.0000', 1, 0, 1),
+(730, 1, 1219622400, 1233446399, 2, 169, 'by_percent', '0.0000', 1, 0, 1),
+(731, 1, 1219622400, 1233446399, 3, 169, 'by_percent', '0.0000', 1, 0, 1),
+(732, 3, 1217980800, 1251071999, 0, 169, 'by_percent', '0.0000', 0, 0, 1),
+(733, 3, 1217980800, 1251071999, 1, 169, 'by_percent', '0.0000', 0, 0, 1),
+(734, 3, 1217980800, 1251071999, 2, 169, 'by_percent', '0.0000', 0, 0, 1),
+(735, 3, 1217980800, 1251071999, 4, 169, 'by_percent', '0.0000', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2986,7 +3032,16 @@ CREATE TABLE IF NOT EXISTS `catalogsearch_fulltext` (
 INSERT INTO `catalogsearch_fulltext` (`product_id`, `store_id`, `data_index`) VALUES
 (166, 1, 'HTC Touch Diamond HTC Black Activé HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. 102 mm (L) X 51 mm (W) X 11.35 mm (T) HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design.'),
 (166, 3, 'HTC Touch Diamond HTC Black Activé HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. 102 mm (L) X 51 mm (W) X 11.35 mm (T) HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design.'),
-(166, 2, 'HTC Touch Diamond HTC Black Activé HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. 102 mm (L) X 51 mm (W) X 11.35 mm (T) HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design.');
+(166, 2, 'HTC Touch Diamond HTC Black Activé HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design. Featuring a sharp 2.8-inch touch screen housed within a stunning formation of brushed metal and flawless faceted edges, the HTC Touch Diamond is as beautiful to behold as it is to use. With HTC’s vibrant touch-responsive user interface, TouchFLO™ 3D, and ultra-fast HSDPA internet connectivity… the HTC Touch Diamond offers a rich online experience to rival a notebook computer, allowing you to interact with Google, YouTube, and Wikipedia as freely as you would with a broadband connection. Your contacts, favourite music, videos and photos are no longer an uninspired line of text. With TouchFLO 3D, album artwork, video stills and snapshots of your friends’ and family’s faces are brought to life for you to interact, play and launch at your fingertips. A 3.2 megapixel auto-focus camera will help you capture the perfect moment in style and with a massive 4GB of internal storage you can keep all the files you need. The integrated ultra-sensitive GPS will help you find your destination as quickly and efficiently as a dedicated satellite navigation unit. Style and substance in a phone are no longer mutually exclusive. The HTC Touch Diamond has arrived. 102 mm (L) X 51 mm (W) X 11.35 mm (T) HTC Touch Diamond Re-defining the perception of advanced mobile phones… the HTC Touch Diamond™ signals a giant leap forward in combining hi-tech prowess with intuitive usability and exhilarating design.'),
+(167, 1, '55555 Activé Produit1 Produit avec un point rouge Produit avec un point rouge'),
+(167, 3, '55555 Activé Produit1 Produit avec un point rouge Produit avec un point rouge'),
+(167, 2, '55555 Activé Produit1 Produit avec un point rouge Produit avec un point rouge'),
+(168, 1, '55556 Activé Produit2 Produit avec un point rouge Produit avec un point rouge'),
+(168, 3, '55556 Activé Produit2 Produit avec un point rouge Produit avec un point rouge'),
+(168, 2, '55556 Activé Produit2 Produit avec un point rouge Produit avec un point rouge'),
+(169, 1, '55557 Activé Produit3 Produit avec un point rouge Produit avec un point rouge.'),
+(169, 3, '55557 Activé Produit3 Produit avec un point rouge Produit avec un point rouge.'),
+(169, 2, '55557 Activé Produit3 Produit avec un point rouge Produit avec un point rouge.');
 
 -- --------------------------------------------------------
 
@@ -3105,15 +3160,15 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity` (
   `children_count` int(11) NOT NULL,
   PRIMARY KEY (`entity_id`),
   KEY `IDX_LEVEL` (`level`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Category Entityies' AUTO_INCREMENT=35 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Category Entityies' AUTO_INCREMENT=36 ;
 
 --
 -- Contenu de la table `catalog_category_entity`
 --
 
 INSERT INTO `catalog_category_entity` (`entity_id`, `entity_type_id`, `attribute_set_id`, `parent_id`, `created_at`, `updated_at`, `path`, `position`, `level`, `children_count`) VALUES
-(1, 9, 12, 0, '2007-07-20 18:46:08', '2007-08-07 09:50:15', '1', 1, 0, 26),
-(3, 9, 12, 1, '2007-08-22 15:54:41', '2009-10-22 21:22:54', '1/3', 3, 1, 25),
+(1, 9, 12, 0, '2007-07-20 18:46:08', '2007-08-07 09:50:15', '1', 1, 0, 27),
+(3, 9, 12, 1, '2007-08-22 15:54:41', '2009-10-22 21:22:54', '1/3', 3, 1, 26),
 (4, 9, 12, 18, '2007-08-22 15:55:34', '2008-08-08 00:56:48', '1/3/18/4', 4, 3, 0),
 (5, 9, 12, 18, '2007-08-22 16:21:29', '2008-08-07 23:55:38', '1/3/18/5', 5, 3, 2),
 (8, 9, 12, 13, '2007-08-22 18:10:30', '2008-08-07 23:51:26', '1/3/13/8', 8, 3, 0),
@@ -3138,7 +3193,8 @@ INSERT INTO `catalog_category_entity` (`entity_id`, `entity_type_id`, `attribute
 (31, 9, 12, 13, '2008-07-25 00:41:56', '2008-07-25 00:41:56', '1/3/13/15/31', 5, 4, 0),
 (32, 9, 12, 13, '2008-07-25 00:42:57', '2008-07-25 00:42:57', '1/3/13/15/32', 6, 4, 0),
 (33, 9, 12, 13, '2008-07-25 00:43:25', '2008-07-25 00:43:25', '1/3/13/15/33', 7, 4, 0),
-(34, 9, 12, 13, '2008-07-25 00:44:17', '2008-07-25 00:44:17', '1/3/13/15/34', 8, 4, 0);
+(34, 9, 12, 13, '2008-07-25 00:44:17', '2008-07-25 00:44:17', '1/3/13/15/34', 8, 4, 0),
+(35, 9, 12, 3, '2009-11-03 01:05:02', '2009-11-03 01:05:02', '1/3/35', 21, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -3211,7 +3267,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_int` (
   KEY `FK_ATTRIBUTE_INT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_EMTITY_INT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_CATEGORY_EMTITY_INT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
 
 --
 -- Contenu de la table `catalog_category_entity_int`
@@ -3296,7 +3352,10 @@ INSERT INTO `catalog_category_entity_int` (`value_id`, `entity_type_id`, `attrib
 (76, 9, 564, 0, 20, 1),
 (77, 9, 120, 0, 3, 1),
 (78, 9, 564, 0, 3, 1),
-(79, 9, 117, 0, 3, 4);
+(79, 9, 117, 0, 3, 4),
+(80, 9, 119, 0, 35, 1),
+(81, 9, 120, 0, 35, 1),
+(82, 9, 564, 0, 35, 1);
 
 -- --------------------------------------------------------
 
@@ -3317,7 +3376,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_text` (
   KEY `FK_ATTRIBUTE_TEXT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_TEXT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_TEXT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=152 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=157 ;
 
 --
 -- Contenu de la table `catalog_category_entity_text`
@@ -3474,7 +3533,12 @@ INSERT INTO `catalog_category_entity_text` (`value_id`, `entity_type_id`, `attri
 (148, 9, 115, 0, 3, ''),
 (149, 9, 116, 0, 3, ''),
 (150, 9, 530, 0, 3, ''),
-(151, 9, 925, 0, 3, '');
+(151, 9, 925, 0, 3, ''),
+(152, 9, 112, 0, 35, ''),
+(153, 9, 115, 0, 35, ''),
+(154, 9, 116, 0, 35, ''),
+(155, 9, 530, 0, 35, ''),
+(156, 9, 925, 0, 35, '');
 
 -- --------------------------------------------------------
 
@@ -3495,7 +3559,7 @@ CREATE TABLE IF NOT EXISTS `catalog_category_entity_varchar` (
   KEY `FK_ATTRIBUTE_VARCHAR_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_CATEGORY_ENTITY_VARCHAR_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=183 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=191 ;
 
 --
 -- Contenu de la table `catalog_category_entity_varchar`
@@ -3683,7 +3747,15 @@ INSERT INTO `catalog_category_entity_varchar` (`value_id`, `entity_type_id`, `at
 (179, 9, 514, 0, 20, ''),
 (180, 9, 114, 0, 3, 'E-boutique'),
 (181, 9, 563, 0, 3, ''),
-(182, 9, 514, 0, 3, '');
+(182, 9, 514, 0, 3, ''),
+(183, 9, 111, 0, 35, 'TestPromotions'),
+(184, 9, 114, 0, 35, 'TestPromotions'),
+(185, 9, 479, 0, 35, 'testpromotion'),
+(186, 9, 118, 0, 35, 'PRODUCTS_AND_PAGE'),
+(187, 9, 563, 0, 35, ''),
+(188, 9, 514, 0, 35, ''),
+(189, 9, 533, 1, 35, 'testpromotion.html'),
+(190, 9, 533, 0, 35, 'testpromotion.html');
 
 -- --------------------------------------------------------
 
@@ -3866,7 +3938,10 @@ INSERT INTO `catalog_category_product` (`category_id`, `product_id`, `position`)
 (34, 159, 0),
 (34, 160, 0),
 (34, 161, 0),
-(34, 162, 0);
+(34, 162, 0),
+(35, 167, 0),
+(35, 168, 0),
+(35, 169, 0);
 
 -- --------------------------------------------------------
 
@@ -4003,6 +4078,9 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (3, 164, 0, 0, 1, 4),
 (3, 165, 0, 0, 1, 4),
 (3, 166, 0, 0, 1, 4),
+(3, 167, 0, 0, 1, 4),
+(3, 168, 0, 0, 1, 4),
+(3, 169, 0, 0, 1, 4),
 (3, 135, 1, 0, 1, 4),
 (3, 103, 2, 0, 1, 4),
 (3, 108, 2, 0, 1, 4),
@@ -4329,6 +4407,9 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (34, 160, 0, 1, 1, 4),
 (34, 161, 0, 1, 1, 4),
 (34, 162, 0, 1, 1, 4),
+(35, 167, 0, 1, 1, 4),
+(35, 168, 0, 1, 1, 4),
+(35, 169, 0, 1, 1, 4),
 (3, 30, 0, 0, 2, 1),
 (3, 34, 0, 0, 2, 1),
 (3, 35, 0, 0, 2, 1),
@@ -4438,6 +4519,9 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (3, 164, 0, 0, 2, 4),
 (3, 165, 0, 0, 2, 4),
 (3, 166, 0, 0, 2, 4),
+(3, 167, 0, 0, 2, 4),
+(3, 168, 0, 0, 2, 4),
+(3, 169, 0, 0, 2, 4),
 (3, 135, 1, 0, 2, 4),
 (3, 103, 2, 0, 2, 4),
 (3, 108, 2, 0, 2, 4),
@@ -4764,6 +4848,9 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (34, 160, 0, 1, 2, 4),
 (34, 161, 0, 1, 2, 4),
 (34, 162, 0, 1, 2, 4),
+(35, 167, 0, 1, 2, 4),
+(35, 168, 0, 1, 2, 4),
+(35, 169, 0, 1, 2, 4),
 (3, 30, 0, 0, 3, 1),
 (3, 34, 0, 0, 3, 1),
 (3, 35, 0, 0, 3, 1),
@@ -4873,6 +4960,9 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (3, 164, 0, 0, 3, 4),
 (3, 165, 0, 0, 3, 4),
 (3, 166, 0, 0, 3, 4),
+(3, 167, 0, 0, 3, 4),
+(3, 168, 0, 0, 3, 4),
+(3, 169, 0, 0, 3, 4),
 (3, 135, 1, 0, 3, 4),
 (3, 103, 2, 0, 3, 4),
 (3, 108, 2, 0, 3, 4),
@@ -5198,7 +5288,10 @@ INSERT INTO `catalog_category_product_index` (`category_id`, `product_id`, `posi
 (34, 159, 0, 1, 3, 4),
 (34, 160, 0, 1, 3, 4),
 (34, 161, 0, 1, 3, 4),
-(34, 162, 0, 1, 3, 4);
+(34, 162, 0, 1, 3, 4),
+(35, 167, 0, 1, 3, 4),
+(35, 168, 0, 1, 3, 4),
+(35, 169, 0, 1, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -5816,7 +5909,16 @@ INSERT INTO `catalog_product_enabled_index` (`product_id`, `store_id`, `visibili
 (165, 3, 4),
 (166, 1, 4),
 (166, 2, 4),
-(166, 3, 4);
+(166, 3, 4),
+(167, 1, 4),
+(167, 2, 4),
+(167, 3, 4),
+(168, 1, 4),
+(168, 2, 4),
+(168, 3, 4),
+(169, 1, 4),
+(169, 2, 4),
+(169, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -5840,7 +5942,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity` (
   KEY `FK_CATALOG_PRODUCT_ENTITY_ENTITY_TYPE` (`entity_type_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_ATTRIBUTE_SET_ID` (`attribute_set_id`),
   KEY `sku` (`sku`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Product Entityies' AUTO_INCREMENT=167 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Product Entityies' AUTO_INCREMENT=170 ;
 
 --
 -- Contenu de la table `catalog_product_entity`
@@ -5966,7 +6068,10 @@ INSERT INTO `catalog_product_entity` (`entity_id`, `entity_type_id`, `attribute_
 (163, 10, 9, 'bundle', 'computer', '15,27', '2008-07-25 01:34:24', '2008-07-29 01:33:10', 1, 1),
 (164, 10, 9, 'bundle', 'computer_fixed', '27', '2008-07-25 01:36:33', '2008-07-31 09:30:37', 1, 1),
 (165, 10, 39, 'bundle', 'mycomputer', '27', '2008-07-25 01:40:27', '2008-07-31 16:19:40', 1, 1),
-(166, 10, 38, 'simple', 'HTC Touch Diamond', '8,18', '2008-07-25 02:22:13', '2009-10-27 13:23:58', 0, 0);
+(166, 10, 38, 'simple', 'HTC Touch Diamond', '8,18', '2008-07-25 02:22:13', '2009-10-27 13:23:58', 0, 0),
+(167, 10, 9, 'simple', '55555', '35', '2009-11-03 01:10:29', '2009-11-03 01:10:29', 0, 0),
+(168, 10, 9, 'simple', '55556', '35', '2009-11-03 01:11:57', '2009-11-03 01:21:00', 0, 0),
+(169, 10, 9, 'simple', '55557', '35', '2009-11-03 01:12:51', '2009-11-03 01:21:35', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -6015,7 +6120,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_decimal` (
   KEY `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_STORE` (`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_PRODUCT_ENTITY` (`entity_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_DECIMAL_ATTRIBUTE` (`attribute_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=411 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=420 ;
 
 --
 -- Contenu de la table `catalog_product_entity_decimal`
@@ -6431,7 +6536,16 @@ INSERT INTO `catalog_product_entity_decimal` (`value_id`, `entity_type_id`, `att
 (407, 10, 101, 0, 157, '1.0000'),
 (408, 10, 99, 0, 157, '699.9900'),
 (409, 10, 101, 0, 159, '1.0000'),
-(410, 10, 99, 0, 161, '239.9900');
+(410, 10, 99, 0, 161, '239.9900'),
+(411, 10, 101, 0, 167, '12.0000'),
+(412, 10, 99, 0, 167, '100.0000'),
+(413, 10, 100, 0, 167, '30.0000'),
+(414, 10, 101, 0, 168, '24.0000'),
+(415, 10, 99, 0, 168, '1000.0000'),
+(416, 10, 100, 0, 168, '300.0000'),
+(417, 10, 101, 0, 169, '30.0000'),
+(418, 10, 99, 0, 169, '10.0000'),
+(419, 10, 100, 0, 169, '3.0000');
 
 -- --------------------------------------------------------
 
@@ -6479,7 +6593,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_int` (
   KEY `FK_CATALOG_PRODUCT_ENTITY_INT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_INT_STORE` (`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_INT_PRODUCT_ENTITY` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=688 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=703 ;
 
 --
 -- Contenu de la table `catalog_product_entity_int`
@@ -7172,7 +7286,22 @@ INSERT INTO `catalog_product_entity_int` (`value_id`, `entity_type_id`, `attribu
 (684, 10, 877, 0, 145, 113),
 (685, 10, 273, 0, 146, 1),
 (686, 10, 274, 0, 146, 0),
-(687, 10, 903, 0, 166, 0);
+(687, 10, 903, 0, 166, 0),
+(688, 10, 273, 0, 167, 1),
+(689, 10, 274, 0, 167, 1),
+(690, 10, 526, 0, 167, 4),
+(691, 10, 933, 0, 167, 1),
+(692, 10, 903, 0, 167, 1),
+(693, 10, 273, 0, 168, 1),
+(694, 10, 274, 0, 168, 1),
+(695, 10, 526, 0, 168, 4),
+(696, 10, 933, 0, 168, 1),
+(697, 10, 903, 0, 168, 1),
+(698, 10, 273, 0, 169, 1),
+(699, 10, 274, 0, 169, 1),
+(700, 10, 526, 0, 169, 4),
+(701, 10, 933, 0, 169, 1),
+(702, 10, 903, 0, 169, 1);
 
 -- --------------------------------------------------------
 
@@ -7727,7 +7856,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_text` (
   KEY `FK_CATALOG_PRODUCT_ENTITY_TEXT_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_TEXT_STORE` (`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_TEXT_PRODUCT_ENTITY` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=693 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=705 ;
 
 --
 -- Contenu de la table `catalog_product_entity_text`
@@ -8427,7 +8556,19 @@ INSERT INTO `catalog_product_entity_text` (`value_id`, `entity_type_id`, `attrib
 (689, 10, 104, 0, 158, 'Sony, VAIO, VGN-TXN27N/B , Notebook, PC, Intel, 2 GB RAM, '),
 (690, 10, 506, 0, 158, 'Weighing in at just an amazing 2.84 pounds and offering a sleek, durable carbon-fiber case in charcoal black. And with 4 to 10 hours of standard battery life, it has the stamina to power you through your most demanding applications. With the integrated wireless WAN, you can access the national Sprint Mobile Broadband service to extend your wireless coverage beyond LAN access networks and hotspots, giving you the freedom to go farther, do more, and stay connected.\r\n\r\n'),
 (691, 10, 531, 0, 158, ''),
-(692, 10, 104, 0, 159, '');
+(692, 10, 104, 0, 159, ''),
+(693, 10, 104, 0, 167, ''),
+(694, 10, 97, 0, 167, 'Produit avec un point rouge'),
+(695, 10, 506, 0, 167, 'Produit avec un point rouge'),
+(696, 10, 531, 0, 167, ''),
+(697, 10, 104, 0, 168, ''),
+(698, 10, 97, 0, 168, 'Produit avec un point rouge'),
+(699, 10, 506, 0, 168, 'Produit avec un point rouge'),
+(700, 10, 531, 0, 168, ''),
+(701, 10, 104, 0, 169, ''),
+(702, 10, 97, 0, 169, 'Produit avec un point rouge'),
+(703, 10, 506, 0, 169, 'Produit avec un point rouge.'),
+(704, 10, 531, 0, 169, '');
 
 -- --------------------------------------------------------
 
@@ -8485,7 +8626,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_entity_varchar` (
   KEY `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_ATTRIBUTE` (`attribute_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_STORE` (`store_id`),
   KEY `FK_CATALOG_PRODUCT_ENTITY_VARCHAR_PRODUCT_ENTITY` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1283 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1319 ;
 
 --
 -- Contenu de la table `catalog_product_entity_varchar`
@@ -9760,7 +9901,43 @@ INSERT INTO `catalog_product_entity_varchar` (`value_id`, `entity_type_id`, `att
 (1279, 10, 881, 0, 166, ''),
 (1280, 10, 880, 0, 166, ''),
 (1281, 10, 879, 0, 166, ''),
-(1282, 10, 570, 0, 166, 'htc-touch-diamond.html');
+(1282, 10, 570, 0, 166, 'htc-touch-diamond.html'),
+(1283, 10, 96, 0, 167, 'Produit1'),
+(1284, 10, 481, 0, 167, 'produit1'),
+(1285, 10, 562, 0, 167, '2'),
+(1286, 10, 103, 0, 167, ''),
+(1287, 10, 105, 0, 167, ''),
+(1288, 10, 493, 0, 167, 'no_selection'),
+(1289, 10, 109, 0, 167, 'no_selection'),
+(1290, 10, 106, 0, 167, 'no_selection'),
+(1291, 10, 571, 0, 167, ''),
+(1292, 10, 836, 0, 167, 'container2'),
+(1293, 10, 927, 0, 167, ''),
+(1294, 10, 570, 0, 167, 'produit1.html'),
+(1295, 10, 96, 0, 168, 'Produit2'),
+(1296, 10, 481, 0, 168, 'produit2'),
+(1297, 10, 562, 0, 168, '2'),
+(1298, 10, 103, 0, 168, ''),
+(1299, 10, 105, 0, 168, ''),
+(1300, 10, 493, 0, 168, 'no_selection'),
+(1301, 10, 109, 0, 168, 'no_selection'),
+(1302, 10, 106, 0, 168, 'no_selection'),
+(1303, 10, 571, 0, 168, ''),
+(1304, 10, 836, 0, 168, 'container2'),
+(1305, 10, 927, 0, 168, ''),
+(1306, 10, 96, 0, 169, 'Produit3'),
+(1307, 10, 481, 0, 169, 'produit3'),
+(1308, 10, 562, 0, 169, '2'),
+(1309, 10, 103, 0, 169, ''),
+(1310, 10, 105, 0, 169, ''),
+(1311, 10, 493, 0, 169, 'no_selection'),
+(1312, 10, 109, 0, 169, 'no_selection'),
+(1313, 10, 106, 0, 169, 'no_selection'),
+(1314, 10, 571, 0, 169, ''),
+(1315, 10, 836, 0, 169, 'container2'),
+(1316, 10, 927, 0, 169, ''),
+(1317, 10, 570, 0, 168, 'produit2.html'),
+(1318, 10, 570, 0, 169, 'produit3.html');
 
 -- --------------------------------------------------------
 
@@ -10595,7 +10772,7 @@ CREATE TABLE IF NOT EXISTS `catalog_product_website` (
   `website_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`product_id`,`website_id`),
   KEY `FK_CATALOG_PRODUCT_WEBSITE_WEBSITE` (`website_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=167 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED AUTO_INCREMENT=170 ;
 
 --
 -- Contenu de la table `catalog_product_website`
@@ -10721,7 +10898,10 @@ INSERT INTO `catalog_product_website` (`product_id`, `website_id`) VALUES
 (163, 1),
 (164, 1),
 (165, 1),
-(166, 1);
+(166, 1),
+(167, 1),
+(168, 1),
+(169, 1);
 
 -- --------------------------------------------------------
 
@@ -11324,7 +11504,7 @@ CREATE TABLE IF NOT EXISTS `core_flag` (
   `last_update` datetime NOT NULL,
   PRIMARY KEY (`flag_id`),
   KEY `last_update` (`last_update`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Contenu de la table `core_flag`
@@ -11548,7 +11728,7 @@ CREATE TABLE IF NOT EXISTS `core_translate` (
   PRIMARY KEY (`key_id`),
   UNIQUE KEY `IDX_CODE` (`store_id`,`locale`,`string`),
   KEY `FK_CORE_TRANSLATE_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Translation data' AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Translation data' AUTO_INCREMENT=51 ;
 
 --
 -- Contenu de la table `core_translate`
@@ -11600,7 +11780,11 @@ INSERT INTO `core_translate` (`key_id`, `string`, `store_id`, `translate`, `loca
 (43, 'Response Time', 0, 'Response Time', 'en_US'),
 (44, 'CPU Speed', 0, 'CPU Speed', 'en_US'),
 (45, 'Disk Speed', 0, 'Disk Speed', 'en_US'),
-(46, 'Brand', 0, 'Brand', 'en_US');
+(46, 'Brand', 0, 'Brand', 'en_US'),
+(47, 'Mage_Catalog::pointrouge', 0, 'pointrouge', 'en_US'),
+(48, 'Mage_Catalog::pointrouge', 1, 'reddot', 'en_US'),
+(49, 'Mage_Catalog::pointrouge', 3, 'pointrouge', 'en_US'),
+(50, 'Mage_Catalog::pointrouge', 2, 'rotpunkt', 'en_US');
 
 -- --------------------------------------------------------
 
@@ -11629,7 +11813,7 @@ CREATE TABLE IF NOT EXISTS `core_url_rewrite` (
   KEY `FK_CORE_URL_REWRITE_PRODUCT` (`product_id`),
   KEY `IDX_ID_PATH` (`id_path`),
   KEY `IDX_CATEGORY_REWRITE` (`category_id`,`is_system`,`product_id`,`store_id`,`id_path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `core_url_rewrite`
@@ -11644,7 +11828,28 @@ INSERT INTO `core_url_rewrite` (`url_rewrite_id`, `store_id`, `category_id`, `pr
 (6, 3, NULL, 166, 'product/166', 'htc-touch-diamond.html', 'catalog/product/view/id/166', 1, '', NULL),
 (7, 2, 8, 166, 'product/166/8', 'electronics/cell-phones/htc-touch-diamond.html', 'catalog/product/view/id/166/category/8', 1, '', NULL),
 (8, 2, 18, 166, 'product/166/18', 'apparel/htc-touch-diamond.html', 'catalog/product/view/id/166/category/18', 1, '', NULL),
-(9, 2, NULL, 166, 'product/166', 'htc-touch-diamond.html', 'catalog/product/view/id/166', 1, '', NULL);
+(9, 2, NULL, 166, 'product/166', 'htc-touch-diamond.html', 'catalog/product/view/id/166', 1, '', NULL),
+(10, 1, 35, NULL, 'category/35', 'testpromotion.html', 'catalog/category/view/id/35', 1, '', NULL),
+(11, 3, 35, NULL, 'category/35', 'testpromotion.html', 'catalog/category/view/id/35', 1, '', NULL),
+(12, 2, 35, NULL, 'category/35', 'testpromotion.html', 'catalog/category/view/id/35', 1, '', NULL),
+(13, 1, 35, 167, 'product/167/35', 'testpromotion/produit1.html', 'catalog/product/view/id/167/category/35', 1, '', NULL),
+(14, 1, NULL, 167, 'product/167', 'produit1.html', 'catalog/product/view/id/167', 1, '', NULL),
+(15, 3, 35, 167, 'product/167/35', 'testpromotion/produit1.html', 'catalog/product/view/id/167/category/35', 1, '', NULL),
+(16, 3, NULL, 167, 'product/167', 'produit1.html', 'catalog/product/view/id/167', 1, '', NULL),
+(17, 2, 35, 167, 'product/167/35', 'testpromotion/produit1.html', 'catalog/product/view/id/167/category/35', 1, '', NULL),
+(18, 2, NULL, 167, 'product/167', 'produit1.html', 'catalog/product/view/id/167', 1, '', NULL),
+(19, 1, 35, 168, 'product/168/35', 'testpromotion/produit2.html', 'catalog/product/view/id/168/category/35', 1, '', NULL),
+(20, 1, NULL, 168, 'product/168', 'produit2.html', 'catalog/product/view/id/168', 1, '', NULL),
+(21, 3, 35, 168, 'product/168/35', 'testpromotion/produit2.html', 'catalog/product/view/id/168/category/35', 1, '', NULL),
+(22, 3, NULL, 168, 'product/168', 'produit2.html', 'catalog/product/view/id/168', 1, '', NULL),
+(23, 2, 35, 168, 'product/168/35', 'testpromotion/produit2.html', 'catalog/product/view/id/168/category/35', 1, '', NULL),
+(24, 2, NULL, 168, 'product/168', 'produit2.html', 'catalog/product/view/id/168', 1, '', NULL),
+(25, 1, 35, 169, 'product/169/35', 'testpromotion/produit3.html', 'catalog/product/view/id/169/category/35', 1, '', NULL),
+(26, 1, NULL, 169, 'product/169', 'produit3.html', 'catalog/product/view/id/169', 1, '', NULL),
+(27, 3, 35, 169, 'product/169/35', 'testpromotion/produit3.html', 'catalog/product/view/id/169/category/35', 1, '', NULL),
+(28, 3, NULL, 169, 'product/169', 'produit3.html', 'catalog/product/view/id/169', 1, '', NULL),
+(29, 2, 35, 169, 'product/169/35', 'testpromotion/produit3.html', 'catalog/product/view/id/169/category/35', 1, '', NULL),
+(30, 2, NULL, 169, 'product/169', 'produit3.html', 'catalog/product/view/id/169', 1, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -13418,7 +13623,7 @@ CREATE TABLE IF NOT EXISTS `eav_attribute` (
   UNIQUE KEY `entity_type_id` (`entity_type_id`,`attribute_code`),
   KEY `IDX_USED_FOR_SORT_BY` (`entity_type_id`,`used_for_sort_by`),
   KEY `IDX_USED_IN_PRODUCT_LISTING` (`entity_type_id`,`used_in_product_listing`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=933 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=934 ;
 
 --
 -- Contenu de la table `eav_attribute`
@@ -14195,7 +14400,8 @@ INSERT INTO `eav_attribute` (`attribute_id`, `entity_type_id`, `attribute_code`,
 (928, 10, 'created_at', NULL, 'eav/entity_attribute_backend_time_created', 'static', '', '', 'text', '', '', '', '', 1, 0, 1, 0, '', 0, 0, 0, 0, 0, 0, 0, 1, '', 0, '', 1, 0, 0, 0),
 (929, 10, 'updated_at', NULL, 'eav/entity_attribute_backend_time_updated', 'static', '', '', 'text', '', '', '', '', 1, 0, 1, 0, '', 0, 0, 0, 0, 0, 0, 0, 1, '', 0, '', 1, 0, 0, 0),
 (931, 4, 'forced_do_shipment_with_invoice', NULL, '', 'int', '', '', 'text', '', '', '', '', 1, 1, 1, 0, '0', 0, 0, 0, 0, 0, 0, 0, 1, '', 0, '', 1, 0, 0, 0),
-(932, 4, 'paypal_ipn_customer_notified', NULL, '', 'int', '', '', 'text', '', '', '', '', 1, 0, 1, 0, '0', 0, 0, 0, 0, 0, 0, 0, 1, '', 0, '', 1, 0, 0, 0);
+(932, 4, 'paypal_ipn_customer_notified', NULL, '', 'int', '', '', 'text', '', '', '', '', 1, 0, 1, 0, '0', 0, 0, 0, 0, 0, 0, 0, 1, '', 0, '', 1, 0, 0, 0),
+(933, 10, 'pointrouge', NULL, NULL, 'int', NULL, NULL, 'boolean', NULL, 'pointrouge', '', NULL, 0, 1, 1, 1, '0', 0, 0, 1, 1, 0, 0, 1, 0, '', 0, '', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -14736,7 +14942,7 @@ CREATE TABLE IF NOT EXISTS `eav_entity_attribute` (
   UNIQUE KEY `attribute_group_id` (`attribute_group_id`,`attribute_id`),
   KEY `attribute_set_id_3` (`attribute_set_id`,`sort_order`),
   KEY `FK_EAV_ENTITY_ATTRIVUTE_ATTRIBUTE` (`attribute_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4602 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4604 ;
 
 --
 -- Contenu de la table `eav_entity_attribute`
@@ -16283,7 +16489,8 @@ INSERT INTO `eav_entity_attribute` (`entity_attribute_id`, `entity_type_id`, `at
 (4598, 10, 59, 142, 929, 38),
 (4599, 4, 18, 23, 930, 122),
 (4600, 4, 18, 23, 931, 123),
-(4601, 4, 18, 23, 932, 124);
+(4601, 4, 18, 23, 932, 124),
+(4603, 10, 9, 4, 933, 40);
 
 -- --------------------------------------------------------
 
@@ -16392,7 +16599,7 @@ CREATE TABLE IF NOT EXISTS `eav_entity_store` (
 --
 
 INSERT INTO `eav_entity_store` (`entity_store_id`, `entity_type_id`, `store_id`, `increment_prefix`, `increment_last_id`) VALUES
-(1, 4, 1, '1', '100000001');
+(1, 4, 1, '1', '100000002');
 
 -- --------------------------------------------------------
 
@@ -16770,7 +16977,8 @@ INSERT INTO `log_quote` (`quote_id`, `visitor_id`, `created_at`, `deleted_at`) V
 (13, 58, '2009-10-31 10:51:15', NULL),
 (14, 59, '2009-10-31 10:53:11', NULL),
 (15, 60, '2009-10-31 10:56:29', NULL),
-(16, 62, '2009-10-31 14:12:41', NULL);
+(16, 62, '2009-10-31 14:12:41', NULL),
+(17, 68, '2009-11-03 01:21:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -18284,7 +18492,85 @@ INSERT INTO `log_url` (`url_id`, `visitor_id`, `visit_time`) VALUES
 (1445, 67, '2009-11-03 00:05:20'),
 (1446, 67, '2009-11-03 00:05:29'),
 (1447, 67, '2009-11-03 00:06:28'),
-(1448, 67, '2009-11-03 00:08:55');
+(1448, 67, '2009-11-03 00:08:55'),
+(1449, 68, '2009-11-03 01:19:00'),
+(1450, 68, '2009-11-03 01:19:04'),
+(1451, 68, '2009-11-03 01:20:01'),
+(1452, 68, '2009-11-03 01:20:07'),
+(1453, 68, '2009-11-03 01:20:14'),
+(1454, 68, '2009-11-03 01:20:18'),
+(1455, 68, '2009-11-03 01:20:20'),
+(1456, 68, '2009-11-03 01:21:03'),
+(1457, 68, '2009-11-03 01:21:17'),
+(1458, 68, '2009-11-03 01:21:38'),
+(1459, 68, '2009-11-03 01:21:43'),
+(1460, 68, '2009-11-03 01:21:44'),
+(1461, 68, '2009-11-03 01:21:48'),
+(1462, 68, '2009-11-03 01:21:51'),
+(1463, 68, '2009-11-03 01:21:52'),
+(1464, 68, '2009-11-03 01:22:00'),
+(1465, 68, '2009-11-03 01:22:01'),
+(1466, 68, '2009-11-03 01:22:07'),
+(1467, 68, '2009-11-03 01:22:12'),
+(1468, 68, '2009-11-03 01:22:18'),
+(1469, 68, '2009-11-03 01:22:19'),
+(1470, 68, '2009-11-03 01:22:30'),
+(1471, 68, '2009-11-03 01:22:37'),
+(1472, 68, '2009-11-03 01:23:11'),
+(1473, 68, '2009-11-03 01:23:32'),
+(1474, 68, '2009-11-03 01:23:33'),
+(1475, 68, '2009-11-03 01:23:39'),
+(1476, 68, '2009-11-03 01:23:40'),
+(1477, 68, '2009-11-03 01:23:48'),
+(1478, 68, '2009-11-03 01:23:49'),
+(1479, 68, '2009-11-03 01:24:10'),
+(1480, 68, '2009-11-03 01:24:11'),
+(1481, 68, '2009-11-03 01:24:16'),
+(1482, 68, '2009-11-03 01:24:18'),
+(1483, 68, '2009-11-03 01:24:22'),
+(1484, 68, '2009-11-03 01:24:34'),
+(1485, 68, '2009-11-03 01:24:43'),
+(1486, 68, '2009-11-03 01:24:43'),
+(1487, 68, '2009-11-03 01:24:47'),
+(1488, 68, '2009-11-03 01:24:47'),
+(1489, 68, '2009-11-03 01:24:54'),
+(1490, 68, '2009-11-03 01:24:55'),
+(1491, 68, '2009-11-03 01:34:30'),
+(1492, 68, '2009-11-03 01:34:34'),
+(1493, 68, '2009-11-03 01:34:37'),
+(1494, 68, '2009-11-03 01:34:37'),
+(1495, 68, '2009-11-03 01:34:39'),
+(1496, 68, '2009-11-03 01:34:40'),
+(1497, 68, '2009-11-03 01:34:45'),
+(1498, 68, '2009-11-03 01:34:46'),
+(1499, 68, '2009-11-03 01:34:48'),
+(1500, 68, '2009-11-03 01:34:56'),
+(1501, 68, '2009-11-03 01:34:57'),
+(1502, 68, '2009-11-03 01:36:00'),
+(1503, 68, '2009-11-03 01:36:01'),
+(1504, 68, '2009-11-03 01:38:19'),
+(1505, 68, '2009-11-03 01:38:28'),
+(1506, 68, '2009-11-03 01:38:49'),
+(1507, 68, '2009-11-03 01:41:46'),
+(1508, 68, '2009-11-03 01:41:47'),
+(1509, 68, '2009-11-03 01:42:35'),
+(1510, 68, '2009-11-03 01:42:43'),
+(1511, 68, '2009-11-03 01:42:47'),
+(1512, 68, '2009-11-03 01:42:50'),
+(1513, 68, '2009-11-03 01:42:51'),
+(1514, 68, '2009-11-03 01:43:00'),
+(1515, 68, '2009-11-03 01:43:01'),
+(1516, 68, '2009-11-03 01:43:05'),
+(1517, 68, '2009-11-03 01:43:05'),
+(1518, 68, '2009-11-03 01:43:29'),
+(1519, 68, '2009-11-03 01:43:30'),
+(1520, 68, '2009-11-03 01:44:36'),
+(1521, 68, '2009-11-03 01:44:37'),
+(1522, 68, '2009-11-03 01:53:25'),
+(1523, 68, '2009-11-03 01:53:27'),
+(1524, 68, '2009-11-03 01:53:31'),
+(1525, 68, '2009-11-03 01:53:32'),
+(1526, 69, '2009-11-03 03:34:16');
 
 -- --------------------------------------------------------
 
@@ -18298,7 +18584,7 @@ CREATE TABLE IF NOT EXISTS `log_url_info` (
   `url` varchar(255) NOT NULL DEFAULT '',
   `referer` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`url_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=1449 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Detale information about url visit' AUTO_INCREMENT=1527 ;
 
 --
 -- Contenu de la table `log_url_info`
@@ -19755,7 +20041,86 @@ INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
 (1445, 'http://192.168.1.23/~tharibo/magento/index.php/magasin', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires'),
 (1446, 'http://192.168.1.23/~tharibo/magento/index.php/creation', 'http://192.168.1.23/~tharibo/magento/index.php/magasin'),
 (1447, 'http://192.168.1.23/~tharibo/magento/index.php/partenaires', 'http://192.168.1.23/~tharibo/magento/index.php/creation'),
-(1448, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires');
+(1448, 'http://192.168.1.23/~tharibo/magento/index.php/', 'http://192.168.1.23/~tharibo/magento/index.php/partenaires'),
+(1449, 'http://192.168.1.23/~tharibo/magento/index.php/', ''),
+(1450, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(1451, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(1452, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/'),
+(1453, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1454, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1455, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(1456, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(1457, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(1458, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/apparel/id/18/'),
+(1459, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,/product/167/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1460, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1461, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1462, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,/product/168/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1463, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1464, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/updatePost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1465, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1466, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1467, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1468, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/add/uenc/aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL2NhdGVnb3J5L3ZpZXcvcy9jZWxsLXBob25lcy9pZC84Lw,,/product/17/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/'),
+(1469, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/s/cell-phones/id/8/'),
+(1470, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1471, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1472, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1473, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1474, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1475, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1476, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1477, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1478, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1479, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveOrder/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1480, 'http://192.168.1.23/~tharibo/magento/index.php/cybermut/payment/redirect/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/');
+INSERT INTO `log_url_info` (`url_id`, `url`, `referer`) VALUES
+(1481, 'http://192.168.1.23/~tharibo/magento/index.php/cybermut/payment/redirect/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1482, 'http://192.168.1.23/~tharibo/magento/index.php/cybermut/payment/redirect/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1483, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1484, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1485, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1486, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1487, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1488, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1489, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1490, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1491, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1492, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1493, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveBilling/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1494, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1495, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/saveShippingMethod/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1496, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1497, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/savePayment/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1498, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/progress/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1499, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/onepage/'),
+(1500, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1501, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1502, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1503, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1504, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1505, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1506, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/testpromotion.html'),
+(1507, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1508, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1509, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1510, 'http://192.168.1.23/~tharibo/magento/index.php/catalog/category/view/id/35', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1511, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1512, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1513, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1514, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1515, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1516, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1517, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1518, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1519, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1520, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1521, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1522, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1523, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1524, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/couponPost/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1525, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/'),
+(1526, 'http://192.168.1.23/~tharibo/magento/index.php/checkout/cart/', '');
 
 -- --------------------------------------------------------
 
@@ -19772,7 +20137,7 @@ CREATE TABLE IF NOT EXISTS `log_visitor` (
   `last_url_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `store_id` smallint(5) unsigned NOT NULL,
   PRIMARY KEY (`visitor_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=68 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='System visitors log' AUTO_INCREMENT=70 ;
 
 --
 -- Contenu de la table `log_visitor`
@@ -19845,7 +20210,9 @@ INSERT INTO `log_visitor` (`visitor_id`, `session_id`, `first_visit_at`, `last_v
 (64, 'a25c31e7280417b653f1cb394a984979', '2009-10-31 16:08:21', '2009-10-31 16:12:58', 1407, 1),
 (65, 'dc175f5912aa53b6388e07d7e80b9d7c', '2009-11-01 18:18:55', '2009-11-01 18:35:49', 1416, 1),
 (66, 'e36915200011bcec9298f8134b32af8f', '2009-11-02 21:35:24', '2009-11-02 21:35:29', 1418, 1),
-(67, '5ff439fd4c71cf0e20443422889a3069', '2009-11-02 21:47:03', '2009-11-03 00:08:55', 1448, 1);
+(67, '5ff439fd4c71cf0e20443422889a3069', '2009-11-02 21:47:03', '2009-11-03 00:08:55', 1448, 1),
+(68, '860f546c83eb9c73c4c63d7e6719b7f4', '2009-11-03 01:18:59', '2009-11-03 01:53:32', 1525, 1),
+(69, 'f110875b3bfca86571392ffec1901570', '2009-11-03 03:34:12', '2009-11-03 03:34:16', 1526, 1);
 
 -- --------------------------------------------------------
 
@@ -19936,7 +20303,9 @@ INSERT INTO `log_visitor_info` (`visitor_id`, `http_referer`, `http_user_agent`,
 (64, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743),
 (65, '', 'Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.9.1.4) Gecko/20091016 Firefox/3.5.4', 'ISO-8859-15,utf-8;q=0.7,*;q=0.7', 'fr-fr,en-us;q=0.7,en;q=0.3', 1466076829, 1331042743),
 (66, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', 1466076829, 1331042743),
-(67, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731497);
+(67, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731497),
+(68, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731497),
+(69, '', 'Mozilla/5.0 (X11; U; Linux i686; fr; rv:1.9.1.4) Gecko/20091028 Ubuntu/9.10 (karmic) Firefox/3.5.4', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7', 'fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3', -1062731497, -1062731497);
 
 -- --------------------------------------------------------
 
@@ -21360,7 +21729,7 @@ CREATE TABLE IF NOT EXISTS `report_event` (
   KEY `IDX_OBJECT` (`object_id`),
   KEY `IDX_SUBTYPE` (`subtype`),
   KEY `FK_REPORT_EVENT_STORE` (`store_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=121 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=124 ;
 
 --
 -- Contenu de la table `report_event`
@@ -21486,7 +21855,10 @@ INSERT INTO `report_event` (`event_id`, `logged_at`, `event_type_id`, `object_id
 (117, '2009-10-31 15:45:45', 1, 25, 62, 1, 1),
 (118, '2009-10-31 15:46:49', 1, 25, 62, 1, 1),
 (119, '2009-10-31 15:48:10', 1, 25, 62, 1, 1),
-(120, '2009-10-31 15:49:40', 4, 25, 62, 1, 1);
+(120, '2009-10-31 15:49:40', 4, 25, 62, 1, 1),
+(121, '2009-11-03 01:21:43', 4, 167, 68, 1, 1),
+(122, '2009-11-03 01:21:51', 4, 168, 68, 1, 1),
+(123, '2009-11-03 01:22:18', 4, 17, 68, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -22244,12 +22616,15 @@ CREATE TABLE IF NOT EXISTS `salesrule` (
   `website_ids` text,
   PRIMARY KEY (`rule_id`),
   KEY `sort_order` (`is_active`,`sort_order`,`to_date`,`from_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `salesrule`
 --
 
+INSERT INTO `salesrule` (`rule_id`, `name`, `description`, `from_date`, `to_date`, `coupon_code`, `uses_per_coupon`, `uses_per_customer`, `customer_group_ids`, `is_active`, `conditions_serialized`, `actions_serialized`, `stop_rules_processing`, `is_advanced`, `product_ids`, `sort_order`, `simple_action`, `discount_amount`, `discount_qty`, `discount_step`, `simple_free_shipping`, `times_used`, `is_rss`, `website_ids`) VALUES
+(1, 'Point rouge', 'Un produit avec un point rouge acheté, le second produit avec un point rouge à moitié prix.', '2009-11-03', NULL, 'POINTROUGE', 0, 0, '0,1,2,3,4', 1, 'a:7:{s:4:"type";s:32:"salesrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:7:{s:4:"type";s:42:"salesrule/rule_condition_product_subselect";s:9:"attribute";s:3:"qty";s:8:"operator";s:2:">=";s:5:"value";s:1:"2";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:32:"salesrule/rule_condition_product";s:9:"attribute";s:10:"pointrouge";s:8:"operator";s:2:"==";s:5:"value";s:1:"1";s:18:"is_value_processed";b:0;}}}}}', 'a:7:{s:4:"type";s:40:"salesrule/rule_condition_product_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:32:"salesrule/rule_condition_product";s:9:"attribute";s:10:"pointrouge";s:8:"operator";s:2:"==";s:5:"value";s:1:"1";s:18:"is_value_processed";b:0;}}}', 1, 1, '', 0, 'by_percent', '50.0000', '1.0000', 0, 0, 0, 1, '1'),
+(2, 'Point bleu', '10% de réduction', '2009-11-03', NULL, 'POINTBLEU', 0, 0, '0,1,2,3,4', 1, 'a:6:{s:4:"type";s:32:"salesrule/rule_condition_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";}', 'a:7:{s:4:"type";s:40:"salesrule/rule_condition_product_combine";s:9:"attribute";N;s:8:"operator";N;s:5:"value";s:1:"1";s:18:"is_value_processed";N;s:10:"aggregator";s:3:"all";s:10:"conditions";a:1:{i:0;a:5:{s:4:"type";s:32:"salesrule/rule_condition_product";s:9:"attribute";s:10:"pointrouge";s:8:"operator";s:2:"==";s:5:"value";s:1:"1";s:18:"is_value_processed";b:0;}}}', 0, 1, '', 0, 'by_percent', '10.0000', NULL, 0, 0, 0, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -22346,14 +22721,17 @@ CREATE TABLE IF NOT EXISTS `sales_flat_order_item` (
   `locked_do_ship` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`item_id`),
   KEY `IDX_ORDER` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `sales_flat_order_item`
 --
 
 INSERT INTO `sales_flat_order_item` (`item_id`, `order_id`, `parent_item_id`, `quote_item_id`, `created_at`, `updated_at`, `product_id`, `product_type`, `product_options`, `weight`, `is_virtual`, `sku`, `name`, `description`, `applied_rule_ids`, `additional_data`, `free_shipping`, `is_qty_decimal`, `no_discount`, `qty_backordered`, `qty_canceled`, `qty_invoiced`, `qty_ordered`, `qty_refunded`, `qty_shipped`, `cost`, `price`, `base_price`, `original_price`, `base_original_price`, `tax_percent`, `tax_amount`, `base_tax_amount`, `tax_invoiced`, `base_tax_invoiced`, `discount_percent`, `discount_amount`, `base_discount_amount`, `discount_invoiced`, `base_discount_invoiced`, `amount_refunded`, `base_amount_refunded`, `row_total`, `base_row_total`, `row_invoiced`, `base_row_invoiced`, `row_weight`, `gift_message_id`, `gift_message_available`, `base_tax_before_discount`, `tax_before_discount`, `weee_tax_applied`, `weee_tax_applied_amount`, `weee_tax_applied_row_amount`, `base_weee_tax_applied_amount`, `base_weee_tax_applied_row_amount`, `weee_tax_disposition`, `weee_tax_row_disposition`, `base_weee_tax_disposition`, `base_weee_tax_row_disposition`, `ext_order_item_id`, `locked_do_invoice`, `locked_do_ship`) VALUES
-(1, 1, NULL, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 18, 'simple', 'a:1:{s:15:"info_buyRequest";a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}}', '13.6000', 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '0.0000', '0.0000', '13.6000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL);
+(1, 1, NULL, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 18, 'simple', 'a:1:{s:15:"info_buyRequest";a:4:{s:4:"uenc";s:152:"aHR0cDovL3d3dy5sb2NhbGhvc3QuY29tL350aGFyaWJvL21hZ2VudG8vaW5kZXgucGhwL2NhdGFsb2cvcHJvZHVjdC92aWV3L2lkLzE4L3Mvc29ueS1lcmljc3Nvbi13ODEwaS9jYXRlZ29yeS84Lw,,";s:7:"product";s:2:"18";s:15:"related_product";s:0:"";s:3:"qty";s:0:"";}}', '13.6000', 0, 'sw810i', 'Sony Ericsson W810i', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '399.9900', '399.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '399.9900', '399.9900', '0.0000', '0.0000', '13.6000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL),
+(2, 2, NULL, 41, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 167, 'simple', 'a:1:{s:15:"info_buyRequest";a:3:{s:4:"uenc";s:88:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,";s:7:"product";s:3:"167";s:3:"qty";i:1;}}', '12.0000', 0, '55555', 'Produit1', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '100.0000', '100.0000', '100.0000', '100.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '100.0000', '100.0000', '0.0000', '0.0000', '12.0000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL),
+(3, 2, NULL, 42, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 168, 'simple', 'a:1:{s:15:"info_buyRequest";a:3:{s:4:"uenc";s:88:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,";s:7:"product";s:3:"168";s:3:"qty";i:1;}}', '24.0000', 0, '55556', 'Produit2', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '1000.0000', '1000.0000', '1000.0000', '1000.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '1000.0000', '1000.0000', '0.0000', '0.0000', '24.0000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL),
+(4, 2, NULL, 43, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 17, 'simple', 'a:1:{s:15:"info_buyRequest";a:3:{s:4:"uenc";s:120:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL2NhdGVnb3J5L3ZpZXcvcy9jZWxsLXBob25lcy9pZC84Lw,,";s:7:"product";s:2:"17";s:3:"qty";i:1;}}', '15.2000', 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, NULL, '0.0000', '0.0000', '1.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '349.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '0.0000', '0.0000', '15.2000', NULL, 2, '0.0000', '0.0000', 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -22415,29 +22793,30 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote` (
   PRIMARY KEY (`entity_id`),
   KEY `FK_SALES_QUOTE_STORE` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`,`store_id`,`is_active`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `sales_flat_quote`
 --
 
 INSERT INTO `sales_flat_quote` (`entity_id`, `store_id`, `created_at`, `updated_at`, `converted_at`, `is_active`, `is_virtual`, `is_multi_shipping`, `items_count`, `items_qty`, `orig_order_id`, `store_to_base_rate`, `store_to_quote_rate`, `base_to_global_rate`, `base_to_quote_rate`, `global_currency_code`, `base_currency_code`, `store_currency_code`, `quote_currency_code`, `grand_total`, `base_grand_total`, `checkout_method`, `customer_id`, `customer_tax_class_id`, `customer_group_id`, `customer_email`, `customer_prefix`, `customer_firstname`, `customer_middlename`, `customer_lastname`, `customer_suffix`, `customer_dob`, `customer_note`, `customer_note_notify`, `customer_is_guest`, `customer_taxvat`, `remote_ip`, `applied_rule_ids`, `reserved_order_id`, `password_hash`, `coupon_code`, `subtotal`, `base_subtotal`, `subtotal_with_discount`, `base_subtotal_with_discount`, `gift_message_id`, `is_changed`, `trigger_recollect`, `ext_shipping_info`) VALUES
-(1, 1, '2009-10-07 20:25:35', '2009-10-07 21:09:16', '0000-00-00 00:00:00', 0, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '404.9900', '404.9900', '', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, '399.9900', '399.9900', '399.9900', '399.9900', NULL, 1, 0, NULL),
-(2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 0, NULL),
+(1, 1, '2009-10-07 20:25:35', '2009-10-07 21:09:16', '0000-00-00 00:00:00', 0, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '404.9900', '404.9900', '', NULL, 3, 0, 'tharibo@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '127.0.0.1', '', '100000001', NULL, NULL, '399.9900', '399.9900', '399.9900', '399.9900', NULL, 1, 1, NULL),
+(2, 1, '2009-10-07 21:18:30', '2009-10-07 21:18:51', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.86', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 1, NULL),
+(3, 1, '2009-10-07 21:21:41', '2009-10-07 21:44:15', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.0000', '2299.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '2299.0000', '2299.0000', '2299.0000', '2299.0000', NULL, 1, 1, NULL),
 (4, 1, '2009-10-18 09:48:22', '2009-10-18 09:49:34', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
 (5, 1, '2009-10-18 16:42:12', '2009-10-18 16:43:19', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
-(6, 1, '2009-10-19 21:44:10', '2009-10-19 21:52:41', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '354.9900', '354.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(7, 1, '2009-10-21 20:14:20', '2009-10-21 22:11:28', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(8, 1, '2009-10-22 20:53:36', '2009-10-22 21:46:46', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(9, 1, '2009-10-26 18:00:15', '2009-10-26 18:03:26', '0000-00-00 00:00:00', 1, 0, 0, 2, '2.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '699.9900', '699.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '699.9900', '699.9900', '699.9900', '699.9900', NULL, 1, 0, NULL),
-(10, 1, '2009-10-26 19:23:00', '2009-10-26 19:23:35', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', 'guest', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '86.201.245.123', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 0, NULL),
-(11, 1, '2009-10-28 07:41:00', '2009-10-28 07:41:01', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '16.9900', '16.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '83.203.113.231', '', '', NULL, NULL, '16.9900', '16.9900', '16.9900', '16.9900', NULL, 1, 0, NULL),
-(12, 1, '2009-10-31 10:03:39', '2009-10-31 10:50:46', '0000-00-00 00:00:00', 1, 0, 0, 3, '4.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2599.9600', '2599.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2599.9600', '2599.9600', '2599.9600', '2599.9600', NULL, 1, 0, NULL),
-(13, 1, '2009-10-31 10:51:15', '2009-10-31 10:51:16', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '149.9900', '149.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '149.9900', '149.9900', '149.9900', '149.9900', NULL, 1, 0, NULL),
-(14, 1, '2009-10-31 10:53:11', '2009-10-31 10:57:55', '0000-00-00 00:00:00', 1, 0, 0, 7, '7.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '4633.9600', '4633.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '4633.9600', '4633.9600', '4633.9600', '4633.9600', NULL, 1, 0, NULL),
+(6, 1, '2009-10-19 21:44:10', '2009-10-19 21:52:41', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '354.9900', '354.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 1, NULL),
+(7, 1, '2009-10-21 20:14:20', '2009-10-21 22:11:28', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 1, NULL),
+(8, 1, '2009-10-22 20:53:36', '2009-10-22 21:46:46', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '192.168.1.23', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 1, NULL),
+(9, 1, '2009-10-26 18:00:15', '2009-10-26 18:03:26', '0000-00-00 00:00:00', 1, 0, 0, 2, '2.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '699.9900', '699.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '699.9900', '699.9900', '699.9900', '699.9900', NULL, 1, 1, NULL),
+(10, 1, '2009-10-26 19:23:00', '2009-10-26 19:23:35', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '349.9900', '349.9900', 'guest', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '86.201.245.123', '', '', NULL, NULL, '349.9900', '349.9900', '349.9900', '349.9900', NULL, 1, 1, NULL),
+(11, 1, '2009-10-28 07:41:00', '2009-10-28 07:41:01', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '16.9900', '16.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '83.203.113.231', '', '', NULL, NULL, '16.9900', '16.9900', '16.9900', '16.9900', NULL, 1, 1, NULL),
+(12, 1, '2009-10-31 10:03:39', '2009-10-31 10:50:46', '0000-00-00 00:00:00', 1, 0, 0, 3, '4.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2599.9600', '2599.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2599.9600', '2599.9600', '2599.9600', '2599.9600', NULL, 1, 1, NULL),
+(13, 1, '2009-10-31 10:51:15', '2009-10-31 10:51:16', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '149.9900', '149.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '149.9900', '149.9900', '149.9900', '149.9900', NULL, 1, 1, NULL),
+(14, 1, '2009-10-31 10:53:11', '2009-10-31 10:57:55', '0000-00-00 00:00:00', 1, 0, 0, 7, '7.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '4633.9600', '4633.9600', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '4633.9600', '4633.9600', '4633.9600', '4633.9600', NULL, 1, 1, NULL),
 (15, 1, '2009-10-31 10:56:27', '2009-10-31 10:56:27', '0000-00-00 00:00:00', 1, 0, 0, 0, '0.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '0.0000', '0.0000', NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', NULL, '', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 1, 0, NULL),
-(16, 1, '2009-10-31 14:12:39', '2009-10-31 15:56:48', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.9900', '2299.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2299.9900', '2299.9900', '2299.9900', '2299.9900', NULL, 1, 0, NULL);
+(16, 1, '2009-10-31 14:12:39', '2009-10-31 15:56:48', '0000-00-00 00:00:00', 1, 0, 0, 1, '1.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '2299.9900', '2299.9900', '', 0, 3, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, NULL, '79.86.25.183', '', '', NULL, NULL, '2299.9900', '2299.9900', '2299.9900', '2299.9900', NULL, 1, 1, NULL),
+(17, 1, '2009-11-03 01:21:43', '2009-11-03 01:53:32', '0000-00-00 00:00:00', 0, 0, 0, 3, '3.0000', 0, '1.0000', '1.0000', '1.0000', '1.0000', 'EUR', 'EUR', 'EUR', 'EUR', '914.9900', '914.9900', '', NULL, 3, 0, 'fghfdghd@mail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 1, NULL, '192.168.1.23', '2,1', '100000002', NULL, 'POINTROUGE', '1449.9900', '1449.9900', '899.9900', '899.9900', NULL, 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -22495,7 +22874,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_address` (
   `gift_message_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   KEY `FK_SALES_QUOTE_ADDRESS_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=67 ;
 
 --
 -- Contenu de la table `sales_flat_quote_address`
@@ -22533,7 +22912,9 @@ INSERT INTO `sales_flat_quote_address` (`address_id`, `quote_id`, `created_at`, 
 (57, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
 (58, 15, '2009-10-31 10:56:27', '2009-10-31 10:56:27', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 1, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
 (61, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'billing', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
-(62, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '10.6000', '2299.9900', '2299.9900', '2299.9900', '2299.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', NULL, 'a:0:{}', NULL);
+(62, 16, '2009-10-31 14:12:42', '2009-10-31 15:56:48', NULL, 0, NULL, 'shipping', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '', '', '10.6000', '2299.9900', '2299.9900', '2299.9900', '2299.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', NULL, 'a:0:{}', NULL),
+(65, 17, '2009-11-03 01:21:43', '2009-11-03 01:53:32', NULL, 1, NULL, 'billing', 'fghfdghd@mail.com', NULL, 'fghfdh', NULL, 'gfdhfdgh', NULL, '', 'gfd ;kjh fduhfdiouh', 'remoitu rme', 'Ain', 182, '11111', 'FR', '4545454545', 'tharibo', 0, 0, 0, '', '', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, '0.0000', '0.0000', '0.0000', '0.0000', NULL, 'a:0:{}', NULL),
+(66, 17, '2009-11-03 01:21:43', '2009-11-03 01:53:32', NULL, 1, NULL, 'shipping', 'fghfdghd@mail.com', NULL, 'fghfdh', NULL, 'gfdhfdgh', NULL, '', 'gfd ;kjh fduhfdiouh', 'remoitu rme', 'Ain', 182, '11111', 'FR', '4545454545', 'tharibo', 1, 0, 0, 'flatrate_flatrate', 'Flat Rate - Fixed', '51.2000', '1449.9900', '1449.9900', '899.9900', '899.9900', '0.0000', '0.0000', '15.0000', '15.0000', '0.0000', '0.0000', '550.0000', '550.0000', '914.9900', '914.9900', NULL, 'a:0:{}', NULL);
 
 -- --------------------------------------------------------
 
@@ -22629,7 +23010,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item` (
   KEY `FK_SALES_QUOTE_ITEM_SALES_QUOTE` (`quote_id`),
   KEY `FK_SALES_FLAT_QUOTE_ITEM_PARENT_ITEM` (`parent_item_id`),
   KEY `FK_SALES_QUOTE_ITEM_CATALOG_PRODUCT_ENTITY` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item`
@@ -22658,7 +23039,10 @@ INSERT INTO `sales_flat_quote_item` (`item_id`, `quote_id`, `created_at`, `updat
 (36, 14, '2009-10-31 10:57:40', '2009-10-31 10:57:55', 44, NULL, 0, 'Rebel XT', 'Canon Digital Rebel XT 8MP Digital SLR Camera', NULL, '', NULL, 0, 0, 0, '4.0000', '1.0000', '550.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '550.0000', '550.0000', '550.0000', '4.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
 (37, 14, '2009-10-31 10:57:47', '2009-10-31 10:57:55', 20, NULL, 0, 'MM-A900M', 'Samsung MM-A900M Ace', NULL, '', NULL, 0, 0, 0, '1.0000', '1.0000', '150.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '150.0000', '150.0000', '150.0000', '1.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
 (38, 14, '2009-10-31 10:57:54', '2009-10-31 10:57:55', 133, NULL, 0, 'ac9003', 'Universal Camera Case', NULL, '', NULL, 0, 0, 0, NULL, '1.0000', '34.0000', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '34.0000', '34.0000', '34.0000', '0.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
-(40, 16, '2009-10-31 15:49:40', '2009-10-31 15:56:48', 25, NULL, 0, 'MA464LL/A', 'Apple MacBook Pro MA464LL/A 15.4" Notebook PC', NULL, '', NULL, 0, 0, 0, '10.6000', '1.0000', '2299.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', '2299.9900', '10.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
+(40, 16, '2009-10-31 15:49:40', '2009-10-31 15:56:48', 25, NULL, 0, 'MA464LL/A', 'Apple MacBook Pro MA464LL/A 15.4" Notebook PC', NULL, '', NULL, 0, 0, 0, '10.6000', '1.0000', '2299.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '2299.9900', '2299.9900', '2299.9900', '10.6000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(41, 17, '2009-11-03 01:21:43', '2009-11-03 01:53:32', 167, NULL, 0, '55555', 'Produit1', NULL, '1', NULL, 0, 0, 0, '12.0000', '1.0000', '100.0000', '0.0000', NULL, '0.0000', '50.0000', '50.0000', '0.0000', '0.0000', '0.0000', '100.0000', '100.0000', '50.0000', '12.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(42, 17, '2009-11-03 01:21:51', '2009-11-03 01:53:32', 168, NULL, 0, '55556', 'Produit2', NULL, '1', NULL, 0, 0, 0, '24.0000', '1.0000', '1000.0000', '0.0000', NULL, '0.0000', '500.0000', '500.0000', '0.0000', '0.0000', '0.0000', '1000.0000', '1000.0000', '500.0000', '24.0000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000'),
+(43, 17, '2009-11-03 01:22:18', '2009-11-03 01:53:32', 17, NULL, 0, 'bb8100', 'BlackBerry 8100 Pearl', NULL, '', NULL, 0, 0, 0, '15.2000', '1.0000', '349.9900', '0.0000', NULL, '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '349.9900', '349.9900', '349.9900', '15.2000', 'simple', '0.0000', '0.0000', NULL, NULL, 'a:0:{}', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000');
 
 -- --------------------------------------------------------
 
@@ -22675,7 +23059,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_item_option` (
   `value` text NOT NULL,
   PRIMARY KEY (`option_id`),
   KEY `FK_SALES_QUOTE_ITEM_OPTION_ITEM_ID` (`item_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Additional options for quote item' AUTO_INCREMENT=48 ;
 
 --
 -- Contenu de la table `sales_flat_quote_item_option`
@@ -22708,7 +23092,10 @@ INSERT INTO `sales_flat_quote_item_option` (`option_id`, `item_id`, `product_id`
 (40, 36, 44, 'info_buyRequest', 'a:4:{s:4:"uenc";s:80:"aHR0cDovL3IyOTYyMC5vdmgubmV0L21hZ2VudG8vY2hlY2tvdXQvY2FydC9pbmRleC8_X19fU0lEPVU,";s:7:"product";s:2:"44";s:7:"in_cart";s:1:"1";s:3:"qty";i:1;}'),
 (41, 37, 20, 'info_buyRequest', 'a:4:{s:4:"uenc";s:80:"aHR0cDovL3IyOTYyMC5vdmgubmV0L21hZ2VudG8vY2hlY2tvdXQvY2FydC9pbmRleC8_X19fU0lEPVU,";s:7:"product";s:2:"20";s:7:"in_cart";s:1:"1";s:3:"qty";i:1;}'),
 (42, 38, 133, 'info_buyRequest', 'a:4:{s:4:"uenc";s:80:"aHR0cDovL3IyOTYyMC5vdmgubmV0L21hZ2VudG8vY2hlY2tvdXQvY2FydC9pbmRleC8_X19fU0lEPVU,";s:7:"product";s:3:"133";s:7:"in_cart";s:1:"1";s:3:"qty";i:1;}'),
-(44, 40, 25, 'info_buyRequest', 'a:5:{s:4:"uenc";s:236:"aHR0cDovL3IyOTYyMC5vdmgubmV0L21hZ2VudG8vY2F0YWxvZy9wcm9kdWN0L3ZpZXcvaWQvMjUvcy9hcHBsZS1tYWNib29rLXByby1tYTQ2NGxsLWEtMTUtNC1ub3RlYm9vay1wYy0yLTAtZ2h6LWludGVsLWNvcmUtZHVvLTEtZ2ItcmFtLTEwMC1nYi1oYXJkLWRyaXZlLXN1cGVyZHJpdmUvY2F0ZWdvcnkvMjgv";s:7:"product";s:2:"25";s:15:"related_product";s:0:"";s:7:"options";a:1:{i:1;s:0:"";}s:3:"qty";s:0:"";}');
+(44, 40, 25, 'info_buyRequest', 'a:5:{s:4:"uenc";s:236:"aHR0cDovL3IyOTYyMC5vdmgubmV0L21hZ2VudG8vY2F0YWxvZy9wcm9kdWN0L3ZpZXcvaWQvMjUvcy9hcHBsZS1tYWNib29rLXByby1tYTQ2NGxsLWEtMTUtNC1ub3RlYm9vay1wYy0yLTAtZ2h6LWludGVsLWNvcmUtZHVvLTEtZ2ItcmFtLTEwMC1nYi1oYXJkLWRyaXZlLXN1cGVyZHJpdmUvY2F0ZWdvcnkvMjgv";s:7:"product";s:2:"25";s:15:"related_product";s:0:"";s:7:"options";a:1:{i:1;s:0:"";}s:3:"qty";s:0:"";}'),
+(45, 41, 167, 'info_buyRequest', 'a:3:{s:4:"uenc";s:88:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,";s:7:"product";s:3:"167";s:3:"qty";i:1;}'),
+(46, 42, 168, 'info_buyRequest', 'a:3:{s:4:"uenc";s:88:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC90ZXN0cHJvbW90aW9uLmh0bWw,";s:7:"product";s:3:"168";s:3:"qty";i:1;}'),
+(47, 43, 17, 'info_buyRequest', 'a:3:{s:4:"uenc";s:120:"aHR0cDovLzE5Mi4xNjguMS4yMy9-dGhhcmliby9tYWdlbnRvL2luZGV4LnBocC9jYXRhbG9nL2NhdGVnb3J5L3ZpZXcvcy9jZWxsLXBob25lcy9pZC84Lw,,";s:7:"product";s:2:"17";s:3:"qty";i:1;}');
 
 -- --------------------------------------------------------
 
@@ -22742,7 +23129,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_payment` (
   `ideal_issuer_list` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`payment_id`),
   KEY `FK_SALES_QUOTE_PAYMENT_SALES_QUOTE` (`quote_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `sales_flat_quote_payment`
@@ -22753,7 +23140,8 @@ INSERT INTO `sales_flat_quote_payment` (`payment_id`, `quote_id`, `created_at`, 
 (2, 2, '2009-10-07 21:18:51', '2009-10-07 21:18:51', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
 (3, 6, '2009-10-19 21:48:32', '2009-10-19 21:52:33', 'checkmo', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
 (4, 9, '2009-10-26 18:00:50', '2009-10-26 18:03:26', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
-(5, 10, '2009-10-26 19:23:14', '2009-10-26 19:23:14', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL);
+(5, 10, '2009-10-26 19:23:14', '2009-10-26 19:23:14', '', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL),
+(6, 17, '2009-11-03 01:22:29', '2009-11-03 01:34:45', 'cybermut_payment', '', '', '', '', '', 0, 0, '', 0, 0, '', '', '', '', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -22776,7 +23164,7 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_shipping_rate` (
   `method_title` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`rate_id`),
   KEY `FK_SALES_QUOTE_SHIPPING_RATE_ADDRESS` (`address_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Contenu de la table `sales_flat_quote_shipping_rate`
@@ -22784,7 +23172,8 @@ CREATE TABLE IF NOT EXISTS `sales_flat_quote_shipping_rate` (
 
 INSERT INTO `sales_flat_quote_shipping_rate` (`rate_id`, `address_id`, `created_at`, `updated_at`, `carrier`, `carrier_title`, `code`, `method`, `method_description`, `price`, `method_title`) VALUES
 (4, 4, '2009-10-07 21:01:56', '2009-10-07 21:09:17', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed'),
-(7, 24, '2009-10-19 21:52:41', '2009-10-19 21:52:41', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed');
+(7, 24, '2009-10-19 21:52:41', '2009-10-19 21:52:41', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '5.0000', 'Fixed'),
+(35, 66, '2009-11-03 01:53:32', '2009-11-03 01:53:32', 'flatrate', 'Flat Rate', 'flatrate_flatrate', 'flatrate', NULL, '15.0000', 'Fixed');
 
 -- --------------------------------------------------------
 
@@ -22861,14 +23250,15 @@ CREATE TABLE IF NOT EXISTS `sales_order` (
   KEY `FK_sales_order_store` (`store_id`),
   KEY `IDX_CUSTOMER` (`customer_id`),
   KEY `IDX_INCREMENT_ID` (`increment_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=3 ;
 
 --
 -- Contenu de la table `sales_order`
 --
 
 INSERT INTO `sales_order` (`entity_id`, `entity_type_id`, `attribute_set_id`, `increment_id`, `parent_id`, `store_id`, `created_at`, `updated_at`, `is_active`, `customer_id`, `tax_amount`, `shipping_amount`, `discount_amount`, `subtotal`, `grand_total`, `total_paid`, `total_refunded`, `total_qty_ordered`, `total_canceled`, `total_invoiced`, `total_online_refunded`, `total_offline_refunded`, `base_tax_amount`, `base_shipping_amount`, `base_discount_amount`, `base_subtotal`, `base_grand_total`, `base_total_paid`, `base_total_refunded`, `base_total_qty_ordered`, `base_total_canceled`, `base_total_invoiced`, `base_total_online_refunded`, `base_total_offline_refunded`, `subtotal_refunded`, `subtotal_canceled`, `discount_refunded`, `discount_canceled`, `discount_invoiced`, `tax_refunded`, `tax_canceled`, `shipping_refunded`, `shipping_canceled`, `base_subtotal_refunded`, `base_subtotal_canceled`, `base_discount_refunded`, `base_discount_canceled`, `base_discount_invoiced`, `base_tax_refunded`, `base_tax_canceled`, `base_shipping_refunded`, `base_shipping_canceled`, `subtotal_invoiced`, `tax_invoiced`, `shipping_invoiced`, `base_subtotal_invoiced`, `base_tax_invoiced`, `base_shipping_invoiced`, `shipping_tax_amount`, `base_shipping_tax_amount`, `shipping_tax_refunded`, `base_shipping_tax_refunded`) VALUES
-(1, 4, 0, '100000001', 0, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1, NULL, '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL);
+(1, 4, 0, '100000001', 0, 1, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1, NULL, '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '5.0000', '0.0000', '399.9900', '404.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL),
+(2, 4, 0, '100000002', 0, 1, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 1, NULL, '0.0000', '15.0000', '0.0000', '1449.9900', '1464.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '15.0000', '0.0000', '1449.9900', '1464.9900', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', '0.0000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0.0000', '0.0000', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -22913,7 +23303,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_decimal` (
   KEY `FK_sales_order_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_decimal_attribute` (`attribute_id`),
   KEY `FK_sales_order_decimal` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `sales_order_decimal`
@@ -22924,7 +23314,12 @@ INSERT INTO `sales_order_decimal` (`value_id`, `entity_type_id`, `attribute_id`,
 (2, 4, 377, 1, '1.0000'),
 (3, 4, 889, 1, '1.0000'),
 (4, 4, 890, 1, '1.0000'),
-(5, 4, 196, 1, '13.6000');
+(5, 4, 196, 1, '13.6000'),
+(6, 4, 376, 2, '1.0000'),
+(7, 4, 377, 2, '1.0000'),
+(8, 4, 889, 2, '1.0000'),
+(9, 4, 890, 2, '1.0000'),
+(10, 4, 196, 2, '51.2000');
 
 -- --------------------------------------------------------
 
@@ -22947,7 +23342,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity` (
   KEY `FK_sales_order_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_store` (`store_id`),
   KEY `IDX_SALES_ORDER_ENTITY_PARENT` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=14 ;
 
 --
 -- Contenu de la table `sales_order_entity`
@@ -22959,7 +23354,14 @@ INSERT INTO `sales_order_entity` (`entity_id`, `entity_type_id`, `attribute_set_
 (3, 8, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
 (4, 17, 0, '', 1, NULL, '2009-10-07 20:28:35', '2009-10-07 20:29:02', 1),
 (5, 17, 0, '', 1, NULL, '2009-10-07 20:28:36', '2009-10-07 20:29:02', 1),
-(6, 17, 0, '', 1, NULL, '2009-10-07 20:29:02', '2009-10-07 20:29:02', 1);
+(6, 17, 0, '', 1, NULL, '2009-10-07 20:29:02', '2009-10-07 20:29:02', 1),
+(7, 6, 0, '', 2, NULL, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 1),
+(8, 6, 0, '', 2, NULL, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 1),
+(9, 8, 0, '', 2, NULL, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 1),
+(10, 17, 0, '', 2, NULL, '2009-11-03 01:24:10', '2009-11-03 01:24:18', 1),
+(11, 17, 0, '', 2, NULL, '2009-11-03 01:24:11', '2009-11-03 01:24:18', 1),
+(12, 17, 0, '', 2, NULL, '2009-11-03 01:24:16', '2009-11-03 01:24:18', 1),
+(13, 17, 0, '', 2, NULL, '2009-11-03 01:24:18', '2009-11-03 01:24:18', 1);
 
 -- --------------------------------------------------------
 
@@ -23004,7 +23406,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_decimal` (
   KEY `FK_sales_order_entity_decimal_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_decimal_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_decimal` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `sales_order_entity_decimal`
@@ -23014,7 +23416,11 @@ INSERT INTO `sales_order_entity_decimal` (`value_id`, `entity_type_id`, `attribu
 (1, 8, 597, 3, '404.9900'),
 (2, 8, 758, 3, '404.9900'),
 (3, 8, 602, 3, '5.0000'),
-(4, 8, 763, 3, '5.0000');
+(4, 8, 763, 3, '5.0000'),
+(5, 8, 597, 9, '1464.9900'),
+(6, 8, 758, 9, '1464.9900'),
+(7, 8, 602, 9, '15.0000'),
+(8, 8, 763, 9, '15.0000');
 
 -- --------------------------------------------------------
 
@@ -23034,7 +23440,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_int` (
   KEY `FK_sales_order_entity_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_int_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_int` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Contenu de la table `sales_order_entity_int`
@@ -23045,7 +23451,13 @@ INSERT INTO `sales_order_entity_int` (`value_id`, `entity_type_id`, `attribute_i
 (2, 6, 218, 2, 213),
 (3, 17, 410, 4, 0),
 (4, 17, 410, 5, 0),
-(5, 17, 410, 6, 0);
+(5, 17, 410, 6, 0),
+(6, 6, 218, 7, 182),
+(7, 6, 218, 8, 182),
+(8, 17, 410, 10, 0),
+(9, 17, 410, 11, 0),
+(10, 17, 410, 12, 0),
+(11, 17, 410, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -23065,7 +23477,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_text` (
   KEY `FK_sales_order_entity_text_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_text_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_text` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Contenu de la table `sales_order_entity_text`
@@ -23073,7 +23485,10 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_text` (
 
 INSERT INTO `sales_order_entity_text` (`value_id`, `entity_type_id`, `attribute_id`, `entity_id`, `value`) VALUES
 (1, 17, 560, 5, 'Le client a été redirigé vers Cybermut'),
-(2, 17, 560, 6, 'Le client a été redirigé vers Cybermut');
+(2, 17, 560, 6, 'Le client a été redirigé vers Cybermut'),
+(3, 17, 560, 11, 'Le client a été redirigé vers Cybermut'),
+(4, 17, 560, 12, 'Le client a été redirigé vers Cybermut'),
+(5, 17, 560, 13, 'Le client a été redirigé vers Cybermut');
 
 -- --------------------------------------------------------
 
@@ -23093,7 +23508,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_entity_varchar` (
   KEY `FK_sales_order_entity_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_entity_varchar_attribute` (`attribute_id`),
   KEY `FK_sales_order_entity_varchar` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=72 ;
 
 --
 -- Contenu de la table `sales_order_entity_varchar`
@@ -23134,7 +23549,43 @@ INSERT INTO `sales_order_entity_varchar` (`value_id`, `entity_type_id`, `attribu
 (32, 8, 697, 3, '0'),
 (33, 17, 559, 4, 'pending'),
 (34, 17, 559, 5, 'pending'),
-(35, 17, 559, 6, 'pending');
+(35, 17, 559, 6, 'pending'),
+(36, 6, 233, 7, 'billing'),
+(37, 6, 224, 7, 'fghfdh'),
+(38, 6, 225, 7, 'gfdhfdgh'),
+(39, 6, 226, 7, ''),
+(40, 6, 222, 7, 'gfd ;kjh fduhfdiouh'),
+(41, 6, 227, 7, 'remoitu rme'),
+(42, 6, 228, 7, 'Ain'),
+(43, 6, 229, 7, '11111'),
+(44, 6, 219, 7, 'FR'),
+(45, 6, 230, 7, '4545454545'),
+(46, 6, 231, 7, ''),
+(47, 6, 233, 8, 'shipping'),
+(48, 6, 224, 8, 'fghfdh'),
+(49, 6, 225, 8, 'gfdhfdgh'),
+(50, 6, 226, 8, ''),
+(51, 6, 222, 8, 'gfd ;kjh fduhfdiouh'),
+(52, 6, 227, 8, 'remoitu rme'),
+(53, 6, 228, 8, 'Ain'),
+(54, 6, 229, 8, '11111'),
+(55, 6, 219, 8, 'FR'),
+(56, 6, 230, 8, '4545454545'),
+(57, 6, 231, 8, ''),
+(58, 8, 257, 9, 'cybermut_payment'),
+(59, 8, 258, 9, ''),
+(60, 8, 259, 9, ''),
+(61, 8, 260, 9, ''),
+(62, 8, 261, 9, ''),
+(63, 8, 262, 9, ''),
+(64, 8, 253, 9, '0'),
+(65, 8, 254, 9, '0'),
+(66, 8, 696, 9, '0'),
+(67, 8, 697, 9, '0'),
+(68, 17, 559, 10, 'pending'),
+(69, 17, 559, 11, 'pending'),
+(70, 17, 559, 12, 'pending'),
+(71, 17, 559, 13, 'pending');
 
 -- --------------------------------------------------------
 
@@ -23154,7 +23605,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_int` (
   KEY `FK_sales_order_int_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_int_attribute` (`attribute_id`),
   KEY `FK_sales_order_int` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `sales_order_int`
@@ -23167,7 +23618,14 @@ INSERT INTO `sales_order_int` (`value_id`, `entity_type_id`, `attribute_id`, `en
 (4, 4, 693, 1, 1),
 (5, 4, 378, 1, 0),
 (6, 4, 216, 1, 2),
-(7, 4, 217, 1, 1);
+(7, 4, 217, 1, 1),
+(8, 4, 204, 2, 17),
+(9, 4, 547, 2, 0),
+(10, 4, 550, 2, 0),
+(11, 4, 693, 2, 1),
+(12, 4, 378, 2, 0),
+(13, 4, 216, 2, 8),
+(14, 4, 217, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -23241,7 +23699,7 @@ CREATE TABLE IF NOT EXISTS `sales_order_varchar` (
   KEY `FK_sales_order_varchar_entity_type` (`entity_type_id`),
   KEY `FK_sales_order_varchar_attribute` (`attribute_id`),
   KEY `FK_sales_order_varchar` (`entity_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Contenu de la table `sales_order_varchar`
@@ -23259,7 +23717,19 @@ INSERT INTO `sales_order_varchar` (`value_id`, `entity_type_id`, `attribute_id`,
 (9, 4, 208, 1, 'Flat Rate - Fixed'),
 (10, 4, 553, 1, 'new'),
 (11, 4, 215, 1, 'pending'),
-(12, 4, 725, 1, 'Main Website\nMain Store\nEnglish');
+(12, 4, 725, 1, 'Main Website\nMain Store\nEnglish'),
+(13, 4, 210, 2, '192.168.1.23'),
+(14, 4, 548, 2, 'fghfdghd@mail.com'),
+(15, 4, 888, 2, 'EUR'),
+(16, 4, 373, 2, 'EUR'),
+(17, 4, 374, 2, 'EUR'),
+(18, 4, 375, 2, 'EUR'),
+(19, 4, 491, 2, ''),
+(20, 4, 214, 2, 'flatrate_flatrate'),
+(21, 4, 208, 2, 'Flat Rate - Fixed'),
+(22, 4, 553, 2, 'new'),
+(23, 4, 215, 2, 'pending'),
+(24, 4, 725, 2, 'Main Website\nMain Store\nEnglish');
 
 -- --------------------------------------------------------
 
@@ -24563,465 +25033,6 @@ CREATE TABLE IF NOT EXISTS `weee_discount` (
 -- Contenu de la table `weee_discount`
 --
 
-INSERT INTO `weee_discount` (`entity_id`, `website_id`, `customer_group_id`, `value`) VALUES
-(16, 1, 0, '100.0000'),
-(17, 1, 0, '100.0000'),
-(18, 1, 0, '100.0000'),
-(19, 1, 0, '100.0000'),
-(20, 1, 0, '100.0000'),
-(25, 1, 0, '100.0000'),
-(26, 1, 0, '100.0000'),
-(27, 1, 0, '100.0000'),
-(28, 1, 0, '100.0000'),
-(29, 1, 0, '100.0000'),
-(30, 1, 0, '100.0000'),
-(31, 1, 0, '100.0000'),
-(32, 1, 0, '100.0000'),
-(33, 1, 0, '100.0000'),
-(34, 1, 0, '100.0000'),
-(35, 1, 0, '100.0000'),
-(36, 1, 0, '100.0000'),
-(37, 1, 0, '100.0000'),
-(38, 1, 0, '100.0000'),
-(39, 1, 0, '100.0000'),
-(41, 1, 0, '100.0000'),
-(42, 1, 0, '100.0000'),
-(44, 1, 0, '100.0000'),
-(45, 1, 0, '100.0000'),
-(46, 1, 0, '100.0000'),
-(47, 1, 0, '100.0000'),
-(48, 1, 0, '100.0000'),
-(49, 1, 0, '100.0000'),
-(51, 1, 0, '100.0000'),
-(52, 1, 0, '100.0000'),
-(53, 1, 0, '100.0000'),
-(54, 1, 0, '100.0000'),
-(74, 1, 0, '100.0000'),
-(75, 1, 0, '100.0000'),
-(79, 1, 0, '100.0000'),
-(80, 1, 0, '100.0000'),
-(81, 1, 0, '100.0000'),
-(82, 1, 0, '100.0000'),
-(83, 1, 0, '100.0000'),
-(84, 1, 0, '100.0000'),
-(85, 1, 0, '100.0000'),
-(86, 1, 0, '100.0000'),
-(87, 1, 0, '100.0000'),
-(88, 1, 0, '100.0000'),
-(89, 1, 0, '100.0000'),
-(90, 1, 0, '100.0000'),
-(91, 1, 0, '100.0000'),
-(92, 1, 0, '100.0000'),
-(93, 1, 0, '100.0000'),
-(94, 1, 0, '100.0000'),
-(95, 1, 0, '100.0000'),
-(96, 1, 0, '100.0000'),
-(97, 1, 0, '100.0000'),
-(98, 1, 0, '100.0000'),
-(99, 1, 0, '100.0000'),
-(100, 1, 0, '100.0000'),
-(101, 1, 0, '100.0000'),
-(102, 1, 0, '100.0000'),
-(103, 1, 0, '100.0000'),
-(104, 1, 0, '100.0000'),
-(105, 1, 0, '100.0000'),
-(106, 1, 0, '100.0000'),
-(107, 1, 0, '100.0000'),
-(108, 1, 0, '100.0000'),
-(109, 1, 0, '100.0000'),
-(110, 1, 0, '100.0000'),
-(111, 1, 0, '100.0000'),
-(112, 1, 0, '100.0000'),
-(113, 1, 0, '100.0000'),
-(114, 1, 0, '100.0000'),
-(115, 1, 0, '100.0000'),
-(117, 1, 0, '100.0000'),
-(118, 1, 0, '100.0000'),
-(119, 1, 0, '100.0000'),
-(120, 1, 0, '100.0000'),
-(121, 1, 0, '100.0000'),
-(122, 1, 0, '100.0000'),
-(123, 1, 0, '100.0000'),
-(124, 1, 0, '100.0000'),
-(125, 1, 0, '100.0000'),
-(126, 1, 0, '100.0000'),
-(127, 1, 0, '100.0000'),
-(128, 1, 0, '100.0000'),
-(129, 1, 0, '100.0000'),
-(130, 1, 0, '100.0000'),
-(131, 1, 0, '100.0000'),
-(132, 1, 0, '100.0000'),
-(133, 1, 0, '100.0000'),
-(134, 1, 0, '100.0000'),
-(135, 1, 0, '100.0000'),
-(137, 1, 0, '100.0000'),
-(138, 1, 0, '100.0000'),
-(139, 1, 0, '100.0000'),
-(142, 1, 0, '100.0000'),
-(144, 1, 0, '100.0000'),
-(146, 1, 0, '100.0000'),
-(158, 1, 0, '100.0000'),
-(163, 1, 0, '100.0000'),
-(164, 1, 0, '100.0000'),
-(165, 1, 0, '100.0000'),
-(16, 1, 1, '100.0000'),
-(17, 1, 1, '100.0000'),
-(18, 1, 1, '100.0000'),
-(19, 1, 1, '100.0000'),
-(20, 1, 1, '100.0000'),
-(25, 1, 1, '100.0000'),
-(26, 1, 1, '100.0000'),
-(27, 1, 1, '100.0000'),
-(28, 1, 1, '100.0000'),
-(29, 1, 1, '100.0000'),
-(30, 1, 1, '100.0000'),
-(31, 1, 1, '100.0000'),
-(32, 1, 1, '100.0000'),
-(33, 1, 1, '100.0000'),
-(34, 1, 1, '100.0000'),
-(35, 1, 1, '100.0000'),
-(36, 1, 1, '100.0000'),
-(37, 1, 1, '100.0000'),
-(38, 1, 1, '100.0000'),
-(39, 1, 1, '100.0000'),
-(41, 1, 1, '100.0000'),
-(42, 1, 1, '100.0000'),
-(44, 1, 1, '100.0000'),
-(45, 1, 1, '100.0000'),
-(46, 1, 1, '100.0000'),
-(47, 1, 1, '100.0000'),
-(48, 1, 1, '100.0000'),
-(49, 1, 1, '100.0000'),
-(51, 1, 1, '100.0000'),
-(52, 1, 1, '100.0000'),
-(53, 1, 1, '100.0000'),
-(54, 1, 1, '100.0000'),
-(74, 1, 1, '100.0000'),
-(75, 1, 1, '100.0000'),
-(79, 1, 1, '100.0000'),
-(80, 1, 1, '100.0000'),
-(81, 1, 1, '100.0000'),
-(82, 1, 1, '100.0000'),
-(83, 1, 1, '100.0000'),
-(84, 1, 1, '100.0000'),
-(85, 1, 1, '100.0000'),
-(86, 1, 1, '100.0000'),
-(87, 1, 1, '100.0000'),
-(88, 1, 1, '100.0000'),
-(89, 1, 1, '100.0000'),
-(90, 1, 1, '100.0000'),
-(91, 1, 1, '100.0000'),
-(92, 1, 1, '100.0000'),
-(93, 1, 1, '100.0000'),
-(94, 1, 1, '100.0000'),
-(95, 1, 1, '100.0000'),
-(96, 1, 1, '100.0000'),
-(97, 1, 1, '100.0000'),
-(98, 1, 1, '100.0000'),
-(99, 1, 1, '100.0000'),
-(100, 1, 1, '100.0000'),
-(101, 1, 1, '100.0000'),
-(102, 1, 1, '100.0000'),
-(103, 1, 1, '100.0000'),
-(104, 1, 1, '100.0000'),
-(105, 1, 1, '100.0000'),
-(106, 1, 1, '100.0000'),
-(107, 1, 1, '100.0000'),
-(108, 1, 1, '100.0000'),
-(109, 1, 1, '100.0000'),
-(110, 1, 1, '100.0000'),
-(111, 1, 1, '100.0000'),
-(112, 1, 1, '100.0000'),
-(113, 1, 1, '100.0000'),
-(114, 1, 1, '100.0000'),
-(115, 1, 1, '100.0000'),
-(117, 1, 1, '100.0000'),
-(118, 1, 1, '100.0000'),
-(119, 1, 1, '100.0000'),
-(120, 1, 1, '100.0000'),
-(121, 1, 1, '100.0000'),
-(122, 1, 1, '100.0000'),
-(123, 1, 1, '100.0000'),
-(124, 1, 1, '100.0000'),
-(125, 1, 1, '100.0000'),
-(126, 1, 1, '100.0000'),
-(127, 1, 1, '100.0000'),
-(128, 1, 1, '100.0000'),
-(129, 1, 1, '100.0000'),
-(130, 1, 1, '100.0000'),
-(131, 1, 1, '100.0000'),
-(132, 1, 1, '100.0000'),
-(133, 1, 1, '100.0000'),
-(134, 1, 1, '100.0000'),
-(135, 1, 1, '100.0000'),
-(137, 1, 1, '100.0000'),
-(138, 1, 1, '100.0000'),
-(139, 1, 1, '100.0000'),
-(142, 1, 1, '100.0000'),
-(144, 1, 1, '100.0000'),
-(146, 1, 1, '100.0000'),
-(158, 1, 1, '100.0000'),
-(163, 1, 1, '100.0000'),
-(164, 1, 1, '100.0000'),
-(165, 1, 1, '100.0000'),
-(16, 1, 2, '100.0000'),
-(17, 1, 2, '100.0000'),
-(18, 1, 2, '100.0000'),
-(19, 1, 2, '100.0000'),
-(20, 1, 2, '100.0000'),
-(25, 1, 2, '100.0000'),
-(26, 1, 2, '100.0000'),
-(27, 1, 2, '100.0000'),
-(28, 1, 2, '100.0000'),
-(29, 1, 2, '100.0000'),
-(30, 1, 2, '100.0000'),
-(31, 1, 2, '100.0000'),
-(32, 1, 2, '100.0000'),
-(33, 1, 2, '100.0000'),
-(34, 1, 2, '100.0000'),
-(35, 1, 2, '100.0000'),
-(36, 1, 2, '100.0000'),
-(37, 1, 2, '100.0000'),
-(38, 1, 2, '100.0000'),
-(39, 1, 2, '100.0000'),
-(41, 1, 2, '100.0000'),
-(42, 1, 2, '100.0000'),
-(44, 1, 2, '100.0000'),
-(45, 1, 2, '100.0000'),
-(46, 1, 2, '100.0000'),
-(47, 1, 2, '100.0000'),
-(48, 1, 2, '100.0000'),
-(49, 1, 2, '100.0000'),
-(51, 1, 2, '100.0000'),
-(52, 1, 2, '100.0000'),
-(53, 1, 2, '100.0000'),
-(54, 1, 2, '100.0000'),
-(74, 1, 2, '100.0000'),
-(75, 1, 2, '100.0000'),
-(79, 1, 2, '100.0000'),
-(80, 1, 2, '100.0000'),
-(81, 1, 2, '100.0000'),
-(82, 1, 2, '100.0000'),
-(83, 1, 2, '100.0000'),
-(84, 1, 2, '100.0000'),
-(85, 1, 2, '100.0000'),
-(86, 1, 2, '100.0000'),
-(87, 1, 2, '100.0000'),
-(88, 1, 2, '100.0000'),
-(89, 1, 2, '100.0000'),
-(90, 1, 2, '100.0000'),
-(91, 1, 2, '100.0000'),
-(92, 1, 2, '100.0000'),
-(93, 1, 2, '100.0000'),
-(94, 1, 2, '100.0000'),
-(95, 1, 2, '100.0000'),
-(96, 1, 2, '100.0000'),
-(97, 1, 2, '100.0000'),
-(98, 1, 2, '100.0000'),
-(99, 1, 2, '100.0000'),
-(100, 1, 2, '100.0000'),
-(101, 1, 2, '100.0000'),
-(102, 1, 2, '100.0000'),
-(103, 1, 2, '100.0000'),
-(104, 1, 2, '100.0000'),
-(105, 1, 2, '100.0000'),
-(106, 1, 2, '100.0000'),
-(107, 1, 2, '100.0000'),
-(108, 1, 2, '100.0000'),
-(109, 1, 2, '100.0000'),
-(110, 1, 2, '100.0000'),
-(111, 1, 2, '100.0000'),
-(112, 1, 2, '100.0000'),
-(113, 1, 2, '100.0000'),
-(114, 1, 2, '100.0000'),
-(115, 1, 2, '100.0000'),
-(117, 1, 2, '100.0000'),
-(118, 1, 2, '100.0000'),
-(119, 1, 2, '100.0000'),
-(120, 1, 2, '100.0000'),
-(121, 1, 2, '100.0000'),
-(122, 1, 2, '100.0000'),
-(123, 1, 2, '100.0000'),
-(124, 1, 2, '100.0000'),
-(125, 1, 2, '100.0000'),
-(126, 1, 2, '100.0000'),
-(127, 1, 2, '100.0000'),
-(128, 1, 2, '100.0000'),
-(129, 1, 2, '100.0000'),
-(130, 1, 2, '100.0000'),
-(131, 1, 2, '100.0000'),
-(132, 1, 2, '100.0000'),
-(133, 1, 2, '100.0000'),
-(134, 1, 2, '100.0000'),
-(135, 1, 2, '100.0000'),
-(137, 1, 2, '100.0000'),
-(138, 1, 2, '100.0000'),
-(139, 1, 2, '100.0000'),
-(142, 1, 2, '100.0000'),
-(144, 1, 2, '100.0000'),
-(146, 1, 2, '100.0000'),
-(158, 1, 2, '100.0000'),
-(163, 1, 2, '100.0000'),
-(164, 1, 2, '100.0000'),
-(165, 1, 2, '100.0000'),
-(29, 1, 3, '100.0000'),
-(31, 1, 3, '100.0000'),
-(32, 1, 3, '100.0000'),
-(35, 1, 3, '100.0000'),
-(36, 1, 3, '100.0000'),
-(37, 1, 3, '100.0000'),
-(38, 1, 3, '100.0000'),
-(39, 1, 3, '100.0000'),
-(45, 1, 3, '100.0000'),
-(49, 1, 3, '100.0000'),
-(74, 1, 3, '100.0000'),
-(75, 1, 3, '100.0000'),
-(79, 1, 3, '100.0000'),
-(80, 1, 3, '100.0000'),
-(81, 1, 3, '100.0000'),
-(82, 1, 3, '100.0000'),
-(83, 1, 3, '100.0000'),
-(84, 1, 3, '100.0000'),
-(85, 1, 3, '100.0000'),
-(86, 1, 3, '100.0000'),
-(87, 1, 3, '100.0000'),
-(88, 1, 3, '100.0000'),
-(89, 1, 3, '100.0000'),
-(90, 1, 3, '100.0000'),
-(91, 1, 3, '100.0000'),
-(92, 1, 3, '100.0000'),
-(103, 1, 3, '100.0000'),
-(104, 1, 3, '100.0000'),
-(105, 1, 3, '100.0000'),
-(106, 1, 3, '100.0000'),
-(107, 1, 3, '100.0000'),
-(108, 1, 3, '100.0000'),
-(109, 1, 3, '100.0000'),
-(110, 1, 3, '100.0000'),
-(111, 1, 3, '100.0000'),
-(117, 1, 3, '100.0000'),
-(118, 1, 3, '100.0000'),
-(119, 1, 3, '100.0000'),
-(120, 1, 3, '100.0000'),
-(121, 1, 3, '100.0000'),
-(122, 1, 3, '100.0000'),
-(123, 1, 3, '100.0000'),
-(124, 1, 3, '100.0000'),
-(125, 1, 3, '100.0000'),
-(126, 1, 3, '100.0000'),
-(127, 1, 3, '100.0000'),
-(128, 1, 3, '100.0000'),
-(129, 1, 3, '100.0000'),
-(130, 1, 3, '100.0000'),
-(131, 1, 3, '100.0000'),
-(132, 1, 3, '100.0000'),
-(133, 1, 3, '100.0000'),
-(134, 1, 3, '100.0000'),
-(135, 1, 3, '100.0000'),
-(137, 1, 3, '100.0000'),
-(158, 1, 3, '100.0000'),
-(163, 1, 3, '100.0000'),
-(165, 1, 3, '100.0000'),
-(16, 1, 4, '100.0000'),
-(17, 1, 4, '100.0000'),
-(18, 1, 4, '100.0000'),
-(19, 1, 4, '100.0000'),
-(20, 1, 4, '100.0000'),
-(25, 1, 4, '100.0000'),
-(26, 1, 4, '100.0000'),
-(27, 1, 4, '100.0000'),
-(28, 1, 4, '100.0000'),
-(29, 1, 4, '100.0000'),
-(30, 1, 4, '100.0000'),
-(31, 1, 4, '100.0000'),
-(32, 1, 4, '100.0000'),
-(33, 1, 4, '100.0000'),
-(34, 1, 4, '100.0000'),
-(35, 1, 4, '100.0000'),
-(36, 1, 4, '100.0000'),
-(37, 1, 4, '100.0000'),
-(38, 1, 4, '100.0000'),
-(39, 1, 4, '100.0000'),
-(41, 1, 4, '100.0000'),
-(42, 1, 4, '100.0000'),
-(44, 1, 4, '100.0000'),
-(45, 1, 4, '100.0000'),
-(46, 1, 4, '100.0000'),
-(47, 1, 4, '100.0000'),
-(48, 1, 4, '100.0000'),
-(49, 1, 4, '100.0000'),
-(51, 1, 4, '100.0000'),
-(52, 1, 4, '100.0000'),
-(53, 1, 4, '100.0000'),
-(54, 1, 4, '100.0000'),
-(74, 1, 4, '100.0000'),
-(75, 1, 4, '100.0000'),
-(79, 1, 4, '100.0000'),
-(80, 1, 4, '100.0000'),
-(81, 1, 4, '100.0000'),
-(82, 1, 4, '100.0000'),
-(83, 1, 4, '100.0000'),
-(84, 1, 4, '100.0000'),
-(85, 1, 4, '100.0000'),
-(86, 1, 4, '100.0000'),
-(87, 1, 4, '100.0000'),
-(88, 1, 4, '100.0000'),
-(89, 1, 4, '100.0000'),
-(90, 1, 4, '100.0000'),
-(91, 1, 4, '100.0000'),
-(92, 1, 4, '100.0000'),
-(93, 1, 4, '100.0000'),
-(94, 1, 4, '100.0000'),
-(95, 1, 4, '100.0000'),
-(96, 1, 4, '100.0000'),
-(97, 1, 4, '100.0000'),
-(98, 1, 4, '100.0000'),
-(99, 1, 4, '100.0000'),
-(100, 1, 4, '100.0000'),
-(101, 1, 4, '100.0000'),
-(102, 1, 4, '100.0000'),
-(103, 1, 4, '100.0000'),
-(104, 1, 4, '100.0000'),
-(105, 1, 4, '100.0000'),
-(106, 1, 4, '100.0000'),
-(107, 1, 4, '100.0000'),
-(108, 1, 4, '100.0000'),
-(109, 1, 4, '100.0000'),
-(110, 1, 4, '100.0000'),
-(111, 1, 4, '100.0000'),
-(112, 1, 4, '100.0000'),
-(113, 1, 4, '100.0000'),
-(114, 1, 4, '100.0000'),
-(115, 1, 4, '100.0000'),
-(117, 1, 4, '100.0000'),
-(118, 1, 4, '100.0000'),
-(119, 1, 4, '100.0000'),
-(120, 1, 4, '100.0000'),
-(121, 1, 4, '100.0000'),
-(122, 1, 4, '100.0000'),
-(123, 1, 4, '100.0000'),
-(124, 1, 4, '100.0000'),
-(125, 1, 4, '100.0000'),
-(126, 1, 4, '100.0000'),
-(127, 1, 4, '100.0000'),
-(128, 1, 4, '100.0000'),
-(129, 1, 4, '100.0000'),
-(130, 1, 4, '100.0000'),
-(131, 1, 4, '100.0000'),
-(132, 1, 4, '100.0000'),
-(133, 1, 4, '100.0000'),
-(134, 1, 4, '100.0000'),
-(135, 1, 4, '100.0000'),
-(137, 1, 4, '100.0000'),
-(138, 1, 4, '100.0000'),
-(139, 1, 4, '100.0000'),
-(142, 1, 4, '100.0000'),
-(144, 1, 4, '100.0000'),
-(146, 1, 4, '100.0000'),
-(158, 1, 4, '100.0000'),
-(163, 1, 4, '100.0000'),
-(164, 1, 4, '100.0000'),
-(165, 1, 4, '100.0000');
 
 -- --------------------------------------------------------
 
