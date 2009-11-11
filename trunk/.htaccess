@@ -144,6 +144,7 @@
 ## rewrite everything else to index.php
 
     RewriteRule .* index.php [L]
+    #RewriteRule ^(.*)$ /magento/index.php [L]
 
 </IfModule>
 
