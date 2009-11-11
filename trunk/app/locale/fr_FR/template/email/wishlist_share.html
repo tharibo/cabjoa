@@ -1,4 +1,4 @@
-<!--@subject Take a look at {{var customer.name}}'s wishlist @-->
+<!--@subject Jetez un oeil &agrave; la liste d'envies de {{var customer.name}} @-->
 
 <style type="text/css">
     body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
@@ -11,7 +11,7 @@
                 <table cellspacing="0" cellpadding="0" border="0" width="650">
                     <tr>
                         <td valign="top">
-                            <p><a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="Magento" border="0"/></a></p></td>
+                            <p><a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif"}}" alt="Magento" border="0"/></a></p></td>
                     </tr>
                 </table>
 
@@ -19,8 +19,8 @@
                 <table cellspacing="0" cellpadding="0" border="0" width="650">
                     <tr>
                         <td valign="top">
-                        <p>Hey,<br/>
-                        Take a look at my wishlist from Demo Store.</p>
+                        <p>Salut,<br/><br/>
+                        Jette un oeil &agrave; ma liste d'envies sur la boutique de d&eacute;mo Magento.</p>
 
 <p>{{var message}}</p>
 
@@ -28,9 +28,9 @@
 
                         <br/>
 
-{{depend salable}}<p><strong><a href="{{var addAllLink}}" style="color:#DC6809;">Add all items to shopping cart</a></strong> |{{/depend}} <strong><a href="{{var viewOnSiteLink}}" style="color:#1E7EC8;">View all wishlist items</a></strong></p>
+<p><strong><a href="{{var addAllLink}}" style="color:#DC6809;">Ajouter tous les articles au panier</a></strong> | <strong><a href="{{var viewOnSiteLink}}" style="color:#1E7EC8;">Voir tous les articles de la liste d'envies</a></strong></p>
 
-                        <p>Thank you,<br/><strong>{{var customer.name}}</strong></p>
+                        <p>Merci,<br/><strong>{{var customer.name}}</strong></p>
 
 
                         </td>
