@@ -212,7 +212,7 @@ p.required { font-size:.95em; text-align:right; }
 
 
 /* Page heading */
-.page-head { margin:0 0 25px 0; border-bottom:1px solid #ccc; }
+.page-head { margin:0 0 25px 0; /*border-bottom:1px solid #ccc;*/ }
 .page-head-alt { margin:0 0 12px 0; }
 .page-head, .page-head-alt { text-align:right; }
 .page-head h3, .page-head-alt h3 {
