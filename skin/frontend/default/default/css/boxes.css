@@ -173,6 +173,7 @@ p.required { font-size:.95em; text-align:right; }
 .error-msg, .success-msg, .notice-msg, .note-msg {
     min-height:23px !important;
     margin-bottom:1em !important;
+    margin-top: 2em !important;
     border-style:solid !important;
     border-width:1px !important;
     background-repeat:no-repeat !important;
@@ -215,7 +216,7 @@ p.required { font-size:.95em; text-align:right; }
 .page-head-alt { margin:0 0 12px 0; }
 .page-head, .page-head-alt { text-align:right; }
 .page-head h3, .page-head-alt h3 {
-    margin:0;
+    margin:1em 0 0;
     font-size:1.7em !important;
     font-weight:normal !important;
     text-transform:none  !important;
@@ -566,7 +567,7 @@ div.mini-search
 .footer-container { /*border-top:15px solid #B6D1E2;*/ }
 .footer { /*width:1000px;*/ margin:0 auto; padding:10px 0px 4em; /*background-color:#618499;*/ }
 .footer .store-switcher { display:inline; padding:0 10px 0 0; vertical-align:middle; }
-.footer .informational div { border-top: 1px solid white; }
+.footer .informational div { /*border-top: 1px solid white;*/ }
 .footer .informational label { color:#fff; font-weight:bold; padding-right:3px; }
 .footer .informational ul {
     display:inline;
