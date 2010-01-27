@@ -38,11 +38,11 @@
                 <url helper="catalogsearch/getSearchTermUrl" />
                 <title>Search Terms</title>
             </action>
-            <action method="addLink" translate="label title" module="catalogsearch">
+            <!--action method="addLink" translate="label title" module="catalogsearch">
                 <label>Advanced Search</label>
                 <url helper="catalogsearch/getAdvancedSearchUrl" />
                 <title>Advanced Search</title>
-            </action>
+            </action-->
         </reference>
     </default>
 

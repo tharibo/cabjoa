@@ -960,9 +960,9 @@ table.recently-list td { width:20%; }
 .product-options dt .qty-disabled { background:none; border:0; padding:3px; color:#2f2f2f; }
 .product-options dd { padding:5px 10px 15px; margin:0 0 5px; border-bottom:1px solid #e4e4e4; }
 .product-options dl.last dd.last { border-bottom:0; padding-bottom:5px; margin-bottom:0; }
-.product-options dd input.input-text { width:98%; }
-.product-options dd textarea { width:98%; height:8em; }
-.product-options dd select { width:99%; }
+.product-options dd input.input-text { width:70%; }
+.product-options dd textarea { width:70%; height:8em; }
+.product-options dd select { width:60%; }
 .product-options dd .multiselect option { border-bottom:1px dotted #d9e5ee; padding:2px 4px; }
 .product-options ul.options-list { margin-right:5px; }
 .product-options ul.options-list li { line-height:1.5; padding:2px 0; }
