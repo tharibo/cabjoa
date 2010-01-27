@@ -12,15 +12,9 @@
  * obtain it through the world-wide-web, please send an email
  * to license@magentocommerce.com so we can send you a copy immediately.
  *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magentocommerce.com for more information.
- *
  * @category   Mage
  * @package    Mage_Page
- * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @copyright  Copyright (c) 2004-2007 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -29,7 +23,7 @@
  *
  * @category   Mage
  * @package    Mage_Page
- * @author      Magento Core Team <core@magentocommerce.com>
+ * @author      Sergiy Lysak <sergey@varien.com>
  */
 class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
 {
@@ -91,8 +85,8 @@ class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
         $html = '';
 
         $script = '<script type="text/javascript" src="%s" %s></script>';
-        $stylesheet = '<link rel="stylesheet" type="text/css" href="%s" %s />';
-        $alternate = '<link rel="alternate" type="%s" href="%s" %s />';
+        $stylesheet = '<link type="text/css" rel="stylesheet" href="%s" %s></link>';
+        $alternate = '<link rel="alternate" type="%s" href="%s" %s></link>';
 
         foreach ($this->_data['items'] as $item) {
             if (!is_null($item['cond']) && !$this->getData($item['cond'])) {
@@ -101,8 +95,8 @@ class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
             $if = !empty($item['if']) ? $item['if'] : '';
             switch ($item['type']) {
                 case 'js':
-                    #$lines[$if]['other'][] = sprintf($script, $baseJs.$item['name'], $item['params']);
-                    $lines[$if]['script'][] = $item['name'];
+                    $lines[$if]['other'][] = sprintf($script, $baseJs.$item['name'], $item['params']);
+                    #$lines[$if]['script'][] = $item['name'];
                     break;
 
                 case 'js_css':
@@ -130,25 +124,19 @@ class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
                 $html .= '<!--[if '.$if.']>'."\n";
             }
             if (!empty($items['script'])) {
-                $scriptItems = array();
-                if (Mage::getStoreConfigFlag('dev/js/merge_files')) {
-                    $scriptItems = $this->getChunkedItems($items['script'], 'index.php?c=auto&amp;f=');
-                } else {
-                    $scriptItems = $items['script'];
-                }
-                foreach ($scriptItems as $item) {
-                    $html .= sprintf($script, $baseJs.$item, '') . "\n";
+                foreach ($this->getChunkedItems($items['script'], $baseJs.'proxy.php?c=auto&f=') as $item) {
+                    $html .= sprintf($script, $item, '')."\n";
                 }
 //                foreach (array_chunk($items['script'], 15) as $chunk) {
-//                    $html .= sprintf($script, $baseJs.'index.php/x.js?f='.join(',',$chunk), '')."\n";
+//                    $html .= sprintf($script, $baseJs.'proxy.php/x.js?f='.join(',',$chunk), '')."\n";
 //                }
             }
             if (!empty($items['stylesheet'])) {
-                foreach ($this->getChunkedItems($items['stylesheet'], $baseJs.'index.php?c=auto&amp;f=') as $item) {
+                foreach ($this->getChunkedItems($items['stylesheet'], $baseJs.'proxy.php?c=auto&f=') as $item) {
                     $html .= sprintf($stylesheet, $item, '')."\n";
                 }
 //                foreach (array_chunk($items['stylesheet'], 15) as $chunk) {
-//                    $html .= sprintf($stylesheet, $baseJs.'index.php/x.css?f='.join(',',$chunk), '')."\n";
+//                    $html .= sprintf($stylesheet, $baseJs.'proxy.php/x.css?f='.join(',',$chunk), '')."\n";
 //                }
             }
             if (!empty($items['other'])) {
@@ -213,7 +201,7 @@ class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
         if (empty($this->_data['title'])) {
             $this->_data['title'] = $this->getDefaultTitle();
         }
-        return htmlspecialchars(html_entity_decode($this->_data['title'], ENT_QUOTES, 'UTF-8'));
+        return $this->_data['title'];
     }
 
     public function getDefaultTitle()
@@ -243,19 +231,6 @@ class Mage_Page_Block_Html_Head extends Mage_Core_Block_Template
             $this->_data['robots'] = Mage::getStoreConfig('design/head/default_robots');
         }
         return $this->_data['robots'];
-    }
-
-    /**
-     * Get miscellanious scripts/styles to be included in head before head closing tag
-     *
-     * @return string
-     */
-    public function getIncludes()
-    {
-        if (empty($this->_data['includes'])) {
-            $this->_data['includes'] = Mage::getStoreConfig('design/head/includes');
-        }
-        return $this->_data['includes'];
     }
 
 }
