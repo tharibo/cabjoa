@@ -271,7 +271,7 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
 					
 //					$cheapItems = array_slice( $itemsWithPrice, 0, $nbCheapItems, true );
 
-					Mage::log('VALIDATOR: construction of cheaper items ok.');
+					Mage::log('VALIDATOR: construction of cheaper items ok.' . $nbCheapItems);
 
 					// Check that item tested against this rule is a cheap one.
 					if (array_search( $item->getId(), $cheapItems ) !== FALSE) {
