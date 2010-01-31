@@ -220,10 +220,9 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
 					// First we construct a list of cheaper items. It's time 
 					// consuming to recreate it for each item of the cart, but 
 					// I can't find another way at this time.
-					$items = $item->getQuote()->getAllItems();
+					$items = $item->getQuote()->getAllVisibleItems();
 					$itemsWithPrice = array();
 					$validatedItemsWithQty = array();
-					Mage::log('VALIDATOR: start construction of comparative items');
 					$validatedItemsQty = 0;
 					foreach ($items as $currentQuoteItem) {
 						// Argh, we have to recheck all items, for all items!
@@ -242,18 +241,18 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
 							$validatedItemsWithQty[$currentQuoteItem->getId()] = $currentQuoteQty;
 						}
 					}
-					Mage::log('VALIDATOR: construction of comparative items ok. Nb = ' . sizeof($itemsWithPrice));
 
 					// Sort items by price
 					asort( $itemsWithPrice );
 
 					Mage::log('VALIDATOR: sorting done.');
+					Mage::log('VALIDATOR: itemsWithPrice = ' . print_r($itemsWithPrice, TRUE));
 
 					// Get only the cheaper items.
 					// Reconstruct a list with n times the same item, given its quantity
 					$nbCheapItems = intval($validatedItemsQty / 2);
-					Mage::log('VALIDATOR: Number of items: ' . $validatedItemsQty);
-					Mage::log('VALIDATOR: Number of cheap items: ' . $nbCheapItems);
+					Mage::log('VALIDATOR: validatedItemsWithQty = ' . print_r($validatedItemsWithQty, TRUE));
+					Mage::log('VALIDATOR: nbCheapItems = ' . $nbCheapItems);
 					$nbProcessed = 0;
 					$cheapItems = array();
 					foreach ($itemsWithPrice as $validatedItem => $validatedPrice) {
@@ -269,9 +268,8 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
 						}
 					}
 					
-//					$cheapItems = array_slice( $itemsWithPrice, 0, $nbCheapItems, true );
-
-					Mage::log('VALIDATOR: construction of cheaper items ok.' . $nbCheapItems);
+					Mage::log('VALIDATOR: construction of cheaper items ok.' . $nbProcessed);
+					Mage::log('VALIDATOR: cheapItems' . print_r($cheapItems, TRUE));
 
 					// Check that item tested against this rule is a cheap one.
 					if (array_search( $item->getId(), $cheapItems ) !== FALSE) {
@@ -281,7 +279,10 @@ class Mage_SalesRule_Model_Validator extends Mage_Core_Model_Abstract
 						if ($step = $rule->getDiscountStep()) {
 							$qty = floor($qty/$step)*$step;
 						}
-						$qty = min( $qty, $nbCheapItems );
+						// The discount will be applied on this item the number 
+						// of times it appears in $cheapItems
+						$countValues = array_count_values( $cheapItems );
+						$qty = min( $qty, $countValues[$item->getId()] );
 						Mage::log('VALIDATOR: QTY = ' . $qty);
 
 						$discountAmount    = ($qty*$item->getCalculationPrice() - $item->getDiscountAmount()) * $rulePercent/100;
