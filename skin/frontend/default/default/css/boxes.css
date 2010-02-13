@@ -861,8 +861,9 @@ table.recently-list td { width:20%; }
 /********************** Catalog Listing */
 
 /* List Type */
-.listing-type-list .listing-item { border-top:1px solid #D9DDE3; padding:12px 10px; }
+.listing-type-list .listing-item { border-top:1px solid #D9DDE3; padding:12px 10px; position:relative; }
 .listing-type-list .product-image { float:left; width:135px; }
+.listing-type-list .product-image img { border: #999 solid 6px; }
 .listing-type-list .product-shop { width:305px; }
 .listing-type-list .product-shop .description { margin:.5em 0 1.2em 0; }
 .listing-type-list .product-shop .price-box { float:left;text-align:left; white-space:nowrap; margin:3px 13px 5px 0; padding:0; }
@@ -1680,6 +1681,15 @@ table.print .price-incl-tax .price { display:inline; }
 	height:25px;
 	width:25px;
 	right:49px;
+	top:19px;
+}
+.listing-item span.pointrouge {
+	background:transparent url(../images/pointrouge.png) no-repeat scroll 0 0;
+	display:block;
+	position:absolute;
+	height:25px;
+	width:25px;
+	left:124px;
 	top:19px;
 }
 .product-img-box span.pointrouge {
