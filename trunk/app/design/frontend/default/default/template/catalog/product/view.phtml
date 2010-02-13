@@ -44,6 +44,7 @@
     <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 
         <div class="product-img-box">
+			<span class="<?php if($_product->_getData('pointrouge')) echo 'pointrouge';?>"></span>
             <?php echo $this->getChildHtml('media') ?>
         </div>
 
