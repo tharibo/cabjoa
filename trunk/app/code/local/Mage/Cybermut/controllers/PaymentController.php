@@ -102,6 +102,11 @@ class Mage_Cybermut_PaymentController extends Mage_Core_Controller_Front_Action
 			$model->generateErrorResponse();
 		}
 
+		// Return address
+		if(empty($postData)) {
+			$model->generateErrorResponse();
+		}
+
 		$returnedMAC = $postData['MAC'];
 		$correctMAC = $model->getResponseMAC($postData);
 
