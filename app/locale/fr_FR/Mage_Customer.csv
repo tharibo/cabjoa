@@ -4,6 +4,7 @@
 "Account Information","Informations du compte"
 "Account information was successfully saved","Les informations du compte ont été sauvegardées"
 "Account Sharing Options","Options de partage de compte"
+"Account confirmation is required. Please, check your e-mail for confirmation link. To resend confirmation email please <a href=""%s"">click here</a>.","Un email de confirmation vient de vous être envoyé. Ce mail contient un lien permettant de valider votre inscription. Pour recevoir à nouveau ce mail, <a href=""%s"">cliquez ici<a>."
 "Action","Action"
 "Add New Address","Ajouter une adresse"
 "Add New Customer","Ajouter un nouveau client"
