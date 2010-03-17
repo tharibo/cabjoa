@@ -24,7 +24,7 @@
 #nav { padding:1.5em 0px 0; font-size:1.1em; }
 
 /************** ALL LEVELS  *************/ /* Style consistent throughout all nav levels */
-#nav li { position:relative; text-align:left; }
+#nav li { position:relative; text-align:left; display: list-item; }
 #nav li.over { z-index:999; }
 #nav a,
 #nav a:hover { display:block; line-height:1.3em; text-decoration:none; }
@@ -41,7 +41,7 @@
 /************ 1ST LEVEL ************/
 #nav ul li,
 #nav ul li.active { float:none; margin:0; padding-bottom:1px; background:#ecf3f6 url(../images/nav_divider.gif) repeat-x 0 100%; }
-/*#nav ul li.over { background:#d5e4eb url(../images/nav_divider.gif) repeat-x 0 100%; }*/
+#nav ul li.over { background:#d5e4eb /*url(../images/nav_divider.gif) repeat-x 0 100%;*/ }
 #nav ul li.last { background:#ecf3f6; padding-bottom:0; }
 
 #nav ul a,
