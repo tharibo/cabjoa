@@ -61,7 +61,7 @@ label { color:#bd88bd; /*font-size:.95em;*/  font-weight:bold; }
 input, select, button { vertical-align:middle; }
 
 /* Lists */
-dt { display:block; font-weight:bold; }
+dt { display:block; font-weight:bold;}
 ul,ol { list-style:none; }
 
 /* Size */
