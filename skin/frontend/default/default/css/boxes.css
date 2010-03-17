@@ -367,13 +367,13 @@ table.view-by td {
 .col-1-layout .col-main { float:none; margin:0; }
 .col-2-right-layout .col-main { float:left; width:590px; background-color: #434343; margin-top:30px;  }
 .col-2-left-layout .col-main { float:right; width:590px; }
-.col-3-layout .col-main { width:400; margin-left:17px; }
+.col-3-layout .col-main { width:400px; margin-left:17px; }
 
 /* Style */
 .header { position:relative; }
 .header-top-container { /*border-bottom:medium solid #141414;*/ }
 .header-top { /*padding:10px;*/ }
-.header-nav-container { float:center; /*background:url(../images/nav_bg.jpg) repeat-y 50% 0 #0a263d;*/ }
+.header-nav-container { width: 580px; /*background:url(../images/nav_bg.jpg) repeat-y 50% 0 #0a263d;*/ }
 .middle-container {  }
 .middle
 { /*background:url(../images/main_bg.gif) no-repeat #fffffe;  padding:25px 25px 80px 25px;*/ 
