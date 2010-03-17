@@ -21,7 +21,7 @@
  * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 
-#nav { padding:1.5em 20px 0; font-size:1.1em; }
+#nav { padding:1.5em 0px 0; font-size:1.1em; }
 
 /************** ALL LEVELS  *************/ /* Style consistent throughout all nav levels */
 #nav li { position:relative; text-align:left; }
