@@ -1153,12 +1153,19 @@ class Mage_Catalog_Model_Resource_Eav_Mysql4_Product_Collection
                     $priceAttributeId
                 );
 
+/*		Correction bug du tri.
                 $this->getSelect()->joinLeft(
                     array('_price_order_table'=>$this->getTable('catalogindex/price')),
-                    "{$entityCondition} AND {$storeCondition} AND {$groupCondition} AND {$attributeCondition}",
+		    "{$entityCondition} AND {$storeCondition} AND {$groupCondition} AND {$attributeCondition}",
                     array()
                 );
-                $this->getSelect()->order('_price_order_table.value ' . $dir);
+*/              $this->getSelect()->joinLeft(
+                    array('_price_order_table'=>$this->getTable('catalogindex/price')),
+		    "{$entityCondition} AND {$storeCondition} AND {$attributeCondition}",
+                    array()
+                );
+		$this->getSelect()->order('_price_order_table.value ' . $dir);
+/* Fin correction */
 
                 /**
                  * Distinct we are using for remove duplicates of products which have
