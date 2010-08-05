@@ -34,7 +34,7 @@
 #left-col
 {
 	float: left;
-	height: 399px;
+	height: 424px;
 	/*width: 40%;*/
 }
 
@@ -71,13 +71,32 @@
 	clear: both;
 	padding-top: 1em;
 }
+#images-plus-petites
+{
+	clear: both;
+	text-align: left;
+}
+img.grande-image
+{
+	padding-top: 3px;
+}
+img.petite-image
+{
+	float: left;
+	padding-right: 30px;
+}
+img.derniere-petite-image
+{
+	float: left;
+}
+
 
 </style>
 
 <div id='content'>
 
 <div id='left-col'>
-	<img src='<?php echo $this->getSkinUrl('images/media/contact.jpg')?>' alt='Signature Cabrera'/>
+	<img src='<?php echo $this->getSkinUrl('images/media/contact_bijoux_portrait.jpg')?>' alt='Jolie fille portant des bijoux en argent et cuir' width="276"/>
 </div>
 
 <div id='text'>
@@ -109,6 +128,17 @@ le jeudi : 10h00 - 12h30, 15h - 19h<br></small>
 </div>
 
 </div>
+<div id="image-plus-petites">
+	<span>
+		<img class="grande-image" src="http://www.cabrera-joaillier.com/skin/frontend/default/default/images/media/contact_bijoux_portrait3.jpg" alt="Jolies filles portant des bijoux en argent et cuir" width="800" />
+	</span>
+	<span style="text-align: left;">
+		<img class="petite-image" src="http://www.cabrera-joaillier.com/skin/frontend/default/default/images/media/contact_bijoux_portrait2.jpg" alt="Jolie fille portant des bijoux en argent et cuir" height="374" />
+		<img class="petite-image" src="http://www.cabrera-joaillier.com/skin/frontend/default/default/images/media/contact_bijoux_portrait4.jpg" alt="Jolie fille portant des bijoux en argent et cuir" height="374" />
+		<img class="derniere-petite-image" src="http://www.cabrera-joaillier.com/skin/frontend/default/default/images/media/contact_bijoux_portrait5.jpg" alt="Jolie fille portant des bijoux en argent et cuir" height="374" />
+	</span>
+</div>
+
 
 <!--div id='form'>
 <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post">
